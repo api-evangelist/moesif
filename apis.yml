@@ -18,9 +18,9 @@ apis:
 name: Moesif
 tags:
   - Analytics
+  - Insights
   - Monetization
   - Platform
-  - Insights
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
