@@ -1,0 +1,3832 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API
+  description: Management API to query data in Moesif. You can use the management API to export data for custom reports or
+    to build custom dashboards.
+  tags:
+  - Moesif
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: moesif
+    baseUri: https://api.moesif.com/v1
+    description: Management API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{MOESIF_TOKEN}}'
+    resources:
+    - name: search-companies
+      path: /search/~/companies
+      operations:
+      - name: updatecompanies
+        method: POST
+        description: Update a Company
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-companies-batch
+      path: /search/~/companies/batch
+      operations:
+      - name: batchupdatecompanies
+        method: POST
+        description: Update Companies in Batch
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-companies-id
+      path: /search/~/companies/{id}
+      operations:
+      - name: getcompany
+        method: GET
+        description: Get a Company
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecompany
+        method: DELETE
+        description: Delete a Company
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: delete_events
+          in: query
+          type: boolean
+          description: Delete events associated with the company which can be set to true or false(default)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-companies-id-subscriptions
+      path: /search/~/companies/{id}/subscriptions
+      operations:
+      - name: getcompanysubscriptions
+        method: GET
+        description: Get the Subscriptions of a Company
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-count-companies
+      path: /search/~/count/companies
+      operations:
+      - name: countcompanies
+        method: POST
+        description: Count Companies
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-count-events
+      path: /search/~/count/events
+      operations:
+      - name: countevents
+        method: POST
+        description: Count Events
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+          required: true
+          description: The start date, which can be absolute such as 2019-07-01T00:00:00Z or relative such as -24h
+        - name: to
+          in: query
+          type: string
+          required: true
+          description: The end date, which can be absolute such as 2019-07-02T00:00:00Z or relative such as now
+        - name: track_total_hits
+          in: query
+          type: boolean
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-count-users
+      path: /search/~/count/users
+      operations:
+      - name: countusers
+        method: POST
+        description: Count Users
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-events-id
+      path: /search/~/events/{id}
+      operations:
+      - name: getevent
+        method: GET
+        description: Get an Event
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: event_time
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-mappings-companies-properties
+      path: /search/~/mappings/companies/properties
+      operations:
+      - name: getproperties
+        method: GET
+        description: Get Property Mapping for Companies
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-mappings-companymetrics-properties
+      path: /search/~/mappings/companymetrics/properties
+      operations:
+      - name: getproperties
+        method: GET
+        description: Get Property Mapping for CompanyMetrics
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: from
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-mappings-events-properties
+      path: /search/~/mappings/events/properties
+      operations:
+      - name: getproperties
+        method: GET
+        description: Get Property Mapping for Events
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: from
+          in: query
+          type: string
+        - name: to
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-mappings-events-request-body-properties
+      path: /search/~/mappings/events/request/body/properties
+      operations:
+      - name: getrequestbodyproperties
+        method: GET
+        description: Get Property Mapping for Events Request Body
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: from
+          in: query
+          type: string
+          required: true
+        - name: to
+          in: query
+          type: string
+          required: true
+        - name: include_values
+          in: query
+          type: boolean
+        - name: key_path
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-mappings-events-response-body-properties
+      path: /search/~/mappings/events/response/body/properties
+      operations:
+      - name: getresponsebodyproperties
+        method: GET
+        description: Get Property Mapping for Events Response Body
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: from
+          in: query
+          type: string
+          required: true
+        - name: to
+          in: query
+          type: string
+          required: true
+        - name: include_values
+          in: query
+          type: boolean
+        - name: key_path
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-mappings-usermetrics-properties
+      path: /search/~/mappings/usermetrics/properties
+      operations:
+      - name: getproperties
+        method: GET
+        description: Get Property Mapping for UserMetrics
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: from
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-mappings-users-properties
+      path: /search/~/mappings/users/properties
+      operations:
+      - name: getproperties
+        method: GET
+        description: Get Property Mapping for Users
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-search-companymetrics-companies
+      path: /search/~/search/companymetrics/companies
+      operations:
+      - name: searchcompanymetrics
+        method: POST
+        description: Search CompanyMetrics/Companies
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+          description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+        - name: to
+          in: query
+          type: string
+          description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-search-events
+      path: /search/~/search/events
+      operations:
+      - name: searchevents
+        method: POST
+        description: Search Events
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+          required: true
+          description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+        - name: to
+          in: query
+          type: string
+          required: true
+          description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-search-usermetrics-users
+      path: /search/~/search/usermetrics/users
+      operations:
+      - name: searchusermetrics
+        method: POST
+        description: Search UserMetrics/Users
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+          description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+        - name: to
+          in: query
+          type: string
+          description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-subscriptions
+      path: /search/~/subscriptions
+      operations:
+      - name: createsubscription
+        method: POST
+        description: Create or Update a Subscription
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-subscriptions-batch
+      path: /search/~/subscriptions/batch
+      operations:
+      - name: batchcreatesubscriptions
+        method: POST
+        description: Create or Update Subscriptions in Batch
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-subscriptions-id
+      path: /search/~/subscriptions/{id}
+      operations:
+      - name: getsubscription
+        method: GET
+        description: Get a Subscription
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-users
+      path: /search/~/users
+      operations:
+      - name: updateusers
+        method: POST
+        description: Update a User
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-users-batch
+      path: /search/~/users/batch
+      operations:
+      - name: batchupdateusers
+        method: POST
+        description: Update Users in Batch
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-users-id
+      path: /search/~/users/{id}
+      operations:
+      - name: getuser
+        method: GET
+        description: Get a User
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteuser
+        method: DELETE
+        description: Delete a User
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: delete_events
+          in: query
+          type: boolean
+          description: Delete events associated with the user which can be set to true or false(default)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search-workspaces-workspaceid-search
+      path: /search/~/workspaces/{workspaceId}/search
+      operations:
+      - name: searchpublicworkspaces
+        method: POST
+        description: Search Events in saved public Workspace
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+          required: true
+          description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+        - name: to
+          in: query
+          type: string
+          required: true
+          description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+        - name: workspaceId
+          in: path
+          type: string
+          required: true
+        - name: include_details
+          in: query
+          type: boolean
+        - name: take
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: workspaces-access-token
+      path: /workspaces/access_token
+      operations:
+      - name: getworkspacetoken
+        method: GET
+        description: Get new Workspace Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: workspaces-public-id
+      path: /workspaces/public/{id}
+      operations:
+      - name: getpublicworkspace
+        method: GET
+        description: Get a Public Workspace
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: apps
+      path: /~/apps
+      operations:
+      - name: addapp
+        method: POST
+        description: Create a new App
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: getapps
+        method: GET
+        description: Gets Apps
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: take
+          in: query
+          type: integer
+          required: true
+        - name: before_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: apps-id
+      path: /~/apps/{id}
+      operations:
+      - name: updateapp
+        method: POST
+        description: Update Apps
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteapp
+        method: DELETE
+        description: Delete Apps
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: billing-catalog-plans
+      path: /~/billing/catalog/plans
+      operations:
+      - name: createmoesifplan
+        method: POST
+        description: Create a new Moesif Plan
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: provider
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listmoesifplans
+        method: GET
+        description: List all Moesif Plans
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: provider
+          in: query
+          type: string
+        - name: includes
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: billing-catalog-plans-id
+      path: /~/billing/catalog/plans/{id}
+      operations:
+      - name: getmoesifplan
+        method: GET
+        description: Get a Moesif Plan
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletemoesifplan
+        method: DELETE
+        description: Delete a Moesif Plan
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatemoesifplan
+        method: PUT
+        description: Update a Moesif Plan
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: billing-catalog-prices
+      path: /~/billing/catalog/prices
+      operations:
+      - name: createmoesifprice
+        method: POST
+        description: Create a new Moesif Price
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: provider
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listmoesifprices
+        method: GET
+        description: List all Moesif Prices for a specific Plan
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: provider
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: billing-catalog-prices-id
+      path: /~/billing/catalog/prices/{id}
+      operations:
+      - name: getmoesifprice
+        method: GET
+        description: Get a Moesif Price
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletemoesifprice
+        method: DELETE
+        description: Delete a Moesif Price
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatemoesifprice
+        method: PUT
+        description: Update a Moesif Price
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: billing-meters
+      path: /~/billing/meters
+      operations:
+      - name: listmeters
+        method: GET
+        description: List Billing Meters
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: billing-meters-meterid
+      path: /~/billing/meters/{meterId}
+      operations:
+      - name: getmeter
+        method: GET
+        description: Get Billing Meter by id
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: meterId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletemeter
+        method: DELETE
+        description: Delete Billing Meter by id
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: meterId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: billing-reports
+      path: /~/billing/reports
+      operations:
+      - name: getbillingreports
+        method: GET
+        description: Get BillingReports
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+        - name: to
+          in: query
+          type: string
+        - name: billing_meter_id
+          in: query
+          type: string
+        - name: company_id
+          in: query
+          type: string
+        - name: provider
+          in: query
+          type: string
+        - name: subscription_id
+          in: query
+          type: string
+        - name: success
+          in: query
+          type: boolean
+        - name: status_code
+          in: query
+          type: integer
+        - name: error_code
+          in: query
+          type: string
+        - name: '`type`'
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: billing-reports-balance-transactions
+      path: /~/billing/reports/balance_transactions
+      operations:
+      - name: createbalancetransaction
+        method: POST
+        description: Post BillingReports Balance Transactions
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: billing-reports-metrics
+      path: /~/billing/reports/metrics
+      operations:
+      - name: getbillingreportsmetrics
+        method: GET
+        description: Get BillingReports' values for a given meter and time range for a single company or all companies
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+          required: true
+        - name: to
+          in: query
+          type: string
+          required: true
+        - name: billing_meter_id
+          in: query
+          type: string
+        - name: success
+          in: query
+          type: boolean
+        - name: aggregator
+          in: query
+          type: string
+        - name: interval
+          in: query
+          type: string
+        - name: company_id
+          in: query
+          type: string
+        - name: subscription_id
+          in: query
+          type: string
+        - name: '`type`'
+          in: query
+          type: array
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cohorts
+      path: /~/cohorts
+      operations:
+      - name: createcohort
+        method: POST
+        description: Create New Cohort
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: getcohorts
+        method: GET
+        description: Get Cohorts
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: cohort_type
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cohorts-cohortid
+      path: /~/cohorts/{cohortId}
+      operations:
+      - name: updatecohort
+        method: POST
+        description: Update a Cohort
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: cohortId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: getcohort
+        method: GET
+        description: Get Cohort
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: cohort_type
+          in: query
+          type: string
+          required: true
+        - name: cohortId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecohort
+        method: DELETE
+        description: Delete Cohort
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: cohortId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cohorts-cohortid-sample-rate
+      path: /~/cohorts/{cohortId}/sample_rate
+      operations:
+      - name: deletecohortsamplerate
+        method: DELETE
+        description: Delete Sample Rate for a Cohort
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: cohortId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dashboard-dashid
+      path: /~/dashboard/{dashId}
+      operations:
+      - name: deletedashboards
+        method: DELETE
+        description: Delete a Dashboard
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: dashId
+          in: path
+          type: string
+          required: true
+        - name: parent_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dashboard-id-copy
+      path: /~/dashboard/{id}/copy
+      operations:
+      - name: copydashboard
+        method: POST
+        description: Copy Dashboard
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: to_app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dashboards
+      path: /~/dashboards
+      operations:
+      - name: createdashboard
+        method: POST
+        description: Create New Dashboard
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: getdashboards
+        method: GET
+        description: Get a Dashboard
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dashboards-copy
+      path: /~/dashboards/copy
+      operations:
+      - name: copyalldashboards
+        method: POST
+        description: Copy All Dashboards
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: to_app_id
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: moesif-rest
+    description: REST adapter for Management API.
+    resources:
+    - path: /search/~/companies
+      name: updatecompanies
+      operations:
+      - method: POST
+        name: updatecompanies
+        description: Update a Company
+        call: moesif.updatecompanies
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/companies/batch
+      name: batchupdatecompanies
+      operations:
+      - method: POST
+        name: batchupdatecompanies
+        description: Update Companies in Batch
+        call: moesif.batchupdatecompanies
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/companies/{id}
+      name: getcompany
+      operations:
+      - method: GET
+        name: getcompany
+        description: Get a Company
+        call: moesif.getcompany
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/companies/{id}
+      name: deletecompany
+      operations:
+      - method: DELETE
+        name: deletecompany
+        description: Delete a Company
+        call: moesif.deletecompany
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/companies/{id}/subscriptions
+      name: getcompanysubscriptions
+      operations:
+      - method: GET
+        name: getcompanysubscriptions
+        description: Get the Subscriptions of a Company
+        call: moesif.getcompanysubscriptions
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/count/companies
+      name: countcompanies
+      operations:
+      - method: POST
+        name: countcompanies
+        description: Count Companies
+        call: moesif.countcompanies
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/count/events
+      name: countevents
+      operations:
+      - method: POST
+        name: countevents
+        description: Count Events
+        call: moesif.countevents
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/count/users
+      name: countusers
+      operations:
+      - method: POST
+        name: countusers
+        description: Count Users
+        call: moesif.countusers
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/events/{id}
+      name: getevent
+      operations:
+      - method: GET
+        name: getevent
+        description: Get an Event
+        call: moesif.getevent
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/mappings/companies/properties
+      name: getproperties
+      operations:
+      - method: GET
+        name: getproperties
+        description: Get Property Mapping for Companies
+        call: moesif.getproperties
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/mappings/companymetrics/properties
+      name: getproperties
+      operations:
+      - method: GET
+        name: getproperties
+        description: Get Property Mapping for CompanyMetrics
+        call: moesif.getproperties
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/mappings/events/properties
+      name: getproperties
+      operations:
+      - method: GET
+        name: getproperties
+        description: Get Property Mapping for Events
+        call: moesif.getproperties
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/mappings/events/request/body/properties
+      name: getrequestbodyproperties
+      operations:
+      - method: GET
+        name: getrequestbodyproperties
+        description: Get Property Mapping for Events Request Body
+        call: moesif.getrequestbodyproperties
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/mappings/events/response/body/properties
+      name: getresponsebodyproperties
+      operations:
+      - method: GET
+        name: getresponsebodyproperties
+        description: Get Property Mapping for Events Response Body
+        call: moesif.getresponsebodyproperties
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/mappings/usermetrics/properties
+      name: getproperties
+      operations:
+      - method: GET
+        name: getproperties
+        description: Get Property Mapping for UserMetrics
+        call: moesif.getproperties
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/mappings/users/properties
+      name: getproperties
+      operations:
+      - method: GET
+        name: getproperties
+        description: Get Property Mapping for Users
+        call: moesif.getproperties
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/search/companymetrics/companies
+      name: searchcompanymetrics
+      operations:
+      - method: POST
+        name: searchcompanymetrics
+        description: Search CompanyMetrics/Companies
+        call: moesif.searchcompanymetrics
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/search/events
+      name: searchevents
+      operations:
+      - method: POST
+        name: searchevents
+        description: Search Events
+        call: moesif.searchevents
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/search/usermetrics/users
+      name: searchusermetrics
+      operations:
+      - method: POST
+        name: searchusermetrics
+        description: Search UserMetrics/Users
+        call: moesif.searchusermetrics
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/subscriptions
+      name: createsubscription
+      operations:
+      - method: POST
+        name: createsubscription
+        description: Create or Update a Subscription
+        call: moesif.createsubscription
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/subscriptions/batch
+      name: batchcreatesubscriptions
+      operations:
+      - method: POST
+        name: batchcreatesubscriptions
+        description: Create or Update Subscriptions in Batch
+        call: moesif.batchcreatesubscriptions
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/subscriptions/{id}
+      name: getsubscription
+      operations:
+      - method: GET
+        name: getsubscription
+        description: Get a Subscription
+        call: moesif.getsubscription
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/users
+      name: updateusers
+      operations:
+      - method: POST
+        name: updateusers
+        description: Update a User
+        call: moesif.updateusers
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/users/batch
+      name: batchupdateusers
+      operations:
+      - method: POST
+        name: batchupdateusers
+        description: Update Users in Batch
+        call: moesif.batchupdateusers
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/users/{id}
+      name: getuser
+      operations:
+      - method: GET
+        name: getuser
+        description: Get a User
+        call: moesif.getuser
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/users/{id}
+      name: deleteuser
+      operations:
+      - method: DELETE
+        name: deleteuser
+        description: Delete a User
+        call: moesif.deleteuser
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /search/~/workspaces/{workspaceId}/search
+      name: searchpublicworkspaces
+      operations:
+      - method: POST
+        name: searchpublicworkspaces
+        description: Search Events in saved public Workspace
+        call: moesif.searchpublicworkspaces
+        with:
+          orgId: rest.orgId
+          workspaceId: rest.workspaceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /workspaces/access_token
+      name: getworkspacetoken
+      operations:
+      - method: GET
+        name: getworkspacetoken
+        description: Get new Workspace Token
+        call: moesif.getworkspacetoken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /workspaces/public/{id}
+      name: getpublicworkspace
+      operations:
+      - method: GET
+        name: getpublicworkspace
+        description: Get a Public Workspace
+        call: moesif.getpublicworkspace
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/apps
+      name: addapp
+      operations:
+      - method: POST
+        name: addapp
+        description: Create a new App
+        call: moesif.addapp
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/apps
+      name: getapps
+      operations:
+      - method: GET
+        name: getapps
+        description: Gets Apps
+        call: moesif.getapps
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/apps/{id}
+      name: updateapp
+      operations:
+      - method: POST
+        name: updateapp
+        description: Update Apps
+        call: moesif.updateapp
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/apps/{id}
+      name: deleteapp
+      operations:
+      - method: DELETE
+        name: deleteapp
+        description: Delete Apps
+        call: moesif.deleteapp
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/catalog/plans
+      name: createmoesifplan
+      operations:
+      - method: POST
+        name: createmoesifplan
+        description: Create a new Moesif Plan
+        call: moesif.createmoesifplan
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/catalog/plans
+      name: listmoesifplans
+      operations:
+      - method: GET
+        name: listmoesifplans
+        description: List all Moesif Plans
+        call: moesif.listmoesifplans
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/catalog/plans/{id}
+      name: getmoesifplan
+      operations:
+      - method: GET
+        name: getmoesifplan
+        description: Get a Moesif Plan
+        call: moesif.getmoesifplan
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/catalog/plans/{id}
+      name: deletemoesifplan
+      operations:
+      - method: DELETE
+        name: deletemoesifplan
+        description: Delete a Moesif Plan
+        call: moesif.deletemoesifplan
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/catalog/plans/{id}
+      name: updatemoesifplan
+      operations:
+      - method: PUT
+        name: updatemoesifplan
+        description: Update a Moesif Plan
+        call: moesif.updatemoesifplan
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/catalog/prices
+      name: createmoesifprice
+      operations:
+      - method: POST
+        name: createmoesifprice
+        description: Create a new Moesif Price
+        call: moesif.createmoesifprice
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/catalog/prices
+      name: listmoesifprices
+      operations:
+      - method: GET
+        name: listmoesifprices
+        description: List all Moesif Prices for a specific Plan
+        call: moesif.listmoesifprices
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/catalog/prices/{id}
+      name: getmoesifprice
+      operations:
+      - method: GET
+        name: getmoesifprice
+        description: Get a Moesif Price
+        call: moesif.getmoesifprice
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/catalog/prices/{id}
+      name: deletemoesifprice
+      operations:
+      - method: DELETE
+        name: deletemoesifprice
+        description: Delete a Moesif Price
+        call: moesif.deletemoesifprice
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/catalog/prices/{id}
+      name: updatemoesifprice
+      operations:
+      - method: PUT
+        name: updatemoesifprice
+        description: Update a Moesif Price
+        call: moesif.updatemoesifprice
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/meters
+      name: listmeters
+      operations:
+      - method: GET
+        name: listmeters
+        description: List Billing Meters
+        call: moesif.listmeters
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/meters/{meterId}
+      name: getmeter
+      operations:
+      - method: GET
+        name: getmeter
+        description: Get Billing Meter by id
+        call: moesif.getmeter
+        with:
+          orgId: rest.orgId
+          meterId: rest.meterId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/meters/{meterId}
+      name: deletemeter
+      operations:
+      - method: DELETE
+        name: deletemeter
+        description: Delete Billing Meter by id
+        call: moesif.deletemeter
+        with:
+          orgId: rest.orgId
+          meterId: rest.meterId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/reports
+      name: getbillingreports
+      operations:
+      - method: GET
+        name: getbillingreports
+        description: Get BillingReports
+        call: moesif.getbillingreports
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/reports/balance_transactions
+      name: createbalancetransaction
+      operations:
+      - method: POST
+        name: createbalancetransaction
+        description: Post BillingReports Balance Transactions
+        call: moesif.createbalancetransaction
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/billing/reports/metrics
+      name: getbillingreportsmetrics
+      operations:
+      - method: GET
+        name: getbillingreportsmetrics
+        description: Get BillingReports' values for a given meter and time range for a single company or all companies
+        call: moesif.getbillingreportsmetrics
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/cohorts
+      name: createcohort
+      operations:
+      - method: POST
+        name: createcohort
+        description: Create New Cohort
+        call: moesif.createcohort
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/cohorts
+      name: getcohorts
+      operations:
+      - method: GET
+        name: getcohorts
+        description: Get Cohorts
+        call: moesif.getcohorts
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/cohorts/{cohortId}
+      name: updatecohort
+      operations:
+      - method: POST
+        name: updatecohort
+        description: Update a Cohort
+        call: moesif.updatecohort
+        with:
+          orgId: rest.orgId
+          cohortId: rest.cohortId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/cohorts/{cohortId}
+      name: getcohort
+      operations:
+      - method: GET
+        name: getcohort
+        description: Get Cohort
+        call: moesif.getcohort
+        with:
+          orgId: rest.orgId
+          cohortId: rest.cohortId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/cohorts/{cohortId}
+      name: deletecohort
+      operations:
+      - method: DELETE
+        name: deletecohort
+        description: Delete Cohort
+        call: moesif.deletecohort
+        with:
+          orgId: rest.orgId
+          cohortId: rest.cohortId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/cohorts/{cohortId}/sample_rate
+      name: deletecohortsamplerate
+      operations:
+      - method: DELETE
+        name: deletecohortsamplerate
+        description: Delete Sample Rate for a Cohort
+        call: moesif.deletecohortsamplerate
+        with:
+          orgId: rest.orgId
+          cohortId: rest.cohortId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/dashboard/{dashId}
+      name: deletedashboards
+      operations:
+      - method: DELETE
+        name: deletedashboards
+        description: Delete a Dashboard
+        call: moesif.deletedashboards
+        with:
+          orgId: rest.orgId
+          dashId: rest.dashId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/dashboard/{id}/copy
+      name: copydashboard
+      operations:
+      - method: POST
+        name: copydashboard
+        description: Copy Dashboard
+        call: moesif.copydashboard
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/dashboards
+      name: createdashboard
+      operations:
+      - method: POST
+        name: createdashboard
+        description: Create New Dashboard
+        call: moesif.createdashboard
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/dashboards
+      name: getdashboards
+      operations:
+      - method: GET
+        name: getdashboards
+        description: Get a Dashboard
+        call: moesif.getdashboards
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /~/dashboards/copy
+      name: copyalldashboards
+      operations:
+      - method: POST
+        name: copyalldashboards
+        description: Copy All Dashboards
+        call: moesif.copyalldashboards
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: moesif-mcp
+    transport: http
+    description: MCP adapter for Management API for AI agent use.
+    tools:
+    - name: updatecompanies
+      description: Update a Company
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.updatecompanies
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: batchupdatecompanies
+      description: Update Companies in Batch
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.batchupdatecompanies
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcompany
+      description: Get a Company
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getcompany
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletecompany
+      description: Delete a Company
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif.deletecompany
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+        delete_events: tools.delete_events
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: delete_events
+        type: boolean
+        description: Delete events associated with the company which can be set to true or false(default)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcompanysubscriptions
+      description: Get the Subscriptions of a Company
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getcompanysubscriptions
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: countcompanies
+      description: Count Companies
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.countcompanies
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: countevents
+      description: Count Events
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.countevents
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        track_total_hits: tools.track_total_hits
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: from
+        type: string
+        description: The start date, which can be absolute such as 2019-07-01T00:00:00Z or relative such as -24h
+        required: true
+      - name: to
+        type: string
+        description: The end date, which can be absolute such as 2019-07-02T00:00:00Z or relative such as now
+        required: true
+      - name: track_total_hits
+        type: boolean
+        description: track_total_hits
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: countusers
+      description: Count Users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.countusers
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getevent
+      description: Get an Event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getevent
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+        event_time: tools.event_time
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: event_time
+        type: string
+        description: event_time
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getproperties
+      description: Get Property Mapping for Companies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getproperties
+      description: Get Property Mapping for CompanyMetrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+        required: true
+      - name: from
+        type: string
+        description: from
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getproperties
+      description: Get Property Mapping for Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+        required: true
+      - name: from
+        type: string
+        description: from
+      - name: to
+        type: string
+        description: to
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getrequestbodyproperties
+      description: Get Property Mapping for Events Request Body
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getrequestbodyproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        include_values: tools.include_values
+        key_path: tools.key_path
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+        required: true
+      - name: from
+        type: string
+        description: from
+        required: true
+      - name: to
+        type: string
+        description: to
+        required: true
+      - name: include_values
+        type: boolean
+        description: include_values
+      - name: key_path
+        type: string
+        description: key_path
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getresponsebodyproperties
+      description: Get Property Mapping for Events Response Body
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getresponsebodyproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        include_values: tools.include_values
+        key_path: tools.key_path
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+        required: true
+      - name: from
+        type: string
+        description: from
+        required: true
+      - name: to
+        type: string
+        description: to
+        required: true
+      - name: include_values
+        type: boolean
+        description: include_values
+      - name: key_path
+        type: string
+        description: key_path
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getproperties
+      description: Get Property Mapping for UserMetrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+        required: true
+      - name: from
+        type: string
+        description: from
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getproperties
+      description: Get Property Mapping for Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchcompanymetrics
+      description: Search CompanyMetrics/Companies
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.searchcompanymetrics
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: from
+        type: string
+        description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+      - name: to
+        type: string
+        description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchevents
+      description: Search Events
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.searchevents
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: from
+        type: string
+        description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+        required: true
+      - name: to
+        type: string
+        description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchusermetrics
+      description: Search UserMetrics/Users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.searchusermetrics
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: from
+        type: string
+        description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+      - name: to
+        type: string
+        description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createsubscription
+      description: Create or Update a Subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.createsubscription
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: batchcreatesubscriptions
+      description: Create or Update Subscriptions in Batch
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.batchcreatesubscriptions
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getsubscription
+      description: Get a Subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getsubscription
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateusers
+      description: Update a User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.updateusers
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: batchupdateusers
+      description: Update Users in Batch
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.batchupdateusers
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getuser
+      description: Get a User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getuser
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteuser
+      description: Delete a User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif.deleteuser
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+        delete_events: tools.delete_events
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: delete_events
+        type: boolean
+        description: Delete events associated with the user which can be set to true or false(default)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchpublicworkspaces
+      description: Search Events in saved public Workspace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.searchpublicworkspaces
+      with:
+        orgId: tools.orgId
+        workspaceId: tools.workspaceId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        include_details: tools.include_details
+        take: tools.take
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: workspaceId
+        type: string
+        description: workspaceId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: from
+        type: string
+        description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+        required: true
+      - name: to
+        type: string
+        description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+        required: true
+      - name: include_details
+        type: boolean
+        description: include_details
+      - name: take
+        type: integer
+        description: take
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getworkspacetoken
+      description: Get new Workspace Token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getworkspacetoken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getpublicworkspace
+      description: Get a Public Workspace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getpublicworkspace
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: addapp
+      description: Create a new App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.addapp
+      with:
+        orgId: tools.orgId
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getapps
+      description: Gets Apps
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getapps
+      with:
+        orgId: tools.orgId
+        take: tools.take
+        before_id: tools.before_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: take
+        type: integer
+        description: take
+        required: true
+      - name: before_id
+        type: string
+        description: before_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateapp
+      description: Update Apps
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.updateapp
+      with:
+        orgId: tools.orgId
+        id: tools.id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteapp
+      description: Delete Apps
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif.deleteapp
+      with:
+        orgId: tools.orgId
+        id: tools.id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createmoesifplan
+      description: Create a new Moesif Plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.createmoesifplan
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        provider: tools.provider
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: provider
+        type: string
+        description: provider
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmoesifplans
+      description: List all Moesif Plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.listmoesifplans
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        provider: tools.provider
+        includes: tools.includes
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: provider
+        type: string
+        description: provider
+      - name: includes
+        type: string
+        description: includes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmoesifplan
+      description: Get a Moesif Plan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getmoesifplan
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+        provider: tools.provider
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: provider
+        type: string
+        description: provider
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletemoesifplan
+      description: Delete a Moesif Plan
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif.deletemoesifplan
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+        provider: tools.provider
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: provider
+        type: string
+        description: provider
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatemoesifplan
+      description: Update a Moesif Plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: moesif.updatemoesifplan
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+        provider: tools.provider
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: provider
+        type: string
+        description: provider
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createmoesifprice
+      description: Create a new Moesif Price
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.createmoesifprice
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        provider: tools.provider
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: provider
+        type: string
+        description: provider
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmoesifprices
+      description: List all Moesif Prices for a specific Plan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.listmoesifprices
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        provider: tools.provider
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: provider
+        type: string
+        description: provider
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmoesifprice
+      description: Get a Moesif Price
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getmoesifprice
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+        provider: tools.provider
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: provider
+        type: string
+        description: provider
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletemoesifprice
+      description: Delete a Moesif Price
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif.deletemoesifprice
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+        provider: tools.provider
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: provider
+        type: string
+        description: provider
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatemoesifprice
+      description: Update a Moesif Price
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: moesif.updatemoesifprice
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+        provider: tools.provider
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: provider
+        type: string
+        description: provider
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmeters
+      description: List Billing Meters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.listmeters
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmeter
+      description: Get Billing Meter by id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getmeter
+      with:
+        orgId: tools.orgId
+        meterId: tools.meterId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: meterId
+        type: string
+        description: meterId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletemeter
+      description: Delete Billing Meter by id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif.deletemeter
+      with:
+        orgId: tools.orgId
+        meterId: tools.meterId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: meterId
+        type: string
+        description: meterId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getbillingreports
+      description: Get BillingReports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getbillingreports
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        billing_meter_id: tools.billing_meter_id
+        company_id: tools.company_id
+        provider: tools.provider
+        subscription_id: tools.subscription_id
+        success: tools.success
+        status_code: tools.status_code
+        error_code: tools.error_code
+        '`type`': tools.`type`
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: from
+        type: string
+        description: from
+      - name: to
+        type: string
+        description: to
+      - name: billing_meter_id
+        type: string
+        description: billing_meter_id
+      - name: company_id
+        type: string
+        description: company_id
+      - name: provider
+        type: string
+        description: provider
+      - name: subscription_id
+        type: string
+        description: subscription_id
+      - name: success
+        type: boolean
+        description: success
+      - name: status_code
+        type: integer
+        description: status_code
+      - name: error_code
+        type: string
+        description: error_code
+      - name: '`type`'
+        type: string
+        description: '`type`'
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createbalancetransaction
+      description: Post BillingReports Balance Transactions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.createbalancetransaction
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getbillingreportsmetrics
+      description: Get BillingReports' values for a given meter and time range for a single company or all companies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getbillingreportsmetrics
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        billing_meter_id: tools.billing_meter_id
+        success: tools.success
+        aggregator: tools.aggregator
+        interval: tools.interval
+        company_id: tools.company_id
+        subscription_id: tools.subscription_id
+        '`type`': tools.`type`
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: from
+        type: string
+        description: from
+        required: true
+      - name: to
+        type: string
+        description: to
+        required: true
+      - name: billing_meter_id
+        type: string
+        description: billing_meter_id
+      - name: success
+        type: boolean
+        description: success
+      - name: aggregator
+        type: string
+        description: aggregator
+      - name: interval
+        type: string
+        description: interval
+      - name: company_id
+        type: string
+        description: company_id
+      - name: subscription_id
+        type: string
+        description: subscription_id
+      - name: '`type`'
+        type: array
+        description: '`type`'
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createcohort
+      description: Create New Cohort
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.createcohort
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcohorts
+      description: Get Cohorts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getcohorts
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        cohort_type: tools.cohort_type
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: cohort_type
+        type: string
+        description: cohort_type
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatecohort
+      description: Update a Cohort
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.updatecohort
+      with:
+        orgId: tools.orgId
+        cohortId: tools.cohortId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: cohortId
+        type: string
+        description: cohortId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcohort
+      description: Get Cohort
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getcohort
+      with:
+        orgId: tools.orgId
+        cohortId: tools.cohortId
+        app_id: tools.app_id
+        cohort_type: tools.cohort_type
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: cohortId
+        type: string
+        description: cohortId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: cohort_type
+        type: string
+        description: cohort_type
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletecohort
+      description: Delete Cohort
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif.deletecohort
+      with:
+        orgId: tools.orgId
+        cohortId: tools.cohortId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: cohortId
+        type: string
+        description: cohortId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletecohortsamplerate
+      description: Delete Sample Rate for a Cohort
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif.deletecohortsamplerate
+      with:
+        orgId: tools.orgId
+        cohortId: tools.cohortId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: cohortId
+        type: string
+        description: cohortId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletedashboards
+      description: Delete a Dashboard
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif.deletedashboards
+      with:
+        orgId: tools.orgId
+        dashId: tools.dashId
+        app_id: tools.app_id
+        parent_id: tools.parent_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: dashId
+        type: string
+        description: dashId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: parent_id
+        type: string
+        description: parent_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: copydashboard
+      description: Copy Dashboard
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.copydashboard
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        app_id: tools.app_id
+        to_app_id: tools.to_app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: id
+        type: string
+        description: id
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      - name: to_app_id
+        type: string
+        description: to_app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createdashboard
+      description: Create New Dashboard
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.createdashboard
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdashboards
+      description: Get a Dashboard
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif.getdashboards
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: copyalldashboards
+      description: Copy All Dashboards
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif.copyalldashboards
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        to_app_id: tools.to_app_id
+      inputParameters:
+      - name: orgId
+        type: string
+        description: orgId
+        required: true
+      - name: app_id
+        type: string
+        description: app_id
+        required: true
+      - name: to_app_id
+        type: string
+        description: to_app_id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    MOESIF_TOKEN: MOESIF_TOKEN
