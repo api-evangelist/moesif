@@ -47,7 +47,7 @@ common:
     url: https://www.moesif.com/docs/
   - type: Pricing
     url: https://www.moesif.com/pricing
-  - type: Sign Up
+  - type: SignUp
     url: https://www.moesif.com/wrap
 maintainers:
   - FN: Kin Lane
