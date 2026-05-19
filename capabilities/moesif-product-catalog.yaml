@@ -1,0 +1,583 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API — Product Catalog
+  description: 'Management API — Product Catalog. 10 operations. Lead operation: Create a new Moesif Plan. Self-contained
+    Naftiko capability covering one Moesif business surface.'
+  tags:
+  - Moesif
+  - Product Catalog
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOESIF_API_KEY: MOESIF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moesif-product-catalog
+    baseUri: https://api.moesif.com/v1
+    description: Management API — Product Catalog business capability. Self-contained, no shared references.
+    resources:
+    - name: ~-billing-catalog-plans
+      path: /~/billing/catalog/plans
+      operations:
+      - name: createmoesifplan
+        method: POST
+        description: Create a new Moesif Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: provider
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listmoesifplans
+        method: GET
+        description: List all Moesif Plans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: provider
+          in: query
+          type: string
+        - name: includes
+          in: query
+          type: string
+    - name: ~-billing-catalog-plans-id
+      path: /~/billing/catalog/plans/{id}
+      operations:
+      - name: getmoesifplan
+        method: GET
+        description: Get a Moesif Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+      - name: deletemoesifplan
+        method: DELETE
+        description: Delete a Moesif Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+      - name: updatemoesifplan
+        method: PUT
+        description: Update a Moesif Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ~-billing-catalog-prices
+      path: /~/billing/catalog/prices
+      operations:
+      - name: createmoesifprice
+        method: POST
+        description: Create a new Moesif Price
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: provider
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listmoesifprices
+        method: GET
+        description: List all Moesif Prices for a specific Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: provider
+          in: query
+          type: string
+    - name: ~-billing-catalog-prices-id
+      path: /~/billing/catalog/prices/{id}
+      operations:
+      - name: getmoesifprice
+        method: GET
+        description: Get a Moesif Price
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+      - name: deletemoesifprice
+        method: DELETE
+        description: Delete a Moesif Price
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+      - name: updatemoesifprice
+        method: PUT
+        description: Update a Moesif Price
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: provider
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MOESIF_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: moesif-product-catalog-rest
+    port: 8080
+    description: REST adapter for Management API — Product Catalog. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1//billing/catalog/plans
+      name: billing-catalog-plans
+      description: REST surface for ~-billing-catalog-plans.
+      operations:
+      - method: POST
+        name: createmoesifplan
+        description: Create a new Moesif Plan
+        call: moesif-product-catalog.createmoesifplan
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          provider: rest.provider
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listmoesifplans
+        description: List all Moesif Plans
+        call: moesif-product-catalog.listmoesifplans
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          provider: rest.provider
+          includes: rest.includes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//billing/catalog/plans/{id}
+      name: billing-catalog-plans-id
+      description: REST surface for ~-billing-catalog-plans-id.
+      operations:
+      - method: GET
+        name: getmoesifplan
+        description: Get a Moesif Plan
+        call: moesif-product-catalog.getmoesifplan
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          provider: rest.provider
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemoesifplan
+        description: Delete a Moesif Plan
+        call: moesif-product-catalog.deletemoesifplan
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          provider: rest.provider
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatemoesifplan
+        description: Update a Moesif Plan
+        call: moesif-product-catalog.updatemoesifplan
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          provider: rest.provider
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//billing/catalog/prices
+      name: billing-catalog-prices
+      description: REST surface for ~-billing-catalog-prices.
+      operations:
+      - method: POST
+        name: createmoesifprice
+        description: Create a new Moesif Price
+        call: moesif-product-catalog.createmoesifprice
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          provider: rest.provider
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listmoesifprices
+        description: List all Moesif Prices for a specific Plan
+        call: moesif-product-catalog.listmoesifprices
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          provider: rest.provider
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//billing/catalog/prices/{id}
+      name: billing-catalog-prices-id
+      description: REST surface for ~-billing-catalog-prices-id.
+      operations:
+      - method: GET
+        name: getmoesifprice
+        description: Get a Moesif Price
+        call: moesif-product-catalog.getmoesifprice
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          provider: rest.provider
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemoesifprice
+        description: Delete a Moesif Price
+        call: moesif-product-catalog.deletemoesifprice
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          provider: rest.provider
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatemoesifprice
+        description: Update a Moesif Price
+        call: moesif-product-catalog.updatemoesifprice
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          provider: rest.provider
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moesif-product-catalog-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Management API — Product Catalog. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-new-moesif-plan
+      description: Create a new Moesif Plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-product-catalog.createmoesifplan
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        provider: tools.provider
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-moesif-plans
+      description: List all Moesif Plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-product-catalog.listmoesifplans
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        provider: tools.provider
+        includes: tools.includes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-moesif-plan
+      description: Get a Moesif Plan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-product-catalog.getmoesifplan
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        provider: tools.provider
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-moesif-plan
+      description: Delete a Moesif Plan
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-product-catalog.deletemoesifplan
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        provider: tools.provider
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-moesif-plan
+      description: Update a Moesif Plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: moesif-product-catalog.updatemoesifplan
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        provider: tools.provider
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-moesif-price
+      description: Create a new Moesif Price
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-product-catalog.createmoesifprice
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        provider: tools.provider
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-moesif-prices-specific
+      description: List all Moesif Prices for a specific Plan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-product-catalog.listmoesifprices
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        provider: tools.provider
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-moesif-price
+      description: Get a Moesif Price
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-product-catalog.getmoesifprice
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        provider: tools.provider
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-moesif-price
+      description: Delete a Moesif Price
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-product-catalog.deletemoesifprice
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        provider: tools.provider
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-moesif-price
+      description: Update a Moesif Price
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: moesif-product-catalog.updatemoesifprice
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        provider: tools.provider
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

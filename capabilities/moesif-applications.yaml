@@ -1,0 +1,225 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API — Applications
+  description: 'Management API — Applications. 4 operations. Lead operation: Create a new App. Self-contained Naftiko capability
+    covering one Moesif business surface.'
+  tags:
+  - Moesif
+  - Applications
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOESIF_API_KEY: MOESIF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moesif-applications
+    baseUri: https://api.moesif.com/v1
+    description: Management API — Applications business capability. Self-contained, no shared references.
+    resources:
+    - name: ~-apps
+      path: /~/apps
+      operations:
+      - name: addapp
+        method: POST
+        description: Create a new App
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getapps
+        method: GET
+        description: Gets Apps
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: take
+          in: query
+          type: integer
+          required: true
+        - name: before_id
+          in: query
+          type: string
+    - name: ~-apps-id
+      path: /~/apps/{id}
+      operations:
+      - name: updateapp
+        method: POST
+        description: Update Apps
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteapp
+        method: DELETE
+        description: Delete Apps
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MOESIF_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: moesif-applications-rest
+    port: 8080
+    description: REST adapter for Management API — Applications. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1//apps
+      name: apps
+      description: REST surface for ~-apps.
+      operations:
+      - method: POST
+        name: addapp
+        description: Create a new App
+        call: moesif-applications.addapp
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getapps
+        description: Gets Apps
+        call: moesif-applications.getapps
+        with:
+          orgId: rest.orgId
+          take: rest.take
+          before_id: rest.before_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//apps/{id}
+      name: apps-id
+      description: REST surface for ~-apps-id.
+      operations:
+      - method: POST
+        name: updateapp
+        description: Update Apps
+        call: moesif-applications.updateapp
+        with:
+          orgId: rest.orgId
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteapp
+        description: Delete Apps
+        call: moesif-applications.deleteapp
+        with:
+          orgId: rest.orgId
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moesif-applications-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Management API — Applications. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: create-new-app
+      description: Create a new App
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-applications.addapp
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-apps
+      description: Gets Apps
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-applications.getapps
+      with:
+        orgId: tools.orgId
+        take: tools.take
+        before_id: tools.before_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-apps
+      description: Update Apps
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-applications.updateapp
+      with:
+        orgId: tools.orgId
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-apps
+      description: Delete Apps
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-applications.deleteapp
+      with:
+        orgId: tools.orgId
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

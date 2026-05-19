@@ -1,0 +1,91 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API — Balance Transactions
+  description: 'Management API — Balance Transactions. 1 operations. Lead operation: Post BillingReports Balance Transactions.
+    Self-contained Naftiko capability covering one Moesif business surface.'
+  tags:
+  - Moesif
+  - Balance Transactions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOESIF_API_KEY: MOESIF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moesif-balance-transactions
+    baseUri: https://api.moesif.com/v1
+    description: Management API — Balance Transactions business capability. Self-contained, no shared references.
+    resources:
+    - name: ~-billing-reports-balance_transactions
+      path: /~/billing/reports/balance_transactions
+      operations:
+      - name: createbalancetransaction
+        method: POST
+        description: Post BillingReports Balance Transactions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MOESIF_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: moesif-balance-transactions-rest
+    port: 8080
+    description: REST adapter for Management API — Balance Transactions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1//billing/reports/balance-transactions
+      name: billing-reports-balance-transactions
+      description: REST surface for ~-billing-reports-balance_transactions.
+      operations:
+      - method: POST
+        name: createbalancetransaction
+        description: Post BillingReports Balance Transactions
+        call: moesif-balance-transactions.createbalancetransaction
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moesif-balance-transactions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Management API — Balance Transactions. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: post-billingreports-balance-transactions
+      description: Post BillingReports Balance Transactions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-balance-transactions.createbalancetransaction
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,181 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API — Billing Meters
+  description: 'Management API — Billing Meters. 3 operations. Lead operation: List Billing Meters. Self-contained Naftiko
+    capability covering one Moesif business surface.'
+  tags:
+  - Moesif
+  - Billing Meters
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOESIF_API_KEY: MOESIF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moesif-billing-meters
+    baseUri: https://api.moesif.com/v1
+    description: Management API — Billing Meters business capability. Self-contained, no shared references.
+    resources:
+    - name: ~-billing-meters
+      path: /~/billing/meters
+      operations:
+      - name: listmeters
+        method: GET
+        description: List Billing Meters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+    - name: ~-billing-meters-meterId
+      path: /~/billing/meters/{meterId}
+      operations:
+      - name: getmeter
+        method: GET
+        description: Get Billing Meter by id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: meterId
+          in: path
+          type: string
+          required: true
+      - name: deletemeter
+        method: DELETE
+        description: Delete Billing Meter by id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: meterId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MOESIF_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: moesif-billing-meters-rest
+    port: 8080
+    description: REST adapter for Management API — Billing Meters. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1//billing/meters
+      name: billing-meters
+      description: REST surface for ~-billing-meters.
+      operations:
+      - method: GET
+        name: listmeters
+        description: List Billing Meters
+        call: moesif-billing-meters.listmeters
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//billing/meters/{meterid}
+      name: billing-meters-meterid
+      description: REST surface for ~-billing-meters-meterId.
+      operations:
+      - method: GET
+        name: getmeter
+        description: Get Billing Meter by id
+        call: moesif-billing-meters.getmeter
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          meterId: rest.meterId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemeter
+        description: Delete Billing Meter by id
+        call: moesif-billing-meters.deletemeter
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          meterId: rest.meterId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moesif-billing-meters-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Management API — Billing Meters. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-billing-meters
+      description: List Billing Meters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-billing-meters.listmeters
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-billing-meter-id
+      description: Get Billing Meter by id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-billing-meters.getmeter
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        meterId: tools.meterId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-billing-meter-id
+      description: Delete Billing Meter by id
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-billing-meters.deletemeter
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        meterId: tools.meterId
+      outputParameters:
+      - type: object
+        mapping: $.

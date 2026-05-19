@@ -1,0 +1,318 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API — Metrics
+  description: 'Management API — Metrics. 4 operations. Lead operation: Count Events. Self-contained Naftiko capability covering
+    one Moesif business surface.'
+  tags:
+  - Moesif
+  - Metrics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOESIF_API_KEY: MOESIF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moesif-metrics
+    baseUri: https://api.moesif.com/v1
+    description: Management API — Metrics business capability. Self-contained, no shared references.
+    resources:
+    - name: search-~-count-events
+      path: /search/~/count/events
+      operations:
+      - name: countevents
+        method: POST
+        description: Count Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+          description: The start date, which can be absolute such as 2019-07-01T00:00:00Z or relative such as -24h
+          required: true
+        - name: to
+          in: query
+          type: string
+          description: The end date, which can be absolute such as 2019-07-02T00:00:00Z or relative such as now
+          required: true
+        - name: track_total_hits
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: search-~-events-id
+      path: /search/~/events/{id}
+      operations:
+      - name: getevent
+        method: GET
+        description: Get an Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: event_time
+          in: query
+          type: string
+          required: true
+    - name: search-~-search-events
+      path: /search/~/search/events
+      operations:
+      - name: searchevents
+        method: POST
+        description: Search Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+          description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+          required: true
+        - name: to
+          in: query
+          type: string
+          description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: search-~-workspaces-workspaceId-search
+      path: /search/~/workspaces/{workspaceId}/search
+      operations:
+      - name: searchpublicworkspaces
+        method: POST
+        description: Search Events in saved public Workspace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+          description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+          required: true
+        - name: to
+          in: query
+          type: string
+          description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+          required: true
+        - name: workspaceId
+          in: path
+          type: string
+          required: true
+        - name: include_details
+          in: query
+          type: boolean
+        - name: take
+          in: query
+          type: integer
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MOESIF_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: moesif-metrics-rest
+    port: 8080
+    description: REST adapter for Management API — Metrics. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/search//count/events
+      name: search-count-events
+      description: REST surface for search-~-count-events.
+      operations:
+      - method: POST
+        name: countevents
+        description: Count Events
+        call: moesif-metrics.countevents
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          from: rest.from
+          to: rest.to
+          track_total_hits: rest.track_total_hits
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//events/{id}
+      name: search-events-id
+      description: REST surface for search-~-events-id.
+      operations:
+      - method: GET
+        name: getevent
+        description: Get an Event
+        call: moesif-metrics.getevent
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          event_time: rest.event_time
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//search/events
+      name: search-search-events
+      description: REST surface for search-~-search-events.
+      operations:
+      - method: POST
+        name: searchevents
+        description: Search Events
+        call: moesif-metrics.searchevents
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          from: rest.from
+          to: rest.to
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//workspaces/{workspaceid}/search
+      name: search-workspaces-workspaceid-search
+      description: REST surface for search-~-workspaces-workspaceId-search.
+      operations:
+      - method: POST
+        name: searchpublicworkspaces
+        description: Search Events in saved public Workspace
+        call: moesif-metrics.searchpublicworkspaces
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          from: rest.from
+          to: rest.to
+          workspaceId: rest.workspaceId
+          include_details: rest.include_details
+          take: rest.take
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moesif-metrics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Management API — Metrics. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: count-events
+      description: Count Events
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-metrics.countevents
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        track_total_hits: tools.track_total_hits
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-event
+      description: Get an Event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-metrics.getevent
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        event_time: tools.event_time
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-events
+      description: Search Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: moesif-metrics.searchevents
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-events-saved-public-workspace
+      description: Search Events in saved public Workspace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: moesif-metrics.searchpublicworkspaces
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        workspaceId: tools.workspaceId
+        include_details: tools.include_details
+        take: tools.take
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

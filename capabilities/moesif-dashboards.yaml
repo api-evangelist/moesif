@@ -1,0 +1,559 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API — Dashboards
+  description: 'Management API — Dashboards. 10 operations. Lead operation: Delete a Dashboard. Self-contained Naftiko capability
+    covering one Moesif business surface.'
+  tags:
+  - Moesif
+  - Dashboards
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOESIF_API_KEY: MOESIF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moesif-dashboards
+    baseUri: https://api.moesif.com/v1
+    description: Management API — Dashboards business capability. Self-contained, no shared references.
+    resources:
+    - name: ~-dashboard-dashId
+      path: /~/dashboard/{dashId}
+      operations:
+      - name: deletedashboards
+        method: DELETE
+        description: Delete a Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: dashId
+          in: path
+          type: string
+          required: true
+        - name: parent_id
+          in: query
+          type: string
+    - name: ~-dashboard-id-copy
+      path: /~/dashboard/{id}/copy
+      operations:
+      - name: copydashboard
+        method: POST
+        description: Copy Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: to_app_id
+          in: query
+          type: string
+    - name: ~-dashboards
+      path: /~/dashboards
+      operations:
+      - name: createdashboard
+        method: POST
+        description: Create New Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+      - name: getdashboards
+        method: GET
+        description: Get a Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+    - name: ~-dashboards-copy
+      path: /~/dashboards/copy
+      operations:
+      - name: copyalldashboards
+        method: POST
+        description: Copy All Dashboards
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: to_app_id
+          in: query
+          type: string
+          required: true
+    - name: ~-dashboards-dashId
+      path: /~/dashboards/{dashId}
+      operations:
+      - name: updatedashboard
+        method: POST
+        description: Update a Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: dashId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletedashboard
+        method: DELETE
+        description: Delete a Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: dashId
+          in: path
+          type: string
+          required: true
+    - name: ~-dashboards-dashId-cascade
+      path: /~/dashboards/{dashId}/cascade
+      operations:
+      - name: cascadedeletedashboard
+        method: DELETE
+        description: Casccade delete a Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: dashId
+          in: path
+          type: string
+          required: true
+    - name: ~-dashboards-id-policy-acl
+      path: /~/dashboards/{id}/policy/acl
+      operations:
+      - name: addaclpermissions
+        method: POST
+        description: Add Dashboards ACL permission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: grantee
+          in: query
+          type: string
+        - name: permission
+          in: query
+          type: string
+      - name: deleteaclpermissions
+        method: DELETE
+        description: Delete Dashboards ACL permission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: grantee
+          in: query
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MOESIF_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: moesif-dashboards-rest
+    port: 8080
+    description: REST adapter for Management API — Dashboards. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1//dashboard/{dashid}
+      name: dashboard-dashid
+      description: REST surface for ~-dashboard-dashId.
+      operations:
+      - method: DELETE
+        name: deletedashboards
+        description: Delete a Dashboard
+        call: moesif-dashboards.deletedashboards
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          dashId: rest.dashId
+          parent_id: rest.parent_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//dashboard/{id}/copy
+      name: dashboard-id-copy
+      description: REST surface for ~-dashboard-id-copy.
+      operations:
+      - method: POST
+        name: copydashboard
+        description: Copy Dashboard
+        call: moesif-dashboards.copydashboard
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          to_app_id: rest.to_app_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//dashboards
+      name: dashboards
+      description: REST surface for ~-dashboards.
+      operations:
+      - method: POST
+        name: createdashboard
+        description: Create New Dashboard
+        call: moesif-dashboards.createdashboard
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getdashboards
+        description: Get a Dashboard
+        call: moesif-dashboards.getdashboards
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//dashboards/copy
+      name: dashboards-copy
+      description: REST surface for ~-dashboards-copy.
+      operations:
+      - method: POST
+        name: copyalldashboards
+        description: Copy All Dashboards
+        call: moesif-dashboards.copyalldashboards
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          to_app_id: rest.to_app_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//dashboards/{dashid}
+      name: dashboards-dashid
+      description: REST surface for ~-dashboards-dashId.
+      operations:
+      - method: POST
+        name: updatedashboard
+        description: Update a Dashboard
+        call: moesif-dashboards.updatedashboard
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          dashId: rest.dashId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedashboard
+        description: Delete a Dashboard
+        call: moesif-dashboards.deletedashboard
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          dashId: rest.dashId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//dashboards/{dashid}/cascade
+      name: dashboards-dashid-cascade
+      description: REST surface for ~-dashboards-dashId-cascade.
+      operations:
+      - method: DELETE
+        name: cascadedeletedashboard
+        description: Casccade delete a Dashboard
+        call: moesif-dashboards.cascadedeletedashboard
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          dashId: rest.dashId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//dashboards/{id}/policy/acl
+      name: dashboards-id-policy-acl
+      description: REST surface for ~-dashboards-id-policy-acl.
+      operations:
+      - method: POST
+        name: addaclpermissions
+        description: Add Dashboards ACL permission
+        call: moesif-dashboards.addaclpermissions
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          grantee: rest.grantee
+          permission: rest.permission
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteaclpermissions
+        description: Delete Dashboards ACL permission
+        call: moesif-dashboards.deleteaclpermissions
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          grantee: rest.grantee
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moesif-dashboards-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Management API — Dashboards. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: delete-dashboard
+      description: Delete a Dashboard
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-dashboards.deletedashboards
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        dashId: tools.dashId
+        parent_id: tools.parent_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: copy-dashboard
+      description: Copy Dashboard
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-dashboards.copydashboard
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        to_app_id: tools.to_app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-dashboard
+      description: Create New Dashboard
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-dashboards.createdashboard
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dashboard
+      description: Get a Dashboard
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-dashboards.getdashboards
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: copy-all-dashboards
+      description: Copy All Dashboards
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-dashboards.copyalldashboards
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        to_app_id: tools.to_app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-dashboard
+      description: Update a Dashboard
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-dashboards.updatedashboard
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        dashId: tools.dashId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-dashboard-2
+      description: Delete a Dashboard
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-dashboards.deletedashboard
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        dashId: tools.dashId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: casccade-delete-dashboard
+      description: Casccade delete a Dashboard
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-dashboards.cascadedeletedashboard
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        dashId: tools.dashId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-dashboards-acl-permission
+      description: Add Dashboards ACL permission
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-dashboards.addaclpermissions
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        grantee: tools.grantee
+        permission: tools.permission
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-dashboards-acl-permission
+      description: Delete Dashboards ACL permission
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-dashboards.deleteaclpermissions
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        grantee: tools.grantee
+      outputParameters:
+      - type: object
+        mapping: $.

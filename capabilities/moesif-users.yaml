@@ -1,0 +1,366 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API — Users
+  description: 'Management API — Users. 6 operations. Lead operation: Count Users. Self-contained Naftiko capability covering
+    one Moesif business surface.'
+  tags:
+  - Moesif
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOESIF_API_KEY: MOESIF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moesif-users
+    baseUri: https://api.moesif.com/v1
+    description: Management API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: search-~-count-users
+      path: /search/~/count/users
+      operations:
+      - name: countusers
+        method: POST
+        description: Count Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: search-~-search-usermetrics-users
+      path: /search/~/search/usermetrics/users
+      operations:
+      - name: searchusermetrics
+        method: POST
+        description: Search UserMetrics/Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: from
+          in: query
+          type: string
+          description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+        - name: to
+          in: query
+          type: string
+          description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: search-~-users
+      path: /search/~/users
+      operations:
+      - name: updateusers
+        method: POST
+        description: Update a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: search-~-users-batch
+      path: /search/~/users/batch
+      operations:
+      - name: batchupdateusers
+        method: POST
+        description: Update Users in Batch
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: search-~-users-id
+      path: /search/~/users/{id}
+      operations:
+      - name: getuser
+        method: GET
+        description: Get a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: deleteuser
+        method: DELETE
+        description: Delete a User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: delete_events
+          in: query
+          type: boolean
+          description: Delete events associated with the user which can be set to true or false(default)
+    authentication:
+      type: bearer
+      token: '{{env.MOESIF_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: moesif-users-rest
+    port: 8080
+    description: REST adapter for Management API — Users. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/search//count/users
+      name: search-count-users
+      description: REST surface for search-~-count-users.
+      operations:
+      - method: POST
+        name: countusers
+        description: Count Users
+        call: moesif-users.countusers
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//search/usermetrics/users
+      name: search-search-usermetrics-users
+      description: REST surface for search-~-search-usermetrics-users.
+      operations:
+      - method: POST
+        name: searchusermetrics
+        description: Search UserMetrics/Users
+        call: moesif-users.searchusermetrics
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          from: rest.from
+          to: rest.to
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//users
+      name: search-users
+      description: REST surface for search-~-users.
+      operations:
+      - method: POST
+        name: updateusers
+        description: Update a User
+        call: moesif-users.updateusers
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//users/batch
+      name: search-users-batch
+      description: REST surface for search-~-users-batch.
+      operations:
+      - method: POST
+        name: batchupdateusers
+        description: Update Users in Batch
+        call: moesif-users.batchupdateusers
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//users/{id}
+      name: search-users-id
+      description: REST surface for search-~-users-id.
+      operations:
+      - method: GET
+        name: getuser
+        description: Get a User
+        call: moesif-users.getuser
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteuser
+        description: Delete a User
+        call: moesif-users.deleteuser
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          delete_events: rest.delete_events
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moesif-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Management API — Users. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: count-users
+      description: Count Users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-users.countusers
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-usermetrics-users
+      description: Search UserMetrics/Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: moesif-users.searchusermetrics
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-user
+      description: Update a User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-users.updateusers
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-users-batch
+      description: Update Users in Batch
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-users.batchupdateusers
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user
+      description: Get a User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-users.getuser
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-user
+      description: Delete a User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-users.deleteuser
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        delete_events: tools.delete_events
+      outputParameters:
+      - type: object
+        mapping: $.

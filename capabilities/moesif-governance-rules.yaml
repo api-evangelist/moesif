@@ -1,0 +1,279 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API — Governance Rules
+  description: 'Management API — Governance Rules. 5 operations. Lead operation: Create New Governance Rules. Self-contained
+    Naftiko capability covering one Moesif business surface.'
+  tags:
+  - Moesif
+  - Governance Rules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOESIF_API_KEY: MOESIF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moesif-governance-rules
+    baseUri: https://api.moesif.com/v1
+    description: Management API — Governance Rules business capability. Self-contained, no shared references.
+    resources:
+    - name: ~-governance-rules
+      path: /~/governance/rules
+      operations:
+      - name: creategovernancerule
+        method: POST
+        description: Create New Governance Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getgovernancerules
+        method: GET
+        description: Get Governance Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+    - name: ~-governance-rules-id
+      path: /~/governance/rules/{id}
+      operations:
+      - name: updategovernancerule
+        method: POST
+        description: Update a Governance Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getgovernancerule
+        method: GET
+        description: Get a Governance Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: deletegovernancerule
+        method: DELETE
+        description: Delete a Governance Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MOESIF_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: moesif-governance-rules-rest
+    port: 8080
+    description: REST adapter for Management API — Governance Rules. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1//governance/rules
+      name: governance-rules
+      description: REST surface for ~-governance-rules.
+      operations:
+      - method: POST
+        name: creategovernancerule
+        description: Create New Governance Rules
+        call: moesif-governance-rules.creategovernancerule
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getgovernancerules
+        description: Get Governance Rules
+        call: moesif-governance-rules.getgovernancerules
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//governance/rules/{id}
+      name: governance-rules-id
+      description: REST surface for ~-governance-rules-id.
+      operations:
+      - method: POST
+        name: updategovernancerule
+        description: Update a Governance Rule
+        call: moesif-governance-rules.updategovernancerule
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getgovernancerule
+        description: Get a Governance Rule
+        call: moesif-governance-rules.getgovernancerule
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletegovernancerule
+        description: Delete a Governance Rule
+        call: moesif-governance-rules.deletegovernancerule
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moesif-governance-rules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Management API — Governance Rules. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-new-governance-rules
+      description: Create New Governance Rules
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-governance-rules.creategovernancerule
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-governance-rules
+      description: Get Governance Rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-governance-rules.getgovernancerules
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-governance-rule
+      description: Update a Governance Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-governance-rules.updategovernancerule
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-governance-rule
+      description: Get a Governance Rule
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-governance-rules.getgovernancerule
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-governance-rule
+      description: Delete a Governance Rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-governance-rules.deletegovernancerule
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

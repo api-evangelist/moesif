@@ -1,0 +1,758 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API — Workspaces
+  description: 'Management API — Workspaces. 14 operations. Lead operation: Get new Workspace Token. Self-contained Naftiko
+    capability covering one Moesif business surface.'
+  tags:
+  - Moesif
+  - Workspaces
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOESIF_API_KEY: MOESIF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moesif-workspaces
+    baseUri: https://api.moesif.com/v1
+    description: Management API — Workspaces business capability. Self-contained, no shared references.
+    resources:
+    - name: workspaces-access_token
+      path: /workspaces/access_token
+      operations:
+      - name: getworkspacetoken
+        method: GET
+        description: Get new Workspace Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: workspaces-public-id
+      path: /workspaces/public/{id}
+      operations:
+      - name: getpublicworkspace
+        method: GET
+        description: Get a Public Workspace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: ~-workspaces
+      path: /~/workspaces
+      operations:
+      - name: createworkspace
+        method: POST
+        description: Create New Workspace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: expiration
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getworkspaces
+        method: GET
+        description: Get Workspaces
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: take
+          in: query
+          type: integer
+          required: true
+        - name: before_id
+          in: query
+          type: string
+        - name: '`type`'
+          in: query
+          type: string
+        - name: access
+          in: query
+          type: array
+          required: true
+    - name: ~-workspaces-templates
+      path: /~/workspaces/templates
+      operations:
+      - name: getworkspacetemplates
+        method: GET
+        description: Get Workspace Templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+    - name: ~-workspaces-id
+      path: /~/workspaces/{id}
+      operations:
+      - name: updateworkspace
+        method: POST
+        description: Update a Workspace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getworkspace
+        method: GET
+        description: Get a Workspace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: deleteworkspace
+        method: DELETE
+        description: Delete a Workspace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: ~-workspaces-id-comments
+      path: /~/workspaces/{id}/comments
+      operations:
+      - name: createcomment
+        method: POST
+        description: Create a New Comment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getcomments
+        method: GET
+        description: Get all Comments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: ~-workspaces-id-comments-commentId
+      path: /~/workspaces/{id}/comments/{commentId}
+      operations:
+      - name: updatecomment
+        method: POST
+        description: Update Existing Comment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: commentId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecomment
+        method: DELETE
+        description: Delete a Comment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: commentId
+          in: path
+          type: string
+          required: true
+    - name: ~-workspaces-id-policy-acl
+      path: /~/workspaces/{id}/policy/acl
+      operations:
+      - name: addaclpermissions
+        method: POST
+        description: Add ACL permission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: grantee
+          in: query
+          type: string
+        - name: permission
+          in: query
+          type: string
+      - name: deleteaclpermissions
+        method: DELETE
+        description: Delete ACL permission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: grantee
+          in: query
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MOESIF_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: moesif-workspaces-rest
+    port: 8080
+    description: REST adapter for Management API — Workspaces. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/workspaces/access-token
+      name: workspaces-access-token
+      description: REST surface for workspaces-access_token.
+      operations:
+      - method: GET
+        name: getworkspacetoken
+        description: Get new Workspace Token
+        call: moesif-workspaces.getworkspacetoken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/workspaces/public/{id}
+      name: workspaces-public-id
+      description: REST surface for workspaces-public-id.
+      operations:
+      - method: GET
+        name: getpublicworkspace
+        description: Get a Public Workspace
+        call: moesif-workspaces.getpublicworkspace
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//workspaces
+      name: workspaces
+      description: REST surface for ~-workspaces.
+      operations:
+      - method: POST
+        name: createworkspace
+        description: Create New Workspace
+        call: moesif-workspaces.createworkspace
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          expiration: rest.expiration
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getworkspaces
+        description: Get Workspaces
+        call: moesif-workspaces.getworkspaces
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          take: rest.take
+          before_id: rest.before_id
+          '`type`': rest.`type`
+          access: rest.access
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//workspaces/templates
+      name: workspaces-templates
+      description: REST surface for ~-workspaces-templates.
+      operations:
+      - method: GET
+        name: getworkspacetemplates
+        description: Get Workspace Templates
+        call: moesif-workspaces.getworkspacetemplates
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//workspaces/{id}
+      name: workspaces-id
+      description: REST surface for ~-workspaces-id.
+      operations:
+      - method: POST
+        name: updateworkspace
+        description: Update a Workspace
+        call: moesif-workspaces.updateworkspace
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getworkspace
+        description: Get a Workspace
+        call: moesif-workspaces.getworkspace
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteworkspace
+        description: Delete a Workspace
+        call: moesif-workspaces.deleteworkspace
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//workspaces/{id}/comments
+      name: workspaces-id-comments
+      description: REST surface for ~-workspaces-id-comments.
+      operations:
+      - method: POST
+        name: createcomment
+        description: Create a New Comment
+        call: moesif-workspaces.createcomment
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getcomments
+        description: Get all Comments
+        call: moesif-workspaces.getcomments
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//workspaces/{id}/comments/{commentid}
+      name: workspaces-id-comments-commentid
+      description: REST surface for ~-workspaces-id-comments-commentId.
+      operations:
+      - method: POST
+        name: updatecomment
+        description: Update Existing Comment
+        call: moesif-workspaces.updatecomment
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          commentId: rest.commentId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecomment
+        description: Delete a Comment
+        call: moesif-workspaces.deletecomment
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          commentId: rest.commentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1//workspaces/{id}/policy/acl
+      name: workspaces-id-policy-acl
+      description: REST surface for ~-workspaces-id-policy-acl.
+      operations:
+      - method: POST
+        name: addaclpermissions
+        description: Add ACL permission
+        call: moesif-workspaces.addaclpermissions
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          grantee: rest.grantee
+          permission: rest.permission
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteaclpermissions
+        description: Delete ACL permission
+        call: moesif-workspaces.deleteaclpermissions
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          id: rest.id
+          grantee: rest.grantee
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moesif-workspaces-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Management API — Workspaces. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-new-workspace-token
+      description: Get new Workspace Token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-workspaces.getworkspacetoken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-public-workspace
+      description: Get a Public Workspace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-workspaces.getpublicworkspace
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-workspace
+      description: Create New Workspace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-workspaces.createworkspace
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        expiration: tools.expiration
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-workspaces
+      description: Get Workspaces
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-workspaces.getworkspaces
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        take: tools.take
+        before_id: tools.before_id
+        '`type`': tools.`type`
+        access: tools.access
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-workspace-templates
+      description: Get Workspace Templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-workspaces.getworkspacetemplates
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-workspace
+      description: Update a Workspace
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-workspaces.updateworkspace
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-workspace
+      description: Get a Workspace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-workspaces.getworkspace
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-workspace
+      description: Delete a Workspace
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-workspaces.deleteworkspace
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-comment
+      description: Create a New Comment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-workspaces.createcomment
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-comments
+      description: Get all Comments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-workspaces.getcomments
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-existing-comment
+      description: Update Existing Comment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-workspaces.updatecomment
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        commentId: tools.commentId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-comment
+      description: Delete a Comment
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-workspaces.deletecomment
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        commentId: tools.commentId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-acl-permission
+      description: Add ACL permission
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moesif-workspaces.addaclpermissions
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        grantee: tools.grantee
+        permission: tools.permission
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-acl-permission
+      description: Delete ACL permission
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: moesif-workspaces.deleteaclpermissions
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        id: tools.id
+        grantee: tools.grantee
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,431 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Management API — Properties
+  description: 'Management API — Properties. 7 operations. Lead operation: Get Property Mapping for Companies. Self-contained
+    Naftiko capability covering one Moesif business surface.'
+  tags:
+  - Moesif
+  - Properties
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MOESIF_API_KEY: MOESIF_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moesif-properties
+    baseUri: https://api.moesif.com/v1
+    description: Management API — Properties business capability. Self-contained, no shared references.
+    resources:
+    - name: search-~-mappings-companies-properties
+      path: /search/~/mappings/companies/properties
+      operations:
+      - name: getproperties
+        method: GET
+        description: Get Property Mapping for Companies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+    - name: search-~-mappings-companymetrics-properties
+      path: /search/~/mappings/companymetrics/properties
+      operations:
+      - name: getproperties
+        method: GET
+        description: Get Property Mapping for CompanyMetrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: from
+          in: query
+          type: string
+    - name: search-~-mappings-events-properties
+      path: /search/~/mappings/events/properties
+      operations:
+      - name: getproperties
+        method: GET
+        description: Get Property Mapping for Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: from
+          in: query
+          type: string
+        - name: to
+          in: query
+          type: string
+    - name: search-~-mappings-events-request-body-properties
+      path: /search/~/mappings/events/request/body/properties
+      operations:
+      - name: getrequestbodyproperties
+        method: GET
+        description: Get Property Mapping for Events Request Body
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: from
+          in: query
+          type: string
+          required: true
+        - name: to
+          in: query
+          type: string
+          required: true
+        - name: include_values
+          in: query
+          type: boolean
+        - name: key_path
+          in: query
+          type: string
+    - name: search-~-mappings-events-response-body-properties
+      path: /search/~/mappings/events/response/body/properties
+      operations:
+      - name: getresponsebodyproperties
+        method: GET
+        description: Get Property Mapping for Events Response Body
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: from
+          in: query
+          type: string
+          required: true
+        - name: to
+          in: query
+          type: string
+          required: true
+        - name: include_values
+          in: query
+          type: boolean
+        - name: key_path
+          in: query
+          type: string
+    - name: search-~-mappings-usermetrics-properties
+      path: /search/~/mappings/usermetrics/properties
+      operations:
+      - name: getproperties
+        method: GET
+        description: Get Property Mapping for UserMetrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+        - name: from
+          in: query
+          type: string
+    - name: search-~-mappings-users-properties
+      path: /search/~/mappings/users/properties
+      operations:
+      - name: getproperties
+        method: GET
+        description: Get Property Mapping for Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: app_id
+          in: query
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MOESIF_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: moesif-properties-rest
+    port: 8080
+    description: REST adapter for Management API — Properties. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/search//mappings/companies/properties
+      name: search-mappings-companies-properties
+      description: REST surface for search-~-mappings-companies-properties.
+      operations:
+      - method: GET
+        name: getproperties
+        description: Get Property Mapping for Companies
+        call: moesif-properties.getproperties
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//mappings/companymetrics/properties
+      name: search-mappings-companymetrics-properties
+      description: REST surface for search-~-mappings-companymetrics-properties.
+      operations:
+      - method: GET
+        name: getproperties
+        description: Get Property Mapping for CompanyMetrics
+        call: moesif-properties.getproperties
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          from: rest.from
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//mappings/events/properties
+      name: search-mappings-events-properties
+      description: REST surface for search-~-mappings-events-properties.
+      operations:
+      - method: GET
+        name: getproperties
+        description: Get Property Mapping for Events
+        call: moesif-properties.getproperties
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          from: rest.from
+          to: rest.to
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//mappings/events/request/body/properties
+      name: search-mappings-events-request-body-properties
+      description: REST surface for search-~-mappings-events-request-body-properties.
+      operations:
+      - method: GET
+        name: getrequestbodyproperties
+        description: Get Property Mapping for Events Request Body
+        call: moesif-properties.getrequestbodyproperties
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          from: rest.from
+          to: rest.to
+          include_values: rest.include_values
+          key_path: rest.key_path
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//mappings/events/response/body/properties
+      name: search-mappings-events-response-body-properties
+      description: REST surface for search-~-mappings-events-response-body-properties.
+      operations:
+      - method: GET
+        name: getresponsebodyproperties
+        description: Get Property Mapping for Events Response Body
+        call: moesif-properties.getresponsebodyproperties
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          from: rest.from
+          to: rest.to
+          include_values: rest.include_values
+          key_path: rest.key_path
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//mappings/usermetrics/properties
+      name: search-mappings-usermetrics-properties
+      description: REST surface for search-~-mappings-usermetrics-properties.
+      operations:
+      - method: GET
+        name: getproperties
+        description: Get Property Mapping for UserMetrics
+        call: moesif-properties.getproperties
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+          from: rest.from
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search//mappings/users/properties
+      name: search-mappings-users-properties
+      description: REST surface for search-~-mappings-users-properties.
+      operations:
+      - method: GET
+        name: getproperties
+        description: Get Property Mapping for Users
+        call: moesif-properties.getproperties
+        with:
+          orgId: rest.orgId
+          app_id: rest.app_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moesif-properties-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Management API — Properties. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-property-mapping-companies
+      description: Get Property Mapping for Companies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-properties.getproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-property-mapping-companymetrics
+      description: Get Property Mapping for CompanyMetrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-properties.getproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-property-mapping-events
+      description: Get Property Mapping for Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-properties.getproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-property-mapping-events-request
+      description: Get Property Mapping for Events Request Body
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-properties.getrequestbodyproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        include_values: tools.include_values
+        key_path: tools.key_path
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-property-mapping-events-response
+      description: Get Property Mapping for Events Response Body
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-properties.getresponsebodyproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+        to: tools.to
+        include_values: tools.include_values
+        key_path: tools.key_path
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-property-mapping-usermetrics
+      description: Get Property Mapping for UserMetrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-properties.getproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+        from: tools.from
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-property-mapping-users
+      description: Get Property Mapping for Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moesif-properties.getproperties
+      with:
+        orgId: tools.orgId
+        app_id: tools.app_id
+      outputParameters:
+      - type: object
+        mapping: $.
