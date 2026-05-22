@@ -1,0 +1,127 @@
+# Spectral ruleset for the Moesif Management API
+# Enforces the conventions observed in the published OpenAPI specification.
+# Provider: Moesif (https://www.moesif.com)
+# Specification: https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/openapi/moesif-openapi.yml
+
+extends:
+  - spectral:oas
+
+functions: []
+
+aliases:
+  AllOperations:
+    - "$.paths[*][get,post,put,patch,delete,head,options]"
+
+rules:
+  # Inherit core OpenAPI hygiene from spectral:oas
+  oas3-schema: error
+  oas3-server-not-example.com: warn
+  operation-operationId: error
+  operation-operationId-unique: error
+  operation-description: warn
+  operation-tag-defined: error
+
+  # Moesif uses Bearer token auth on the Management API
+  moesif-security-required:
+    description: Every operation MUST declare security; the Moesif Management API is authenticated via Bearer token.
+    message: "Operation {{path}} is missing a security requirement"
+    severity: error
+    given: "#AllOperations"
+    then:
+      field: security
+      function: truthy
+
+  # Moesif OpenAPI uses operationId in lowerCamelCase (e.g. searchEvents, getUser)
+  moesif-operation-id-camel-case:
+    description: operationId values MUST be lowerCamelCase per the Moesif Management API conventions.
+    message: "operationId '{{value}}' is not lowerCamelCase"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  # Summaries should be Title Case per API Evangelist conventions
+  moesif-operation-summary-title-case:
+    description: Operation summaries SHOULD use Title Case.
+    message: "Summary '{{value}}' should be Title Case"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  # Tags must be defined and Title Case
+  moesif-tag-title-case:
+    description: All tags SHOULD be Title Case.
+    message: "Tag '{{value}}' should be Title Case"
+    severity: warn
+    given: "$.tags[*].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  # Paths under the Moesif Management API use the /v1/{orgId}/... pattern or /search/~/, /~/
+  moesif-path-prefix:
+    description: Paths in the Moesif Management API begin with one of the documented prefixes (/search/~, /~, /workspaces, /catalog, /governance, /metrics, /billing, /chat).
+    message: "Path {{path}} does not start with an expected Moesif Management API prefix"
+    severity: warn
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^/(search/~|~|workspaces|catalog|governance|metrics|billing|chat|v1).*"
+
+  # 200, 400, 401, 403, 404, 429 should be considered for read operations
+  moesif-response-401:
+    description: Authenticated operations MUST document a 401 response.
+    message: "Operation {{path}} should document a 401 Unauthorized response"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      field: "401"
+      function: truthy
+
+  moesif-response-429:
+    description: Operations SHOULD document a 429 Too Many Requests response because Moesif enforces tier-based rate limits.
+    message: "Operation {{path}} should document a 429 response"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      field: "429"
+      function: truthy
+
+  # Components/schemas should be PascalCase
+  moesif-schema-pascal-case:
+    description: Component schemas SHOULD be PascalCase.
+    message: "Schema name '{{value}}' should be PascalCase"
+    severity: warn
+    given: "$.components.schemas"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9]+$"
+
+  # Info block requirements
+  moesif-info-contact:
+    description: Info block MUST include a contact for support.
+    message: "info.contact is required"
+    severity: error
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  moesif-info-license:
+    description: Info block SHOULD include a license.
+    message: "info.license is recommended"
+    severity: warn
+    given: "$.info"
+    then:
+      field: license
+      function: truthy

@@ -1,26 +1,41 @@
 aid: moesif
 name: Moesif
-description: Moesif is an API analytics and monitoring platform that helps companies gain deep insights into how their APIs
-  are performing and being used. By tracking and analyzing API traffic in real-time, Moesif enables businesses to understand
-  their users' behaviors, identify potential issues or bottlenecks, and optimize the overall performance of their APIs.
+description: Moesif is an API analytics, monitoring, monetization, and governance platform for API and AI
+  product teams. The platform unifies API observability (analytics, logs, metrics, traces via OpenTelemetry),
+  usage-based monetization (billing meters, product catalog, prepaid credits, Stripe integration), quotas
+  and governance (rate limiting, contract enforcement), and customer-experience tooling (behavioral cohorts,
+  emails, embedded metrics, developer portal). Moesif has expanded into AI agent and LLM analytics with
+  usage-based billing for AI apps, GenAI-powered "Ask AI" analytics queries, and content monetization for
+  LLM training.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/apis.yml
 tags:
   - Analytics
-  - Insights
+  - Monitoring
   - Monetization
+  - Governance
+  - Observability
+  - Billing
+  - AI Agents
+  - LLM Analytics
+  - OpenTelemetry
+  - Developer Portal
   - Platform
+  - Insights
 access: 3rd-Party
 position: Consumer
 created: '2025-01-08'
-modified: '2026-05-19'
+modified: '2026-05-22'
 specificationVersion: '0.19'
 apis:
   - aid: moesif:moesif
     name: Moesif Management API
-    description: Moesif Management API to query data in Moesif. Allows exporting data, building custom dashboards, and managing
-      companies, users, subscriptions, events, billing, and workspaces.
+    description: The Moesif Management API exposes the platform's full control plane for analytics, monetization,
+      and governance. Capabilities include querying events, users, and companies; managing applications,
+      workspaces, and dashboards; defining billing meters, product catalog entries, subscriptions, and
+      balance transactions; configuring governance rules and quotas; managing cohorts, email templates,
+      and metrics; and chat-style "Ask Question" analytics queries powered by GenAI.
     humanURL: https://www.moesif.com/
     baseURL: https://api.moesif.com
     tags:
@@ -28,11 +43,22 @@ apis:
     - Monetization
     - Monitoring
     - Observability
+    - Governance
+    - Billing
+    - AI Agents
     properties:
     - type: Documentation
       url: https://www.moesif.com/docs/api
     - type: OpenAPI
       url: https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/openapi/moesif-openapi.yml
+    - type: SpectralRules
+      url: rules/moesif-rules.yml
+    - type: Plans
+      url: plans/moesif-plans-pricing.yml
+    - type: RateLimits
+      url: rate-limits/moesif-rate-limits.yml
+    - type: FinOps
+      url: finops/moesif-finops.yml
     - type: NaftikoCapability
       url: capabilities/moesif-applications.yaml
     - type: NaftikoCapability
@@ -63,19 +89,115 @@ apis:
       url: capabilities/moesif-users.yaml
     - type: NaftikoCapability
       url: capabilities/moesif-workspaces.yaml
+  - aid: moesif:collector
+    name: Moesif Collector API
+    description: The Moesif Collector API is the high-volume ingestion endpoint that receives API event
+      data from server, client, and gateway SDKs. It accepts HTTP API call records, user/company entity
+      updates, and custom action events that feed Moesif's analytics, monetization, and governance pipelines.
+    humanURL: https://www.moesif.com/docs/
+    baseURL: https://api.moesif.net
+    tags:
+    - Ingestion
+    - Events
+    - Telemetry
+    - OpenTelemetry
+    properties:
+    - type: Documentation
+      url: https://www.moesif.com/docs/api/
+    - type: SDK
+      url: https://www.moesif.com/docs/server-integration/
 common:
   - type: GitHubOrganization
     url: https://github.com/moesif
   - type: LinkedIn
     url: https://www.linkedin.com/company/moesif
+  - type: Twitter
+    url: https://twitter.com/moesif
   - type: Website
     url: https://www.moesif.com/
   - type: Documentation
     url: https://www.moesif.com/docs/
+  - type: APIReference
+    url: https://www.moesif.com/docs/api
   - type: Pricing
     url: https://www.moesif.com/pricing
   - type: SignUp
     url: https://www.moesif.com/wrap
+  - type: Blog
+    url: https://www.moesif.com/blog
+  - type: SDK
+    url: https://www.moesif.com/docs/server-integration/
+  - type: Integrations
+    url: https://www.moesif.com/integrations
+  - type: SDK
+    name: Node.js Middleware
+    url: https://github.com/Moesif/moesif-nodejs
+  - type: SDK
+    name: Python Django Middleware
+    url: https://github.com/Moesif/moesifdjango
+  - type: SDK
+    name: Python WSGI Middleware
+    url: https://github.com/Moesif/moesifwsgi
+  - type: SDK
+    name: Python Tornado Middleware
+    url: https://github.com/Moesif/moesiftornado
+  - type: SDK
+    name: Python Requests Middleware
+    url: https://github.com/Moesif/moesifpythonrequest
+  - type: SDK
+    name: Java Servlet SDK
+    url: https://github.com/Moesif/moesif-servlet
+  - type: SDK
+    name: .NET Middleware
+    url: https://github.com/Moesif/moesif-dotnet
+  - type: SDK
+    name: Go Middleware
+    url: https://github.com/Moesif/moesifmiddleware-go
+  - type: SDK
+    name: PHP Laravel Middleware
+    url: https://github.com/Moesif/moesif-laravel
+  - type: SDK
+    name: PHP Slim Middleware
+    url: https://github.com/Moesif/moesif-slim
+  - type: SDK
+    name: Ruby Rack Middleware
+    url: https://github.com/Moesif/moesif-rack
+  - type: SDK
+    name: Scala Play Filter
+    url: https://github.com/Moesif/moesif-play-filter
+  - type: SDK
+    name: Android SDK
+    url: https://github.com/Moesif/moesif-android
+  - type: SDK
+    name: Browser JavaScript Library
+    url: https://github.com/Moesif/moesif-browser-js
+  - type: SDK
+    name: AWS Lambda Node.js
+    url: https://github.com/Moesif/moesif-aws-lambda-nodejs
+  - type: SDK
+    name: AWS Lambda Python
+    url: https://github.com/Moesif/moesif-aws-lambda-python
+  - type: SDK
+    name: AWS Lambda Go
+    url: https://github.com/Moesif/moesif-aws-lambda-go
+  - type: Plugin
+    name: Cloudflare Workers
+    url: https://github.com/Moesif/moesif-cloudflare
+  - type: Plugin
+    name: Kong Gateway
+    url: https://github.com/Moesif/kong-plugin-moesif
+  - type: Plugin
+    name: NGINX / OpenResty
+    url: https://github.com/Moesif/lua-resty-moesif
+  - type: Plugin
+    name: Express Gateway
+    url: https://github.com/Moesif/express-gateway-plugin-moesif
+  - type: Tool
+    name: Auth0 Logs to Moesif
+    url: https://github.com/Moesif/auth0-logs-to-moesif
+  - type: Sample
+    name: Developer Portal Reference Implementation
+    url: https://github.com/Moesif/moesif-developer-portal
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
