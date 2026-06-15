@@ -1,12 +1,12 @@
 aid: moesif
 name: Moesif
-description: Moesif is an API analytics, monitoring, monetization, and governance platform for API and AI
-  product teams. The platform unifies API observability (analytics, logs, metrics, traces via OpenTelemetry),
-  usage-based monetization (billing meters, product catalog, prepaid credits, Stripe integration), quotas
-  and governance (rate limiting, contract enforcement), and customer-experience tooling (behavioral cohorts,
-  emails, embedded metrics, developer portal). Moesif has expanded into AI agent and LLM analytics with
-  usage-based billing for AI apps, GenAI-powered "Ask AI" analytics queries, and content monetization for
-  LLM training.
+description: >-
+  Moesif is an API analytics, monitoring, monetization, and governance platform for API and AI product teams. The
+  platform unifies API observability (analytics, logs, metrics, traces via OpenTelemetry), usage-based monetization
+  (billing meters, product catalog, prepaid credits, Stripe integration), quotas and governance (rate limiting, contract
+  enforcement), and customer-experience tooling (behavioral cohorts, emails, embedded metrics, developer portal). Moesif
+  has expanded into AI agent and LLM analytics with usage-based billing for AI apps, GenAI-powered "Ask AI" analytics
+  queries, and content monetization for LLM training.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/apis.yml
@@ -31,81 +31,53 @@ specificationVersion: '0.19'
 apis:
   - aid: moesif:moesif
     name: Moesif Management API
-    description: The Moesif Management API exposes the platform's full control plane for analytics, monetization,
-      and governance. Capabilities include querying events, users, and companies; managing applications,
-      workspaces, and dashboards; defining billing meters, product catalog entries, subscriptions, and
-      balance transactions; configuring governance rules and quotas; managing cohorts, email templates,
-      and metrics; and chat-style "Ask Question" analytics queries powered by GenAI.
+    description: >-
+      The Moesif Management API exposes the platform's full control plane for analytics, monetization, and governance.
+      Capabilities include querying events, users, and companies; managing applications, workspaces, and dashboards;
+      defining billing meters, product catalog entries, subscriptions, and balance transactions; configuring governance
+      rules and quotas; managing cohorts, email templates, and metrics; and chat-style "Ask Question" analytics queries
+      powered by GenAI.
     humanURL: https://www.moesif.com/
     baseURL: https://api.moesif.com
     tags:
-    - Analytics
-    - Monetization
-    - Monitoring
-    - Observability
-    - Governance
-    - Billing
-    - AI Agents
+      - Analytics
+      - Monetization
+      - Monitoring
+      - Observability
+      - Governance
+      - Billing
+      - AI Agents
     properties:
-    - type: Documentation
-      url: https://www.moesif.com/docs/api
-    - type: OpenAPI
-      url: https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/openapi/moesif-openapi.yml
-    - type: SpectralRules
-      url: rules/moesif-rules.yml
-    - type: Plans
-      url: plans/moesif-plans-pricing.yml
-    - type: RateLimits
-      url: rate-limits/moesif-rate-limits.yml
-    - type: FinOps
-      url: finops/moesif-finops.yml
-    - type: NaftikoCapability
-      url: capabilities/moesif-applications.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-balance-transactions.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-billing-meters.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-billing-reports.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-cohorts.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-companies.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-dashboards.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-email-templates.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-governance-rules.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-metrics.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-product-catalog.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-properties.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-subscriptions.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-users.yaml
-    - type: NaftikoCapability
-      url: capabilities/moesif-workspaces.yaml
+      - type: Documentation
+        url: https://www.moesif.com/docs/api
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/openapi/moesif-openapi.yml
+      - type: SpectralRules
+        url: rules/moesif-rules.yml
+      - type: Plans
+        url: plans/moesif-plans-pricing.yml
+      - type: RateLimits
+        url: rate-limits/moesif-rate-limits.yml
+      - type: FinOps
+        url: finops/moesif-finops.yml
   - aid: moesif:collector
     name: Moesif Collector API
-    description: The Moesif Collector API is the high-volume ingestion endpoint that receives API event
-      data from server, client, and gateway SDKs. It accepts HTTP API call records, user/company entity
-      updates, and custom action events that feed Moesif's analytics, monetization, and governance pipelines.
+    description: >-
+      The Moesif Collector API is the high-volume ingestion endpoint that receives API event data from server, client,
+      and gateway SDKs. It accepts HTTP API call records, user/company entity updates, and custom action events that
+      feed Moesif's analytics, monetization, and governance pipelines.
     humanURL: https://www.moesif.com/docs/
     baseURL: https://api.moesif.net
     tags:
-    - Ingestion
-    - Events
-    - Telemetry
-    - OpenTelemetry
+      - Ingestion
+      - Events
+      - Telemetry
+      - OpenTelemetry
     properties:
-    - type: Documentation
-      url: https://www.moesif.com/docs/api/
-    - type: SDK
-      url: https://www.moesif.com/docs/server-integration/
+      - type: Documentation
+        url: https://www.moesif.com/docs/api/
+      - type: SDK
+        url: https://www.moesif.com/docs/server-integration/
 common:
   - type: GitHubOrganization
     url: https://github.com/moesif
