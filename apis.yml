@@ -76,7 +76,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.moesif.com/docs/api/
-      - type: SDK
+      - type: SDKs
         url: https://www.moesif.com/docs/server-integration/
 common:
   - type: GitHubOrganization
@@ -93,63 +93,63 @@ common:
     url: https://www.moesif.com/docs/api
   - type: Pricing
     url: https://www.moesif.com/pricing
-  - type: SignUp
+  - type: Signup
     url: https://www.moesif.com/wrap
   - type: Blog
     url: https://www.moesif.com/blog
-  - type: SDK
+  - type: SDKs
     url: https://www.moesif.com/docs/server-integration/
   - type: Integrations
     url: https://www.moesif.com/integrations
-  - type: SDK
+  - type: SDKs
     name: Node.js Middleware
     url: https://github.com/Moesif/moesif-nodejs
-  - type: SDK
+  - type: SDKs
     name: Python Django Middleware
     url: https://github.com/Moesif/moesifdjango
-  - type: SDK
+  - type: SDKs
     name: Python WSGI Middleware
     url: https://github.com/Moesif/moesifwsgi
-  - type: SDK
+  - type: SDKs
     name: Python Tornado Middleware
     url: https://github.com/Moesif/moesiftornado
-  - type: SDK
+  - type: SDKs
     name: Python Requests Middleware
     url: https://github.com/Moesif/moesifpythonrequest
-  - type: SDK
+  - type: SDKs
     name: Java Servlet SDK
     url: https://github.com/Moesif/moesif-servlet
-  - type: SDK
+  - type: SDKs
     name: .NET Middleware
     url: https://github.com/Moesif/moesif-dotnet
-  - type: SDK
+  - type: SDKs
     name: Go Middleware
     url: https://github.com/Moesif/moesifmiddleware-go
-  - type: SDK
+  - type: SDKs
     name: PHP Laravel Middleware
     url: https://github.com/Moesif/moesif-laravel
-  - type: SDK
+  - type: SDKs
     name: PHP Slim Middleware
     url: https://github.com/Moesif/moesif-slim
-  - type: SDK
+  - type: SDKs
     name: Ruby Rack Middleware
     url: https://github.com/Moesif/moesif-rack
-  - type: SDK
+  - type: SDKs
     name: Scala Play Filter
     url: https://github.com/Moesif/moesif-play-filter
-  - type: SDK
+  - type: SDKs
     name: Android SDK
     url: https://github.com/Moesif/moesif-android
-  - type: SDK
+  - type: SDKs
     name: Browser JavaScript Library
     url: https://github.com/Moesif/moesif-browser-js
-  - type: SDK
+  - type: SDKs
     name: AWS Lambda Node.js
     url: https://github.com/Moesif/moesif-aws-lambda-nodejs
-  - type: SDK
+  - type: SDKs
     name: AWS Lambda Python
     url: https://github.com/Moesif/moesif-aws-lambda-python
-  - type: SDK
+  - type: SDKs
     name: AWS Lambda Go
     url: https://github.com/Moesif/moesif-aws-lambda-go
   - type: Plugin
@@ -164,7 +164,7 @@ common:
   - type: Plugin
     name: Express Gateway
     url: https://github.com/Moesif/express-gateway-plugin-moesif
-  - type: Tool
+  - type: Tools
     name: Auth0 Logs to Moesif
     url: https://github.com/Moesif/auth0-logs-to-moesif
   - type: Sample

@@ -2,11 +2,11 @@
   "repo": "moesif",
   "feeds": [
     {
-      "source": "https://www.moesif.com/blog",
+      "source": "https://www.moesif.com/blog/feed.xml",
       "feed_url": "https://www.moesif.com/blog/feed.xml",
       "title": "",
       "saved": 0,
-      "method": "discovered"
+      "method": "feed"
     },
     {
       "source": "https://www.moesif.com/wrap",
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 10,
+  "fetched": "2026-06-27T12:03:07Z"
 }
