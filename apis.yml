@@ -79,6 +79,10 @@ apis:
       - type: SDKs
         url: https://www.moesif.com/docs/server-integration/
 common:
+  - type: DomainSecurity
+    url: security/moesif-domain-security.yml
+  - type: Authentication
+    url: authentication/moesif-authentication.yml
   - type: OAuthScopes
     url: scopes/moesif-scopes.yml
   - type: GitHubOrganization

@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/moesif-openapi.json, openapi/moesif-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - password
+schemes:
+- name: managementAPIToken
+  type: oauth2
+  flows:
+  - flow: password
+    tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+    scopes: 41
+  description: |-
+    Your Management API token must be added to the request _Authorization_ header using the following format:
+
+     `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
