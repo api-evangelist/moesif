@@ -79,6 +79,8 @@ apis:
       - type: SDKs
         url: https://www.moesif.com/docs/server-integration/
 common:
+  - type: OAuthScopes
+    url: scopes/moesif-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/moesif
   - type: LinkedIn

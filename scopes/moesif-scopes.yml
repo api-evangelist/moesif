@@ -1,0 +1,430 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/moesif-openapi.json, openapi/moesif-openapi.yml
+schemes:
+- name: managementAPIToken
+  source: openapi/moesif-openapi.json
+  flows:
+  - flow: password
+    tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+  description: |-
+    Your Management API token must be added to the request _Authorization_ header using the following format:
+
+     `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`
+- name: managementAPIToken
+  source: openapi/moesif-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+  description: |-
+    Your Management API token must be added to the request _Authorization_ header using the following format:
+
+     `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`
+scopes:
+- scope: create:access_tokens
+  description: Create new tokens to access the Management API or Collector API
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:apps
+  description: Create a new application/project under the organization
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:billing_meters
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:billing_reports
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:cohorts
+  description: Save new customer cohorts
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:companies
+  description: Create new companies and associated company metadata
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:dashboards
+  description: Create a new team dashboard that can be shared
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:email_templates
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:encrypted_keys
+  description: Create encrypted Keys for the Moesif secure proxy
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:eth_abi
+  description: Create/upload new Ethereum ABI Entries
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:events
+  description: Create new events and associated event metadata
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:governance_rules
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:plans
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:prices
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:public_workspaces
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:reports
+  description: Create a new report such as SmartDiff
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:subscriptions
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:users
+  description: Create new users and associated user metadata
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:virtual_eventtypes
+  description: Create virtual events/tags
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: create:workspaces
+  description: Create a new workspace/chart that can be shared
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:apps
+  description: Delete an existing application
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:billing_meters
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:cohorts
+  description: Delete previously saved customer cohorts
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:companies
+  description: Delete existing companies and associated company metadata
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:dashboards
+  description: Delete existing dashboards
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:email_templates
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:encrypted_keys
+  description: Delete encrypted Keys for the Moesif secure proxy
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:governance_rules
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:plans
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:prices
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:reports
+  description: Delete existing reports such as SmartDiff
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:users
+  description: Delete existing users and associated user metadata
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:virtual_eventtypes
+  description: Delete existing virtual events/tags
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: delete:workspaces
+  description: Delete existing workspaces
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:apps
+  description: Read the organization's applications
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:billing_meters
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:billing_reports
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:cohorts
+  description: Read previously saved customer cohorts
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:companies
+  description: Read/query companies and associated company metadata
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:company_properties
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:dashboards
+  description: Read existing dashboards
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:email_templates
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:encrypted_keys
+  description: Read encrypted Keys for the Moesif secure proxy
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:events
+  description: Read/query events and associated event metadata
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:governance_rules
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:plans
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:prices
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:properties
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:public_workspaces
+  description: Read public workspaces/shared links
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:reports
+  description: Read reports such as SmartDiff
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:request_body_properties
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:response_body_properties
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:subscriptions
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:users
+  description: Read/query users and associated user metadata
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:virtual_eventtypes
+  description: Read existing virtual events/tags
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: read:workspaces
+  description: Read existing workspaces
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:apps
+  description: Update an existing application
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:cohorts
+  description: Update previously saved customer cohorts
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:companies
+  description: Update existing companies and associated company metadata
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:dashboards
+  description: Update existing dashboards
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:email_templates
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:encrypted_keys
+  description: Update encrypted Keys for the Moesif secure proxy
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:governance_rules
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:organizations
+  description: Update an existing application
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:plans
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:prices
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:public_workspaces
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:subscriptions
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:users
+  description: Update existing users and associated user metadata
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:virtual_eventtypes
+  description: Update existing virtual events/tags
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
+- scope: update:workspaces
+  description: Update existing workspaces
+  flows:
+  - password
+  sources:
+  - openapi/moesif-openapi.json
+  - openapi/moesif-openapi.yml
