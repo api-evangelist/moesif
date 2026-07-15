@@ -79,6 +79,8 @@ apis:
       - type: SDKs
         url: https://www.moesif.com/docs/server-integration/
 common:
+  - type: AgenticAccess
+    url: agentic-access/moesif-agentic-access.yml
   - type: DomainSecurity
     url: security/moesif-domain-security.yml
   - type: Authentication
