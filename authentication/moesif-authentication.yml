@@ -16,7 +16,7 @@ schemes:
   description: |-
     Your Management API token must be added to the request _Authorization_ header using the following format:
 
-     `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`
+     `Authorization: Bearer [example key]`
   sources:
   - openapi/moesif-openapi.json
   - openapi/moesif-openapi.yml
