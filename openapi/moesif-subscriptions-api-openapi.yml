@@ -1,0 +1,345 @@
+openapi: 3.0.0
+info:
+  description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
+  contact:
+  - email: support@moesif.com
+  - email: support@moesif.com
+  termsOfService: https://www.moesif.com/terms
+  version: '1'
+  title: Management Applications Subscriptions API
+servers:
+- url: https://api.moesif.com/v1
+  description: Management API V1
+- url: https://api.moesif.com/v1
+  description: Management API V1
+consumes:
+- application/json
+- application/json
+produces:
+- application/json
+- application/json
+tags:
+- name: Subscriptions
+paths:
+  /search/~/companies/{id}/subscriptions:
+    get:
+      security:
+      - managementAPIToken:
+        - read:companies
+      tags:
+      - Subscriptions
+      operationId: getCompanySubscriptions
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      summary: Get the Subscriptions of a Company
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/companyResponseDTO'
+  /search/~/subscriptions:
+    post:
+      security:
+      - managementAPIToken:
+        - create:subscriptions
+        - update:subscriptions
+      tags:
+      - Subscriptions
+      operationId: createSubscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddSubscriptionDTO'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      summary: Create or Update a Subscription
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDTO'
+  /search/~/subscriptions/batch:
+    post:
+      security:
+      - managementAPIToken:
+        - create:subscriptions
+        - update:subscriptions
+      tags:
+      - Subscriptions
+      operationId: batchCreateSubscriptions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddSubscriptionDTO'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      summary: Create or Update Subscriptions in Batch
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDTO'
+  /search/~/subscriptions/{id}:
+    get:
+      security:
+      - managementAPIToken:
+        - read:subscriptions
+      tags:
+      - Subscriptions
+      operationId: getSubscription
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      summary: Get a Subscription
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionDTO'
+components:
+  schemas:
+    AddSubscriptionDTO:
+      properties:
+        trial_start:
+          type: string
+          format: date-time
+        company_id:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        collection_method:
+          type: string
+        provider:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionItem'
+        current_period_start:
+          type: string
+          format: date-time
+        company_external_id:
+          type: string
+        payment_status:
+          type: string
+        cancel_time:
+          type: string
+          format: date-time
+        status:
+          type: string
+        trial_end:
+          type: string
+          format: date-time
+        external_id:
+          type: string
+        metadata:
+          type: object
+        subscription_id:
+          type: string
+        version_id:
+          type: string
+        current_period_end:
+          type: string
+          format: date-time
+        created:
+          type: string
+          format: date-time
+      required:
+      - subscription_id
+      - company_id
+      - status
+    SubscriptionItem:
+      properties:
+        item_price_id:
+          type: string
+        price_id:
+          type: string
+        is_metered:
+          type: boolean
+        plan_id:
+          type: string
+        unit_of_measure:
+          type: string
+        status:
+          type: string
+        subscription_item_id:
+          type: string
+      required:
+      - plan_id
+    SubscriptionDTO:
+      properties:
+        trial_start:
+          type: string
+          format: date-time
+        company_id:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        collection_method:
+          type: string
+        provider:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionItem'
+        current_period_start:
+          type: string
+          format: date-time
+        company_external_id:
+          type: string
+        payment_status:
+          type: string
+        modified_time:
+          type: string
+          format: date-time
+        cancel_time:
+          type: string
+          format: date-time
+        status:
+          type: string
+        trial_end:
+          type: string
+          format: date-time
+        external_id:
+          type: string
+        metadata:
+          type: object
+        app_id:
+          type: string
+        subscription_id:
+          type: string
+        version_id:
+          type: string
+        type:
+          type: string
+        current_period_end:
+          type: string
+          format: date-time
+        org_id:
+          type: string
+        created:
+          type: string
+          format: date-time
+      required:
+      - org_id
+      - app_id
+      - type
+      - subscription_id
+      - company_id
+      - status
+  securitySchemes:
+    managementAPIToken:
+      type: oauth2
+      description: "Your Management API token must be added to the request _Authorization_ header using the following format:\n\n `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`"
+      flows:
+        password:
+          tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+          scopes:
+            create:encrypted_keys: Create encrypted Keys for the Moesif secure proxy
+            delete:dashboards: Delete existing dashboards
+            update:dashboards: Update existing dashboards
+            create:dashboards: Create a new team dashboard that can be shared
+            read:public_workspaces: Read public workspaces/shared links
+            read:virtual_eventtypes: Read existing virtual events/tags
+            update:companies: Update existing companies and associated company metadata
+            create:companies: Create new companies and associated company metadata
+            create:reports: Create a new report such as SmartDiff
+            delete:workspaces: Delete existing workspaces
+            create:workspaces: Create a new workspace/chart that can be shared
+            read:workspaces: Read existing workspaces
+            update:virtual_eventtypes: Update existing virtual events/tags
+            create:cohorts: Save new customer cohorts
+            delete:encrypted_keys: Delete encrypted Keys for the Moesif secure proxy
+            read:dashboards: Read existing dashboards
+            read:events: Read/query events and associated event metadata
+            create:events: Create new events and associated event metadata
+            read:cohorts: Read previously saved customer cohorts
+            read:encrypted_keys: Read encrypted Keys for the Moesif secure proxy
+            update:apps: Update an existing application
+            update:encrypted_keys: Update encrypted Keys for the Moesif secure proxy
+            update:organizations: Update an existing application
+            create:access_tokens: Create new tokens to access the Management API or Collector API
+            create:users: Create new users and associated user metadata
+            create:apps: Create a new application/project under the organization
+            update:workspaces: Update existing workspaces
+            delete:cohorts: Delete previously saved customer cohorts
+            read:users: Read/query users and associated user metadata
+            delete:virtual_eventtypes: Delete existing virtual events/tags
+            read:reports: Read reports such as SmartDiff
+            delete:reports: Delete existing reports such as SmartDiff
+            update:users: Update existing users and associated user metadata
+            update:cohorts: Update previously saved customer cohorts
+            read:companies: Read/query companies and associated company metadata
+            create:virtual_eventtypes: Create virtual events/tags
+            delete:apps: Delete an existing application
+            delete:companies: Delete existing companies and associated company metadata
+            read:apps: Read the organization's applications
+            create:eth_abi: Create/upload new Ethereum ABI Entries
+            delete:users: Delete existing users and associated user metadata
+externalDocs:
+  description: Developer Docs
+  url: https://moesif.com/docs

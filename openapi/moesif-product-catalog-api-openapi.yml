@@ -1,0 +1,549 @@
+openapi: 3.0.0
+info:
+  description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
+  contact:
+  - email: support@moesif.com
+  - email: support@moesif.com
+  termsOfService: https://www.moesif.com/terms
+  version: '1'
+  title: Management Applications Product Catalog API
+servers:
+- url: https://api.moesif.com/v1
+  description: Management API V1
+- url: https://api.moesif.com/v1
+  description: Management API V1
+consumes:
+- application/json
+- application/json
+produces:
+- application/json
+- application/json
+tags:
+- name: Product Catalog
+paths:
+  /~/billing/catalog/plans:
+    post:
+      security:
+      - managementAPIToken:
+        - create:plans
+      tags:
+      - Product Catalog
+      operationId: createMoesifPlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoesifPlan'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: provider
+        required: true
+      summary: Create a new Moesif Plan
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoesifPlan'
+    get:
+      security:
+      - managementAPIToken:
+        - read:plans
+      tags:
+      - Product Catalog
+      operationId: listMoesifPlans
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          default: all
+          type: string
+        in: query
+        name: provider
+        required: false
+      - schema:
+          default: None
+          type: string
+        in: query
+        name: includes
+        required: false
+      summary: List all Moesif Plans
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MoesifPlan'
+  /~/billing/catalog/plans/{id}:
+    get:
+      security:
+      - managementAPIToken:
+        - read:plans
+      description: Get the Moesif Plan for authenticated users
+      tags:
+      - Product Catalog
+      operationId: getMoesifPlan
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: provider
+        required: true
+      summary: Get a Moesif Plan
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoesifPlan'
+    delete:
+      security:
+      - managementAPIToken:
+        - delete:plans
+      tags:
+      - Product Catalog
+      operationId: deleteMoesifPlan
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: provider
+        required: true
+      summary: Delete a Moesif Plan
+      responses:
+        '204':
+          description: no content
+    put:
+      security:
+      - managementAPIToken:
+        - update:plans
+      tags:
+      - Product Catalog
+      operationId: updateMoesifPlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoesifPlan'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: provider
+        required: true
+      summary: Update a Moesif Plan
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoesifPlan'
+  /~/billing/catalog/prices:
+    post:
+      security:
+      - managementAPIToken:
+        - create:prices
+      tags:
+      - Product Catalog
+      operationId: createMoesifPrice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoesifPrice'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: provider
+        required: true
+      summary: Create a new Moesif Price
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoesifPrice'
+    get:
+      security:
+      - managementAPIToken:
+        - read:prices
+      tags:
+      - Product Catalog
+      operationId: listMoesifPrices
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          default: all
+          type: string
+        in: query
+        name: provider
+        required: false
+      summary: List all Moesif Prices for a specific Plan
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MoesifPrice'
+  /~/billing/catalog/prices/{id}:
+    get:
+      security:
+      - managementAPIToken:
+        - read:prices
+      description: Get the Moesif Price for a specific Plan for authenticated users
+      tags:
+      - Product Catalog
+      operationId: getMoesifPrice
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: provider
+        required: true
+      summary: Get a Moesif Price
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoesifPrice'
+    delete:
+      security:
+      - managementAPIToken:
+        - delete:prices
+      tags:
+      - Product Catalog
+      operationId: deleteMoesifPrice
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: provider
+        required: true
+      summary: Delete a Moesif Price
+      responses:
+        '204':
+          description: no content
+    put:
+      security:
+      - managementAPIToken:
+        - update:prices
+      tags:
+      - Product Catalog
+      operationId: updateMoesifPrice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoesifPrice'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: provider
+        required: true
+      summary: Update a Moesif Price
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoesifPrice'
+components:
+  schemas:
+    MoesifTransformQuantity:
+      properties:
+        divide_by:
+          type: integer
+          format: int64
+        round:
+          type: string
+      required:
+      - divide_by
+      - round
+    MoesifPlan:
+      properties:
+        name:
+          type: string
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/MoesifPrice'
+        provider:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        status:
+          type: string
+        product_id:
+          type: string
+        metadata:
+          type: collection.immutable.map[string,string]
+        created_at:
+          type: string
+          format: date-time
+        unit:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    MoesifPrice:
+      properties:
+        name:
+          type: string
+        transform_quantity:
+          $ref: '#/components/schemas/MoesifTransformQuantity'
+        provider:
+          type: string
+        price_in_decimal:
+          type: string
+        tiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/MoesifPriceTier'
+        period_units:
+          type: string
+        plan_id:
+          type: string
+        id:
+          type: string
+        status:
+          type: string
+        pricing_model:
+          type: string
+        tax_behavior:
+          type: string
+        currency:
+          type: string
+        metadata:
+          type: collection.immutable.map[string,string]
+        created_at:
+          type: string
+          format: date-time
+        unit:
+          type: string
+        usage_aggregator:
+          type: string
+        period:
+          type: integer
+          format: int64
+    MoesifPriceTier:
+      properties:
+        up_to:
+          type: util.either[scala.long,string]
+        unit_price_in_decimal:
+          type: string
+        flat_price_in_decimal:
+          type: string
+      required:
+      - up_to
+  securitySchemes:
+    managementAPIToken:
+      type: oauth2
+      description: "Your Management API token must be added to the request _Authorization_ header using the following format:\n\n `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`"
+      flows:
+        password:
+          tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+          scopes:
+            create:encrypted_keys: Create encrypted Keys for the Moesif secure proxy
+            delete:dashboards: Delete existing dashboards
+            update:dashboards: Update existing dashboards
+            create:dashboards: Create a new team dashboard that can be shared
+            read:public_workspaces: Read public workspaces/shared links
+            read:virtual_eventtypes: Read existing virtual events/tags
+            update:companies: Update existing companies and associated company metadata
+            create:companies: Create new companies and associated company metadata
+            create:reports: Create a new report such as SmartDiff
+            delete:workspaces: Delete existing workspaces
+            create:workspaces: Create a new workspace/chart that can be shared
+            read:workspaces: Read existing workspaces
+            update:virtual_eventtypes: Update existing virtual events/tags
+            create:cohorts: Save new customer cohorts
+            delete:encrypted_keys: Delete encrypted Keys for the Moesif secure proxy
+            read:dashboards: Read existing dashboards
+            read:events: Read/query events and associated event metadata
+            create:events: Create new events and associated event metadata
+            read:cohorts: Read previously saved customer cohorts
+            read:encrypted_keys: Read encrypted Keys for the Moesif secure proxy
+            update:apps: Update an existing application
+            update:encrypted_keys: Update encrypted Keys for the Moesif secure proxy
+            update:organizations: Update an existing application
+            create:access_tokens: Create new tokens to access the Management API or Collector API
+            create:users: Create new users and associated user metadata
+            create:apps: Create a new application/project under the organization
+            update:workspaces: Update existing workspaces
+            delete:cohorts: Delete previously saved customer cohorts
+            read:users: Read/query users and associated user metadata
+            delete:virtual_eventtypes: Delete existing virtual events/tags
+            read:reports: Read reports such as SmartDiff
+            delete:reports: Delete existing reports such as SmartDiff
+            update:users: Update existing users and associated user metadata
+            update:cohorts: Update previously saved customer cohorts
+            read:companies: Read/query companies and associated company metadata
+            create:virtual_eventtypes: Create virtual events/tags
+            delete:apps: Delete an existing application
+            delete:companies: Delete existing companies and associated company metadata
+            read:apps: Read the organization's applications
+            create:eth_abi: Create/upload new Ethereum ABI Entries
+            delete:users: Delete existing users and associated user metadata
+externalDocs:
+  description: Developer Docs
+  url: https://moesif.com/docs

@@ -1,0 +1,536 @@
+openapi: 3.0.0
+info:
+  description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
+  contact:
+  - email: support@moesif.com
+  - email: support@moesif.com
+  termsOfService: https://www.moesif.com/terms
+  version: '1'
+  title: Management Applications Metrics API
+servers:
+- url: https://api.moesif.com/v1
+  description: Management API V1
+- url: https://api.moesif.com/v1
+  description: Management API V1
+consumes:
+- application/json
+- application/json
+produces:
+- application/json
+- application/json
+tags:
+- name: Metrics
+paths:
+  /search/~/count/events:
+    post:
+      security:
+      - managementAPIToken:
+        - read:events
+      tags:
+      - Metrics
+      documentation: http://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html
+      operationId: countEvents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/object'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: None
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - name: from
+        in: query
+        description: The start date, which can be absolute such as 2019-07-01T00:00:00Z or relative such as -24h
+        schema:
+          type: string
+          format: date-time
+        required: true
+      - name: to
+        in: query
+        description: The end date, which can be absolute such as 2019-07-02T00:00:00Z or relative such as now
+        schema:
+          type: string
+          format: date-time
+        required: true
+      - schema:
+          default: false
+          type: boolean
+        in: query
+        name: track_total_hits
+        required: false
+      summary: Count Events
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/object'
+  /search/~/events/{id}:
+    get:
+      security:
+      - managementAPIToken:
+        - read:events
+      tags:
+      - Metrics
+      operationId: getEvent
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: event_time
+        required: true
+      summary: Get an Event
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/eventResponseDTO'
+  /search/~/search/events:
+    post:
+      security:
+      - managementAPIToken:
+        - read:events
+      tags:
+      - Metrics
+      documentation: https://www.moesif.com/docs/api#pagination-and-filtering
+      operationId: searchEvents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            description: The search definition using the Elasticsearch Query DSL
+            schema:
+              $ref: '#/components/schemas/object'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: None
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - name: from
+        in: query
+        description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+        schema:
+          type: string
+          format: date-time
+        required: true
+      - name: to
+        in: query
+        description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+        schema:
+          type: string
+          format: date-time
+        required: true
+      summary: Search Events
+      responses:
+        '201':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchEventsResponseDTO'
+  /search/~/workspaces/{workspaceId}/search:
+    post:
+      security:
+      - managementAPIToken:
+        - read:events
+      tags:
+      - Metrics
+      documentation: https://www.moesif.com/docs/api#pagination-and-filtering
+      operationId: searchPublicWorkspaces
+      requestBody:
+        required: true
+        content:
+          application/json:
+            description: The search definition using the Elasticsearch Query DSL
+            schema:
+              $ref: '#/components/schemas/object'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - name: from
+        in: query
+        description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+        schema:
+          type: string
+          format: date-time
+        required: true
+      - name: to
+        in: query
+        description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+        schema:
+          type: string
+          format: date-time
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: workspaceId
+        required: true
+      - schema:
+          default: false
+          type: boolean
+        in: query
+        name: include_details
+        required: false
+      - schema:
+          default: 1000
+          format: int32
+          type: integer
+        in: query
+        name: take
+        required: false
+      summary: Search Events in saved public Workspace
+      responses:
+        '201':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchEventsResponseDTO'
+components:
+  schemas:
+    searchEventsResponseDTO:
+      properties:
+        took:
+          type: integer
+          default: 0
+          examples:
+          - 358
+        timed_out:
+          type: boolean
+          default: false
+          examples:
+          - false
+        hits:
+          type: object
+          properties:
+            total:
+              type: integer
+              default: 0
+              examples:
+              - 947
+            hits:
+              type: array
+              items:
+                type: object
+                $ref: '#/components/schemas/eventResponseDTO'
+    eventResponseDTO:
+      properties:
+        _id:
+          type: string
+          default: ''
+          examples:
+          - AWF5M-FDTqLFD8l5y2f4
+        _source:
+          type: object
+          properties:
+            company_id:
+              type: string
+              default: ''
+              examples:
+              - '67890'
+            duration_ms:
+              type: integer
+              default: 0
+              examples:
+              - 76
+            request:
+              type: object
+              properties:
+                body:
+                  type: object
+                  examples:
+                  - json
+                  - base64
+                uri:
+                  type: string
+                  default: ''
+                  examples:
+                  - https://api.github.com
+                user_agent:
+                  type: object
+                  properties:
+                    patch:
+                      type: string
+                      default: ''
+                      examples:
+                      - '1'
+                    major:
+                      type: string
+                      default: ''
+                      examples:
+                      - '7'
+                    minor:
+                      type: string
+                      default: ''
+                      examples:
+                      - '1'
+                    name:
+                      type: string
+                      default: ''
+                      examples:
+                      - PostmanRuntime
+                geo_ip:
+                  type: object
+                  properties:
+                    ip:
+                      type: string
+                      default: ''
+                      examples:
+                      - 73.189.235.253
+                    region_name:
+                      type: string
+                      default: ''
+                      examples:
+                      - CA
+                    continent_code:
+                      type: string
+                      default: ''
+                      examples:
+                      - NA
+                    location:
+                      type: array
+                      items:
+                        type: double
+                        default: 0
+                        examples:
+                        - -122.393
+                        - 37.769
+                    latitude:
+                      type: double
+                      default: 0
+                      examples:
+                      - 37.769
+                    timezone:
+                      type: string
+                      default: ''
+                      examples:
+                      - America/Los_Angeles
+                    area_code:
+                      type: integer
+                      default: 0
+                      examples:
+                      - 415
+                    longitude:
+                      type: double
+                      default: 0
+                      examples:
+                      - -122.393
+                    real_region_name:
+                      type: string
+                      default: ''
+                      examples:
+                      - California
+                    dma_code:
+                      type: integer
+                      default: 0
+                      examples:
+                      - 807
+                    postal_code:
+                      type: string
+                      default: ''
+                      examples:
+                      - '94107'
+                    city_name:
+                      type: string
+                      default: ''
+                      examples:
+                      - San Francisco
+                    country_code2:
+                      type: string
+                      default: ''
+                      examples:
+                      - US
+                    country_code3:
+                      type: string
+                      default: ''
+                      examples:
+                      - USA
+                    country_name:
+                      type: string
+                      default: ''
+                      examples:
+                      - United States
+                ip_address:
+                  type: string
+                  default: ''
+                  examples:
+                  - 73.189.235.253
+                verb:
+                  type: string
+                  default: ''
+                  examples:
+                  - GET
+                route:
+                  type: string
+                  default: ''
+                  examples:
+                  - /
+                time:
+                  type: string
+                  default: ''
+                  examples:
+                  - '2023-07-09T06:14:58.550'
+                headers:
+                  type: object
+            user_id:
+              type: string
+              default: ''
+              examples:
+              - '123454'
+            company:
+              type: object
+            response:
+              type: object
+              properties:
+                body:
+                  type: object
+                transfer_encoding:
+                  type: string
+                  examples:
+                  - json
+                  - base64
+                status:
+                  type: integer
+                  default: 0
+                  examples:
+                  - 200
+                time:
+                  type: string
+                  default: ''
+                  examples:
+                  - '2023-07-09T06:14:58.626'
+                headers:
+                  type: object
+            id:
+              type: string
+              default: ''
+              examples:
+              - AWF5M-FDTqLFD8l5y2f4
+            event_type:
+              type: string
+              examples:
+              - api_call
+              - user_action
+            session_token:
+              type: string
+              default: ''
+              examples:
+              - rdfmnw3fu24309efjc534nb421UZ9-]2JDO[ME
+            metadata:
+              type: object
+            app_id:
+              type: string
+              default: ''
+              examples:
+              - '198:3'
+            org_id:
+              type: string
+              default: ''
+              examples:
+              - '177:3'
+            user:
+              type: object
+        sort:
+          type: array
+          items:
+            type: integer
+            default: 0
+  securitySchemes:
+    managementAPIToken:
+      type: oauth2
+      description: "Your Management API token must be added to the request _Authorization_ header using the following format:\n\n `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`"
+      flows:
+        password:
+          tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+          scopes:
+            create:encrypted_keys: Create encrypted Keys for the Moesif secure proxy
+            delete:dashboards: Delete existing dashboards
+            update:dashboards: Update existing dashboards
+            create:dashboards: Create a new team dashboard that can be shared
+            read:public_workspaces: Read public workspaces/shared links
+            read:virtual_eventtypes: Read existing virtual events/tags
+            update:companies: Update existing companies and associated company metadata
+            create:companies: Create new companies and associated company metadata
+            create:reports: Create a new report such as SmartDiff
+            delete:workspaces: Delete existing workspaces
+            create:workspaces: Create a new workspace/chart that can be shared
+            read:workspaces: Read existing workspaces
+            update:virtual_eventtypes: Update existing virtual events/tags
+            create:cohorts: Save new customer cohorts
+            delete:encrypted_keys: Delete encrypted Keys for the Moesif secure proxy
+            read:dashboards: Read existing dashboards
+            read:events: Read/query events and associated event metadata
+            create:events: Create new events and associated event metadata
+            read:cohorts: Read previously saved customer cohorts
+            read:encrypted_keys: Read encrypted Keys for the Moesif secure proxy
+            update:apps: Update an existing application
+            update:encrypted_keys: Update encrypted Keys for the Moesif secure proxy
+            update:organizations: Update an existing application
+            create:access_tokens: Create new tokens to access the Management API or Collector API
+            create:users: Create new users and associated user metadata
+            create:apps: Create a new application/project under the organization
+            update:workspaces: Update existing workspaces
+            delete:cohorts: Delete previously saved customer cohorts
+            read:users: Read/query users and associated user metadata
+            delete:virtual_eventtypes: Delete existing virtual events/tags
+            read:reports: Read reports such as SmartDiff
+            delete:reports: Delete existing reports such as SmartDiff
+            update:users: Update existing users and associated user metadata
+            update:cohorts: Update previously saved customer cohorts
+            read:companies: Read/query companies and associated company metadata
+            create:virtual_eventtypes: Create virtual events/tags
+            delete:apps: Delete an existing application
+            delete:companies: Delete existing companies and associated company metadata
+            read:apps: Read the organization's applications
+            create:eth_abi: Create/upload new Ethereum ABI Entries
+            delete:users: Delete existing users and associated user metadata
+externalDocs:
+  description: Developer Docs
+  url: https://moesif.com/docs

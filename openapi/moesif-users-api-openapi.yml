@@ -1,0 +1,525 @@
+openapi: 3.0.0
+info:
+  description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
+  contact:
+  - email: support@moesif.com
+  - email: support@moesif.com
+  termsOfService: https://www.moesif.com/terms
+  version: '1'
+  title: Management Applications Users API
+servers:
+- url: https://api.moesif.com/v1
+  description: Management API V1
+- url: https://api.moesif.com/v1
+  description: Management API V1
+consumes:
+- application/json
+- application/json
+produces:
+- application/json
+- application/json
+tags:
+- name: Users
+paths:
+  /search/~/count/users:
+    post:
+      security:
+      - managementAPIToken:
+        - read:users
+      tags:
+      - Users
+      documentation: http://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html
+      operationId: countUsers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/object'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: app_id
+        required: true
+      summary: Count Users
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/object'
+  /search/~/search/usermetrics/users:
+    post:
+      security:
+      - managementAPIToken:
+        - read:users
+      tags:
+      - Users
+      documentation: https://www.moesif.com/docs/api#pagination-and-filtering
+      operationId: searchUserMetrics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            description: The search definition using the Elasticsearch Query DSL
+            schema:
+              $ref: '#/components/schemas/object'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - name: from
+        in: query
+        description: The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h
+        schema:
+          type: string
+          format: date-time
+        required: false
+      - name: to
+        in: query
+        description: The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now
+        schema:
+          type: string
+          format: date-time
+        required: false
+      summary: Search UserMetrics/Users
+      responses:
+        '200':
+          description: success
+          content: application/json
+  /search/~/users:
+    post:
+      security:
+      - managementAPIToken:
+        - create:users
+        - update:users
+      tags:
+      - Users
+      operationId: updateUsers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateDTO'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      summary: Update a User
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponseDTO'
+  /search/~/users/batch:
+    post:
+      security:
+      - managementAPIToken:
+        - create:users
+        - update:users
+      tags:
+      - Users
+      operationId: batchUpdateUsers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserUpdateDTO'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      summary: Update Users in Batch
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponseDTO'
+  /search/~/users/{id}:
+    get:
+      security:
+      - managementAPIToken:
+        - read:users
+      tags:
+      - Users
+      operationId: getUser
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      summary: Get a User
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponseDTO'
+    delete:
+      security:
+      - managementAPIToken:
+        - delete:users
+      tags:
+      - Users
+      operationId: deleteUser
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      - name: delete_events
+        in: query
+        description: Delete events associated with the user which can be set to true or false(default)
+        schema:
+          default: false
+          type: boolean
+        required: false
+      summary: Delete a User
+      responses:
+        '200':
+          description: success
+components:
+  schemas:
+    userResponseDTO:
+      properties:
+        _id:
+          type: string
+          default: ''
+          examples:
+          - '123456'
+        _source:
+          type: object
+          properties:
+            first_name:
+              type: string
+              default: ''
+              examples:
+              - John
+            body:
+              type: object
+            name:
+              type: string
+              default: ''
+              examples:
+              - John Doe
+            email:
+              type: string
+              default: ''
+              examples:
+              - john.doe@gmail.com
+            first_seen_time:
+              type: string
+              default: ''
+              examples:
+              - '2023-07-27T21:52:58.0990000Z'
+            user_agent:
+              type: object
+              properties:
+                name:
+                  type: string
+                  default: ''
+                  examples:
+                  - Android
+                os_major:
+                  type: string
+                  default: ''
+                  examples:
+                  - '7'
+                os:
+                  type: string
+                  default: ''
+                  examples:
+                  - Android 7.0
+                os_name:
+                  type: string
+                  default: ''
+                  examples:
+                  - Android
+                os_minor:
+                  type: string
+                  default: ''
+                  examples:
+                  - '0'
+                major:
+                  type: string
+                  default: ''
+                  examples:
+                  - '7'
+                device:
+                  type: string
+                  default: ''
+                  examples:
+                  - Samsung SM-G955U
+                minor:
+                  type: string
+                  default: ''
+                  examples:
+                  - '0'
+            geo_ip:
+              type: object
+              properties:
+                ip:
+                  type: string
+                  default: ''
+                  examples:
+                  - 107.200.85.196
+                region_name:
+                  type: string
+                  default: ''
+                  examples:
+                  - South Carolina
+                continent_code:
+                  type: string
+                  default: ''
+                  examples:
+                  - NA
+                location:
+                  type: object
+                  properties:
+                    lon:
+                      type: double
+                      default: 0
+                      examples:
+                      - -79.85489654541016
+                    lat:
+                      type: double
+                      default: 0
+                      examples:
+                      - 32.822898864746094
+                latitude:
+                  type: double
+                  default: 0
+                  examples:
+                  - 32.822898864746094
+                timezone:
+                  type: string
+                  default: ''
+                  examples:
+                  - America/New_York
+                longitude:
+                  type: double
+                  default: 0
+                  examples:
+                  - -79.85489654541016
+                dma_code:
+                  type: integer
+                  default: 0
+                  examples:
+                  - 519
+                postal_code:
+                  type: string
+                  default: ''
+                  examples:
+                  - '29464'
+                region_code:
+                  type: string
+                  default: ''
+                  examples:
+                  - SC
+                city_name:
+                  type: string
+                  default: ''
+                  examples:
+                  - Mt. Pleasant
+                country_code2:
+                  type: string
+                  default: ''
+                  examples:
+                  - US
+                country_code3:
+                  type: string
+                  default: ''
+                  examples:
+                  - US
+                country_name:
+                  type: string
+                  default: ''
+                  examples:
+                  - United States
+            modified_time:
+              type: string
+              default: ''
+              examples:
+              - '2023-07-27T21:55:19.464'
+            last_name:
+              type: string
+              default: ''
+              examples:
+              - Doe
+            ip_address:
+              type: string
+              default: ''
+              examples:
+              - 107.200.85.196
+            session_token:
+              type: array
+              items:
+                type: string
+                default: ''
+                examples:
+                - e93u2jiry8fij8q09-tfZ9SIK9DERDXUYMF
+            last_seen_time:
+              type: string
+              default: ''
+              examples:
+              - '2023-07-27T21:52:58.0990000Z'
+            app_id:
+              type: string
+              default: ''
+              examples:
+              - '198:3'
+            org_id:
+              type: string
+              default: ''
+              examples:
+              - '177:3'
+        sort:
+          type: array
+          items:
+            type: integer
+            default: 0
+            examples:
+            - 1519768519464
+    UserUpdateDTO:
+      properties:
+        company_id:
+          type: string
+        first_name:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        photo_url:
+          type: string
+        user_id:
+          type: string
+        modified_time:
+          type: string
+          format: date-time
+        last_name:
+          type: string
+        metadata:
+          type: object
+        user_name:
+          type: string
+        phone:
+          type: string
+      required:
+      - user_id
+  securitySchemes:
+    managementAPIToken:
+      type: oauth2
+      description: "Your Management API token must be added to the request _Authorization_ header using the following format:\n\n `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`"
+      flows:
+        password:
+          tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+          scopes:
+            create:encrypted_keys: Create encrypted Keys for the Moesif secure proxy
+            delete:dashboards: Delete existing dashboards
+            update:dashboards: Update existing dashboards
+            create:dashboards: Create a new team dashboard that can be shared
+            read:public_workspaces: Read public workspaces/shared links
+            read:virtual_eventtypes: Read existing virtual events/tags
+            update:companies: Update existing companies and associated company metadata
+            create:companies: Create new companies and associated company metadata
+            create:reports: Create a new report such as SmartDiff
+            delete:workspaces: Delete existing workspaces
+            create:workspaces: Create a new workspace/chart that can be shared
+            read:workspaces: Read existing workspaces
+            update:virtual_eventtypes: Update existing virtual events/tags
+            create:cohorts: Save new customer cohorts
+            delete:encrypted_keys: Delete encrypted Keys for the Moesif secure proxy
+            read:dashboards: Read existing dashboards
+            read:events: Read/query events and associated event metadata
+            create:events: Create new events and associated event metadata
+            read:cohorts: Read previously saved customer cohorts
+            read:encrypted_keys: Read encrypted Keys for the Moesif secure proxy
+            update:apps: Update an existing application
+            update:encrypted_keys: Update encrypted Keys for the Moesif secure proxy
+            update:organizations: Update an existing application
+            create:access_tokens: Create new tokens to access the Management API or Collector API
+            create:users: Create new users and associated user metadata
+            create:apps: Create a new application/project under the organization
+            update:workspaces: Update existing workspaces
+            delete:cohorts: Delete previously saved customer cohorts
+            read:users: Read/query users and associated user metadata
+            delete:virtual_eventtypes: Delete existing virtual events/tags
+            read:reports: Read reports such as SmartDiff
+            delete:reports: Delete existing reports such as SmartDiff
+            update:users: Update existing users and associated user metadata
+            update:cohorts: Update previously saved customer cohorts
+            read:companies: Read/query companies and associated company metadata
+            create:virtual_eventtypes: Create virtual events/tags
+            delete:apps: Delete an existing application
+            delete:companies: Delete existing companies and associated company metadata
+            read:apps: Read the organization's applications
+            create:eth_abi: Create/upload new Ethereum ABI Entries
+            delete:users: Delete existing users and associated user metadata
+externalDocs:
+  description: Developer Docs
+  url: https://moesif.com/docs

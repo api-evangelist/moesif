@@ -1,0 +1,395 @@
+openapi: 3.0.0
+info:
+  description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
+  contact:
+  - email: support@moesif.com
+  - email: support@moesif.com
+  termsOfService: https://www.moesif.com/terms
+  version: '1'
+  title: Management Applications Cohorts API
+servers:
+- url: https://api.moesif.com/v1
+  description: Management API V1
+- url: https://api.moesif.com/v1
+  description: Management API V1
+consumes:
+- application/json
+- application/json
+produces:
+- application/json
+- application/json
+tags:
+- name: Cohorts
+paths:
+  /~/cohorts:
+    post:
+      security:
+      - managementAPIToken:
+        - create:cohorts
+      tags:
+      - Cohorts
+      operationId: createCohort
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CohortCreateItem'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      summary: Create New Cohort
+      responses:
+        '201':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CohortDocument'
+    get:
+      security:
+      - managementAPIToken:
+        - read:cohorts
+      tags:
+      - Cohorts
+      operationId: getCohorts
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: cohort_type
+        required: true
+      summary: Get Cohorts
+      responses:
+        '200':
+          description: success
+  /~/cohorts/{cohortId}:
+    post:
+      security:
+      - managementAPIToken:
+        - update:cohorts
+      tags:
+      - Cohorts
+      operationId: updateCohort
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CohortUpdateItem'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: cohortId
+        required: true
+      summary: Update a Cohort
+      responses:
+        '200':
+          description: success
+    get:
+      security:
+      - managementAPIToken:
+        - read:cohorts
+      tags:
+      - Cohorts
+      operationId: getCohort
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: cohort_type
+        required: true
+      - schema:
+          type: string
+        in: path
+        name: cohortId
+        required: true
+      summary: Get Cohort
+      responses:
+        '200':
+          description: success
+    delete:
+      security:
+      - managementAPIToken:
+        - delete:cohorts
+      tags:
+      - Cohorts
+      operationId: deleteCohort
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: cohortId
+        required: true
+      summary: Delete Cohort
+      responses:
+        '200':
+          description: success
+  /~/cohorts/{cohortId}/sample_rate:
+    delete:
+      security:
+      - managementAPIToken:
+        - update:cohorts
+      tags:
+      - Cohorts
+      operationId: deleteCohortSampleRate
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: cohortId
+        required: true
+      summary: Delete Sample Rate for a Cohort
+      responses:
+        '200':
+          description: success
+components:
+  schemas:
+    NotificationRule:
+      properties:
+        send_on_addition:
+          type: boolean
+        send_on_removal:
+          type: boolean
+        period:
+          type: string
+        fields:
+          type: array
+          items:
+            type: string
+      required:
+      - send_on_addition
+      - send_on_removal
+    CohortDocument:
+      properties:
+        channels:
+          type: array[string]
+        priority:
+          type: integer
+          format: int32
+        url_query:
+          type: string
+        criteria:
+          type: string
+        _id:
+          type: string
+        sample_rate:
+          type: integer
+          format: int32
+        notification_rule:
+          $ref: '#/components/schemas/NotificationRule'
+        cohort_name:
+          type: string
+        to:
+          type: string
+        week_starts_on:
+          type: integer
+          format: int32
+        locked_by:
+          type: string
+        modified_at:
+          type: string
+          format: date-time
+        from:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        app_id:
+          type: string
+        cohort_type:
+          type: string
+        time_zone:
+          type: string
+        org_id:
+          type: string
+      required:
+      - org_id
+      - app_id
+      - created_at
+      - modified_at
+      - criteria
+      - cohort_name
+      - cohort_type
+    CohortCreateItem:
+      properties:
+        channels:
+          type: array[string]
+        priority:
+          type: integer
+          format: int32
+        url_query:
+          type: string
+        criteria:
+          type: object
+        notification_rule:
+          $ref: '#/components/schemas/NotificationRule'
+        cohort_name:
+          type: string
+        to:
+          type: string
+        week_starts_on:
+          type: integer
+          format: int32
+        locked_by:
+          type: string
+        from:
+          type: string
+        cohort_type:
+          type: string
+        time_zone:
+          type: string
+      required:
+      - cohort_name
+      - cohort_type
+      - criteria
+    CohortUpdateItem:
+      properties:
+        channels:
+          type: array[string]
+        priority:
+          type: integer
+          format: int32
+        url_query:
+          type: string
+        criteria:
+          type: object
+        sample_rate:
+          type: integer
+          format: int32
+        notification_rule:
+          $ref: '#/components/schemas/NotificationRule'
+        cohort_name:
+          type: string
+        to:
+          type: string
+        week_starts_on:
+          type: integer
+          format: int32
+        locked_by:
+          type: string
+        from:
+          type: string
+        cohort_type:
+          type: string
+        time_zone:
+          type: string
+      required:
+      - cohort_type
+  securitySchemes:
+    managementAPIToken:
+      type: oauth2
+      description: "Your Management API token must be added to the request _Authorization_ header using the following format:\n\n `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`"
+      flows:
+        password:
+          tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+          scopes:
+            create:encrypted_keys: Create encrypted Keys for the Moesif secure proxy
+            delete:dashboards: Delete existing dashboards
+            update:dashboards: Update existing dashboards
+            create:dashboards: Create a new team dashboard that can be shared
+            read:public_workspaces: Read public workspaces/shared links
+            read:virtual_eventtypes: Read existing virtual events/tags
+            update:companies: Update existing companies and associated company metadata
+            create:companies: Create new companies and associated company metadata
+            create:reports: Create a new report such as SmartDiff
+            delete:workspaces: Delete existing workspaces
+            create:workspaces: Create a new workspace/chart that can be shared
+            read:workspaces: Read existing workspaces
+            update:virtual_eventtypes: Update existing virtual events/tags
+            create:cohorts: Save new customer cohorts
+            delete:encrypted_keys: Delete encrypted Keys for the Moesif secure proxy
+            read:dashboards: Read existing dashboards
+            read:events: Read/query events and associated event metadata
+            create:events: Create new events and associated event metadata
+            read:cohorts: Read previously saved customer cohorts
+            read:encrypted_keys: Read encrypted Keys for the Moesif secure proxy
+            update:apps: Update an existing application
+            update:encrypted_keys: Update encrypted Keys for the Moesif secure proxy
+            update:organizations: Update an existing application
+            create:access_tokens: Create new tokens to access the Management API or Collector API
+            create:users: Create new users and associated user metadata
+            create:apps: Create a new application/project under the organization
+            update:workspaces: Update existing workspaces
+            delete:cohorts: Delete previously saved customer cohorts
+            read:users: Read/query users and associated user metadata
+            delete:virtual_eventtypes: Delete existing virtual events/tags
+            read:reports: Read reports such as SmartDiff
+            delete:reports: Delete existing reports such as SmartDiff
+            update:users: Update existing users and associated user metadata
+            update:cohorts: Update previously saved customer cohorts
+            read:companies: Read/query companies and associated company metadata
+            create:virtual_eventtypes: Create virtual events/tags
+            delete:apps: Delete an existing application
+            delete:companies: Delete existing companies and associated company metadata
+            read:apps: Read the organization's applications
+            create:eth_abi: Create/upload new Ethereum ABI Entries
+            delete:users: Delete existing users and associated user metadata
+externalDocs:
+  description: Developer Docs
+  url: https://moesif.com/docs

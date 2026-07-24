@@ -1,0 +1,578 @@
+openapi: 3.0.0
+info:
+  description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
+  contact:
+  - email: support@moesif.com
+  - email: support@moesif.com
+  termsOfService: https://www.moesif.com/terms
+  version: '1'
+  title: Management Applications Billing Meters API
+servers:
+- url: https://api.moesif.com/v1
+  description: Management API V1
+- url: https://api.moesif.com/v1
+  description: Management API V1
+consumes:
+- application/json
+- application/json
+produces:
+- application/json
+- application/json
+tags:
+- name: Billing Meters
+paths:
+  /~/billing/meters:
+    get:
+      security:
+      - managementAPIToken:
+        - read:billing_meters
+      description: List Billing Meters
+      tags:
+      - Billing Meters
+      operationId: listMeters
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      summary: List Billing Meters
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BillingMeterDocument'
+  /~/billing/meters/{meterId}:
+    get:
+      security:
+      - managementAPIToken:
+        - read:billing_meters
+      description: Get Billing Meter by id
+      tags:
+      - Billing Meters
+      operationId: getMeter
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: meterId
+        required: true
+      summary: Get Billing Meter by id
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingMeterDocument'
+    delete:
+      security:
+      - managementAPIToken:
+        - delete:billing_meters
+      description: Delete Billing Meter by id
+      tags:
+      - Billing Meters
+      operationId: deleteMeter
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: meterId
+        required: true
+      summary: Delete Billing Meter by id
+      responses:
+        '200':
+          description: success
+components:
+  schemas:
+    CustomReportPlan:
+      properties:
+        plan_id:
+          type: string
+      required:
+      - plan_id
+    ChargebeeItemPriceTier:
+      properties:
+        starting_unit:
+          type: integer
+          format: int32
+        ending_unit:
+          type: integer
+          format: int32
+        price:
+          type: integer
+          format: int32
+      required:
+      - starting_unit
+      - price
+    RecurlyPlan:
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+    RecurlyAddOnPercentageTiers:
+      properties:
+        tiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyAddOnPercentageTier'
+        currency:
+          type: string
+    BillingMeterDocument:
+      properties:
+        name:
+          type: string
+        billing_plan:
+          $ref: '#/components/schemas/BillingPlan'
+        url_query:
+          type: string
+        _id:
+          type: string
+        slug:
+          type: string
+        status:
+          type: string
+        modified_at:
+          type: string
+          format: date-time
+        es_query:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        app_id:
+          type: string
+        org_id:
+          type: string
+      required:
+      - org_id
+      - app_id
+      - slug
+      - name
+      - es_query
+      - url_query
+      - status
+      - billing_plan
+      - created_at
+      - modified_at
+    BillingParams:
+      properties:
+        usage_rounding_mode:
+          type: string
+        webhook_params:
+          $ref: '#/components/schemas/BillingWebhookParams'
+        recurly_params:
+          $ref: '#/components/schemas/RecurlyBillingParams'
+        chargebee_params:
+          $ref: '#/components/schemas/ChargebeeBillingParams'
+        stripe_params:
+          $ref: '#/components/schemas/StripeBillingParams'
+        zuora_params:
+          $ref: '#/components/schemas/ZuoraBillingParams'
+        usage_multiplier:
+          type: double
+    BillingPlan:
+      properties:
+        provider_slug:
+          type: string
+        friendly_name:
+          type: string
+        params:
+          $ref: '#/components/schemas/BillingParams'
+      required:
+      - provider_slug
+    RecurlyAddOnTier:
+      properties:
+        ending_quantity:
+          type: integer
+          format: int64
+        currencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyCurrencyAmount'
+      required:
+      - currencies
+    StripeTransformQuantity:
+      properties:
+        divide_by:
+          type: integer
+          format: int64
+        round:
+          type: string
+    BillingWebhookParams:
+      properties:
+        reporting:
+          $ref: '#/components/schemas/CustomReporting'
+        channel_ids:
+          type: array
+          items:
+            type: string
+        custom_plan:
+          $ref: '#/components/schemas/CustomReportPlan'
+      required:
+      - channel_ids
+      - custom_plan
+    ZuoraBillingParams:
+      properties:
+        plan_id:
+          type: string
+        price_id:
+          type: string
+        price_ids:
+          type: array
+          items:
+            type: string
+    CustomReporting:
+      properties:
+        report_when:
+          type: array
+          items:
+            type: string
+      required:
+      - report_when
+    StripePrice:
+      properties:
+        tiers_mode:
+          type: string
+        transform_quantity:
+          $ref: '#/components/schemas/StripeTransformQuantity'
+        price_id:
+          type: string
+        tiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/StripeTier'
+        recurring:
+          $ref: '#/components/schemas/StripeRecurring'
+        unit_amount_decimal:
+          type: string
+        price_nickname:
+          type: string
+        currency:
+          type: string
+        billing_scheme:
+          type: string
+        unit_amount:
+          type: integer
+          format: int64
+        created:
+          type: integer
+          format: int64
+        active:
+          type: boolean
+      required:
+      - price_id
+    ChargebeeItemPrice:
+      properties:
+        name:
+          type: string
+        item_id:
+          type: string
+        description:
+          type: string
+        price:
+          type: integer
+          format: int64
+        price_in_decimal:
+          type: string
+        external_name:
+          type: string
+        tiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChargebeeItemPriceTier'
+        trial_end_action:
+          type: string
+        trial_period:
+          type: integer
+          format: int64
+        id:
+          type: string
+        status:
+          type: string
+        pricing_model:
+          type: string
+        created_at:
+          type: integer
+          format: int64
+        period_unit:
+          type: string
+        updated_at:
+          type: integer
+          format: int64
+        trial_period_unit:
+          type: string
+        item_type:
+          type: string
+        currency_code:
+          type: string
+        archived_at:
+          type: integer
+          format: int64
+        free_quantity:
+          type: integer
+          format: int64
+        period:
+          type: integer
+          format: int64
+      required:
+      - id
+    ChargebeeBillingParams:
+      properties:
+        item_plan:
+          $ref: '#/components/schemas/ChargebeeItemPlan'
+        item_price:
+          $ref: '#/components/schemas/ChargebeeItemPrice'
+        item_prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChargebeeItemPrice'
+        reporting:
+          $ref: '#/components/schemas/ProviderReporting'
+    StripeBillingParams:
+      properties:
+        product:
+          $ref: '#/components/schemas/StripeProduct'
+        price:
+          $ref: '#/components/schemas/StripePrice'
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/StripePrice'
+        reporting:
+          $ref: '#/components/schemas/ProviderReporting'
+    ChargebeeItemPlan:
+      properties:
+        name:
+          type: string
+        item_family_id:
+          type: string
+        description:
+          type: string
+        usage_calculation:
+          type: string
+        external_name:
+          type: string
+        metered:
+          type: boolean
+        id:
+          type: string
+        status:
+          type: string
+        unit:
+          type: string
+        updated_at:
+          type: integer
+          format: int64
+        archived_at:
+          type: integer
+          format: int64
+      required:
+      - id
+    ProviderReporting:
+      properties:
+        reporting_period:
+          type: string
+    StripeTier:
+      properties:
+        flat_amount_decimal:
+          type: string
+        up_to:
+          type: integer
+          format: int64
+        unit_amount_decimal:
+          type: string
+        flat_amount:
+          type: integer
+          format: int64
+        unit_amount:
+          type: integer
+          format: int64
+    RecurlyPlanAddOn:
+      properties:
+        name:
+          type: string
+        currencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyCurrencyAmount'
+        usage_percentage:
+          type: double
+        add_on_type:
+          type: string
+        external_sku:
+          type: string
+        state:
+          type: string
+        tiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyAddOnTier'
+        tier_type:
+          type: string
+        code:
+          type: string
+        plan_id:
+          type: string
+        id:
+          type: string
+        percentage_tiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyAddOnPercentageTiers'
+        usage_type:
+          type: string
+        created_at:
+          type: string
+        usage_calculation_type:
+          type: string
+        updated_at:
+          type: string
+        deleted_at:
+          type: string
+      required:
+      - code
+    RecurlyBillingParams:
+      properties:
+        plan:
+          $ref: '#/components/schemas/RecurlyPlan'
+        add_on:
+          $ref: '#/components/schemas/RecurlyPlanAddOn'
+        add_ons:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyPlanAddOn'
+    RecurlyCurrencyAmount:
+      properties:
+        currency:
+          type: string
+        unit_amount:
+          type: double
+        unit_amount_decimal:
+          type: string
+      required:
+      - currency
+    RecurlyAddOnPercentageTier:
+      properties:
+        ending_amount:
+          type: double
+        usage_percent:
+          type: string
+    StripeRecurring:
+      properties:
+        trial_period_days:
+          type: integer
+          format: int64
+        interval:
+          type: string
+        usage_type:
+          type: string
+        interval_count:
+          type: integer
+          format: int64
+        aggregate_usage:
+          type: string
+    StripeProduct:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        unit_label:
+          type: string
+        id:
+          type: string
+        usage_type:
+          type: string
+      required:
+      - name
+      - id
+  securitySchemes:
+    managementAPIToken:
+      type: oauth2
+      description: "Your Management API token must be added to the request _Authorization_ header using the following format:\n\n `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`"
+      flows:
+        password:
+          tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+          scopes:
+            create:encrypted_keys: Create encrypted Keys for the Moesif secure proxy
+            delete:dashboards: Delete existing dashboards
+            update:dashboards: Update existing dashboards
+            create:dashboards: Create a new team dashboard that can be shared
+            read:public_workspaces: Read public workspaces/shared links
+            read:virtual_eventtypes: Read existing virtual events/tags
+            update:companies: Update existing companies and associated company metadata
+            create:companies: Create new companies and associated company metadata
+            create:reports: Create a new report such as SmartDiff
+            delete:workspaces: Delete existing workspaces
+            create:workspaces: Create a new workspace/chart that can be shared
+            read:workspaces: Read existing workspaces
+            update:virtual_eventtypes: Update existing virtual events/tags
+            create:cohorts: Save new customer cohorts
+            delete:encrypted_keys: Delete encrypted Keys for the Moesif secure proxy
+            read:dashboards: Read existing dashboards
+            read:events: Read/query events and associated event metadata
+            create:events: Create new events and associated event metadata
+            read:cohorts: Read previously saved customer cohorts
+            read:encrypted_keys: Read encrypted Keys for the Moesif secure proxy
+            update:apps: Update an existing application
+            update:encrypted_keys: Update encrypted Keys for the Moesif secure proxy
+            update:organizations: Update an existing application
+            create:access_tokens: Create new tokens to access the Management API or Collector API
+            create:users: Create new users and associated user metadata
+            create:apps: Create a new application/project under the organization
+            update:workspaces: Update existing workspaces
+            delete:cohorts: Delete previously saved customer cohorts
+            read:users: Read/query users and associated user metadata
+            delete:virtual_eventtypes: Delete existing virtual events/tags
+            read:reports: Read reports such as SmartDiff
+            delete:reports: Delete existing reports such as SmartDiff
+            update:users: Update existing users and associated user metadata
+            update:cohorts: Update previously saved customer cohorts
+            read:companies: Read/query companies and associated company metadata
+            create:virtual_eventtypes: Create virtual events/tags
+            delete:apps: Delete an existing application
+            delete:companies: Delete existing companies and associated company metadata
+            read:apps: Read the organization's applications
+            create:eth_abi: Create/upload new Ethereum ABI Entries
+            delete:users: Delete existing users and associated user metadata
+externalDocs:
+  description: Developer Docs
+  url: https://moesif.com/docs

@@ -1,0 +1,427 @@
+openapi: 3.0.0
+info:
+  description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
+  contact:
+  - email: support@moesif.com
+  - email: support@moesif.com
+  termsOfService: https://www.moesif.com/terms
+  version: '1'
+  title: Management Applications Governance Rules API
+servers:
+- url: https://api.moesif.com/v1
+  description: Management API V1
+- url: https://api.moesif.com/v1
+  description: Management API V1
+consumes:
+- application/json
+- application/json
+produces:
+- application/json
+- application/json
+tags:
+- name: Governance Rules
+paths:
+  /~/governance/rules:
+    post:
+      security:
+      - managementAPIToken:
+        - create:governance_rules
+      tags:
+      - Governance Rules
+      operationId: createGovernanceRule
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GovernanceRuleCreateItem'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      summary: Create New Governance Rules
+      responses:
+        '201':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GovernanceRulesDocument'
+    get:
+      security:
+      - managementAPIToken:
+        - read:governance_rules
+      tags:
+      - Governance Rules
+      operationId: getGovernanceRules
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      summary: Get Governance Rules
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GovernanceRulesDocument'
+  /~/governance/rules/{id}:
+    post:
+      security:
+      - managementAPIToken:
+        - update:governance_rules
+      tags:
+      - Governance Rules
+      operationId: updateGovernanceRule
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GovernanceRuleUpdateItem'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      summary: Update a Governance Rule
+      responses:
+        '201':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GovernanceRulesDocument'
+    get:
+      security:
+      - managementAPIToken:
+        - read:governance_rules
+      tags:
+      - Governance Rules
+      operationId: getGovernanceRule
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      summary: Get a Governance Rule
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GovernanceRulesDocument'
+    delete:
+      security:
+      - managementAPIToken:
+        - delete:governance_rules
+      tags:
+      - Governance Rules
+      operationId: deleteGovernanceRule
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+      summary: Delete a Governance Rule
+      responses:
+        '204':
+          description: success
+components:
+  schemas:
+    RulesResponseItem:
+      properties:
+        status:
+          type: integer
+          format: int32
+        headers:
+          type: collection.immutable.map[string,string]
+        body:
+          type: object
+        original_encoded_body:
+          type: string
+    Plan:
+      properties:
+        provider:
+          type: string
+        plan_id:
+          type: string
+        price_ids:
+          type: array
+          items:
+            type: string
+      required:
+      - provider
+      - plan_id
+      - price_ids
+    RegexRule:
+      properties:
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegexCondition'
+        sample_rate:
+          type: integer
+          format: int32
+      required:
+      - conditions
+    GovernanceRulesVariables:
+      properties:
+        name:
+          type: string
+        path:
+          type: string
+      required:
+      - name
+      - path
+    GovernanceRulesDocument:
+      properties:
+        name:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        model:
+          type: string
+        state:
+          type: integer
+          format: int32
+        cohorts:
+          type: array
+          items:
+            type: object
+        _id:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/GovernanceRulesVariables'
+        applied_to:
+          type: string
+        block:
+          type: boolean
+        response:
+          $ref: '#/components/schemas/RulesResponseItem'
+        applied_to_unidentified:
+          type: boolean
+        regex_config:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegexRule'
+        created_at:
+          type: string
+          format: date-time
+        app_id:
+          type: string
+        plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plan'
+        type:
+          type: string
+        org_id:
+          type: string
+      required:
+      - created_at
+      - type
+      - state
+      - org_id
+      - app_id
+      - name
+      - block
+    GovernanceRuleCreateItem:
+      properties:
+        name:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        model:
+          type: string
+        state:
+          type: integer
+          format: int32
+        cohorts:
+          type: array
+          items:
+            type: object
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/GovernanceRulesVariables'
+        applied_to:
+          type: string
+        block:
+          type: boolean
+        response:
+          $ref: '#/components/schemas/RulesResponseItem'
+        applied_to_unidentified:
+          type: boolean
+        regex_config:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegexRule'
+        plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plan'
+        type:
+          type: string
+      required:
+      - type
+      - state
+      - name
+      - block
+    RegexCondition:
+      properties:
+        path:
+          type: string
+        value:
+          type: string
+      required:
+      - path
+      - value
+    GovernanceRuleUpdateItem:
+      properties:
+        name:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        model:
+          type: string
+        state:
+          type: integer
+          format: int32
+        cohorts:
+          type: array
+          items:
+            type: object
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/GovernanceRulesVariables'
+        applied_to:
+          type: string
+        block:
+          type: boolean
+        response:
+          $ref: '#/components/schemas/RulesResponseItem'
+        applied_to_unidentified:
+          type: boolean
+        regex_config:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegexRule'
+        plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plan'
+        type:
+          type: string
+  securitySchemes:
+    managementAPIToken:
+      type: oauth2
+      description: "Your Management API token must be added to the request _Authorization_ header using the following format:\n\n `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`"
+      flows:
+        password:
+          tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+          scopes:
+            create:encrypted_keys: Create encrypted Keys for the Moesif secure proxy
+            delete:dashboards: Delete existing dashboards
+            update:dashboards: Update existing dashboards
+            create:dashboards: Create a new team dashboard that can be shared
+            read:public_workspaces: Read public workspaces/shared links
+            read:virtual_eventtypes: Read existing virtual events/tags
+            update:companies: Update existing companies and associated company metadata
+            create:companies: Create new companies and associated company metadata
+            create:reports: Create a new report such as SmartDiff
+            delete:workspaces: Delete existing workspaces
+            create:workspaces: Create a new workspace/chart that can be shared
+            read:workspaces: Read existing workspaces
+            update:virtual_eventtypes: Update existing virtual events/tags
+            create:cohorts: Save new customer cohorts
+            delete:encrypted_keys: Delete encrypted Keys for the Moesif secure proxy
+            read:dashboards: Read existing dashboards
+            read:events: Read/query events and associated event metadata
+            create:events: Create new events and associated event metadata
+            read:cohorts: Read previously saved customer cohorts
+            read:encrypted_keys: Read encrypted Keys for the Moesif secure proxy
+            update:apps: Update an existing application
+            update:encrypted_keys: Update encrypted Keys for the Moesif secure proxy
+            update:organizations: Update an existing application
+            create:access_tokens: Create new tokens to access the Management API or Collector API
+            create:users: Create new users and associated user metadata
+            create:apps: Create a new application/project under the organization
+            update:workspaces: Update existing workspaces
+            delete:cohorts: Delete previously saved customer cohorts
+            read:users: Read/query users and associated user metadata
+            delete:virtual_eventtypes: Delete existing virtual events/tags
+            read:reports: Read reports such as SmartDiff
+            delete:reports: Delete existing reports such as SmartDiff
+            update:users: Update existing users and associated user metadata
+            update:cohorts: Update previously saved customer cohorts
+            read:companies: Read/query companies and associated company metadata
+            create:virtual_eventtypes: Create virtual events/tags
+            delete:apps: Delete an existing application
+            delete:companies: Delete existing companies and associated company metadata
+            read:apps: Read the organization's applications
+            create:eth_abi: Create/upload new Ethereum ABI Entries
+            delete:users: Delete existing users and associated user metadata
+externalDocs:
+  description: Developer Docs
+  url: https://moesif.com/docs

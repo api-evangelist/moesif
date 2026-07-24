@@ -1,0 +1,335 @@
+openapi: 3.0.0
+info:
+  description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
+  contact:
+  - email: support@moesif.com
+  - email: support@moesif.com
+  termsOfService: https://www.moesif.com/terms
+  version: '1'
+  title: Management Applications Properties API
+servers:
+- url: https://api.moesif.com/v1
+  description: Management API V1
+- url: https://api.moesif.com/v1
+  description: Management API V1
+consumes:
+- application/json
+- application/json
+produces:
+- application/json
+- application/json
+tags:
+- name: Properties
+paths:
+  /search/~/mappings/companies/properties:
+    get:
+      security:
+      - managementAPIToken:
+        - read:company_properties
+      tags:
+      - Properties
+      operationId: getProperties
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: app_id
+        required: true
+      summary: Get Property Mapping for Companies
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/object'
+  /search/~/mappings/companymetrics/properties:
+    get:
+      security:
+      - managementAPIToken:
+        - read:companies
+      tags:
+      - Properties
+      operationId: getProperties
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: app_id
+        required: true
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: from
+        required: false
+      summary: Get Property Mapping for CompanyMetrics
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/object'
+  /search/~/mappings/events/properties:
+    get:
+      security:
+      - managementAPIToken:
+        - read:properties
+      tags:
+      - Properties
+      operationId: getProperties
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: app_id
+        required: true
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: from
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: to
+        required: false
+      summary: Get Property Mapping for Events
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/object'
+  /search/~/mappings/events/request/body/properties:
+    get:
+      security:
+      - managementAPIToken:
+        - read:request_body_properties
+      tags:
+      - Properties
+      operationId: getRequestBodyProperties
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: app_id
+        required: true
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: from
+        required: true
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: to
+        required: true
+      - schema:
+          default: false
+          type: boolean
+        in: query
+        name: include_values
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: key_path
+        required: false
+      summary: Get Property Mapping for Events Request Body
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/object'
+  /search/~/mappings/events/response/body/properties:
+    get:
+      security:
+      - managementAPIToken:
+        - read:response_body_properties
+      tags:
+      - Properties
+      operationId: getResponseBodyProperties
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: app_id
+        required: true
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: from
+        required: true
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: to
+        required: true
+      - schema:
+          default: false
+          type: boolean
+        in: query
+        name: include_values
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: key_path
+        required: false
+      summary: Get Property Mapping for Events Response Body
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/object'
+  /search/~/mappings/usermetrics/properties:
+    get:
+      security:
+      - managementAPIToken:
+        - read:users
+      tags:
+      - Properties
+      operationId: getProperties
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: app_id
+        required: true
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: from
+        required: false
+      summary: Get Property Mapping for UserMetrics
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/object'
+  /search/~/mappings/users/properties:
+    get:
+      security:
+      - managementAPIToken:
+        - read:users
+      tags:
+      - Properties
+      operationId: getProperties
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: app_id
+        required: true
+      summary: Get Property Mapping for Users
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/object'
+components:
+  securitySchemes:
+    managementAPIToken:
+      type: oauth2
+      description: "Your Management API token must be added to the request _Authorization_ header using the following format:\n\n `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`"
+      flows:
+        password:
+          tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+          scopes:
+            create:encrypted_keys: Create encrypted Keys for the Moesif secure proxy
+            delete:dashboards: Delete existing dashboards
+            update:dashboards: Update existing dashboards
+            create:dashboards: Create a new team dashboard that can be shared
+            read:public_workspaces: Read public workspaces/shared links
+            read:virtual_eventtypes: Read existing virtual events/tags
+            update:companies: Update existing companies and associated company metadata
+            create:companies: Create new companies and associated company metadata
+            create:reports: Create a new report such as SmartDiff
+            delete:workspaces: Delete existing workspaces
+            create:workspaces: Create a new workspace/chart that can be shared
+            read:workspaces: Read existing workspaces
+            update:virtual_eventtypes: Update existing virtual events/tags
+            create:cohorts: Save new customer cohorts
+            delete:encrypted_keys: Delete encrypted Keys for the Moesif secure proxy
+            read:dashboards: Read existing dashboards
+            read:events: Read/query events and associated event metadata
+            create:events: Create new events and associated event metadata
+            read:cohorts: Read previously saved customer cohorts
+            read:encrypted_keys: Read encrypted Keys for the Moesif secure proxy
+            update:apps: Update an existing application
+            update:encrypted_keys: Update encrypted Keys for the Moesif secure proxy
+            update:organizations: Update an existing application
+            create:access_tokens: Create new tokens to access the Management API or Collector API
+            create:users: Create new users and associated user metadata
+            create:apps: Create a new application/project under the organization
+            update:workspaces: Update existing workspaces
+            delete:cohorts: Delete previously saved customer cohorts
+            read:users: Read/query users and associated user metadata
+            delete:virtual_eventtypes: Delete existing virtual events/tags
+            read:reports: Read reports such as SmartDiff
+            delete:reports: Delete existing reports such as SmartDiff
+            update:users: Update existing users and associated user metadata
+            update:cohorts: Update previously saved customer cohorts
+            read:companies: Read/query companies and associated company metadata
+            create:virtual_eventtypes: Create virtual events/tags
+            delete:apps: Delete an existing application
+            delete:companies: Delete existing companies and associated company metadata
+            read:apps: Read the organization's applications
+            create:eth_abi: Create/upload new Ethereum ABI Entries
+            delete:users: Delete existing users and associated user metadata
+externalDocs:
+  description: Developer Docs
+  url: https://moesif.com/docs

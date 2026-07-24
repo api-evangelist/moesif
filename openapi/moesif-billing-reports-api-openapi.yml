@@ -1,0 +1,451 @@
+openapi: 3.0.0
+info:
+  description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
+  contact:
+  - email: support@moesif.com
+  - email: support@moesif.com
+  termsOfService: https://www.moesif.com/terms
+  version: '1'
+  title: Management Applications Billing Reports API
+servers:
+- url: https://api.moesif.com/v1
+  description: Management API V1
+- url: https://api.moesif.com/v1
+  description: Management API V1
+consumes:
+- application/json
+- application/json
+produces:
+- application/json
+- application/json
+tags:
+- name: Billing Reports
+paths:
+  /~/billing/reports:
+    get:
+      security:
+      - managementAPIToken:
+        - read:billing_meters
+        - read:billing_reports
+      description: Query audit history of billing reports to external billing providers
+      tags:
+      - Billing Reports
+      operationId: getBillingReports
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: from
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: to
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: billing_meter_id
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: company_id
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: provider
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: subscription_id
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: success
+        required: false
+      - schema:
+          format: int32
+          type: integer
+        in: query
+        name: status_code
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: error_code
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: '`type`'
+        required: false
+      summary: Get BillingReports
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BillingReport'
+  /~/billing/reports/metrics:
+    get:
+      security:
+      - managementAPIToken:
+        - create:billing_meters
+        - create:billing_reports
+      description: Get BillingReports' values for a given meter and time range for a single company or all companies
+      tags:
+      - Billing Reports
+      operationId: getBillingReportsMetrics
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: orgId
+        required: true
+      - schema:
+          default: '~'
+          type: string
+        in: query
+        name: app_id
+        required: false
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: from
+        required: true
+      - schema:
+          type: string
+          format: date-time
+        in: query
+        name: to
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: billing_meter_id
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: success
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: aggregator
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: interval
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: company_id
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: subscription_id
+        required: false
+      - schema:
+          type: array
+          items:
+            type: string
+        in: query
+        name: '`type`'
+        required: false
+      summary: Get BillingReports' values for a given meter and time range for a single company or all companies
+      responses:
+        '200':
+          description: three buckets of aggregates for the given meter and time range including Metric Value, Reported Usage, and list of errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingMetricResponse'
+components:
+  schemas:
+    BillingReportUsageInvoice:
+      properties:
+        period_start:
+          type: string
+          format: date-time
+        period_end:
+          type: string
+          format: date-time
+        id:
+          type: string
+      required:
+      - id
+    BillingMetricBucket:
+      properties:
+        start:
+          type: string
+          format: date-time
+        metric:
+          type: number
+          format: double
+        amounts:
+          type: collection.immutable.map[string,scala.double]
+        ending_balance:
+          $ref: '#/components/schemas/CreditBalanceMetric'
+      required:
+      - start
+    ChannelRequest:
+      properties:
+        channel_id:
+          type: string
+        channel_name:
+          type: string
+        provider_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProviderRequest'
+      required:
+      - channel_id
+      - channel_name
+      - provider_requests
+    ProviderRequest:
+      properties:
+        success:
+          type: boolean
+        status_code:
+          type: integer
+          format: int32
+        job_id:
+          type: string
+        error_message:
+          type: string
+        error_code:
+          type: string
+        request_time:
+          type: string
+          format: date-time
+      required:
+      - job_id
+      - request_time
+      - success
+      - status_code
+      - error_code
+      - error_message
+    BillingReport:
+      properties:
+        ending_balance:
+          $ref: '#/components/schemas/CreditBalance'
+        company_id:
+          type: string
+        success:
+          type: boolean
+        provider:
+          type: string
+        report_version:
+          type: integer
+          format: int32
+        usage_end_time:
+          type: string
+          format: date-time
+        usage:
+          $ref: '#/components/schemas/BillingReportUsage'
+        _id:
+          type: string
+        meter_usage:
+          type: integer
+          format: int64
+        last_success_time:
+          type: string
+          format: date-time
+        beginning_balance:
+          $ref: '#/components/schemas/CreditBalance'
+        billing_meter_id:
+          type: string
+        amount:
+          type: number
+          format: double
+        usage_start_time:
+          type: string
+          format: date-time
+        status:
+          type: string
+        provider_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProviderRequest'
+        currency:
+          type: string
+        report_total_usage:
+          type: integer
+          format: int64
+        channel_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChannelRequest'
+        created_at:
+          type: string
+          format: date-time
+        app_id:
+          type: string
+        subscription_id:
+          type: string
+        subscription_period_start:
+          type: string
+          format: date-time
+        balance_changes:
+          type: array
+          items:
+            $ref: '#/components/schemas/BalanceChange'
+        type:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        org_id:
+          type: string
+        subscription_period_end:
+          type: string
+          format: date-time
+        meter_metric:
+          type: integer
+          format: int64
+      required:
+      - org_id
+      - app_id
+      - usage_start_time
+      - usage_end_time
+      - subscription_id
+      - billing_meter_id
+      - provider
+      - company_id
+      - meter_metric
+      - meter_usage
+      - report_total_usage
+      - success
+      - provider_requests
+    BalanceChange:
+      properties:
+        amount:
+          type: number
+          format: double
+      required:
+      - amount
+    BillingMetricResponse:
+      properties:
+        buckets:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingMetricBucket'
+      required:
+      - buckets
+    CreditBalance:
+      properties:
+        sequence_id:
+          type: integer
+          format: int32
+        current_balance:
+          type: number
+          format: double
+        pending_activity:
+          type: number
+          format: double
+        available_balance:
+          type: number
+          format: double
+      required:
+      - sequence_id
+      - current_balance
+      - pending_activity
+      - available_balance
+    BillingReportUsage:
+      properties:
+        invoice:
+          $ref: '#/components/schemas/BillingReportUsageInvoice'
+        aggregator:
+          type: string
+    CreditBalanceMetric:
+      properties:
+        current_balance:
+          type: number
+          format: double
+        pending_activity:
+          type: number
+          format: double
+        available_balance:
+          type: number
+          format: double
+      required:
+      - current_balance
+      - pending_activity
+      - available_balance
+  securitySchemes:
+    managementAPIToken:
+      type: oauth2
+      description: "Your Management API token must be added to the request _Authorization_ header using the following format:\n\n `Authorization: Bearer YOUR_MANAGEMENT_API_KEY`"
+      flows:
+        password:
+          tokenUrl: https://api.moesif.com/v1/:orgId/oauth/access_tokens
+          scopes:
+            create:encrypted_keys: Create encrypted Keys for the Moesif secure proxy
+            delete:dashboards: Delete existing dashboards
+            update:dashboards: Update existing dashboards
+            create:dashboards: Create a new team dashboard that can be shared
+            read:public_workspaces: Read public workspaces/shared links
+            read:virtual_eventtypes: Read existing virtual events/tags
+            update:companies: Update existing companies and associated company metadata
+            create:companies: Create new companies and associated company metadata
+            create:reports: Create a new report such as SmartDiff
+            delete:workspaces: Delete existing workspaces
+            create:workspaces: Create a new workspace/chart that can be shared
+            read:workspaces: Read existing workspaces
+            update:virtual_eventtypes: Update existing virtual events/tags
+            create:cohorts: Save new customer cohorts
+            delete:encrypted_keys: Delete encrypted Keys for the Moesif secure proxy
+            read:dashboards: Read existing dashboards
+            read:events: Read/query events and associated event metadata
+            create:events: Create new events and associated event metadata
+            read:cohorts: Read previously saved customer cohorts
+            read:encrypted_keys: Read encrypted Keys for the Moesif secure proxy
+            update:apps: Update an existing application
+            update:encrypted_keys: Update encrypted Keys for the Moesif secure proxy
+            update:organizations: Update an existing application
+            create:access_tokens: Create new tokens to access the Management API or Collector API
+            create:users: Create new users and associated user metadata
+            create:apps: Create a new application/project under the organization
+            update:workspaces: Update existing workspaces
+            delete:cohorts: Delete previously saved customer cohorts
+            read:users: Read/query users and associated user metadata
+            delete:virtual_eventtypes: Delete existing virtual events/tags
+            read:reports: Read reports such as SmartDiff
+            delete:reports: Delete existing reports such as SmartDiff
+            update:users: Update existing users and associated user metadata
+            update:cohorts: Update previously saved customer cohorts
+            read:companies: Read/query companies and associated company metadata
+            create:virtual_eventtypes: Create virtual events/tags
+            delete:apps: Delete an existing application
+            delete:companies: Delete existing companies and associated company metadata
+            read:apps: Read the organization's applications
+            create:eth_abi: Create/upload new Ethereum ABI Entries
+            delete:users: Delete existing users and associated user metadata
+externalDocs:
+  description: Developer Docs
+  url: https://moesif.com/docs
