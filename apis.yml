@@ -8,7 +8,20 @@ description: >-
   has expanded into AI agent and LLM analytics with usage-based billing for AI apps, GenAI-powered "Ask AI" analytics
   queries, and content monetization for LLM training.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/moesif.png
 url: https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/apis.yml
 tags:
   - Analytics
@@ -29,55 +42,324 @@ created: '2025-01-08'
 modified: '2026-05-22'
 specificationVersion: '0.19'
 apis:
-  - aid: moesif:moesif
-    name: Moesif Management API
-    description: >-
-      The Moesif Management API exposes the platform's full control plane for analytics, monetization, and governance.
-      Capabilities include querying events, users, and companies; managing applications, workspaces, and dashboards;
-      defining billing meters, product catalog entries, subscriptions, and balance transactions; configuring governance
-      rules and quotas; managing cohorts, email templates, and metrics; and chat-style "Ask Question" analytics queries
-      powered by GenAI.
-    humanURL: https://www.moesif.com/
-    baseURL: https://api.moesif.com
-    tags:
-      - Analytics
-      - Monetization
-      - Monitoring
-      - Observability
-      - Governance
-      - Billing
-      - AI Agents
-    properties:
-      - type: Documentation
-        url: https://www.moesif.com/docs/api
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/openapi/moesif-openapi.yml
-      - type: SpectralRules
-        url: rules/moesif-rules.yml
-      - type: Plans
-        url: plans/moesif-plans-pricing.yml
-      - type: RateLimits
-        url: rate-limits/moesif-rate-limits.yml
-      - type: FinOps
-        url: finops/moesif-finops.yml
-  - aid: moesif:collector
-    name: Moesif Collector API
-    description: >-
-      The Moesif Collector API is the high-volume ingestion endpoint that receives API event data from server, client,
-      and gateway SDKs. It accepts HTTP API call records, user/company entity updates, and custom action events that
-      feed Moesif's analytics, monetization, and governance pipelines.
-    humanURL: https://www.moesif.com/docs/
-    baseURL: https://api.moesif.net
-    tags:
-      - Ingestion
-      - Events
-      - Telemetry
-      - OpenTelemetry
-    properties:
-      - type: Documentation
-        url: https://www.moesif.com/docs/api/
-      - type: SDKs
-        url: https://www.moesif.com/docs/server-integration/
+- aid: moesif:collector
+  name: Moesif Collector API
+  description: >-
+    The Moesif Collector API is the high-volume ingestion endpoint that receives API event data from server,
+    client, and gateway SDKs. It accepts HTTP API call records, user/company entity updates, and custom
+    action events that feed Moesif's analytics, monetization, and governance pipelines.
+  humanURL: https://www.moesif.com/docs/
+  baseURL: https://api.moesif.net
+  tags:
+  - Ingestion
+  - Events
+  - Telemetry
+  - OpenTelemetry
+  properties:
+  - type: Documentation
+    url: https://www.moesif.com/docs/api/
+  - type: SDKs
+    url: https://www.moesif.com/docs/server-integration/
+- aid: moesif:moesif-applications-api
+  name: Moesif Applications API
+  description: The Applications API from Moesif — 2 operation(s) for applications.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-applications-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-balance-transactions-api
+  name: Moesif Balance Transactions API
+  description: The Balance Transactions API from Moesif — 1 operation(s) for balance transactions.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Balance Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-balance-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-billing-meters-api
+  name: Moesif Billing Meters API
+  description: The Billing Meters API from Moesif — 2 operation(s) for billing meters.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Billing Meters
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-billing-meters-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-billing-reports-api
+  name: Moesif Billing Reports API
+  description: The Billing Reports API from Moesif — 2 operation(s) for billing reports.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Billing Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-billing-reports-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-cohorts-api
+  name: Moesif Cohorts API
+  description: The Cohorts API from Moesif — 3 operation(s) for cohorts.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Cohorts
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-cohorts-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-companies-api
+  name: Moesif Companies API
+  description: The Companies API from Moesif — 5 operation(s) for companies.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-companies-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-dashboards-api
+  name: Moesif Dashboards API
+  description: The Dashboards API from Moesif — 7 operation(s) for dashboards.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Dashboards
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-dashboards-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-email-templates-api
+  name: Moesif Email Templates API
+  description: The Email Templates API from Moesif — 2 operation(s) for email templates.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Email Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-email-templates-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-governance-rules-api
+  name: Moesif Governance Rules API
+  description: The Governance Rules API from Moesif — 2 operation(s) for governance rules.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Governance Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-governance-rules-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-metrics-api
+  name: Moesif Metrics API
+  description: The Metrics API from Moesif — 4 operation(s) for metrics.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-product-catalog-api
+  name: Moesif Product Catalog API
+  description: The Product Catalog API from Moesif — 4 operation(s) for product catalog.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Product Catalog
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-product-catalog-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-properties-api
+  name: Moesif Properties API
+  description: The Properties API from Moesif — 7 operation(s) for properties.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Properties
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-properties-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-subscriptions-api
+  name: Moesif Subscriptions API
+  description: The Subscriptions API from Moesif — 4 operation(s) for subscriptions.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-users-api
+  name: Moesif Users API
+  description: The Users API from Moesif — 5 operation(s) for users.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-users-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
+- aid: moesif:moesif-workspaces-api
+  name: Moesif Workspaces API
+  description: The Workspaces API from Moesif — 8 operation(s) for workspaces.
+  humanURL: https://www.moesif.com/
+  baseURL: https://api.moesif.com
+  tags:
+  - Workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/moesif-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://www.moesif.com/docs/api
+  - type: SpectralRules
+    url: rules/moesif-rules.yml
+  - type: Plans
+    url: plans/moesif-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/moesif-rate-limits.yml
+  - type: FinOps
+    url: finops/moesif-finops.yml
 common:
   - type: AgenticAccess
     url: agentic-access/moesif-agentic-access.yml
