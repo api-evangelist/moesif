@@ -1,0 +1,50 @@
+{
+  "provider": "moesif",
+  "sources": [
+    "moesif-applications-api-openapi.yml",
+    "moesif-balance-transactions-api-openapi.yml",
+    "moesif-billing-meters-api-openapi.yml",
+    "moesif-billing-reports-api-openapi.yml",
+    "moesif-cohorts-api-openapi.yml",
+    "moesif-companies-api-openapi.yml",
+    "moesif-dashboards-api-openapi.yml",
+    "moesif-email-templates-api-openapi.yml",
+    "moesif-governance-rules-api-openapi.yml",
+    "moesif-metrics-api-openapi.yml",
+    "moesif-product-catalog-api-openapi.yml",
+    "moesif-properties-api-openapi.yml",
+    "moesif-subscriptions-api-openapi.yml",
+    "moesif-users-api-openapi.yml",
+    "moesif-workspaces-api-openapi.yml"
+  ],
+  "outputs": [
+    "moesif-applications-api-openapi.yml",
+    "moesif-balance-transactions-api-openapi.yml",
+    "moesif-billing-meters-api-openapi.yml",
+    "moesif-billing-reports-api-openapi.yml",
+    "moesif-cohorts-api-openapi.yml",
+    "moesif-companies-api-openapi.yml",
+    "moesif-dashboards-api-openapi.yml",
+    "moesif-email-templates-api-openapi.yml",
+    "moesif-governance-rules-api-openapi.yml",
+    "moesif-metrics-api-openapi.yml",
+    "moesif-product-catalog-api-openapi.yml",
+    "moesif-properties-api-openapi.yml",
+    "moesif-subscriptions-api-openapi.yml",
+    "moesif-users-api-openapi.yml",
+    "moesif-workspaces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [
+    "moesif-companies-api-openapi.yml: dangling $ref: #/components/schemas/companyResponseDTO",
+    "moesif-companies-api-openapi.yml: dangling $ref: #/components/schemas/object",
+    "moesif-email-templates-api-openapi.yml: dangling $ref: #/components/schemas/com.moesif.docdb.emailtemplates.EmailTemplateDocument",
+    "moesif-metrics-api-openapi.yml: dangling $ref: #/components/schemas/object",
+    "moesif-properties-api-openapi.yml: dangling $ref: #/components/schemas/object",
+    "moesif-subscriptions-api-openapi.yml: dangling $ref: #/components/schemas/companyResponseDTO",
+    "moesif-users-api-openapi.yml: dangling $ref: #/components/schemas/object"
+  ],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
