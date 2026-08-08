@@ -6,7 +6,7 @@
       "feed_url": "https://www.moesif.com/blog/feed.xml",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "feed"
     },
     {
       "source": "https://www.moesif.com/wrap",
@@ -17,5 +17,5 @@
     }
   ],
   "post_count": 14,
-  "fetched": "2026-08-01T15:49:00Z"
+  "fetched": "2026-08-06T14:08:46Z"
 }
