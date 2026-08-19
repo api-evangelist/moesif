@@ -1,0 +1,565 @@
+{
+  "item": [
+    {
+      "id": "5d066d1c-6b2c-4374-9393-fa981f0b087e",
+      "name": "Applications",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c435b786-993a-4614-bb4c-2a91e117d5d9",
+          "name": "Create a new App",
+          "request": {
+            "name": "Create a new App",
+            "description": {
+              "content": "Create a new app under the selected organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "~",
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"week_starts_on\": \"<integer>\",\n  \"custom_app_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41aa7395-3a52-4422-bd16-3b912a4d14b6",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"week_starts_on\": \"<integer>\",\n  \"custom_app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"custom_app_id\": \"string\",\n  \"search_api_base_url\": \"string\",\n  \"week_starts_on\": 5327,\n  \"id\": \"string\",\n  \"portal_api_base_url\": \"string\",\n  \"secure_proxy\": true,\n  \"time_zone\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8927197e-58de-4d67-9e99-ecf6736f81d5",
+          "name": "Gets Apps",
+          "request": {
+            "name": "Gets Apps",
+            "description": {
+              "content": "Gets a list of apps for the selected organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "~",
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "take",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "None"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "47c525e3-08c3-4f26-b28c-e9739b1e4073",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "before_id",
+                      "value": "None"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"custom_app_id\": \"string\",\n    \"search_api_base_url\": \"string\",\n    \"week_starts_on\": 3995,\n    \"id\": \"string\",\n    \"portal_api_base_url\": \"string\",\n    \"secure_proxy\": true,\n    \"time_zone\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"custom_app_id\": \"string\",\n    \"search_api_base_url\": \"string\",\n    \"week_starts_on\": 4990,\n    \"id\": \"string\",\n    \"portal_api_base_url\": \"string\",\n    \"secure_proxy\": true,\n    \"time_zone\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ccd993e5-d9ef-459d-be10-73bae914ef42",
+          "name": "Update Apps",
+          "request": {
+            "name": "Update Apps",
+            "description": {
+              "content": "Update the name of the app for the selected organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "~",
+                "apps",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"week_starts_on\": \"<integer>\",\n  \"custom_app_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a50ef046-efe2-4be4-9f09-7ef4c4044998",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"week_starts_on\": \"<integer>\",\n  \"custom_app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"week_starts_on\": \"<integer>\",\n  \"custom_app_id\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32ece90f-b417-4f3b-a16c-753bb5bde353",
+          "name": "Delete Apps",
+          "request": {
+            "name": "Delete Apps",
+            "description": {
+              "content": "Delete the app for the selected organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "~",
+                "apps",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5f734fd9-cf46-4ae0-a09f-0a57bb596be7",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "apps",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moesif.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7c1b2e35-a7ef-4b4f-8257-e37bde0d5668",
+    "name": "Management Applications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.",
+      "type": "text/plain"
+    }
+  }
+}

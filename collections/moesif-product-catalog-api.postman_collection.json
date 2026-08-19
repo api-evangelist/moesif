@@ -1,0 +1,1545 @@
+{
+  "item": [
+    {
+      "id": "255ee6d7-7b1a-4ffd-9d91-76f24d347f84",
+      "name": "Product Catalog",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5fb28048-46bc-4899-882d-75d321fcded9",
+          "name": "Create a new Moesif Plan",
+          "request": {
+            "name": "Create a new Moesif Plan",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "catalog",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"prices\": [\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    }\n  ],\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_id\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3f490c34-aebf-4bb1-9e79-2426f7aa4cb6",
+              "name": "created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "catalog",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"prices\": [\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    }\n  ],\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_id\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"prices\": [\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    }\n  ],\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_id\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83451ecb-a468-492e-94a8-e4042d133997",
+          "name": "List all Moesif Plans",
+          "request": {
+            "name": "List all Moesif Plans",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "catalog",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "all"
+                },
+                {
+                  "disabled": false,
+                  "key": "includes",
+                  "value": "None"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "03acaaa4-8e09-4641-88a9-7c7d93091217",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "catalog",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "all"
+                    },
+                    {
+                      "key": "includes",
+                      "value": "None"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"prices\": [\n      {\n        \"name\": \"<string>\",\n        \"transform_quantity\": {\n          \"divide_by\": \"<long>\",\n          \"round\": \"<string>\"\n        },\n        \"provider\": \"<string>\",\n        \"price_in_decimal\": \"<string>\",\n        \"tiers\": [\n          {\n            \"up_to\": \"<util.either[scala.long,string]>\",\n            \"unit_price_in_decimal\": \"<string>\",\n            \"flat_price_in_decimal\": \"<string>\"\n          },\n          {\n            \"up_to\": \"<util.either[scala.long,string]>\",\n            \"unit_price_in_decimal\": \"<string>\",\n            \"flat_price_in_decimal\": \"<string>\"\n          }\n        ],\n        \"period_units\": \"<string>\",\n        \"plan_id\": \"<string>\",\n        \"id\": \"<string>\",\n        \"status\": \"<string>\",\n        \"pricing_model\": \"<string>\",\n        \"tax_behavior\": \"<string>\",\n        \"currency\": \"<string>\",\n        \"metadata\": \"<collection.immutable.map[string,string]>\",\n        \"created_at\": \"<dateTime>\",\n        \"unit\": \"<string>\",\n        \"usage_aggregator\": \"<string>\",\n        \"period\": \"<long>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"transform_quantity\": {\n          \"divide_by\": \"<long>\",\n          \"round\": \"<string>\"\n        },\n        \"provider\": \"<string>\",\n        \"price_in_decimal\": \"<string>\",\n        \"tiers\": [\n          {\n            \"up_to\": \"<util.either[scala.long,string]>\",\n            \"unit_price_in_decimal\": \"<string>\",\n            \"flat_price_in_decimal\": \"<string>\"\n          },\n          {\n            \"up_to\": \"<util.either[scala.long,string]>\",\n            \"unit_price_in_decimal\": \"<string>\",\n            \"flat_price_in_decimal\": \"<string>\"\n          }\n        ],\n        \"period_units\": \"<string>\",\n        \"plan_id\": \"<string>\",\n        \"id\": \"<string>\",\n        \"status\": \"<string>\",\n        \"pricing_model\": \"<string>\",\n        \"tax_behavior\": \"<string>\",\n        \"currency\": \"<string>\",\n        \"metadata\": \"<collection.immutable.map[string,string]>\",\n        \"created_at\": \"<dateTime>\",\n        \"unit\": \"<string>\",\n        \"usage_aggregator\": \"<string>\",\n        \"period\": \"<long>\"\n      }\n    ],\n    \"provider\": \"<string>\",\n    \"description\": \"<string>\",\n    \"id\": \"<string>\",\n    \"status\": \"<string>\",\n    \"product_id\": \"<string>\",\n    \"metadata\": \"<collection.immutable.map[string,string]>\",\n    \"created_at\": \"<dateTime>\",\n    \"unit\": \"<string>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"prices\": [\n      {\n        \"name\": \"<string>\",\n        \"transform_quantity\": {\n          \"divide_by\": \"<long>\",\n          \"round\": \"<string>\"\n        },\n        \"provider\": \"<string>\",\n        \"price_in_decimal\": \"<string>\",\n        \"tiers\": [\n          {\n            \"up_to\": \"<util.either[scala.long,string]>\",\n            \"unit_price_in_decimal\": \"<string>\",\n            \"flat_price_in_decimal\": \"<string>\"\n          },\n          {\n            \"up_to\": \"<util.either[scala.long,string]>\",\n            \"unit_price_in_decimal\": \"<string>\",\n            \"flat_price_in_decimal\": \"<string>\"\n          }\n        ],\n        \"period_units\": \"<string>\",\n        \"plan_id\": \"<string>\",\n        \"id\": \"<string>\",\n        \"status\": \"<string>\",\n        \"pricing_model\": \"<string>\",\n        \"tax_behavior\": \"<string>\",\n        \"currency\": \"<string>\",\n        \"metadata\": \"<collection.immutable.map[string,string]>\",\n        \"created_at\": \"<dateTime>\",\n        \"unit\": \"<string>\",\n        \"usage_aggregator\": \"<string>\",\n        \"period\": \"<long>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"transform_quantity\": {\n          \"divide_by\": \"<long>\",\n          \"round\": \"<string>\"\n        },\n        \"provider\": \"<string>\",\n        \"price_in_decimal\": \"<string>\",\n        \"tiers\": [\n          {\n            \"up_to\": \"<util.either[scala.long,string]>\",\n            \"unit_price_in_decimal\": \"<string>\",\n            \"flat_price_in_decimal\": \"<string>\"\n          },\n          {\n            \"up_to\": \"<util.either[scala.long,string]>\",\n            \"unit_price_in_decimal\": \"<string>\",\n            \"flat_price_in_decimal\": \"<string>\"\n          }\n        ],\n        \"period_units\": \"<string>\",\n        \"plan_id\": \"<string>\",\n        \"id\": \"<string>\",\n        \"status\": \"<string>\",\n        \"pricing_model\": \"<string>\",\n        \"tax_behavior\": \"<string>\",\n        \"currency\": \"<string>\",\n        \"metadata\": \"<collection.immutable.map[string,string]>\",\n        \"created_at\": \"<dateTime>\",\n        \"unit\": \"<string>\",\n        \"usage_aggregator\": \"<string>\",\n        \"period\": \"<long>\"\n      }\n    ],\n    \"provider\": \"<string>\",\n    \"description\": \"<string>\",\n    \"id\": \"<string>\",\n    \"status\": \"<string>\",\n    \"product_id\": \"<string>\",\n    \"metadata\": \"<collection.immutable.map[string,string]>\",\n    \"created_at\": \"<dateTime>\",\n    \"unit\": \"<string>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a863d8b-a8f5-4b13-9774-1349b737288c",
+          "name": "Get a Moesif Plan",
+          "request": {
+            "name": "Get a Moesif Plan",
+            "description": {
+              "content": "Get the Moesif Plan for authenticated users",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "catalog",
+                "plans",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d8a2c10e-b141-4272-95df-a71018f73802",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "catalog",
+                    "plans",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"prices\": [\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    }\n  ],\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_id\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e8a0138-24b8-4b84-aa7e-0fcdc0d87530",
+          "name": "Delete a Moesif Plan",
+          "request": {
+            "name": "Delete a Moesif Plan",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "catalog",
+                "plans",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "36b55e63-a5a9-4173-843e-7159c850323c",
+              "name": "no content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "catalog",
+                    "plans",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54eed0cb-82e1-4972-ad25-da2e276459db",
+          "name": "Update a Moesif Plan",
+          "request": {
+            "name": "Update a Moesif Plan",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "catalog",
+                "plans",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"prices\": [\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    }\n  ],\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_id\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1351c84a-8c82-411d-a55f-272195eb51e8",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "catalog",
+                    "plans",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"prices\": [\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    }\n  ],\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_id\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"prices\": [\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"transform_quantity\": {\n        \"divide_by\": \"<long>\",\n        \"round\": \"<string>\"\n      },\n      \"provider\": \"<string>\",\n      \"price_in_decimal\": \"<string>\",\n      \"tiers\": [\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        },\n        {\n          \"up_to\": \"<util.either[scala.long,string]>\",\n          \"unit_price_in_decimal\": \"<string>\",\n          \"flat_price_in_decimal\": \"<string>\"\n        }\n      ],\n      \"period_units\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"id\": \"<string>\",\n      \"status\": \"<string>\",\n      \"pricing_model\": \"<string>\",\n      \"tax_behavior\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"metadata\": \"<collection.immutable.map[string,string]>\",\n      \"created_at\": \"<dateTime>\",\n      \"unit\": \"<string>\",\n      \"usage_aggregator\": \"<string>\",\n      \"period\": \"<long>\"\n    }\n  ],\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_id\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53980558-1bda-4487-9da1-562bc48186ef",
+          "name": "Create a new Moesif Price",
+          "request": {
+            "name": "Create a new Moesif Price",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "catalog",
+                "prices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"transform_quantity\": {\n    \"divide_by\": \"<long>\",\n    \"round\": \"<string>\"\n  },\n  \"provider\": \"<string>\",\n  \"price_in_decimal\": \"<string>\",\n  \"tiers\": [\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    },\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    }\n  ],\n  \"period_units\": \"<string>\",\n  \"plan_id\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"pricing_model\": \"<string>\",\n  \"tax_behavior\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"usage_aggregator\": \"<string>\",\n  \"period\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a68bdcd-9e71-4a16-beb5-1d3dbc39a0d0",
+              "name": "created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "catalog",
+                    "prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"transform_quantity\": {\n    \"divide_by\": \"<long>\",\n    \"round\": \"<string>\"\n  },\n  \"provider\": \"<string>\",\n  \"price_in_decimal\": \"<string>\",\n  \"tiers\": [\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    },\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    }\n  ],\n  \"period_units\": \"<string>\",\n  \"plan_id\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"pricing_model\": \"<string>\",\n  \"tax_behavior\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"usage_aggregator\": \"<string>\",\n  \"period\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"transform_quantity\": {\n    \"divide_by\": \"<long>\",\n    \"round\": \"<string>\"\n  },\n  \"provider\": \"<string>\",\n  \"price_in_decimal\": \"<string>\",\n  \"tiers\": [\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    },\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    }\n  ],\n  \"period_units\": \"<string>\",\n  \"plan_id\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"pricing_model\": \"<string>\",\n  \"tax_behavior\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"usage_aggregator\": \"<string>\",\n  \"period\": \"<long>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49b77607-89d4-4eb7-88af-1f972ca7ef66",
+          "name": "List all Moesif Prices for a specific Plan",
+          "request": {
+            "name": "List all Moesif Prices for a specific Plan",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "catalog",
+                "prices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "all"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c495c3e7-baf3-4976-974d-e43c20092b17",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "catalog",
+                    "prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "all"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"transform_quantity\": {\n      \"divide_by\": \"<long>\",\n      \"round\": \"<string>\"\n    },\n    \"provider\": \"<string>\",\n    \"price_in_decimal\": \"<string>\",\n    \"tiers\": [\n      {\n        \"up_to\": \"<util.either[scala.long,string]>\",\n        \"unit_price_in_decimal\": \"<string>\",\n        \"flat_price_in_decimal\": \"<string>\"\n      },\n      {\n        \"up_to\": \"<util.either[scala.long,string]>\",\n        \"unit_price_in_decimal\": \"<string>\",\n        \"flat_price_in_decimal\": \"<string>\"\n      }\n    ],\n    \"period_units\": \"<string>\",\n    \"plan_id\": \"<string>\",\n    \"id\": \"<string>\",\n    \"status\": \"<string>\",\n    \"pricing_model\": \"<string>\",\n    \"tax_behavior\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"metadata\": \"<collection.immutable.map[string,string]>\",\n    \"created_at\": \"<dateTime>\",\n    \"unit\": \"<string>\",\n    \"usage_aggregator\": \"<string>\",\n    \"period\": \"<long>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"transform_quantity\": {\n      \"divide_by\": \"<long>\",\n      \"round\": \"<string>\"\n    },\n    \"provider\": \"<string>\",\n    \"price_in_decimal\": \"<string>\",\n    \"tiers\": [\n      {\n        \"up_to\": \"<util.either[scala.long,string]>\",\n        \"unit_price_in_decimal\": \"<string>\",\n        \"flat_price_in_decimal\": \"<string>\"\n      },\n      {\n        \"up_to\": \"<util.either[scala.long,string]>\",\n        \"unit_price_in_decimal\": \"<string>\",\n        \"flat_price_in_decimal\": \"<string>\"\n      }\n    ],\n    \"period_units\": \"<string>\",\n    \"plan_id\": \"<string>\",\n    \"id\": \"<string>\",\n    \"status\": \"<string>\",\n    \"pricing_model\": \"<string>\",\n    \"tax_behavior\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"metadata\": \"<collection.immutable.map[string,string]>\",\n    \"created_at\": \"<dateTime>\",\n    \"unit\": \"<string>\",\n    \"usage_aggregator\": \"<string>\",\n    \"period\": \"<long>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ac5a572-5db2-4c02-bcf5-9ccad7579570",
+          "name": "Get a Moesif Price",
+          "request": {
+            "name": "Get a Moesif Price",
+            "description": {
+              "content": "Get the Moesif Price for a specific Plan for authenticated users",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "catalog",
+                "prices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "49659701-baef-4736-8d1b-70facb8c2c1e",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "catalog",
+                    "prices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"transform_quantity\": {\n    \"divide_by\": \"<long>\",\n    \"round\": \"<string>\"\n  },\n  \"provider\": \"<string>\",\n  \"price_in_decimal\": \"<string>\",\n  \"tiers\": [\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    },\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    }\n  ],\n  \"period_units\": \"<string>\",\n  \"plan_id\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"pricing_model\": \"<string>\",\n  \"tax_behavior\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"usage_aggregator\": \"<string>\",\n  \"period\": \"<long>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91be9028-775e-4b0f-9bcc-5a2eb33d0af0",
+          "name": "Delete a Moesif Price",
+          "request": {
+            "name": "Delete a Moesif Price",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "catalog",
+                "prices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cc50b9e6-ae98-45f7-bb25-2b07fc11cdbe",
+              "name": "no content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "catalog",
+                    "prices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72ffe166-4d4a-41f5-8bb8-a63914b971ff",
+          "name": "Update a Moesif Price",
+          "request": {
+            "name": "Update a Moesif Price",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "catalog",
+                "prices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"transform_quantity\": {\n    \"divide_by\": \"<long>\",\n    \"round\": \"<string>\"\n  },\n  \"provider\": \"<string>\",\n  \"price_in_decimal\": \"<string>\",\n  \"tiers\": [\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    },\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    }\n  ],\n  \"period_units\": \"<string>\",\n  \"plan_id\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"pricing_model\": \"<string>\",\n  \"tax_behavior\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"usage_aggregator\": \"<string>\",\n  \"period\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1c64404-4981-403b-a192-fa47d6b16e46",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "catalog",
+                    "prices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"transform_quantity\": {\n    \"divide_by\": \"<long>\",\n    \"round\": \"<string>\"\n  },\n  \"provider\": \"<string>\",\n  \"price_in_decimal\": \"<string>\",\n  \"tiers\": [\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    },\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    }\n  ],\n  \"period_units\": \"<string>\",\n  \"plan_id\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"pricing_model\": \"<string>\",\n  \"tax_behavior\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"usage_aggregator\": \"<string>\",\n  \"period\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"transform_quantity\": {\n    \"divide_by\": \"<long>\",\n    \"round\": \"<string>\"\n  },\n  \"provider\": \"<string>\",\n  \"price_in_decimal\": \"<string>\",\n  \"tiers\": [\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    },\n    {\n      \"up_to\": \"<util.either[scala.long,string]>\",\n      \"unit_price_in_decimal\": \"<string>\",\n      \"flat_price_in_decimal\": \"<string>\"\n    }\n  ],\n  \"period_units\": \"<string>\",\n  \"plan_id\": \"<string>\",\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"pricing_model\": \"<string>\",\n  \"tax_behavior\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<collection.immutable.map[string,string]>\",\n  \"created_at\": \"<dateTime>\",\n  \"unit\": \"<string>\",\n  \"usage_aggregator\": \"<string>\",\n  \"period\": \"<long>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moesif.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3c377893-b328-450a-b2b6-3503e307f0b5",
+    "name": "Management Applications Product Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.",
+      "type": "text/plain"
+    }
+  }
+}

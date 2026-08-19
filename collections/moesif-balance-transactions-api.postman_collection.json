@@ -1,0 +1,172 @@
+{
+  "item": [
+    {
+      "id": "ae4f0075-d68e-4b0d-b427-a940588f7cf2",
+      "name": "Balance Transactions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30fb6d9c-00d1-4b74-be22-f269962adf43",
+          "name": "Post BillingReports Balance Transactions",
+          "request": {
+            "name": "Post BillingReports Balance Transactions",
+            "description": {
+              "content": "Post a billing report of type balance_transaction",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "reports",
+                "balance_transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company_id\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"type\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"transaction_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"expire_at\": \"<dateTime>\",\n  \"active_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "034f9635-7fdc-402b-83ad-f2da64ffe294",
+              "name": "success, no content and BillingReports were created or updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "reports",
+                    "balance_transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"company_id\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"type\": \"<string>\",\n  \"subscription_id\": \"<string>\",\n  \"transaction_id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"expire_at\": \"<dateTime>\",\n  \"active_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moesif.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6fcceb6a-b97d-44bd-94b6-1f15386eaae5",
+    "name": "Management Applications Balance Transactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.",
+      "type": "text/plain"
+    }
+  }
+}

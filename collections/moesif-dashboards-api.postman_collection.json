@@ -1,0 +1,1348 @@
+{
+  "item": [
+    {
+      "id": "f66c5399-45a5-4077-b305-66708392d041",
+      "name": "Dashboards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bfe98b95-5c79-4666-ad8d-f3b96f4b06e0",
+          "name": "Delete a Dashboard",
+          "request": {
+            "name": "Delete a Dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "dashboard",
+                ":dashId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "parent_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dashId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "51fa4aea-4112-4242-bc4d-e09840ee9256",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "dashboard",
+                    ":dashId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "parent_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dashId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "caf6bd19-5ab6-4c41-ac8e-5f7599fa6f81",
+          "name": "Copy Dashboard",
+          "request": {
+            "name": "Copy Dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "dashboard",
+                ":id",
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "to_app_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5dc1ab5c-6aa7-4a3a-ae5c-d1023cbf5577",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "dashboard",
+                    ":id",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "to_app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d55f83b-b4d8-4e99-a887-5dc62d77fe2c",
+          "name": "Create New Dashboard",
+          "request": {
+            "name": "Create New Dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "dashboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3441f3bf-2062-4ff9-bc7b-0fc4fe7cfcf6",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auth_user_id\": \"string\",\n  \"org_id\": \"string\",\n  \"app_id\": \"string\",\n  \"created\": \"1952-05-10T04:50:17.018Z\",\n  \"name\": \"string\",\n  \"dashboard_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"workspace_ids\": [\n    [\n      \"string\",\n      \"string\"\n    ],\n    [\n      \"string\",\n      \"string\"\n    ]\n  ],\n  \"parent\": \"string\",\n  \"_id\": \"string\",\n  \"profile_view_promotion\": \"string\",\n  \"sort_order\": 676.1299986800074,\n  \"policy\": {\n    \"acl\": [\n      {\n        \"grantee\": \"string\",\n        \"permission\": \"string\"\n      },\n      {\n        \"grantee\": \"string\",\n        \"permission\": \"string\"\n      }\n    ],\n    \"resource\": {},\n    \"api_scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"original_encoded_resource\": \"string\"\n  },\n  \"migration\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19f92bc3-d16f-4b2b-b71f-113568c2595e",
+          "name": "Get a Dashboard",
+          "request": {
+            "name": "Get a Dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "dashboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f518333-6f26-4fa8-a6ec-dd4b4be14711",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e943ade-94ee-483b-9f7f-289dcb005d39",
+          "name": "Copy All Dashboards",
+          "request": {
+            "name": "Copy All Dashboards",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "dashboards",
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "to_app_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "72680176-e466-4c34-80ba-7a815d94a0f2",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "dashboards",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to_app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0e666c9-c3b2-49a8-a4ad-bf15d5e9a51c",
+          "name": "Update a Dashboard",
+          "request": {
+            "name": "Update a Dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "dashboards",
+                ":dashId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dashId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parent\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dashboard_id\": \"<string>\",\n  \"workspace_ids\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"sort_order\": \"<double>\",\n  \"dashboard_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"policy\": {\n    \"acl\": [\n      {\n        \"grantee\": \"<string>\",\n        \"permission\": \"<string>\"\n      },\n      {\n        \"grantee\": \"<string>\",\n        \"permission\": \"<string>\"\n      }\n    ],\n    \"resource\": \"<object>\",\n    \"api_scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"original_encoded_resource\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1954cb61-1fa1-4fed-ba95-fcecb5126205",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "dashboards",
+                    ":dashId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dashId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"parent\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dashboard_id\": \"<string>\",\n  \"workspace_ids\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"sort_order\": \"<double>\",\n  \"dashboard_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"policy\": {\n    \"acl\": [\n      {\n        \"grantee\": \"<string>\",\n        \"permission\": \"<string>\"\n      },\n      {\n        \"grantee\": \"<string>\",\n        \"permission\": \"<string>\"\n      }\n    ],\n    \"resource\": \"<object>\",\n    \"api_scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"original_encoded_resource\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afd333b1-fc82-4556-88cd-cd5e3cc34c79",
+          "name": "Delete a Dashboard",
+          "request": {
+            "name": "Delete a Dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "dashboards",
+                ":dashId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dashId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "95454291-97ec-409d-9cbd-845b6520d33e",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "dashboards",
+                    ":dashId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dashId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bf35eca-0e5b-46b1-b0c0-9fc3e6a8d62d",
+          "name": "Casccade delete a Dashboard",
+          "request": {
+            "name": "Casccade delete a Dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "dashboards",
+                ":dashId",
+                "cascade"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dashId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "913fcf50-b0fa-48c7-a223-47791757218b",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "dashboards",
+                    ":dashId",
+                    "cascade"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dashId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87a4954e-91a3-4d0f-beff-a740666e8c60",
+          "name": "Add Dashboards ACL permission",
+          "request": {
+            "name": "Add Dashboards ACL permission",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "dashboards",
+                ":id",
+                "policy",
+                "acl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "grantee",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "permission",
+                  "value": "None"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "40ed7e28-2a5e-458d-92ce-84beca375cf9",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "dashboards",
+                    ":id",
+                    "policy",
+                    "acl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "grantee",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "permission",
+                      "value": "None"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b193395-fa74-4e04-9ca0-6da9aba16261",
+          "name": "Delete Dashboards ACL permission",
+          "request": {
+            "name": "Delete Dashboards ACL permission",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "dashboards",
+                ":id",
+                "policy",
+                "acl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "grantee",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "16a967a9-608b-40e9-b3cc-2a98ac991c03",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "dashboards",
+                    ":id",
+                    "policy",
+                    "acl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "grantee",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moesif.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b3af95fc-5b46-4e40-aba2-a8efcacd4ace",
+    "name": "Management Applications Dashboards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.",
+      "type": "text/plain"
+    }
+  }
+}

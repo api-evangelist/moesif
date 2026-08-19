@@ -1,0 +1,703 @@
+{
+  "item": [
+    {
+      "id": "bfe7168e-1ab8-4d22-ad82-fb33c48b2cfb",
+      "name": "Email Templates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bdd51c80-91f6-45fa-a8af-dbae05021d14",
+          "name": "Create New Email Template",
+          "request": {
+            "name": "Create New Email Template",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "emails",
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"state\": \"<integer>\",\n  \"addresses\": {\n    \"from\": \"<string>\",\n    \"cc\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"bcc\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"cohorts\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"config\": {\n        \"criteria\": \"<string>\",\n        \"url_query\": \"<string>\",\n        \"cohort_name\": \"<string>\",\n        \"cohort_type\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\",\n        \"time_zone\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"config\": {\n        \"criteria\": \"<string>\",\n        \"url_query\": \"<string>\",\n        \"cohort_name\": \"<string>\",\n        \"cohort_type\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\",\n        \"time_zone\": \"<string>\"\n      }\n    }\n  ],\n  \"template\": {\n    \"subject\": \"<string>\",\n    \"editor\": \"<string>\",\n    \"design\": \"<object>\",\n    \"thumbnail_url\": \"<string>\"\n  },\n  \"content\": {\n    \"html\": \"<string>\",\n    \"chunks\": \"<object>\"\n  },\n  \"dynamic_fields\": [\n    {\n      \"token\": \"<string>\",\n      \"field\": \"<string>\",\n      \"aggregator\": \"<string>\"\n    },\n    {\n      \"token\": \"<string>\",\n      \"field\": \"<string>\",\n      \"aggregator\": \"<string>\"\n    }\n  ],\n  \"period\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "152bf135-238f-4c15-8400-fd6372031a7c",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "emails",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"state\": \"<integer>\",\n  \"addresses\": {\n    \"from\": \"<string>\",\n    \"cc\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"bcc\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"cohorts\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"config\": {\n        \"criteria\": \"<string>\",\n        \"url_query\": \"<string>\",\n        \"cohort_name\": \"<string>\",\n        \"cohort_type\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\",\n        \"time_zone\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"config\": {\n        \"criteria\": \"<string>\",\n        \"url_query\": \"<string>\",\n        \"cohort_name\": \"<string>\",\n        \"cohort_type\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\",\n        \"time_zone\": \"<string>\"\n      }\n    }\n  ],\n  \"template\": {\n    \"subject\": \"<string>\",\n    \"editor\": \"<string>\",\n    \"design\": \"<object>\",\n    \"thumbnail_url\": \"<string>\"\n  },\n  \"content\": {\n    \"html\": \"<string>\",\n    \"chunks\": \"<object>\"\n  },\n  \"dynamic_fields\": [\n    {\n      \"token\": \"<string>\",\n      \"field\": \"<string>\",\n      \"aggregator\": \"<string>\"\n    },\n    {\n      \"token\": \"<string>\",\n      \"field\": \"<string>\",\n      \"aggregator\": \"<string>\"\n    }\n  ],\n  \"period\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3be257f1-3162-4c9a-905e-ccadd6cdc707",
+          "name": "Get Email Templates",
+          "request": {
+            "name": "Get Email Templates",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "emails",
+                "templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "cohort_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e4c244c8-e17b-4c44-b126-b6def2a755be",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "emails",
+                    "templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "cohort_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41d801d9-7d2b-488c-85f7-5931c7a8b29b",
+          "name": "Update an Email Template",
+          "request": {
+            "name": "Update an Email Template",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "emails",
+                "templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"state\": \"<integer>\",\n  \"cohorts\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"config\": {\n        \"criteria\": \"<string>\",\n        \"url_query\": \"<string>\",\n        \"cohort_name\": \"<string>\",\n        \"cohort_type\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\",\n        \"time_zone\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"config\": {\n        \"criteria\": \"<string>\",\n        \"url_query\": \"<string>\",\n        \"cohort_name\": \"<string>\",\n        \"cohort_type\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\",\n        \"time_zone\": \"<string>\"\n      }\n    }\n  ],\n  \"dynamic_fields\": [\n    {\n      \"token\": \"<string>\",\n      \"field\": \"<string>\",\n      \"aggregator\": \"<string>\"\n    },\n    {\n      \"token\": \"<string>\",\n      \"field\": \"<string>\",\n      \"aggregator\": \"<string>\"\n    }\n  ],\n  \"content\": {\n    \"html\": \"<string>\",\n    \"chunks\": \"<object>\"\n  },\n  \"template\": {\n    \"subject\": \"<string>\",\n    \"editor\": \"<string>\",\n    \"design\": \"<object>\",\n    \"thumbnail_url\": \"<string>\"\n  },\n  \"period\": \"<string>\",\n  \"addresses\": {\n    \"from\": \"<string>\",\n    \"cc\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"bcc\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17207887-58b1-4408-9d18-30dd3c40a59a",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "emails",
+                    "templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"state\": \"<integer>\",\n  \"cohorts\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"config\": {\n        \"criteria\": \"<string>\",\n        \"url_query\": \"<string>\",\n        \"cohort_name\": \"<string>\",\n        \"cohort_type\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\",\n        \"time_zone\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"config\": {\n        \"criteria\": \"<string>\",\n        \"url_query\": \"<string>\",\n        \"cohort_name\": \"<string>\",\n        \"cohort_type\": \"<string>\",\n        \"from\": \"<string>\",\n        \"to\": \"<string>\",\n        \"time_zone\": \"<string>\"\n      }\n    }\n  ],\n  \"dynamic_fields\": [\n    {\n      \"token\": \"<string>\",\n      \"field\": \"<string>\",\n      \"aggregator\": \"<string>\"\n    },\n    {\n      \"token\": \"<string>\",\n      \"field\": \"<string>\",\n      \"aggregator\": \"<string>\"\n    }\n  ],\n  \"content\": {\n    \"html\": \"<string>\",\n    \"chunks\": \"<object>\"\n  },\n  \"template\": {\n    \"subject\": \"<string>\",\n    \"editor\": \"<string>\",\n    \"design\": \"<object>\",\n    \"thumbnail_url\": \"<string>\"\n  },\n  \"period\": \"<string>\",\n  \"addresses\": {\n    \"from\": \"<string>\",\n    \"cc\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"bcc\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57a12b37-8888-4181-b2e9-1afc326f42a9",
+          "name": "Get Email Template",
+          "request": {
+            "name": "Get Email Template",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "emails",
+                "templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1ac4c345-a0be-48dc-b198-99bcd7db6197",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "emails",
+                    "templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4971e95-b1c7-46fe-b201-c36b26d25efb",
+          "name": "Delete Email Template",
+          "request": {
+            "name": "Delete Email Template",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "emails",
+                "templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1be7d947-4289-4cc1-b996-fc86caff9ab2",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "emails",
+                    "templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moesif.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "95517c6d-de69-4df1-90fd-47124f1d802a",
+    "name": "Management Applications Email Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.",
+      "type": "text/plain"
+    }
+  }
+}

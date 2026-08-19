@@ -1,0 +1,909 @@
+{
+  "item": [
+    {
+      "id": "9f02a30e-a6ea-4cad-8b57-004c058c0a3c",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2870c243-20b2-4113-9b0a-a8c1a9d36fcd",
+          "name": "Count Users",
+          "request": {
+            "name": "Count Users",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "count",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65bf44ed-2811-4148-97e4-0b5fe0423394",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "count",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e04463a1-f78b-4e27-933d-b9dddef1792e",
+          "name": "Search UserMetrics/Users",
+          "request": {
+            "name": "Search UserMetrics/Users",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "search",
+                "usermetrics",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "0"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b244a6bc-221d-4da6-a433-4a0c16840fba",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "search",
+                    "usermetrics",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "0"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "0"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c063758f-242e-4c1a-87b9-53f1bfd04d82",
+          "name": "Update a User",
+          "request": {
+            "name": "Update a User",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"<string>\",\n  \"company_id\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"photo_url\": \"<string>\",\n  \"modified_time\": \"<dateTime>\",\n  \"last_name\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"user_name\": \"<string>\",\n  \"phone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "74fafcc3-6119-447c-b6bb-2c4a15bb0adb",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<string>\",\n  \"company_id\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"photo_url\": \"<string>\",\n  \"modified_time\": \"<dateTime>\",\n  \"last_name\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"user_name\": \"<string>\",\n  \"phone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"\",\n  \"_source\": {\n    \"first_name\": \"\",\n    \"body\": {},\n    \"name\": \"\",\n    \"email\": \"\",\n    \"first_seen_time\": \"\",\n    \"user_agent\": {\n      \"name\": \"\",\n      \"os_major\": \"\",\n      \"os\": \"\",\n      \"os_name\": \"\",\n      \"os_minor\": \"\",\n      \"major\": \"\",\n      \"device\": \"\",\n      \"minor\": \"\"\n    },\n    \"geo_ip\": {\n      \"ip\": \"\",\n      \"region_name\": \"\",\n      \"continent_code\": \"\",\n      \"location\": {\n        \"lon\": 0,\n        \"lat\": 0\n      },\n      \"latitude\": 0,\n      \"timezone\": \"\",\n      \"longitude\": 0,\n      \"dma_code\": 0,\n      \"postal_code\": \"\",\n      \"region_code\": \"\",\n      \"city_name\": \"\",\n      \"country_code2\": \"\",\n      \"country_code3\": \"\",\n      \"country_name\": \"\"\n    },\n    \"modified_time\": \"\",\n    \"last_name\": \"\",\n    \"ip_address\": \"\",\n    \"session_token\": [\n      \"\",\n      \"\"\n    ],\n    \"last_seen_time\": \"\",\n    \"app_id\": \"\",\n    \"org_id\": \"\"\n  },\n  \"sort\": [\n    0,\n    0\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c02488da-97ab-4f3e-b04f-6786a78217d1",
+          "name": "Update Users in Batch",
+          "request": {
+            "name": "Update Users in Batch",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "users",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"user_id\": \"<string>\",\n    \"company_id\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<string>\",\n    \"modified_time\": \"<dateTime>\",\n    \"last_name\": \"<string>\",\n    \"metadata\": \"<object>\",\n    \"user_name\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  {\n    \"user_id\": \"<string>\",\n    \"company_id\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<string>\",\n    \"modified_time\": \"<dateTime>\",\n    \"last_name\": \"<string>\",\n    \"metadata\": \"<object>\",\n    \"user_name\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bee88177-cb68-4b4f-8dfd-a20fc0e06377",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "users",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"user_id\": \"<string>\",\n    \"company_id\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<string>\",\n    \"modified_time\": \"<dateTime>\",\n    \"last_name\": \"<string>\",\n    \"metadata\": \"<object>\",\n    \"user_name\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  {\n    \"user_id\": \"<string>\",\n    \"company_id\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<string>\",\n    \"modified_time\": \"<dateTime>\",\n    \"last_name\": \"<string>\",\n    \"metadata\": \"<object>\",\n    \"user_name\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"\",\n  \"_source\": {\n    \"first_name\": \"\",\n    \"body\": {},\n    \"name\": \"\",\n    \"email\": \"\",\n    \"first_seen_time\": \"\",\n    \"user_agent\": {\n      \"name\": \"\",\n      \"os_major\": \"\",\n      \"os\": \"\",\n      \"os_name\": \"\",\n      \"os_minor\": \"\",\n      \"major\": \"\",\n      \"device\": \"\",\n      \"minor\": \"\"\n    },\n    \"geo_ip\": {\n      \"ip\": \"\",\n      \"region_name\": \"\",\n      \"continent_code\": \"\",\n      \"location\": {\n        \"lon\": 0,\n        \"lat\": 0\n      },\n      \"latitude\": 0,\n      \"timezone\": \"\",\n      \"longitude\": 0,\n      \"dma_code\": 0,\n      \"postal_code\": \"\",\n      \"region_code\": \"\",\n      \"city_name\": \"\",\n      \"country_code2\": \"\",\n      \"country_code3\": \"\",\n      \"country_name\": \"\"\n    },\n    \"modified_time\": \"\",\n    \"last_name\": \"\",\n    \"ip_address\": \"\",\n    \"session_token\": [\n      \"\",\n      \"\"\n    ],\n    \"last_seen_time\": \"\",\n    \"app_id\": \"\",\n    \"org_id\": \"\"\n  },\n  \"sort\": [\n    0,\n    0\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73f8dad1-70a5-4587-867f-f7dd94d37e17",
+          "name": "Get a User",
+          "request": {
+            "name": "Get a User",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6b06cae-0ab4-4c34-bfbc-eee3128d574f",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"\",\n  \"_source\": {\n    \"first_name\": \"\",\n    \"body\": {},\n    \"name\": \"\",\n    \"email\": \"\",\n    \"first_seen_time\": \"\",\n    \"user_agent\": {\n      \"name\": \"\",\n      \"os_major\": \"\",\n      \"os\": \"\",\n      \"os_name\": \"\",\n      \"os_minor\": \"\",\n      \"major\": \"\",\n      \"device\": \"\",\n      \"minor\": \"\"\n    },\n    \"geo_ip\": {\n      \"ip\": \"\",\n      \"region_name\": \"\",\n      \"continent_code\": \"\",\n      \"location\": {\n        \"lon\": 0,\n        \"lat\": 0\n      },\n      \"latitude\": 0,\n      \"timezone\": \"\",\n      \"longitude\": 0,\n      \"dma_code\": 0,\n      \"postal_code\": \"\",\n      \"region_code\": \"\",\n      \"city_name\": \"\",\n      \"country_code2\": \"\",\n      \"country_code3\": \"\",\n      \"country_name\": \"\"\n    },\n    \"modified_time\": \"\",\n    \"last_name\": \"\",\n    \"ip_address\": \"\",\n    \"session_token\": [\n      \"\",\n      \"\"\n    ],\n    \"last_seen_time\": \"\",\n    \"app_id\": \"\",\n    \"org_id\": \"\"\n  },\n  \"sort\": [\n    0,\n    0\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33688b20-c271-413a-b231-4abe41009b94",
+          "name": "Delete a User",
+          "request": {
+            "name": "Delete a User",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "delete_events",
+                  "value": "false",
+                  "description": "Delete events associated with the user which can be set to true or false(default)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8078d2d2-2160-470a-adcc-5b0c648690fc",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "delete_events",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moesif.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ccd29ccc-a7a1-4c03-a654-8a36c4e7450d",
+    "name": "Management Applications Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.",
+      "type": "text/plain"
+    }
+  }
+}

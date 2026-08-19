@@ -1,0 +1,177 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Management Applications Billing Reports API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get BillingReports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moesif.com/v1/~/billing/reports",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "billing_meter_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "success",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status_code",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "error_code",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "`type`",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "resource_owner_password_credentials",
+              "accessTokenUrl": "https://api.moesif.com/v1/:orgId/oauth/access_tokens",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Query audit history of billing reports to external billing providers"
+        },
+        {
+          "info": {
+            "name": "Get BillingReports' values for a given meter and time range for a single company or all companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moesif.com/v1/~/billing/reports/metrics",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "billing_meter_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "success",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "aggregator",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "`type`",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "resource_owner_password_credentials",
+              "accessTokenUrl": "https://api.moesif.com/v1/:orgId/oauth/access_tokens",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get BillingReports' values for a given meter and time range for a single company or all companies"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,722 @@
+{
+  "item": [
+    {
+      "id": "6a779f8d-1a00-41d9-a8ce-fa72432fcd22",
+      "name": "Governance Rules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7e90230d-63d0-42dd-a917-032e4700c06f",
+          "name": "Create New Governance Rules",
+          "request": {
+            "name": "Create New Governance Rules",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "governance",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"state\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"block\": \"<boolean>\",\n  \"priority\": \"<integer>\",\n  \"model\": \"<string>\",\n  \"cohorts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    }\n  ],\n  \"applied_to\": \"<string>\",\n  \"response\": {\n    \"status\": \"<integer>\",\n    \"headers\": \"<collection.immutable.map[string,string]>\",\n    \"body\": \"<object>\",\n    \"original_encoded_body\": \"<string>\"\n  },\n  \"applied_to_unidentified\": \"<boolean>\",\n  \"regex_config\": [\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    },\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    }\n  ],\n  \"plans\": [\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1fa0abac-fc7f-45b4-9cf0-e2e543756893",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "governance",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"state\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"block\": \"<boolean>\",\n  \"priority\": \"<integer>\",\n  \"model\": \"<string>\",\n  \"cohorts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    }\n  ],\n  \"applied_to\": \"<string>\",\n  \"response\": {\n    \"status\": \"<integer>\",\n    \"headers\": \"<collection.immutable.map[string,string]>\",\n    \"body\": \"<object>\",\n    \"original_encoded_body\": \"<string>\"\n  },\n  \"applied_to_unidentified\": \"<boolean>\",\n  \"regex_config\": [\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    },\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    }\n  ],\n  \"plans\": [\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2008-04-15T14:59:13.079Z\",\n  \"type\": \"string\",\n  \"state\": 1333,\n  \"org_id\": \"string\",\n  \"app_id\": \"string\",\n  \"name\": \"string\",\n  \"block\": true,\n  \"priority\": 3205,\n  \"model\": \"string\",\n  \"_id\": \"string\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    }\n  ],\n  \"applied_to\": \"string\",\n  \"response\": {\n    \"status\": \"<integer>\",\n    \"headers\": \"<collection.immutable.map[string,string]>\",\n    \"body\": \"<object>\",\n    \"original_encoded_body\": \"<string>\"\n  },\n  \"applied_to_unidentified\": true,\n  \"regex_config\": [\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    },\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    }\n  ],\n  \"plans\": [\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0b61400-6c28-4b1f-903f-9d8052bfc5e4",
+          "name": "Get Governance Rules",
+          "request": {
+            "name": "Get Governance Rules",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "governance",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c47c8bd2-fbff-49eb-9c8c-78a3c0d9b029",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "governance",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1981-12-15T14:53:13.754Z\",\n  \"type\": \"string\",\n  \"state\": 4769,\n  \"org_id\": \"string\",\n  \"app_id\": \"string\",\n  \"name\": \"string\",\n  \"block\": false,\n  \"priority\": 7630,\n  \"model\": \"string\",\n  \"_id\": \"string\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    }\n  ],\n  \"applied_to\": \"string\",\n  \"response\": {\n    \"status\": \"<integer>\",\n    \"headers\": \"<collection.immutable.map[string,string]>\",\n    \"body\": \"<object>\",\n    \"original_encoded_body\": \"<string>\"\n  },\n  \"applied_to_unidentified\": false,\n  \"regex_config\": [\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    },\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    }\n  ],\n  \"plans\": [\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5433312-9276-48b8-8900-4e75b7c415d2",
+          "name": "Update a Governance Rule",
+          "request": {
+            "name": "Update a Governance Rule",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "governance",
+                "rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"model\": \"<string>\",\n  \"state\": \"<integer>\",\n  \"cohorts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    }\n  ],\n  \"applied_to\": \"<string>\",\n  \"block\": \"<boolean>\",\n  \"response\": {\n    \"status\": \"<integer>\",\n    \"headers\": \"<collection.immutable.map[string,string]>\",\n    \"body\": \"<object>\",\n    \"original_encoded_body\": \"<string>\"\n  },\n  \"applied_to_unidentified\": \"<boolean>\",\n  \"regex_config\": [\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    },\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    }\n  ],\n  \"plans\": [\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "532913e5-30df-4e0d-b966-57a0062e2779",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "governance",
+                    "rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"model\": \"<string>\",\n  \"state\": \"<integer>\",\n  \"cohorts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    }\n  ],\n  \"applied_to\": \"<string>\",\n  \"block\": \"<boolean>\",\n  \"response\": {\n    \"status\": \"<integer>\",\n    \"headers\": \"<collection.immutable.map[string,string]>\",\n    \"body\": \"<object>\",\n    \"original_encoded_body\": \"<string>\"\n  },\n  \"applied_to_unidentified\": \"<boolean>\",\n  \"regex_config\": [\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    },\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    }\n  ],\n  \"plans\": [\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1981-12-15T14:53:13.754Z\",\n  \"type\": \"string\",\n  \"state\": 4769,\n  \"org_id\": \"string\",\n  \"app_id\": \"string\",\n  \"name\": \"string\",\n  \"block\": false,\n  \"priority\": 7630,\n  \"model\": \"string\",\n  \"_id\": \"string\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    }\n  ],\n  \"applied_to\": \"string\",\n  \"response\": {\n    \"status\": \"<integer>\",\n    \"headers\": \"<collection.immutable.map[string,string]>\",\n    \"body\": \"<object>\",\n    \"original_encoded_body\": \"<string>\"\n  },\n  \"applied_to_unidentified\": false,\n  \"regex_config\": [\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    },\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    }\n  ],\n  \"plans\": [\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b768830-7c51-4fe4-942c-07077f18caee",
+          "name": "Get a Governance Rule",
+          "request": {
+            "name": "Get a Governance Rule",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "governance",
+                "rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "56865c1d-d40d-4d00-bee9-2d78cee44a4d",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "governance",
+                    "rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1981-12-15T14:53:13.754Z\",\n  \"type\": \"string\",\n  \"state\": 4769,\n  \"org_id\": \"string\",\n  \"app_id\": \"string\",\n  \"name\": \"string\",\n  \"block\": false,\n  \"priority\": 7630,\n  \"model\": \"string\",\n  \"_id\": \"string\",\n  \"variables\": [\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\"\n    }\n  ],\n  \"applied_to\": \"string\",\n  \"response\": {\n    \"status\": \"<integer>\",\n    \"headers\": \"<collection.immutable.map[string,string]>\",\n    \"body\": \"<object>\",\n    \"original_encoded_body\": \"<string>\"\n  },\n  \"applied_to_unidentified\": false,\n  \"regex_config\": [\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    },\n    {\n      \"conditions\": [\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"path\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"sample_rate\": \"<integer>\"\n    }\n  ],\n  \"plans\": [\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"provider\": \"<string>\",\n      \"plan_id\": \"<string>\",\n      \"price_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de25e806-3f30-4edc-9f29-9f20be7ee94f",
+          "name": "Delete a Governance Rule",
+          "request": {
+            "name": "Delete a Governance Rule",
+            "description": {},
+            "url": {
+              "path": [
+                "~",
+                "governance",
+                "rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "401ec808-3ff0-4f51-8d3e-aedf02b1a7ed",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "governance",
+                    "rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moesif.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5315c3af-e891-4954-9e38-5fce20652b90",
+    "name": "Management Applications Governance Rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.",
+      "type": "text/plain"
+    }
+  }
+}

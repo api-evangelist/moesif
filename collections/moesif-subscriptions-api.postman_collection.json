@@ -1,0 +1,598 @@
+{
+  "item": [
+    {
+      "id": "776e5ab1-d19f-42dd-9b3b-675966652aac",
+      "name": "Subscriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c2d8b1d-7ca7-4025-bdeb-65c0a9257ddf",
+          "name": "Get the Subscriptions of a Company",
+          "request": {
+            "name": "Get the Subscriptions of a Company",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "companies",
+                ":id",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c8bba861-7f28-4d41-a80e-ca42c137f4a3",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "companies",
+                    ":id",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09c78b71-ef4c-4b37-9ec8-c83a592ef1e2",
+          "name": "Create or Update a Subscription",
+          "request": {
+            "name": "Create or Update a Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"company_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"trial_start\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"collection_method\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"items\": [\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    },\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    }\n  ],\n  \"current_period_start\": \"<dateTime>\",\n  \"company_external_id\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"cancel_time\": \"<dateTime>\",\n  \"trial_end\": \"<dateTime>\",\n  \"external_id\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"version_id\": \"<string>\",\n  \"current_period_end\": \"<dateTime>\",\n  \"created\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "738fb7c7-d231-405f-8375-d6e29e3587d6",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"company_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"trial_start\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"collection_method\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"items\": [\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    },\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    }\n  ],\n  \"current_period_start\": \"<dateTime>\",\n  \"company_external_id\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"cancel_time\": \"<dateTime>\",\n  \"trial_end\": \"<dateTime>\",\n  \"external_id\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"version_id\": \"<string>\",\n  \"current_period_end\": \"<dateTime>\",\n  \"created\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"org_id\": \"string\",\n  \"app_id\": \"string\",\n  \"type\": \"string\",\n  \"subscription_id\": \"string\",\n  \"company_id\": \"string\",\n  \"status\": \"string\",\n  \"trial_start\": \"2006-05-17T15:26:16.579Z\",\n  \"start_date\": \"2001-10-16T18:20:31.894Z\",\n  \"collection_method\": \"string\",\n  \"provider\": \"string\",\n  \"items\": [\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    },\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    }\n  ],\n  \"current_period_start\": \"1950-11-10T09:31:41.831Z\",\n  \"company_external_id\": \"string\",\n  \"payment_status\": \"string\",\n  \"modified_time\": \"2013-01-03T01:13:34.815Z\",\n  \"cancel_time\": \"1952-05-09T01:42:59.427Z\",\n  \"trial_end\": \"1950-07-07T15:59:26.500Z\",\n  \"external_id\": \"string\",\n  \"metadata\": {},\n  \"version_id\": \"string\",\n  \"current_period_end\": \"2005-10-11T09:22:20.717Z\",\n  \"created\": \"1952-01-10T00:00:19.765Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7135b95c-0b92-4632-b831-d182f75345e3",
+          "name": "Create or Update Subscriptions in Batch",
+          "request": {
+            "name": "Create or Update Subscriptions in Batch",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "subscriptions",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"company_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"trial_start\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"collection_method\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"items\": [\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    },\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    }\n  ],\n  \"current_period_start\": \"<dateTime>\",\n  \"company_external_id\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"cancel_time\": \"<dateTime>\",\n  \"trial_end\": \"<dateTime>\",\n  \"external_id\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"version_id\": \"<string>\",\n  \"current_period_end\": \"<dateTime>\",\n  \"created\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7cee8434-b987-408c-b72c-78df0b0bb513",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "subscriptions",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscription_id\": \"<string>\",\n  \"company_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"trial_start\": \"<dateTime>\",\n  \"start_date\": \"<dateTime>\",\n  \"collection_method\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"items\": [\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    },\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    }\n  ],\n  \"current_period_start\": \"<dateTime>\",\n  \"company_external_id\": \"<string>\",\n  \"payment_status\": \"<string>\",\n  \"cancel_time\": \"<dateTime>\",\n  \"trial_end\": \"<dateTime>\",\n  \"external_id\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"version_id\": \"<string>\",\n  \"current_period_end\": \"<dateTime>\",\n  \"created\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"org_id\": \"string\",\n  \"app_id\": \"string\",\n  \"type\": \"string\",\n  \"subscription_id\": \"string\",\n  \"company_id\": \"string\",\n  \"status\": \"string\",\n  \"trial_start\": \"1990-10-27T23:23:34.215Z\",\n  \"start_date\": \"1995-07-08T11:38:54.791Z\",\n  \"collection_method\": \"string\",\n  \"provider\": \"string\",\n  \"items\": [\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    },\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    }\n  ],\n  \"current_period_start\": \"1959-08-24T18:41:29.603Z\",\n  \"company_external_id\": \"string\",\n  \"payment_status\": \"string\",\n  \"modified_time\": \"1958-07-27T01:14:07.037Z\",\n  \"cancel_time\": \"2024-10-12T13:49:15.764Z\",\n  \"trial_end\": \"2018-12-05T15:06:42.595Z\",\n  \"external_id\": \"string\",\n  \"metadata\": {},\n  \"version_id\": \"string\",\n  \"current_period_end\": \"2026-04-26T10:46:56.991Z\",\n  \"created\": \"1973-01-10T17:11:23.515Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b7dae96-2f11-4f03-afde-400f25f6aa4c",
+          "name": "Get a Subscription",
+          "request": {
+            "name": "Get a Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0b20f224-96bd-4d93-b1c3-d4d67fca3f49",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"org_id\": \"string\",\n  \"app_id\": \"string\",\n  \"type\": \"string\",\n  \"subscription_id\": \"string\",\n  \"company_id\": \"string\",\n  \"status\": \"string\",\n  \"trial_start\": \"1990-10-27T23:23:34.215Z\",\n  \"start_date\": \"1995-07-08T11:38:54.791Z\",\n  \"collection_method\": \"string\",\n  \"provider\": \"string\",\n  \"items\": [\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    },\n    {\n      \"plan_id\": \"<string>\",\n      \"item_price_id\": \"<string>\",\n      \"price_id\": \"<string>\",\n      \"is_metered\": \"<boolean>\",\n      \"unit_of_measure\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription_item_id\": \"<string>\"\n    }\n  ],\n  \"current_period_start\": \"1959-08-24T18:41:29.603Z\",\n  \"company_external_id\": \"string\",\n  \"payment_status\": \"string\",\n  \"modified_time\": \"1958-07-27T01:14:07.037Z\",\n  \"cancel_time\": \"2024-10-12T13:49:15.764Z\",\n  \"trial_end\": \"2018-12-05T15:06:42.595Z\",\n  \"external_id\": \"string\",\n  \"metadata\": {},\n  \"version_id\": \"string\",\n  \"current_period_end\": \"2026-04-26T10:46:56.991Z\",\n  \"created\": \"1973-01-10T17:11:23.515Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moesif.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "93377cee-88f6-4756-ad9f-718cc499ce59",
+    "name": "Management Applications Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.",
+      "type": "text/plain"
+    }
+  }
+}

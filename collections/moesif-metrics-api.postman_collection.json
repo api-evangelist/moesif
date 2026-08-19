@@ -1,0 +1,718 @@
+{
+  "item": [
+    {
+      "id": "abe6c737-75f9-44a2-97d7-7358d6ac9e76",
+      "name": "Metrics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3bf0f934-635d-4da5-8a71-444f00ef06d7",
+          "name": "Count Events",
+          "request": {
+            "name": "Count Events",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "count",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "None"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "(Required) The start date, which can be absolute such as 2019-07-01T00:00:00Z or relative such as -24h"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "(Required) The end date, which can be absolute such as 2019-07-02T00:00:00Z or relative such as now"
+                },
+                {
+                  "disabled": false,
+                  "key": "track_total_hits",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68d46976-c954-464f-afe4-0b818c0356d7",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "count",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "None"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "track_total_hits",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f412ca5-e9c0-4efc-b15b-db21c5494abc",
+          "name": "Get an Event",
+          "request": {
+            "name": "Get an Event",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "events",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "event_time",
+                  "value": "<dateTime>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f9cd35f5-1da5-40ac-876d-2ed2c8edf987",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "events",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "event_time",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_id\": \"\",\n  \"_source\": {\n    \"company_id\": \"\",\n    \"duration_ms\": 0,\n    \"request\": {\n      \"body\": {},\n      \"uri\": \"\",\n      \"user_agent\": {\n        \"patch\": \"\",\n        \"major\": \"\",\n        \"minor\": \"\",\n        \"name\": \"\"\n      },\n      \"geo_ip\": {\n        \"ip\": \"\",\n        \"region_name\": \"\",\n        \"continent_code\": \"\",\n        \"location\": [\n          0,\n          0\n        ],\n        \"latitude\": 0,\n        \"timezone\": \"\",\n        \"area_code\": 0,\n        \"longitude\": 0,\n        \"real_region_name\": \"\",\n        \"dma_code\": 0,\n        \"postal_code\": \"\",\n        \"city_name\": \"\",\n        \"country_code2\": \"\",\n        \"country_code3\": \"\",\n        \"country_name\": \"\"\n      },\n      \"ip_address\": \"\",\n      \"verb\": \"\",\n      \"route\": \"\",\n      \"time\": \"\",\n      \"headers\": {}\n    },\n    \"user_id\": \"\",\n    \"company\": {},\n    \"response\": {\n      \"body\": {},\n      \"transfer_encoding\": \"string\",\n      \"status\": 0,\n      \"time\": \"\",\n      \"headers\": {}\n    },\n    \"id\": \"\",\n    \"event_type\": \"string\",\n    \"session_token\": \"\",\n    \"metadata\": {},\n    \"app_id\": \"\",\n    \"org_id\": \"\",\n    \"user\": {}\n  },\n  \"sort\": [\n    0,\n    0\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "601a58c6-ecb4-4f35-a543-6a6d42228204",
+          "name": "Search Events",
+          "request": {
+            "name": "Search Events",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "search",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "None"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "(Required) The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "(Required) The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f88dc8ef-aa3a-4db6-8227-99711ec0eb19",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "search",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "None"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"took\": 0,\n  \"timed_out\": false,\n  \"hits\": {\n    \"total\": 0,\n    \"hits\": [\n      {\n        \"_id\": \"\",\n        \"_source\": {\n          \"company_id\": \"\",\n          \"duration_ms\": 0,\n          \"request\": {\n            \"body\": {},\n            \"uri\": \"\",\n            \"user_agent\": {\n              \"patch\": \"\",\n              \"major\": \"\",\n              \"minor\": \"\",\n              \"name\": \"\"\n            },\n            \"geo_ip\": {\n              \"ip\": \"\",\n              \"region_name\": \"\",\n              \"continent_code\": \"\",\n              \"location\": [\n                0,\n                0\n              ],\n              \"latitude\": 0,\n              \"timezone\": \"\",\n              \"area_code\": 0,\n              \"longitude\": 0,\n              \"real_region_name\": \"\",\n              \"dma_code\": 0,\n              \"postal_code\": \"\",\n              \"city_name\": \"\",\n              \"country_code2\": \"\",\n              \"country_code3\": \"\",\n              \"country_name\": \"\"\n            },\n            \"ip_address\": \"\",\n            \"verb\": \"\",\n            \"route\": \"\",\n            \"time\": \"\",\n            \"headers\": {}\n          },\n          \"user_id\": \"\",\n          \"company\": {},\n          \"response\": {\n            \"body\": {},\n            \"transfer_encoding\": \"string\",\n            \"status\": 0,\n            \"time\": \"\",\n            \"headers\": {}\n          },\n          \"id\": \"\",\n          \"event_type\": \"string\",\n          \"session_token\": \"\",\n          \"metadata\": {},\n          \"app_id\": \"\",\n          \"org_id\": \"\",\n          \"user\": {}\n        },\n        \"sort\": [\n          0,\n          0\n        ]\n      },\n      {\n        \"_id\": \"\",\n        \"_source\": {\n          \"company_id\": \"\",\n          \"duration_ms\": 0,\n          \"request\": {\n            \"body\": {},\n            \"uri\": \"\",\n            \"user_agent\": {\n              \"patch\": \"\",\n              \"major\": \"\",\n              \"minor\": \"\",\n              \"name\": \"\"\n            },\n            \"geo_ip\": {\n              \"ip\": \"\",\n              \"region_name\": \"\",\n              \"continent_code\": \"\",\n              \"location\": [\n                0,\n                0\n              ],\n              \"latitude\": 0,\n              \"timezone\": \"\",\n              \"area_code\": 0,\n              \"longitude\": 0,\n              \"real_region_name\": \"\",\n              \"dma_code\": 0,\n              \"postal_code\": \"\",\n              \"city_name\": \"\",\n              \"country_code2\": \"\",\n              \"country_code3\": \"\",\n              \"country_name\": \"\"\n            },\n            \"ip_address\": \"\",\n            \"verb\": \"\",\n            \"route\": \"\",\n            \"time\": \"\",\n            \"headers\": {}\n          },\n          \"user_id\": \"\",\n          \"company\": {},\n          \"response\": {\n            \"body\": {},\n            \"transfer_encoding\": \"string\",\n            \"status\": 0,\n            \"time\": \"\",\n            \"headers\": {}\n          },\n          \"id\": \"\",\n          \"event_type\": \"string\",\n          \"session_token\": \"\",\n          \"metadata\": {},\n          \"app_id\": \"\",\n          \"org_id\": \"\",\n          \"user\": {}\n        },\n        \"sort\": [\n          0,\n          0\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6221e54e-7ac9-4922-ba64-993855f01078",
+          "name": "Search Events in saved public Workspace",
+          "request": {
+            "name": "Search Events in saved public Workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "search",
+                "~",
+                "workspaces",
+                ":workspaceId",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "(Required) The start date, which can be absolute such as 2023-07-01T00:00:00Z or relative such as -24h"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "(Required) The end date, which can be absolute such as 2023-07-02T00:00:00Z or relative such as now"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_details",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "take",
+                  "value": "1000"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "365cedc0-10e7-4298-9e7e-81fa2e2791f9",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "~",
+                    "workspaces",
+                    ":workspaceId",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "include_details",
+                      "value": "false"
+                    },
+                    {
+                      "key": "take",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"took\": 0,\n  \"timed_out\": false,\n  \"hits\": {\n    \"total\": 0,\n    \"hits\": [\n      {\n        \"_id\": \"\",\n        \"_source\": {\n          \"company_id\": \"\",\n          \"duration_ms\": 0,\n          \"request\": {\n            \"body\": {},\n            \"uri\": \"\",\n            \"user_agent\": {\n              \"patch\": \"\",\n              \"major\": \"\",\n              \"minor\": \"\",\n              \"name\": \"\"\n            },\n            \"geo_ip\": {\n              \"ip\": \"\",\n              \"region_name\": \"\",\n              \"continent_code\": \"\",\n              \"location\": [\n                0,\n                0\n              ],\n              \"latitude\": 0,\n              \"timezone\": \"\",\n              \"area_code\": 0,\n              \"longitude\": 0,\n              \"real_region_name\": \"\",\n              \"dma_code\": 0,\n              \"postal_code\": \"\",\n              \"city_name\": \"\",\n              \"country_code2\": \"\",\n              \"country_code3\": \"\",\n              \"country_name\": \"\"\n            },\n            \"ip_address\": \"\",\n            \"verb\": \"\",\n            \"route\": \"\",\n            \"time\": \"\",\n            \"headers\": {}\n          },\n          \"user_id\": \"\",\n          \"company\": {},\n          \"response\": {\n            \"body\": {},\n            \"transfer_encoding\": \"string\",\n            \"status\": 0,\n            \"time\": \"\",\n            \"headers\": {}\n          },\n          \"id\": \"\",\n          \"event_type\": \"string\",\n          \"session_token\": \"\",\n          \"metadata\": {},\n          \"app_id\": \"\",\n          \"org_id\": \"\",\n          \"user\": {}\n        },\n        \"sort\": [\n          0,\n          0\n        ]\n      },\n      {\n        \"_id\": \"\",\n        \"_source\": {\n          \"company_id\": \"\",\n          \"duration_ms\": 0,\n          \"request\": {\n            \"body\": {},\n            \"uri\": \"\",\n            \"user_agent\": {\n              \"patch\": \"\",\n              \"major\": \"\",\n              \"minor\": \"\",\n              \"name\": \"\"\n            },\n            \"geo_ip\": {\n              \"ip\": \"\",\n              \"region_name\": \"\",\n              \"continent_code\": \"\",\n              \"location\": [\n                0,\n                0\n              ],\n              \"latitude\": 0,\n              \"timezone\": \"\",\n              \"area_code\": 0,\n              \"longitude\": 0,\n              \"real_region_name\": \"\",\n              \"dma_code\": 0,\n              \"postal_code\": \"\",\n              \"city_name\": \"\",\n              \"country_code2\": \"\",\n              \"country_code3\": \"\",\n              \"country_name\": \"\"\n            },\n            \"ip_address\": \"\",\n            \"verb\": \"\",\n            \"route\": \"\",\n            \"time\": \"\",\n            \"headers\": {}\n          },\n          \"user_id\": \"\",\n          \"company\": {},\n          \"response\": {\n            \"body\": {},\n            \"transfer_encoding\": \"string\",\n            \"status\": 0,\n            \"time\": \"\",\n            \"headers\": {}\n          },\n          \"id\": \"\",\n          \"event_type\": \"string\",\n          \"session_token\": \"\",\n          \"metadata\": {},\n          \"app_id\": \"\",\n          \"org_id\": \"\",\n          \"user\": {}\n        },\n        \"sort\": [\n          0,\n          0\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moesif.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "58e5d971-89a8-4ef5-9eae-f3b23ae88da6",
+    "name": "Management Applications Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,466 @@
+{
+  "item": [
+    {
+      "id": "f5cca85b-8d72-4076-ad51-499dbeb72631",
+      "name": "Billing Reports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f506a014-dab8-481a-9a07-5c696d646b98",
+          "name": "Get BillingReports",
+          "request": {
+            "name": "Get BillingReports",
+            "description": {
+              "content": "Query audit history of billing reports to external billing providers",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "billing_meter_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "subscription_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "success",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status_code",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "error_code",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "`type`",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e633d264-fd4d-46a4-b3e5-e290be2163b0",
+              "name": "success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billing_meter_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "company_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subscription_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "success",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "status_code",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "error_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "`type`",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"org_id\": \"string\",\n    \"app_id\": \"string\",\n    \"usage_start_time\": \"1990-11-03T02:38:44.320Z\",\n    \"usage_end_time\": \"1956-05-15T17:01:19.982Z\",\n    \"subscription_id\": \"string\",\n    \"billing_meter_id\": \"string\",\n    \"provider\": \"string\",\n    \"company_id\": \"string\",\n    \"meter_metric\": 4056,\n    \"meter_usage\": 3631,\n    \"report_total_usage\": 6557,\n    \"success\": true,\n    \"provider_requests\": [\n      {\n        \"job_id\": \"string\",\n        \"request_time\": \"2010-06-04T11:10:18.845Z\",\n        \"success\": false,\n        \"status_code\": 1033,\n        \"error_code\": \"string\",\n        \"error_message\": \"string\"\n      },\n      {\n        \"job_id\": \"string\",\n        \"request_time\": \"1968-04-04T21:41:29.573Z\",\n        \"success\": false,\n        \"status_code\": 9916,\n        \"error_code\": \"string\",\n        \"error_message\": \"string\"\n      }\n    ],\n    \"ending_balance\": {\n      \"sequence_id\": 6363,\n      \"current_balance\": 3612.1681632497393,\n      \"pending_activity\": 5342.349043557424,\n      \"available_balance\": 7908.3716905745005\n    },\n    \"report_version\": 1447,\n    \"usage\": {\n      \"invoice\": {\n        \"id\": \"string\",\n        \"period_start\": \"2022-02-27T09:13:22.908Z\",\n        \"period_end\": \"1980-08-17T01:05:00.005Z\"\n      },\n      \"aggregator\": \"string\"\n    },\n    \"_id\": \"string\",\n    \"last_success_time\": \"1976-05-25T09:25:10.464Z\",\n    \"beginning_balance\": {\n      \"sequence_id\": 7463,\n      \"current_balance\": 2635.570536005676,\n      \"pending_activity\": 2568.5021506381922,\n      \"available_balance\": 5045.336612888754\n    },\n    \"amount\": 1492.6222503894703,\n    \"status\": \"string\",\n    \"currency\": \"string\",\n    \"channel_requests\": [\n      {\n        \"channel_id\": \"string\",\n        \"channel_name\": \"string\",\n        \"provider_requests\": [\n          {\n            \"job_id\": \"string\",\n            \"request_time\": \"2025-12-05T18:47:47.016Z\",\n            \"success\": false,\n            \"status_code\": 7832,\n            \"error_code\": \"string\",\n            \"error_message\": \"string\"\n          },\n          {\n            \"job_id\": \"string\",\n            \"request_time\": \"1967-10-04T16:17:07.294Z\",\n            \"success\": false,\n            \"status_code\": 3997,\n            \"error_code\": \"string\",\n            \"error_message\": \"string\"\n          }\n        ]\n      },\n      {\n        \"channel_id\": \"string\",\n        \"channel_name\": \"string\",\n        \"provider_requests\": [\n          {\n            \"job_id\": \"string\",\n            \"request_time\": \"2001-09-19T14:46:39.968Z\",\n            \"success\": false,\n            \"status_code\": 1659,\n            \"error_code\": \"string\",\n            \"error_message\": \"string\"\n          },\n          {\n            \"job_id\": \"string\",\n            \"request_time\": \"1999-09-18T15:05:12.824Z\",\n            \"success\": true,\n            \"status_code\": 5587,\n            \"error_code\": \"string\",\n            \"error_message\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"created_at\": \"1956-09-30T01:13:06.615Z\",\n    \"subscription_period_start\": \"2002-01-25T01:20:44.137Z\",\n    \"balance_changes\": [\n      {\n        \"amount\": 6527.409407627614\n      },\n      {\n        \"amount\": 7836.3272483618475\n      }\n    ],\n    \"type\": \"string\",\n    \"updated_at\": \"1995-12-29T00:25:07.151Z\",\n    \"subscription_period_end\": \"2003-11-12T13:05:41.533Z\"\n  },\n  {\n    \"org_id\": \"string\",\n    \"app_id\": \"string\",\n    \"usage_start_time\": \"1970-10-22T02:47:46.008Z\",\n    \"usage_end_time\": \"1965-10-16T11:11:58.589Z\",\n    \"subscription_id\": \"string\",\n    \"billing_meter_id\": \"string\",\n    \"provider\": \"string\",\n    \"company_id\": \"string\",\n    \"meter_metric\": 6552,\n    \"meter_usage\": 7611,\n    \"report_total_usage\": 931,\n    \"success\": true,\n    \"provider_requests\": [\n      {\n        \"job_id\": \"string\",\n        \"request_time\": \"1983-10-21T22:45:03.228Z\",\n        \"success\": false,\n        \"status_code\": 5246,\n        \"error_code\": \"string\",\n        \"error_message\": \"string\"\n      },\n      {\n        \"job_id\": \"string\",\n        \"request_time\": \"1997-12-06T23:44:27.846Z\",\n        \"success\": false,\n        \"status_code\": 1400,\n        \"error_code\": \"string\",\n        \"error_message\": \"string\"\n      }\n    ],\n    \"ending_balance\": {\n      \"sequence_id\": 4396,\n      \"current_balance\": 7262.04305491553,\n      \"pending_activity\": 7414.169435201309,\n      \"available_balance\": 8666.887655491182\n    },\n    \"report_version\": 4646,\n    \"usage\": {\n      \"invoice\": {\n        \"id\": \"string\",\n        \"period_start\": \"1987-11-30T19:23:21.472Z\",\n        \"period_end\": \"1987-10-20T07:53:32.109Z\"\n      },\n      \"aggregator\": \"string\"\n    },\n    \"_id\": \"string\",\n    \"last_success_time\": \"2019-04-01T13:40:53.206Z\",\n    \"beginning_balance\": {\n      \"sequence_id\": 3242,\n      \"current_balance\": 1935.704178409675,\n      \"pending_activity\": 5234.398123110265,\n      \"available_balance\": 8765.36654042732\n    },\n    \"amount\": 6767.521791548037,\n    \"status\": \"string\",\n    \"currency\": \"string\",\n    \"channel_requests\": [\n      {\n        \"channel_id\": \"string\",\n        \"channel_name\": \"string\",\n        \"provider_requests\": [\n          {\n            \"job_id\": \"string\",\n            \"request_time\": \"1986-10-29T16:54:05.555Z\",\n            \"success\": true,\n            \"status_code\": 1017,\n            \"error_code\": \"string\",\n            \"error_message\": \"string\"\n          },\n          {\n            \"job_id\": \"string\",\n            \"request_time\": \"2007-11-20T13:03:50.493Z\",\n            \"success\": false,\n            \"status_code\": 9731,\n            \"error_code\": \"string\",\n            \"error_message\": \"string\"\n          }\n        ]\n      },\n      {\n        \"channel_id\": \"string\",\n        \"channel_name\": \"string\",\n        \"provider_requests\": [\n          {\n            \"job_id\": \"string\",\n            \"request_time\": \"2020-08-25T09:44:16.603Z\",\n            \"success\": false,\n            \"status_code\": 974,\n            \"error_code\": \"string\",\n            \"error_message\": \"string\"\n          },\n          {\n            \"job_id\": \"string\",\n            \"request_time\": \"2016-03-09T18:22:29.595Z\",\n            \"success\": true,\n            \"status_code\": 9064,\n            \"error_code\": \"string\",\n            \"error_message\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"created_at\": \"1977-12-01T07:42:04.833Z\",\n    \"subscription_period_start\": \"1996-05-12T22:53:00.202Z\",\n    \"balance_changes\": [\n      {\n        \"amount\": 2022.5961267199878\n      },\n      {\n        \"amount\": 4116.411189580942\n      }\n    ],\n    \"type\": \"string\",\n    \"updated_at\": \"1962-03-07T12:34:44.628Z\",\n    \"subscription_period_end\": \"2019-09-26T10:13:42.278Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8dde14a-3bdb-4434-b570-d700d7ecc21a",
+          "name": "Get BillingReports' values for a given meter and time range for a single company or all companies",
+          "request": {
+            "name": "Get BillingReports' values for a given meter and time range for a single company or all companies",
+            "description": {
+              "content": "Get BillingReports' values for a given meter and time range for a single company or all companies",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "~",
+                "billing",
+                "reports",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "~"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "billing_meter_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "success",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregator",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "subscription_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "`type`",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "`type`",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "create:encrypted_keys delete:dashboards update:dashboards create:dashboards read:public_workspaces read:virtual_eventtypes update:companies create:companies create:reports delete:workspaces create:workspaces read:workspaces update:virtual_eventtypes create:cohorts delete:encrypted_keys read:dashboards read:events create:events read:cohorts read:encrypted_keys update:apps update:encrypted_keys update:organizations create:access_tokens create:users create:apps update:workspaces delete:cohorts read:users delete:virtual_eventtypes read:reports delete:reports update:users update:cohorts read:companies create:virtual_eventtypes delete:apps delete:companies read:apps create:eth_abi delete:users"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.moesif.com/v1/:orgId/oauth/access_tokens"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b72f271-38ef-4ecf-9852-7d49e6e1635c",
+              "name": "three buckets of aggregates for the given meter and time range including Metric Value, Reported Usage, and list of errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "~",
+                    "billing",
+                    "reports",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "~"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billing_meter_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "success",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "company_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subscription_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "`type`",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "`type`",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moesif.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "32c83ea4-ce98-49c0-b340-8e6e181ea58b",
+    "name": "Management Applications Billing Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.",
+      "type": "text/plain"
+    }
+  }
+}
