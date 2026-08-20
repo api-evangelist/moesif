@@ -52,6 +52,11 @@ apis:
   baseURL: https://api.moesif.net
   tags:
   - Ingestion
+  - Event
+  - Telemetry
+  - OpenTelemetry
+  tags_raw:
+  - Ingestion
   - Events
   - Telemetry
   - OpenTelemetry
@@ -66,6 +71,8 @@ apis:
   humanURL: https://www.moesif.com/
   baseURL: https://api.moesif.com
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -306,6 +313,8 @@ apis:
   humanURL: https://www.moesif.com/
   baseURL: https://api.moesif.com
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -326,6 +335,8 @@ apis:
   humanURL: https://www.moesif.com/
   baseURL: https://api.moesif.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
