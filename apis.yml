@@ -370,6 +370,8 @@ apis:
   humanURL: https://www.moesif.com/
   baseURL: https://api.moesif.com
   tags:
+  - Workspace
+  tags_raw:
   - Workspaces
   properties:
   - type: OpenAPI
