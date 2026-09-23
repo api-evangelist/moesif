@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
   contact:
@@ -6,7 +6,7 @@ info:
   - email: support@moesif.com
   termsOfService: https://www.moesif.com/terms
   version: '1'
-  title: Management Applications Properties API
+  title: Management Properties API
 servers:
 - url: https://api.moesif.com/v1
   description: Management API V1

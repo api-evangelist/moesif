@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
   contact:
@@ -6,7 +6,7 @@ info:
   - email: support@moesif.com
   termsOfService: https://www.moesif.com/terms
   version: '1'
-  title: Management Applications Workspaces API
+  title: Management Workspaces API
 servers:
 - url: https://api.moesif.com/v1
   description: Management API V1
@@ -493,6 +493,149 @@ paths:
           description: success
 components:
   schemas:
+    KeyValuePair:
+      properties:
+        key:
+          type: string
+        val:
+          type: string
+      required:
+      - key
+      - val
+    SignedTokenDTO:
+      properties:
+        _id:
+          type: string
+        token:
+          type: string
+        url:
+          type: string
+      required:
+      - _id
+      - token
+    CreateCommentItem:
+      properties:
+        auth_user_id:
+          type: string
+        comment_id:
+          type: string
+        mentions:
+          type: array
+          items:
+            type: string
+        partner_user_id:
+          type: string
+        message:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    TemplateItem:
+      properties:
+        dynamic_fields:
+          type: array
+          items:
+            type: string
+        dynamic_time:
+          type: boolean
+      required:
+      - dynamic_fields
+    WorkspaceUpdateItem:
+      properties:
+        name:
+          type: string
+        colors:
+          type: object
+        drawings:
+          type: array
+          items:
+            $ref: '#/components/schemas/DrawingItem'
+        chart:
+          $ref: '#/components/schemas/ChartItem'
+        template:
+          $ref: '#/components/schemas/TemplateItem'
+        width:
+          type: number
+          format: double
+        sort_order:
+          type: number
+          format: double
+        policy:
+          $ref: '#/components/schemas/PolicyItem'
+    PolicyItem:
+      properties:
+        acl:
+          type: array
+          items:
+            $ref: '#/components/schemas/ACLItem'
+        resource:
+          type: object
+        api_scopes:
+          type: array
+          items:
+            type: string
+        original_encoded_resource:
+          type: string
+      required:
+      - acl
+      - resource
+    WorkspaceCreateItem:
+      properties:
+        name:
+          type: string
+        is_default:
+          type: boolean
+        view_count:
+          type: integer
+          format: int32
+        dashboard:
+          type: object
+        colors:
+          type: object
+        drawings:
+          type: array
+          items:
+            $ref: '#/components/schemas/DrawingItem'
+        chart:
+          $ref: '#/components/schemas/ChartItem'
+        template:
+          $ref: '#/components/schemas/TemplateItem'
+        type:
+          type: string
+        width:
+          type: number
+          format: double
+        sort_order:
+          type: number
+          format: double
+        policy:
+          $ref: '#/components/schemas/PolicyItem'
+      required:
+      - name
+      - policy
+      - chart
+    SubmitData:
+      properties:
+        body:
+          type: object
+        url:
+          type: string
+        params:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+        verb:
+          type: string
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+      required:
+      - url
+      - verb
     SequenceItem:
       properties:
         delay:
@@ -503,24 +646,54 @@ components:
       required:
       - delay
       - submit_data
-    KeyValuePair:
+    ChartItem:
       properties:
-        key:
+        original_encoded_view_elements:
           type: string
-        val:
+        funnel_query:
+          type: object
+        url_query:
+          type: string
+        to:
+          type: string
+        view_elements:
+          type: object
+        from:
+          type: string
+        original_encoded_funnel_query:
+          type: string
+        es_query:
+          type: object
+        args:
+          type: string
+        original_encoded_query:
+          type: string
+        time_zone:
+          type: string
+        view:
           type: string
       required:
-      - key
-      - val
-    Summary:
+      - view
+      - url_query
+    DrawingItem:
       properties:
-        count:
-          type: integer
-          format: int32
-        latest_comment:
-          $ref: '#/components/schemas/CreateCommentItem'
+        name:
+          type: string
+        direction:
+          type: string
+        id:
+          type: string
+        type:
+          type: string
+        value:
+          type: number
+          format: double
       required:
-      - count
+      - id
+      - name
+      - type
+      - value
+      - direction
     WorkspaceDocument:
       properties:
         name:
@@ -579,180 +752,15 @@ components:
       - app_id
       - created
       - view_count
-    DrawingItem:
+    Summary:
       properties:
-        name:
-          type: string
-        direction:
-          type: string
-        id:
-          type: string
-        type:
-          type: string
-        value:
-          type: number
-          format: double
-      required:
-      - id
-      - name
-      - type
-      - value
-      - direction
-    CommentItem:
-      properties:
-        message:
-          type: string
-        mentions:
-          type: array
-          items:
-            type: string
-    TemplateItem:
-      properties:
-        dynamic_fields:
-          type: array
-          items:
-            type: string
-        dynamic_time:
-          type: boolean
-      required:
-      - dynamic_fields
-    SubmitData:
-      properties:
-        body:
-          type: object
-        url:
-          type: string
-        params:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyValuePair'
-        verb:
-          type: string
-        headers:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyValuePair'
-      required:
-      - url
-      - verb
-    CreateCommentItem:
-      properties:
-        auth_user_id:
-          type: string
-        comment_id:
-          type: string
-        mentions:
-          type: array
-          items:
-            type: string
-        partner_user_id:
-          type: string
-        message:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-    PolicyItem:
-      properties:
-        acl:
-          type: array
-          items:
-            $ref: '#/components/schemas/ACLItem'
-        resource:
-          type: object
-        api_scopes:
-          type: array
-          items:
-            type: string
-        original_encoded_resource:
-          type: string
-      required:
-      - acl
-      - resource
-    ChartItem:
-      properties:
-        original_encoded_view_elements:
-          type: string
-        funnel_query:
-          type: object
-        url_query:
-          type: string
-        to:
-          type: string
-        view_elements:
-          type: object
-        from:
-          type: string
-        original_encoded_funnel_query:
-          type: string
-        es_query:
-          type: object
-        args:
-          type: string
-        original_encoded_query:
-          type: string
-        time_zone:
-          type: string
-        view:
-          type: string
-      required:
-      - view
-      - url_query
-    Comments:
-      properties:
-        summary:
-          $ref: '#/components/schemas/Summary'
-      required:
-      - summary
-    SignedTokenDTO:
-      properties:
-        _id:
-          type: string
-        token:
-          type: string
-        url:
-          type: string
-      required:
-      - _id
-      - token
-    WorkspaceCreateItem:
-      properties:
-        name:
-          type: string
-        is_default:
-          type: boolean
-        view_count:
+        count:
           type: integer
           format: int32
-        dashboard:
-          type: object
-        colors:
-          type: object
-        drawings:
-          type: array
-          items:
-            $ref: '#/components/schemas/DrawingItem'
-        chart:
-          $ref: '#/components/schemas/ChartItem'
-        template:
-          $ref: '#/components/schemas/TemplateItem'
-        type:
-          type: string
-        width:
-          type: number
-          format: double
-        sort_order:
-          type: number
-          format: double
-        policy:
-          $ref: '#/components/schemas/PolicyItem'
+        latest_comment:
+          $ref: '#/components/schemas/CreateCommentItem'
       required:
-      - name
-      - policy
-      - chart
+      - count
     ACLItem:
       properties:
         grantee:
@@ -762,28 +770,20 @@ components:
       required:
       - grantee
       - permission
-    WorkspaceUpdateItem:
+    CommentItem:
       properties:
-        name:
+        message:
           type: string
-        colors:
-          type: object
-        drawings:
+        mentions:
           type: array
           items:
-            $ref: '#/components/schemas/DrawingItem'
-        chart:
-          $ref: '#/components/schemas/ChartItem'
-        template:
-          $ref: '#/components/schemas/TemplateItem'
-        width:
-          type: number
-          format: double
-        sort_order:
-          type: number
-          format: double
-        policy:
-          $ref: '#/components/schemas/PolicyItem'
+            type: string
+    Comments:
+      properties:
+        summary:
+          $ref: '#/components/schemas/Summary'
+      required:
+      - summary
   securitySchemes:
     managementAPIToken:
       type: oauth2

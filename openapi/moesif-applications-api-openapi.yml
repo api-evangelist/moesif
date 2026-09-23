@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
   contact:
@@ -145,27 +145,6 @@ paths:
           description: success
 components:
   schemas:
-    AppResponseDTO:
-      properties:
-        name:
-          type: string
-        custom_app_id:
-          type: string
-        search_api_base_url:
-          type: string
-        week_starts_on:
-          type: integer
-          format: int32
-        id:
-          type: string
-        portal_api_base_url:
-          type: string
-        secure_proxy:
-          type: boolean
-        time_zone:
-          type: string
-      required:
-      - name
     AppUpdateDTO:
       properties:
         name:
@@ -187,6 +166,27 @@ components:
           type: integer
           format: int32
         custom_app_id:
+          type: string
+      required:
+      - name
+    AppResponseDTO:
+      properties:
+        name:
+          type: string
+        custom_app_id:
+          type: string
+        search_api_base_url:
+          type: string
+        week_starts_on:
+          type: integer
+          format: int32
+        id:
+          type: string
+        portal_api_base_url:
+          type: string
+        secure_proxy:
+          type: boolean
+        time_zone:
           type: string
       required:
       - name

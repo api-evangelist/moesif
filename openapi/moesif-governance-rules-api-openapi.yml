@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
   contact:
@@ -6,7 +6,7 @@ info:
   - email: support@moesif.com
   termsOfService: https://www.moesif.com/terms
   version: '1'
-  title: Management Applications Governance Rules API
+  title: Management Governance Rules API
 servers:
 - url: https://api.moesif.com/v1
   description: Management API V1
@@ -183,31 +183,53 @@ paths:
           description: success
 components:
   schemas:
-    RulesResponseItem:
+    GovernanceRuleUpdateItem:
       properties:
-        status:
+        name:
+          type: string
+        priority:
           type: integer
           format: int32
-        headers:
-          type: collection.immutable.map[string,string]
-        body:
-          type: object
-        original_encoded_body:
+        model:
           type: string
-    Plan:
-      properties:
-        provider:
-          type: string
-        plan_id:
-          type: string
-        price_ids:
+        state:
+          type: integer
+          format: int32
+        cohorts:
           type: array
           items:
-            type: string
+            type: object
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/GovernanceRulesVariables'
+        applied_to:
+          type: string
+        block:
+          type: boolean
+        response:
+          $ref: '#/components/schemas/RulesResponseItem'
+        applied_to_unidentified:
+          type: boolean
+        regex_config:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegexRule'
+        plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plan'
+        type:
+          type: string
+    RegexCondition:
+      properties:
+        path:
+          type: string
+        value:
+          type: string
       required:
-      - provider
-      - plan_id
-      - price_ids
+      - path
+      - value
     RegexRule:
       properties:
         conditions:
@@ -219,15 +241,6 @@ components:
           format: int32
       required:
       - conditions
-    GovernanceRulesVariables:
-      properties:
-        name:
-          type: string
-        path:
-          type: string
-      required:
-      - name
-      - path
     GovernanceRulesDocument:
       properties:
         name:
@@ -283,6 +296,29 @@ components:
       - app_id
       - name
       - block
+    Plan:
+      properties:
+        provider:
+          type: string
+        plan_id:
+          type: string
+        price_ids:
+          type: array
+          items:
+            type: string
+      required:
+      - provider
+      - plan_id
+      - price_ids
+    GovernanceRulesVariables:
+      properties:
+        name:
+          type: string
+        path:
+          type: string
+      required:
+      - name
+      - path
     GovernanceRuleCreateItem:
       properties:
         name:
@@ -326,52 +362,16 @@ components:
       - state
       - name
       - block
-    RegexCondition:
+    RulesResponseItem:
       properties:
-        path:
-          type: string
-        value:
-          type: string
-      required:
-      - path
-      - value
-    GovernanceRuleUpdateItem:
-      properties:
-        name:
-          type: string
-        priority:
+        status:
           type: integer
           format: int32
-        model:
-          type: string
-        state:
-          type: integer
-          format: int32
-        cohorts:
-          type: array
-          items:
-            type: object
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/GovernanceRulesVariables'
-        applied_to:
-          type: string
-        block:
-          type: boolean
-        response:
-          $ref: '#/components/schemas/RulesResponseItem'
-        applied_to_unidentified:
-          type: boolean
-        regex_config:
-          type: array
-          items:
-            $ref: '#/components/schemas/RegexRule'
-        plans:
-          type: array
-          items:
-            $ref: '#/components/schemas/Plan'
-        type:
+        headers:
+          type: collection.immutable.map[string,string]
+        body:
+          type: object
+        original_encoded_body:
           type: string
   securitySchemes:
     managementAPIToken:

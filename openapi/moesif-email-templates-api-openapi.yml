@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
   contact:
@@ -6,7 +6,7 @@ info:
   - email: support@moesif.com
   termsOfService: https://www.moesif.com/terms
   version: '1'
-  title: Management Applications Email Templates API
+  title: Management Email Templates API
 servers:
 - url: https://api.moesif.com/v1
   description: Management API V1
@@ -176,30 +176,6 @@ paths:
           description: success
 components:
   schemas:
-    CohortConfig:
-      properties:
-        url_query:
-          type: string
-        criteria:
-          type: string
-        cohort_name:
-          type: string
-        to:
-          type: string
-        from:
-          type: string
-        cohort_type:
-          type: string
-        time_zone:
-          type: string
-      required:
-      - criteria
-      - url_query
-      - cohort_name
-      - cohort_type
-      - from
-      - to
-      - time_zone
     DynamicField:
       properties:
         token:
@@ -218,6 +194,45 @@ components:
       - token
       - field
       - aggregator
+    EmailAddresses:
+      properties:
+        from:
+          type: string
+        cc:
+          type: array
+          items:
+            type: string
+        bcc:
+          type: array
+          items:
+            type: string
+      required:
+      - from
+      - cc
+      - bcc
+    TemplateConfig:
+      properties:
+        subject:
+          type: string
+        editor:
+          type: string
+        design:
+          type: object
+        thumbnail_url:
+          type: string
+      required:
+      - subject
+      - editor
+      - design
+    TemplateContent:
+      properties:
+        html:
+          type: string
+        chunks:
+          type: object
+      required:
+      - html
+      - chunks
     EmailTemplateCreateItem:
       properties:
         name:
@@ -259,22 +274,30 @@ components:
       required:
       - id
       - type
-    EmailAddresses:
+    CohortConfig:
       properties:
+        url_query:
+          type: string
+        criteria:
+          type: string
+        cohort_name:
+          type: string
+        to:
+          type: string
         from:
           type: string
-        cc:
-          type: array
-          items:
-            type: string
-        bcc:
-          type: array
-          items:
-            type: string
+        cohort_type:
+          type: string
+        time_zone:
+          type: string
       required:
+      - criteria
+      - url_query
+      - cohort_name
+      - cohort_type
       - from
-      - cc
-      - bcc
+      - to
+      - time_zone
     EmailTemplateUpdateItem:
       properties:
         name:
@@ -298,29 +321,6 @@ components:
           type: string
         addresses:
           $ref: '#/components/schemas/EmailAddresses'
-    TemplateConfig:
-      properties:
-        subject:
-          type: string
-        editor:
-          type: string
-        design:
-          type: object
-        thumbnail_url:
-          type: string
-      required:
-      - subject
-      - editor
-      - design
-    TemplateContent:
-      properties:
-        html:
-          type: string
-        chunks:
-          type: object
-      required:
-      - html
-      - chunks
   securitySchemes:
     managementAPIToken:
       type: oauth2

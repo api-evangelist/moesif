@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
   contact:
@@ -6,7 +6,7 @@ info:
   - email: support@moesif.com
   termsOfService: https://www.moesif.com/terms
   version: '1'
-  title: Management Applications Billing Meters API
+  title: Management Billing Meters API
 servers:
 - url: https://api.moesif.com/v1
   description: Management API V1
@@ -26,7 +26,6 @@ paths:
       security:
       - managementAPIToken:
         - read:billing_meters
-      description: List Billing Meters
       tags:
       - Billing Meters
       operationId: listMeters
@@ -57,7 +56,6 @@ paths:
       security:
       - managementAPIToken:
         - read:billing_meters
-      description: Get Billing Meter by id
       tags:
       - Billing Meters
       operationId: getMeter
@@ -90,7 +88,6 @@ paths:
       security:
       - managementAPIToken:
         - delete:billing_meters
-      description: Delete Billing Meter by id
       tags:
       - Billing Meters
       operationId: deleteMeter
@@ -117,44 +114,36 @@ paths:
           description: success
 components:
   schemas:
-    CustomReportPlan:
+    StripeRecurring:
       properties:
-        plan_id:
-          type: string
-      required:
-      - plan_id
-    ChargebeeItemPriceTier:
-      properties:
-        starting_unit:
+        trial_period_days:
           type: integer
-          format: int32
-        ending_unit:
+          format: int64
+        interval:
+          type: string
+        usage_type:
+          type: string
+        interval_count:
           type: integer
-          format: int32
-        price:
-          type: integer
-          format: int32
-      required:
-      - starting_unit
-      - price
-    RecurlyPlan:
+          format: int64
+        aggregate_usage:
+          type: string
+    BillingParams:
       properties:
-        name:
+        usage_rounding_mode:
           type: string
-        id:
-          type: string
-        code:
-          type: string
-      required:
-      - code
-    RecurlyAddOnPercentageTiers:
-      properties:
-        tiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecurlyAddOnPercentageTier'
-        currency:
-          type: string
+        webhook_params:
+          $ref: '#/components/schemas/BillingWebhookParams'
+        recurly_params:
+          $ref: '#/components/schemas/RecurlyBillingParams'
+        chargebee_params:
+          $ref: '#/components/schemas/ChargebeeBillingParams'
+        stripe_params:
+          $ref: '#/components/schemas/StripeBillingParams'
+        zuora_params:
+          $ref: '#/components/schemas/ZuoraBillingParams'
+        usage_multiplier:
+          type: double
     BillingMeterDocument:
       properties:
         name:
@@ -192,50 +181,6 @@ components:
       - billing_plan
       - created_at
       - modified_at
-    BillingParams:
-      properties:
-        usage_rounding_mode:
-          type: string
-        webhook_params:
-          $ref: '#/components/schemas/BillingWebhookParams'
-        recurly_params:
-          $ref: '#/components/schemas/RecurlyBillingParams'
-        chargebee_params:
-          $ref: '#/components/schemas/ChargebeeBillingParams'
-        stripe_params:
-          $ref: '#/components/schemas/StripeBillingParams'
-        zuora_params:
-          $ref: '#/components/schemas/ZuoraBillingParams'
-        usage_multiplier:
-          type: double
-    BillingPlan:
-      properties:
-        provider_slug:
-          type: string
-        friendly_name:
-          type: string
-        params:
-          $ref: '#/components/schemas/BillingParams'
-      required:
-      - provider_slug
-    RecurlyAddOnTier:
-      properties:
-        ending_quantity:
-          type: integer
-          format: int64
-        currencies:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecurlyCurrencyAmount'
-      required:
-      - currencies
-    StripeTransformQuantity:
-      properties:
-        divide_by:
-          type: integer
-          format: int64
-        round:
-          type: string
     BillingWebhookParams:
       properties:
         reporting:
@@ -249,24 +194,48 @@ components:
       required:
       - channel_ids
       - custom_plan
-    ZuoraBillingParams:
+    ChargebeeBillingParams:
       properties:
-        plan_id:
-          type: string
-        price_id:
-          type: string
-        price_ids:
+        item_plan:
+          $ref: '#/components/schemas/ChargebeeItemPlan'
+        item_price:
+          $ref: '#/components/schemas/ChargebeeItemPrice'
+        item_prices:
           type: array
           items:
-            type: string
-    CustomReporting:
+            $ref: '#/components/schemas/ChargebeeItemPrice'
+        reporting:
+          $ref: '#/components/schemas/ProviderReporting'
+    StripeProduct:
       properties:
-        report_when:
-          type: array
-          items:
-            type: string
+        name:
+          type: string
+        description:
+          type: string
+        unit_label:
+          type: string
+        id:
+          type: string
+        usage_type:
+          type: string
       required:
-      - report_when
+      - name
+      - id
+    StripeTier:
+      properties:
+        flat_amount_decimal:
+          type: string
+        up_to:
+          type: integer
+          format: int64
+        unit_amount_decimal:
+          type: string
+        flat_amount:
+          type: integer
+          format: int64
+        unit_amount:
+          type: integer
+          format: int64
     StripePrice:
       properties:
         tiers_mode:
@@ -299,6 +268,193 @@ components:
           type: boolean
       required:
       - price_id
+    StripeBillingParams:
+      properties:
+        product:
+          $ref: '#/components/schemas/StripeProduct'
+        price:
+          $ref: '#/components/schemas/StripePrice'
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/StripePrice'
+        reporting:
+          $ref: '#/components/schemas/ProviderReporting'
+    RecurlyBillingParams:
+      properties:
+        plan:
+          $ref: '#/components/schemas/RecurlyPlan'
+        add_on:
+          $ref: '#/components/schemas/RecurlyPlanAddOn'
+        add_ons:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyPlanAddOn'
+    BillingPlan:
+      properties:
+        provider_slug:
+          type: string
+        friendly_name:
+          type: string
+        params:
+          $ref: '#/components/schemas/BillingParams'
+      required:
+      - provider_slug
+    ZuoraBillingParams:
+      properties:
+        plan_id:
+          type: string
+        price_id:
+          type: string
+        price_ids:
+          type: array
+          items:
+            type: string
+    RecurlyPlan:
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+        code:
+          type: string
+      required:
+      - code
+    ProviderReporting:
+      properties:
+        reporting_period:
+          type: string
+    ChargebeeItemPriceTier:
+      properties:
+        starting_unit:
+          type: integer
+          format: int32
+        ending_unit:
+          type: integer
+          format: int32
+        price:
+          type: integer
+          format: int32
+      required:
+      - starting_unit
+      - price
+    CustomReporting:
+      properties:
+        report_when:
+          type: array
+          items:
+            type: string
+      required:
+      - report_when
+    RecurlyAddOnPercentageTier:
+      properties:
+        ending_amount:
+          type: double
+        usage_percent:
+          type: string
+    ChargebeeItemPlan:
+      properties:
+        name:
+          type: string
+        item_family_id:
+          type: string
+        description:
+          type: string
+        usage_calculation:
+          type: string
+        external_name:
+          type: string
+        metered:
+          type: boolean
+        id:
+          type: string
+        status:
+          type: string
+        unit:
+          type: string
+        updated_at:
+          type: integer
+          format: int64
+        archived_at:
+          type: integer
+          format: int64
+      required:
+      - id
+    RecurlyCurrencyAmount:
+      properties:
+        currency:
+          type: string
+        unit_amount:
+          type: double
+        unit_amount_decimal:
+          type: string
+      required:
+      - currency
+    CustomReportPlan:
+      properties:
+        plan_id:
+          type: string
+      required:
+      - plan_id
+    RecurlyPlanAddOn:
+      properties:
+        name:
+          type: string
+        currencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyCurrencyAmount'
+        usage_percentage:
+          type: double
+        add_on_type:
+          type: string
+        external_sku:
+          type: string
+        state:
+          type: string
+        tiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyAddOnTier'
+        tier_type:
+          type: string
+        code:
+          type: string
+        plan_id:
+          type: string
+        id:
+          type: string
+        percentage_tiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyAddOnPercentageTiers'
+        usage_type:
+          type: string
+        created_at:
+          type: string
+        usage_calculation_type:
+          type: string
+        updated_at:
+          type: string
+        deleted_at:
+          type: string
+      required:
+      - code
+    RecurlyAddOnPercentageTiers:
+      properties:
+        tiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurlyAddOnPercentageTier'
+        currency:
+          type: string
+    StripeTransformQuantity:
+      properties:
+        divide_by:
+          type: integer
+          format: int64
+        round:
+          type: string
     ChargebeeItemPrice:
       properties:
         name:
@@ -354,176 +510,17 @@ components:
           format: int64
       required:
       - id
-    ChargebeeBillingParams:
+    RecurlyAddOnTier:
       properties:
-        item_plan:
-          $ref: '#/components/schemas/ChargebeeItemPlan'
-        item_price:
-          $ref: '#/components/schemas/ChargebeeItemPrice'
-        item_prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChargebeeItemPrice'
-        reporting:
-          $ref: '#/components/schemas/ProviderReporting'
-    StripeBillingParams:
-      properties:
-        product:
-          $ref: '#/components/schemas/StripeProduct'
-        price:
-          $ref: '#/components/schemas/StripePrice'
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/StripePrice'
-        reporting:
-          $ref: '#/components/schemas/ProviderReporting'
-    ChargebeeItemPlan:
-      properties:
-        name:
-          type: string
-        item_family_id:
-          type: string
-        description:
-          type: string
-        usage_calculation:
-          type: string
-        external_name:
-          type: string
-        metered:
-          type: boolean
-        id:
-          type: string
-        status:
-          type: string
-        unit:
-          type: string
-        updated_at:
+        ending_quantity:
           type: integer
           format: int64
-        archived_at:
-          type: integer
-          format: int64
-      required:
-      - id
-    ProviderReporting:
-      properties:
-        reporting_period:
-          type: string
-    StripeTier:
-      properties:
-        flat_amount_decimal:
-          type: string
-        up_to:
-          type: integer
-          format: int64
-        unit_amount_decimal:
-          type: string
-        flat_amount:
-          type: integer
-          format: int64
-        unit_amount:
-          type: integer
-          format: int64
-    RecurlyPlanAddOn:
-      properties:
-        name:
-          type: string
         currencies:
           type: array
           items:
             $ref: '#/components/schemas/RecurlyCurrencyAmount'
-        usage_percentage:
-          type: double
-        add_on_type:
-          type: string
-        external_sku:
-          type: string
-        state:
-          type: string
-        tiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecurlyAddOnTier'
-        tier_type:
-          type: string
-        code:
-          type: string
-        plan_id:
-          type: string
-        id:
-          type: string
-        percentage_tiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecurlyAddOnPercentageTiers'
-        usage_type:
-          type: string
-        created_at:
-          type: string
-        usage_calculation_type:
-          type: string
-        updated_at:
-          type: string
-        deleted_at:
-          type: string
       required:
-      - code
-    RecurlyBillingParams:
-      properties:
-        plan:
-          $ref: '#/components/schemas/RecurlyPlan'
-        add_on:
-          $ref: '#/components/schemas/RecurlyPlanAddOn'
-        add_ons:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecurlyPlanAddOn'
-    RecurlyCurrencyAmount:
-      properties:
-        currency:
-          type: string
-        unit_amount:
-          type: double
-        unit_amount_decimal:
-          type: string
-      required:
-      - currency
-    RecurlyAddOnPercentageTier:
-      properties:
-        ending_amount:
-          type: double
-        usage_percent:
-          type: string
-    StripeRecurring:
-      properties:
-        trial_period_days:
-          type: integer
-          format: int64
-        interval:
-          type: string
-        usage_type:
-          type: string
-        interval_count:
-          type: integer
-          format: int64
-        aggregate_usage:
-          type: string
-    StripeProduct:
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        unit_label:
-          type: string
-        id:
-          type: string
-        usage_type:
-          type: string
-      required:
-      - name
-      - id
+      - currencies
   securitySchemes:
     managementAPIToken:
       type: oauth2

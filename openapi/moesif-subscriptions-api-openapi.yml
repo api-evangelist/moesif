@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
   contact:
@@ -6,7 +6,7 @@ info:
   - email: support@moesif.com
   termsOfService: https://www.moesif.com/terms
   version: '1'
-  title: Management Applications Subscriptions API
+  title: Management Subscriptions API
 servers:
 - url: https://api.moesif.com/v1
   description: Management API V1
@@ -159,57 +159,6 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDTO'
 components:
   schemas:
-    AddSubscriptionDTO:
-      properties:
-        trial_start:
-          type: string
-          format: date-time
-        company_id:
-          type: string
-        start_date:
-          type: string
-          format: date-time
-        collection_method:
-          type: string
-        provider:
-          type: string
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubscriptionItem'
-        current_period_start:
-          type: string
-          format: date-time
-        company_external_id:
-          type: string
-        payment_status:
-          type: string
-        cancel_time:
-          type: string
-          format: date-time
-        status:
-          type: string
-        trial_end:
-          type: string
-          format: date-time
-        external_id:
-          type: string
-        metadata:
-          type: object
-        subscription_id:
-          type: string
-        version_id:
-          type: string
-        current_period_end:
-          type: string
-          format: date-time
-        created:
-          type: string
-          format: date-time
-      required:
-      - subscription_id
-      - company_id
-      - status
     SubscriptionItem:
       properties:
         item_price_id:
@@ -288,6 +237,57 @@ components:
       - org_id
       - app_id
       - type
+      - subscription_id
+      - company_id
+      - status
+    AddSubscriptionDTO:
+      properties:
+        trial_start:
+          type: string
+          format: date-time
+        company_id:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        collection_method:
+          type: string
+        provider:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionItem'
+        current_period_start:
+          type: string
+          format: date-time
+        company_external_id:
+          type: string
+        payment_status:
+          type: string
+        cancel_time:
+          type: string
+          format: date-time
+        status:
+          type: string
+        trial_end:
+          type: string
+          format: date-time
+        external_id:
+          type: string
+        metadata:
+          type: object
+        subscription_id:
+          type: string
+        version_id:
+          type: string
+        current_period_end:
+          type: string
+          format: date-time
+        created:
+          type: string
+          format: date-time
+      required:
       - subscription_id
       - company_id
       - status

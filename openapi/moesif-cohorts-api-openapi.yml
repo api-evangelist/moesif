@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
   contact:
@@ -6,7 +6,7 @@ info:
   - email: support@moesif.com
   termsOfService: https://www.moesif.com/terms
   version: '1'
-  title: Management Applications Cohorts API
+  title: Management Cohorts API
 servers:
 - url: https://api.moesif.com/v1
   description: Management API V1
@@ -210,21 +210,6 @@ paths:
           description: success
 components:
   schemas:
-    NotificationRule:
-      properties:
-        send_on_addition:
-          type: boolean
-        send_on_removal:
-          type: boolean
-        period:
-          type: string
-        fields:
-          type: array
-          items:
-            type: string
-      required:
-      - send_on_addition
-      - send_on_removal
     CohortDocument:
       properties:
         channels:
@@ -276,38 +261,6 @@ components:
       - criteria
       - cohort_name
       - cohort_type
-    CohortCreateItem:
-      properties:
-        channels:
-          type: array[string]
-        priority:
-          type: integer
-          format: int32
-        url_query:
-          type: string
-        criteria:
-          type: object
-        notification_rule:
-          $ref: '#/components/schemas/NotificationRule'
-        cohort_name:
-          type: string
-        to:
-          type: string
-        week_starts_on:
-          type: integer
-          format: int32
-        locked_by:
-          type: string
-        from:
-          type: string
-        cohort_type:
-          type: string
-        time_zone:
-          type: string
-      required:
-      - cohort_name
-      - cohort_type
-      - criteria
     CohortUpdateItem:
       properties:
         channels:
@@ -341,6 +294,53 @@ components:
           type: string
       required:
       - cohort_type
+    CohortCreateItem:
+      properties:
+        channels:
+          type: array[string]
+        priority:
+          type: integer
+          format: int32
+        url_query:
+          type: string
+        criteria:
+          type: object
+        notification_rule:
+          $ref: '#/components/schemas/NotificationRule'
+        cohort_name:
+          type: string
+        to:
+          type: string
+        week_starts_on:
+          type: integer
+          format: int32
+        locked_by:
+          type: string
+        from:
+          type: string
+        cohort_type:
+          type: string
+        time_zone:
+          type: string
+      required:
+      - cohort_name
+      - cohort_type
+      - criteria
+    NotificationRule:
+      properties:
+        send_on_addition:
+          type: boolean
+        send_on_removal:
+          type: boolean
+        period:
+          type: string
+        fields:
+          type: array
+          items:
+            type: string
+      required:
+      - send_on_addition
+      - send_on_removal
   securitySchemes:
     managementAPIToken:
       type: oauth2

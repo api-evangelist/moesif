@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Management API to query data in Moesif. You can use the management API to export data for custom reports or to build custom dashboards.
   contact:
@@ -6,7 +6,7 @@ info:
   - email: support@moesif.com
   termsOfService: https://www.moesif.com/terms
   version: '1'
-  title: Management Applications Metrics API
+  title: Management Metrics API
 servers:
 - url: https://api.moesif.com/v1
   description: Management API V1
@@ -235,31 +235,6 @@ paths:
                 $ref: '#/components/schemas/searchEventsResponseDTO'
 components:
   schemas:
-    searchEventsResponseDTO:
-      properties:
-        took:
-          type: integer
-          default: 0
-          examples:
-          - 358
-        timed_out:
-          type: boolean
-          default: false
-          examples:
-          - false
-        hits:
-          type: object
-          properties:
-            total:
-              type: integer
-              default: 0
-              examples:
-              - 947
-            hits:
-              type: array
-              items:
-                type: object
-                $ref: '#/components/schemas/eventResponseDTO'
     eventResponseDTO:
       properties:
         _id:
@@ -482,6 +457,31 @@ components:
           items:
             type: integer
             default: 0
+    searchEventsResponseDTO:
+      properties:
+        took:
+          type: integer
+          default: 0
+          examples:
+          - 358
+        timed_out:
+          type: boolean
+          default: false
+          examples:
+          - false
+        hits:
+          type: object
+          properties:
+            total:
+              type: integer
+              default: 0
+              examples:
+              - 947
+            hits:
+              type: array
+              items:
+                type: object
+                $ref: '#/components/schemas/eventResponseDTO'
   securitySchemes:
     managementAPIToken:
       type: oauth2
