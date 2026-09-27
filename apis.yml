@@ -408,9 +408,17 @@ common:
   - type: APIReference
     url: https://www.moesif.com/docs/api
   - type: Pricing
-    url: https://www.moesif.com/pricing
+    url: https://www.moesif.com/price
   - type: Signup
     url: https://www.moesif.com/wrap
+  - type: GettingStarted
+    url: https://www.moesif.com/docs/getting-started/overview/
+  - type: StatusPage
+    url: https://status.moesif.com/
+  - type: TermsOfService
+    url: https://www.moesif.com/terms
+  - type: PrivacyPolicy
+    url: https://www.moesif.com/privacy
   - type: Blog
     url: https://www.moesif.com/blog
   - type: SDKs

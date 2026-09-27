@@ -493,95 +493,16 @@ paths:
           description: success
 components:
   schemas:
-    KeyValuePair:
+    SequenceItem:
       properties:
-        key:
-          type: string
-        val:
-          type: string
+        delay:
+          type: integer
+          format: int32
+        submit_data:
+          $ref: '#/components/schemas/SubmitData'
       required:
-      - key
-      - val
-    SignedTokenDTO:
-      properties:
-        _id:
-          type: string
-        token:
-          type: string
-        url:
-          type: string
-      required:
-      - _id
-      - token
-    CreateCommentItem:
-      properties:
-        auth_user_id:
-          type: string
-        comment_id:
-          type: string
-        mentions:
-          type: array
-          items:
-            type: string
-        partner_user_id:
-          type: string
-        message:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-    TemplateItem:
-      properties:
-        dynamic_fields:
-          type: array
-          items:
-            type: string
-        dynamic_time:
-          type: boolean
-      required:
-      - dynamic_fields
-    WorkspaceUpdateItem:
-      properties:
-        name:
-          type: string
-        colors:
-          type: object
-        drawings:
-          type: array
-          items:
-            $ref: '#/components/schemas/DrawingItem'
-        chart:
-          $ref: '#/components/schemas/ChartItem'
-        template:
-          $ref: '#/components/schemas/TemplateItem'
-        width:
-          type: number
-          format: double
-        sort_order:
-          type: number
-          format: double
-        policy:
-          $ref: '#/components/schemas/PolicyItem'
-    PolicyItem:
-      properties:
-        acl:
-          type: array
-          items:
-            $ref: '#/components/schemas/ACLItem'
-        resource:
-          type: object
-        api_scopes:
-          type: array
-          items:
-            type: string
-        original_encoded_resource:
-          type: string
-      required:
-      - acl
-      - resource
+      - delay
+      - submit_data
     WorkspaceCreateItem:
       properties:
         name:
@@ -617,35 +538,6 @@ components:
       - name
       - policy
       - chart
-    SubmitData:
-      properties:
-        body:
-          type: object
-        url:
-          type: string
-        params:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyValuePair'
-        verb:
-          type: string
-        headers:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyValuePair'
-      required:
-      - url
-      - verb
-    SequenceItem:
-      properties:
-        delay:
-          type: integer
-          format: int32
-        submit_data:
-          $ref: '#/components/schemas/SubmitData'
-      required:
-      - delay
-      - submit_data
     ChartItem:
       properties:
         original_encoded_view_elements:
@@ -694,6 +586,12 @@ components:
       - type
       - value
       - direction
+    Comments:
+      properties:
+        summary:
+          $ref: '#/components/schemas/Summary'
+      required:
+      - summary
     WorkspaceDocument:
       properties:
         name:
@@ -761,6 +659,95 @@ components:
           $ref: '#/components/schemas/CreateCommentItem'
       required:
       - count
+    CommentItem:
+      properties:
+        message:
+          type: string
+        mentions:
+          type: array
+          items:
+            type: string
+    SignedTokenDTO:
+      properties:
+        _id:
+          type: string
+        token:
+          type: string
+        url:
+          type: string
+      required:
+      - _id
+      - token
+    SubmitData:
+      properties:
+        body:
+          type: object
+        url:
+          type: string
+        params:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+        verb:
+          type: string
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+      required:
+      - url
+      - verb
+    KeyValuePair:
+      properties:
+        key:
+          type: string
+        val:
+          type: string
+      required:
+      - key
+      - val
+    WorkspaceUpdateItem:
+      properties:
+        name:
+          type: string
+        colors:
+          type: object
+        drawings:
+          type: array
+          items:
+            $ref: '#/components/schemas/DrawingItem'
+        chart:
+          $ref: '#/components/schemas/ChartItem'
+        template:
+          $ref: '#/components/schemas/TemplateItem'
+        width:
+          type: number
+          format: double
+        sort_order:
+          type: number
+          format: double
+        policy:
+          $ref: '#/components/schemas/PolicyItem'
+    CreateCommentItem:
+      properties:
+        auth_user_id:
+          type: string
+        comment_id:
+          type: string
+        mentions:
+          type: array
+          items:
+            type: string
+        partner_user_id:
+          type: string
+        message:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
     ACLItem:
       properties:
         grantee:
@@ -770,20 +757,33 @@ components:
       required:
       - grantee
       - permission
-    CommentItem:
+    TemplateItem:
       properties:
-        message:
-          type: string
-        mentions:
+        dynamic_fields:
           type: array
           items:
             type: string
-    Comments:
-      properties:
-        summary:
-          $ref: '#/components/schemas/Summary'
+        dynamic_time:
+          type: boolean
       required:
-      - summary
+      - dynamic_fields
+    PolicyItem:
+      properties:
+        acl:
+          type: array
+          items:
+            $ref: '#/components/schemas/ACLItem'
+        resource:
+          type: object
+        api_scopes:
+          type: array
+          items:
+            type: string
+        original_encoded_resource:
+          type: string
+      required:
+      - acl
+      - resource
   securitySchemes:
     managementAPIToken:
       type: oauth2

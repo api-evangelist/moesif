@@ -176,24 +176,30 @@ paths:
           description: success
 components:
   schemas:
-    DynamicField:
+    CohortConfig:
       properties:
-        token:
+        url_query:
           type: string
-        field:
+        criteria:
           type: string
-        aggregator:
+        cohort_name:
           type: string
-          enum:
-          - avg
-          - min
-          - max
-          - terms
-          - sum
+        to:
+          type: string
+        from:
+          type: string
+        cohort_type:
+          type: string
+        time_zone:
+          type: string
       required:
-      - token
-      - field
-      - aggregator
+      - criteria
+      - url_query
+      - cohort_name
+      - cohort_type
+      - from
+      - to
+      - time_zone
     EmailAddresses:
       properties:
         from:
@@ -224,6 +230,24 @@ components:
       - subject
       - editor
       - design
+    DynamicField:
+      properties:
+        token:
+          type: string
+        field:
+          type: string
+        aggregator:
+          type: string
+          enum:
+          - avg
+          - min
+          - max
+          - terms
+          - sum
+      required:
+      - token
+      - field
+      - aggregator
     TemplateContent:
       properties:
         html:
@@ -233,6 +257,29 @@ components:
       required:
       - html
       - chunks
+    EmailTemplateUpdateItem:
+      properties:
+        name:
+          type: string
+        state:
+          type: integer
+          format: int32
+        cohorts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cohort'
+        dynamic_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicField'
+        content:
+          $ref: '#/components/schemas/TemplateContent'
+        template:
+          $ref: '#/components/schemas/TemplateConfig'
+        period:
+          type: string
+        addresses:
+          $ref: '#/components/schemas/EmailAddresses'
     EmailTemplateCreateItem:
       properties:
         name:
@@ -274,53 +321,6 @@ components:
       required:
       - id
       - type
-    CohortConfig:
-      properties:
-        url_query:
-          type: string
-        criteria:
-          type: string
-        cohort_name:
-          type: string
-        to:
-          type: string
-        from:
-          type: string
-        cohort_type:
-          type: string
-        time_zone:
-          type: string
-      required:
-      - criteria
-      - url_query
-      - cohort_name
-      - cohort_type
-      - from
-      - to
-      - time_zone
-    EmailTemplateUpdateItem:
-      properties:
-        name:
-          type: string
-        state:
-          type: integer
-          format: int32
-        cohorts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cohort'
-        dynamic_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DynamicField'
-        content:
-          $ref: '#/components/schemas/TemplateContent'
-        template:
-          $ref: '#/components/schemas/TemplateConfig'
-        period:
-          type: string
-        addresses:
-          $ref: '#/components/schemas/EmailAddresses'
   securitySchemes:
     managementAPIToken:
       type: oauth2

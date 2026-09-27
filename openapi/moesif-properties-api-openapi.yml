@@ -55,7 +55,7 @@ paths:
         - read:companies
       tags:
       - Properties
-      operationId: getProperties
+      operationId: getSearch~MappingsCompanymetricsProperties
       parameters:
       - schema:
           type: string
@@ -81,6 +81,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/object'
+      x-operation-id-source: normalized
+      x-operation-id-original: getProperties
   /search/~/mappings/events/properties:
     get:
       security:
@@ -88,7 +90,7 @@ paths:
         - read:properties
       tags:
       - Properties
-      operationId: getProperties
+      operationId: getSearch~MappingsEventsProperties
       parameters:
       - schema:
           type: string
@@ -120,6 +122,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/object'
+      x-operation-id-source: normalized
+      x-operation-id-original: getProperties
   /search/~/mappings/events/request/body/properties:
     get:
       security:
@@ -227,7 +231,7 @@ paths:
         - read:users
       tags:
       - Properties
-      operationId: getProperties
+      operationId: getSearch~MappingsUsermetricsProperties
       parameters:
       - schema:
           type: string
@@ -253,6 +257,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/object'
+      x-operation-id-source: normalized
+      x-operation-id-original: getProperties
   /search/~/mappings/users/properties:
     get:
       security:
@@ -260,7 +266,7 @@ paths:
         - read:users
       tags:
       - Properties
-      operationId: getProperties
+      operationId: getSearch~MappingsUsersProperties
       parameters:
       - schema:
           type: string
@@ -280,6 +286,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/object'
+      x-operation-id-source: normalized
+      x-operation-id-original: getProperties
 components:
   securitySchemes:
     managementAPIToken:

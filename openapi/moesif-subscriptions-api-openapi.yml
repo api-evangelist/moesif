@@ -159,24 +159,6 @@ paths:
                 $ref: '#/components/schemas/SubscriptionDTO'
 components:
   schemas:
-    SubscriptionItem:
-      properties:
-        item_price_id:
-          type: string
-        price_id:
-          type: string
-        is_metered:
-          type: boolean
-        plan_id:
-          type: string
-        unit_of_measure:
-          type: string
-        status:
-          type: string
-        subscription_item_id:
-          type: string
-      required:
-      - plan_id
     SubscriptionDTO:
       properties:
         trial_start:
@@ -291,6 +273,24 @@ components:
       - subscription_id
       - company_id
       - status
+    SubscriptionItem:
+      properties:
+        item_price_id:
+          type: string
+        price_id:
+          type: string
+        is_metered:
+          type: boolean
+        plan_id:
+          type: string
+        unit_of_measure:
+          type: string
+        status:
+          type: string
+        subscription_item_id:
+          type: string
+      required:
+      - plan_id
   securitySchemes:
     managementAPIToken:
       type: oauth2

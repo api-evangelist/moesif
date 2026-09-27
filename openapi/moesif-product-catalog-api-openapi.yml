@@ -407,34 +407,16 @@ paths:
                 $ref: '#/components/schemas/MoesifPrice'
 components:
   schemas:
-    MoesifPlan:
+    MoesifTransformQuantity:
       properties:
-        name:
+        divide_by:
+          type: integer
+          format: int64
+        round:
           type: string
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/MoesifPrice'
-        provider:
-          type: string
-        description:
-          type: string
-        id:
-          type: string
-        status:
-          type: string
-        product_id:
-          type: string
-        metadata:
-          type: collection.immutable.map[string,string]
-        created_at:
-          type: string
-          format: date-time
-        unit:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
+      required:
+      - divide_by
+      - round
     MoesifPrice:
       properties:
         name:
@@ -475,16 +457,34 @@ components:
         period:
           type: integer
           format: int64
-    MoesifTransformQuantity:
+    MoesifPlan:
       properties:
-        divide_by:
-          type: integer
-          format: int64
-        round:
+        name:
           type: string
-      required:
-      - divide_by
-      - round
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/MoesifPrice'
+        provider:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        status:
+          type: string
+        product_id:
+          type: string
+        metadata:
+          type: collection.immutable.map[string,string]
+        created_at:
+          type: string
+          format: date-time
+        unit:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
     MoesifPriceTier:
       properties:
         up_to:

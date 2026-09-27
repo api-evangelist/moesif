@@ -358,6 +358,23 @@ components:
             type: string
         policy:
           $ref: '#/components/schemas/PolicyItem'
+    PolicyItem:
+      properties:
+        acl:
+          type: array
+          items:
+            $ref: '#/components/schemas/ACLItem'
+        resource:
+          type: object
+        api_scopes:
+          type: array
+          items:
+            type: string
+        original_encoded_resource:
+          type: string
+      required:
+      - acl
+      - resource
     ACLItem:
       properties:
         grantee:
@@ -411,23 +428,6 @@ components:
       - name
       - dashboard_ids
       - workspace_ids
-    PolicyItem:
-      properties:
-        acl:
-          type: array
-          items:
-            $ref: '#/components/schemas/ACLItem'
-        resource:
-          type: object
-        api_scopes:
-          type: array
-          items:
-            type: string
-        original_encoded_resource:
-          type: string
-      required:
-      - acl
-      - resource
   securitySchemes:
     managementAPIToken:
       type: oauth2
