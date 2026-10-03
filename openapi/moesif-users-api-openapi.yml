@@ -244,6 +244,33 @@ paths:
           description: success
 components:
   schemas:
+    UserUpdateDTO:
+      properties:
+        company_id:
+          type: string
+        first_name:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        photo_url:
+          type: string
+        user_id:
+          type: string
+        modified_time:
+          type: string
+          format: date-time
+        last_name:
+          type: string
+        metadata:
+          type: object
+        user_name:
+          type: string
+        phone:
+          type: string
+      required:
+      - user_id
     userResponseDTO:
       properties:
         _id:
@@ -444,33 +471,6 @@ components:
             default: 0
             examples:
             - 1519768519464
-    UserUpdateDTO:
-      properties:
-        company_id:
-          type: string
-        first_name:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        photo_url:
-          type: string
-        user_id:
-          type: string
-        modified_time:
-          type: string
-          format: date-time
-        last_name:
-          type: string
-        metadata:
-          type: object
-        user_name:
-          type: string
-        phone:
-          type: string
-      required:
-      - user_id
   securitySchemes:
     managementAPIToken:
       type: oauth2

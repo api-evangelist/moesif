@@ -183,6 +183,29 @@ paths:
           description: success
 components:
   schemas:
+    Plan:
+      properties:
+        provider:
+          type: string
+        plan_id:
+          type: string
+        price_ids:
+          type: array
+          items:
+            type: string
+      required:
+      - provider
+      - plan_id
+      - price_ids
+    GovernanceRulesVariables:
+      properties:
+        name:
+          type: string
+        path:
+          type: string
+      required:
+      - name
+      - path
     RegexRule:
       properties:
         conditions:
@@ -203,31 +226,6 @@ components:
       required:
       - path
       - value
-    Plan:
-      properties:
-        provider:
-          type: string
-        plan_id:
-          type: string
-        price_ids:
-          type: array
-          items:
-            type: string
-      required:
-      - provider
-      - plan_id
-      - price_ids
-    RulesResponseItem:
-      properties:
-        status:
-          type: integer
-          format: int32
-        headers:
-          type: collection.immutable.map[string,string]
-        body:
-          type: object
-        original_encoded_body:
-          type: string
     GovernanceRuleUpdateItem:
       properties:
         name:
@@ -364,15 +362,17 @@ components:
       - state
       - name
       - block
-    GovernanceRulesVariables:
+    RulesResponseItem:
       properties:
-        name:
+        status:
+          type: integer
+          format: int32
+        headers:
+          type: collection.immutable.map[string,string]
+        body:
+          type: object
+        original_encoded_body:
           type: string
-        path:
-          type: string
-      required:
-      - name
-      - path
   securitySchemes:
     managementAPIToken:
       type: oauth2

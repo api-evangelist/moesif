@@ -407,16 +407,16 @@ paths:
                 $ref: '#/components/schemas/MoesifPrice'
 components:
   schemas:
-    MoesifTransformQuantity:
+    MoesifPriceTier:
       properties:
-        divide_by:
-          type: integer
-          format: int64
-        round:
+        up_to:
+          type: util.either[scala.long,string]
+        unit_price_in_decimal:
+          type: string
+        flat_price_in_decimal:
           type: string
       required:
-      - divide_by
-      - round
+      - up_to
     MoesifPrice:
       properties:
         name:
@@ -457,6 +457,16 @@ components:
         period:
           type: integer
           format: int64
+    MoesifTransformQuantity:
+      properties:
+        divide_by:
+          type: integer
+          format: int64
+        round:
+          type: string
+      required:
+      - divide_by
+      - round
     MoesifPlan:
       properties:
         name:
@@ -485,16 +495,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    MoesifPriceTier:
-      properties:
-        up_to:
-          type: util.either[scala.long,string]
-        unit_price_in_decimal:
-          type: string
-        flat_price_in_decimal:
-          type: string
-      required:
-      - up_to
   securitySchemes:
     managementAPIToken:
       type: oauth2

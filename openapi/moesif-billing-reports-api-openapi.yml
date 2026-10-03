@@ -187,6 +187,26 @@ paths:
                 $ref: '#/components/schemas/BillingMetricResponse'
 components:
   schemas:
+    BillingMetricBucket:
+      properties:
+        start:
+          type: string
+          format: date-time
+        metric:
+          type: number
+          format: double
+        amounts:
+          type: collection.immutable.map[string,scala.double]
+        ending_balance:
+          $ref: '#/components/schemas/CreditBalanceMetric'
+      required:
+      - start
+    BillingReportUsage:
+      properties:
+        invoice:
+          $ref: '#/components/schemas/BillingReportUsageInvoice'
+        aggregator:
+          type: string
     BillingReportUsageInvoice:
       properties:
         period_start:
@@ -199,6 +219,69 @@ components:
           type: string
       required:
       - id
+    ChannelRequest:
+      properties:
+        channel_id:
+          type: string
+        channel_name:
+          type: string
+        provider_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProviderRequest'
+      required:
+      - channel_id
+      - channel_name
+      - provider_requests
+    CreditBalance:
+      properties:
+        sequence_id:
+          type: integer
+          format: int32
+        current_balance:
+          type: number
+          format: double
+        pending_activity:
+          type: number
+          format: double
+        available_balance:
+          type: number
+          format: double
+      required:
+      - sequence_id
+      - current_balance
+      - pending_activity
+      - available_balance
+    BillingMetricResponse:
+      properties:
+        buckets:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingMetricBucket'
+      required:
+      - buckets
+    BalanceChange:
+      properties:
+        amount:
+          type: number
+          format: double
+      required:
+      - amount
+    CreditBalanceMetric:
+      properties:
+        current_balance:
+          type: number
+          format: double
+        pending_activity:
+          type: number
+          format: double
+        available_balance:
+          type: number
+          format: double
+      required:
+      - current_balance
+      - pending_activity
+      - available_balance
     ProviderRequest:
       properties:
         success:
@@ -222,25 +305,6 @@ components:
       - status_code
       - error_code
       - error_message
-    CreditBalance:
-      properties:
-        sequence_id:
-          type: integer
-          format: int32
-        current_balance:
-          type: number
-          format: double
-        pending_activity:
-          type: number
-          format: double
-        available_balance:
-          type: number
-          format: double
-      required:
-      - sequence_id
-      - current_balance
-      - pending_activity
-      - available_balance
     BillingReport:
       properties:
         ending_balance:
@@ -333,70 +397,6 @@ components:
       - report_total_usage
       - success
       - provider_requests
-    BillingMetricBucket:
-      properties:
-        start:
-          type: string
-          format: date-time
-        metric:
-          type: number
-          format: double
-        amounts:
-          type: collection.immutable.map[string,scala.double]
-        ending_balance:
-          $ref: '#/components/schemas/CreditBalanceMetric'
-      required:
-      - start
-    BalanceChange:
-      properties:
-        amount:
-          type: number
-          format: double
-      required:
-      - amount
-    CreditBalanceMetric:
-      properties:
-        current_balance:
-          type: number
-          format: double
-        pending_activity:
-          type: number
-          format: double
-        available_balance:
-          type: number
-          format: double
-      required:
-      - current_balance
-      - pending_activity
-      - available_balance
-    ChannelRequest:
-      properties:
-        channel_id:
-          type: string
-        channel_name:
-          type: string
-        provider_requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProviderRequest'
-      required:
-      - channel_id
-      - channel_name
-      - provider_requests
-    BillingMetricResponse:
-      properties:
-        buckets:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillingMetricBucket'
-      required:
-      - buckets
-    BillingReportUsage:
-      properties:
-        invoice:
-          $ref: '#/components/schemas/BillingReportUsageInvoice'
-        aggregator:
-          type: string
   securitySchemes:
     managementAPIToken:
       type: oauth2

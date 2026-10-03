@@ -235,6 +235,31 @@ paths:
                 $ref: '#/components/schemas/searchEventsResponseDTO'
 components:
   schemas:
+    searchEventsResponseDTO:
+      properties:
+        took:
+          type: integer
+          default: 0
+          examples:
+          - 358
+        timed_out:
+          type: boolean
+          default: false
+          examples:
+          - false
+        hits:
+          type: object
+          properties:
+            total:
+              type: integer
+              default: 0
+              examples:
+              - 947
+            hits:
+              type: array
+              items:
+                type: object
+                $ref: '#/components/schemas/eventResponseDTO'
     eventResponseDTO:
       properties:
         _id:
@@ -457,31 +482,6 @@ components:
           items:
             type: integer
             default: 0
-    searchEventsResponseDTO:
-      properties:
-        took:
-          type: integer
-          default: 0
-          examples:
-          - 358
-        timed_out:
-          type: boolean
-          default: false
-          examples:
-          - false
-        hits:
-          type: object
-          properties:
-            total:
-              type: integer
-              default: 0
-              examples:
-              - 947
-            hits:
-              type: array
-              items:
-                type: object
-                $ref: '#/components/schemas/eventResponseDTO'
   securitySchemes:
     managementAPIToken:
       type: oauth2

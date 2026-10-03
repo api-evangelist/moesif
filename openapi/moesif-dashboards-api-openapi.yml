@@ -335,6 +335,23 @@ paths:
           description: success
 components:
   schemas:
+    PolicyItem:
+      properties:
+        acl:
+          type: array
+          items:
+            $ref: '#/components/schemas/ACLItem'
+        resource:
+          type: object
+        api_scopes:
+          type: array
+          items:
+            type: string
+        original_encoded_resource:
+          type: string
+      required:
+      - acl
+      - resource
     DashboardUpdateItem:
       properties:
         parent:
@@ -358,32 +375,6 @@ components:
             type: string
         policy:
           $ref: '#/components/schemas/PolicyItem'
-    PolicyItem:
-      properties:
-        acl:
-          type: array
-          items:
-            $ref: '#/components/schemas/ACLItem'
-        resource:
-          type: object
-        api_scopes:
-          type: array
-          items:
-            type: string
-        original_encoded_resource:
-          type: string
-      required:
-      - acl
-      - resource
-    ACLItem:
-      properties:
-        grantee:
-          type: string
-        permission:
-          type: string
-      required:
-      - grantee
-      - permission
     DashboardDocument:
       properties:
         parent:
@@ -428,6 +419,15 @@ components:
       - name
       - dashboard_ids
       - workspace_ids
+    ACLItem:
+      properties:
+        grantee:
+          type: string
+        permission:
+          type: string
+      required:
+      - grantee
+      - permission
   securitySchemes:
     managementAPIToken:
       type: oauth2
