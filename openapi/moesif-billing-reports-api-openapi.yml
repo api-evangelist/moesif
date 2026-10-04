@@ -201,12 +201,6 @@ components:
           $ref: '#/components/schemas/CreditBalanceMetric'
       required:
       - start
-    BillingReportUsage:
-      properties:
-        invoice:
-          $ref: '#/components/schemas/BillingReportUsageInvoice'
-        aggregator:
-          type: string
     BillingReportUsageInvoice:
       properties:
         period_start:
@@ -219,20 +213,21 @@ components:
           type: string
       required:
       - id
-    ChannelRequest:
+    CreditBalanceMetric:
       properties:
-        channel_id:
-          type: string
-        channel_name:
-          type: string
-        provider_requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProviderRequest'
+        current_balance:
+          type: number
+          format: double
+        pending_activity:
+          type: number
+          format: double
+        available_balance:
+          type: number
+          format: double
       required:
-      - channel_id
-      - channel_name
-      - provider_requests
+      - current_balance
+      - pending_activity
+      - available_balance
     CreditBalance:
       properties:
         sequence_id:
@@ -252,14 +247,6 @@ components:
       - current_balance
       - pending_activity
       - available_balance
-    BillingMetricResponse:
-      properties:
-        buckets:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillingMetricBucket'
-      required:
-      - buckets
     BalanceChange:
       properties:
         amount:
@@ -267,21 +254,26 @@ components:
           format: double
       required:
       - amount
-    CreditBalanceMetric:
+    ChannelRequest:
       properties:
-        current_balance:
-          type: number
-          format: double
-        pending_activity:
-          type: number
-          format: double
-        available_balance:
-          type: number
-          format: double
+        channel_id:
+          type: string
+        channel_name:
+          type: string
+        provider_requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProviderRequest'
       required:
-      - current_balance
-      - pending_activity
-      - available_balance
+      - channel_id
+      - channel_name
+      - provider_requests
+    BillingReportUsage:
+      properties:
+        invoice:
+          $ref: '#/components/schemas/BillingReportUsageInvoice'
+        aggregator:
+          type: string
     ProviderRequest:
       properties:
         success:
@@ -397,6 +389,14 @@ components:
       - report_total_usage
       - success
       - provider_requests
+    BillingMetricResponse:
+      properties:
+        buckets:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingMetricBucket'
+      required:
+      - buckets
   securitySchemes:
     managementAPIToken:
       type: oauth2

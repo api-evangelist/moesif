@@ -1,0 +1,17 @@
+generated: '2026-10-04'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/moesif-users-api-openapi.yml
+skills:
+- file: skills/moesif-subscription-management.md
+  name: moesif-subscription-management
+  api: openapi/moesif-subscriptions-api-openapi.yml
+  operations:
+  - createSubscription
+  - getSubscription
+- file: skills/moesif-create-plan-with-price.md
+  name: moesif-create-plan-with-price
+  api: openapi/moesif-product-catalog-api-openapi.yml
+  operations:
+  - createMoesifPlan
+  - createMoesifPrice

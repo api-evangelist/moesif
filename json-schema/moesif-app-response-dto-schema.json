@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-app-response-dto-schema.json",
+  "title": "AppResponseDTO",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-applications-api-openapi.yml#/components/schemas/AppResponseDTO",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "custom_app_id": {
+      "type": "string"
+    },
+    "search_api_base_url": {
+      "type": "string"
+    },
+    "week_starts_on": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "id": {
+      "type": "string"
+    },
+    "portal_api_base_url": {
+      "type": "string"
+    },
+    "secure_proxy": {
+      "type": "boolean"
+    },
+    "time_zone": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

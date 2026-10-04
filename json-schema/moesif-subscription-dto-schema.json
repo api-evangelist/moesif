@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-subscription-dto-schema.json",
+  "title": "SubscriptionDTO",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-subscriptions-api-openapi.yml#/components/schemas/SubscriptionDTO",
+  "properties": {
+    "trial_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "company_id": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "collection_method": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SubscriptionItem"
+      }
+    },
+    "current_period_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "company_external_id": {
+      "type": "string"
+    },
+    "payment_status": {
+      "type": "string"
+    },
+    "modified_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "cancel_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string"
+    },
+    "trial_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "external_id": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "app_id": {
+      "type": "string"
+    },
+    "subscription_id": {
+      "type": "string"
+    },
+    "version_id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "current_period_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "org_id": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "org_id",
+    "app_id",
+    "type",
+    "subscription_id",
+    "company_id",
+    "status"
+  ],
+  "$defs": {
+    "SubscriptionItem": {
+      "properties": {
+        "item_price_id": {
+          "type": "string"
+        },
+        "price_id": {
+          "type": "string"
+        },
+        "is_metered": {
+          "type": "boolean"
+        },
+        "plan_id": {
+          "type": "string"
+        },
+        "unit_of_measure": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "subscription_item_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "plan_id"
+      ]
+    }
+  }
+}

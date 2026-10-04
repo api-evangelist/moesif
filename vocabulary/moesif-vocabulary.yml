@@ -1,0 +1,439 @@
+generated: '2026-10-04'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/moesif-applications-api-openapi.yml
+- openapi/moesif-balance-transactions-api-openapi.yml
+- openapi/moesif-billing-meters-api-openapi.yml
+- openapi/moesif-billing-reports-api-openapi.yml
+- openapi/moesif-cohorts-api-openapi.yml
+vocabulary:
+  name: Moesif Domain Vocabulary
+  description: 'Terms declared by Moesif''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-04'
+  terms:
+  - term: AppUpdateDTO
+    definition: 'Object declared by the contract with fields: name, time_zone, week_starts_on, custom_app_id.'
+    tags:
+    - Object
+    source: openapi/moesif-applications-api-openapi.yml#/components/schemas/AppUpdateDTO
+  - term: AppResponseDTO
+    definition: 'Object declared by the contract with fields: name, custom_app_id, search_api_base_url, week_starts_on, id, portal_api_base_url,
+      secure_proxy, time_zone.'
+    tags:
+    - Object
+    source: openapi/moesif-applications-api-openapi.yml#/components/schemas/AppResponseDTO
+  - term: AppCreateDTO
+    definition: 'Object declared by the contract with fields: name, time_zone, week_starts_on, custom_app_id.'
+    tags:
+    - Object
+    source: openapi/moesif-applications-api-openapi.yml#/components/schemas/AppCreateDTO
+  - term: BillingReportBalanceTransCreate
+    definition: 'Object declared by the contract with fields: company_id, description, expire_at, active_at, amount, transaction_id, subscription_id,
+      type.'
+    tags:
+    - Object
+    source: openapi/moesif-balance-transactions-api-openapi.yml#/components/schemas/BillingReportBalanceTransCreate
+  - term: CustomReporting
+    definition: 'Object declared by the contract with fields: report_when.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/CustomReporting
+  - term: ChargebeeItemPrice
+    definition: 'Object declared by the contract with fields: name, item_id, description, price, price_in_decimal, external_name, tiers, trial_end_action,
+      trial_period, id, status, pricing_model. (9 more)'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/ChargebeeItemPrice
+  - term: RecurlyPlanAddOn
+    definition: 'Object declared by the contract with fields: name, currencies, usage_percentage, add_on_type, external_sku, state, tiers, tier_type,
+      code, plan_id, id, percentage_tiers. (5 more)'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/RecurlyPlanAddOn
+  - term: RecurlyBillingParams
+    definition: 'Object declared by the contract with fields: plan, add_on, add_ons.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/RecurlyBillingParams
+  - term: RecurlyAddOnPercentageTiers
+    definition: 'Object declared by the contract with fields: tiers, currency.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/RecurlyAddOnPercentageTiers
+  - term: ChargebeeItemPriceTier
+    definition: 'Object declared by the contract with fields: starting_unit, ending_unit, price.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/ChargebeeItemPriceTier
+  - term: StripeTransformQuantity
+    definition: 'Object declared by the contract with fields: divide_by, round.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/StripeTransformQuantity
+  - term: BillingWebhookParams
+    definition: 'Object declared by the contract with fields: reporting, channel_ids, custom_plan.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/BillingWebhookParams
+  - term: BillingMeterDocument
+    definition: 'Object declared by the contract with fields: name, billing_plan, url_query, _id, slug, status, modified_at, es_query, created_at,
+      app_id, org_id.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/BillingMeterDocument
+  - term: RecurlyPlan
+    definition: 'Object declared by the contract with fields: name, id, code.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/RecurlyPlan
+  - term: ZuoraBillingParams
+    definition: 'Object declared by the contract with fields: plan_id, price_id, price_ids.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/ZuoraBillingParams
+  - term: StripePrice
+    definition: 'Object declared by the contract with fields: tiers_mode, transform_quantity, price_id, tiers, recurring, unit_amount_decimal,
+      price_nickname, currency, billing_scheme, unit_amount, created, active.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/StripePrice
+  - term: RecurlyAddOnTier
+    definition: 'Object declared by the contract with fields: ending_quantity, currencies.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/RecurlyAddOnTier
+  - term: StripeRecurring
+    definition: 'Object declared by the contract with fields: trial_period_days, interval, usage_type, interval_count, aggregate_usage.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/StripeRecurring
+  - term: BillingPlan
+    definition: 'Object declared by the contract with fields: provider_slug, friendly_name, params.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/BillingPlan
+  - term: RecurlyCurrencyAmount
+    definition: 'Object declared by the contract with fields: currency, unit_amount, unit_amount_decimal.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/RecurlyCurrencyAmount
+  - term: ChargebeeItemPlan
+    definition: 'Object declared by the contract with fields: name, item_family_id, description, usage_calculation, external_name, metered, id,
+      status, unit, updated_at, archived_at.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/ChargebeeItemPlan
+  - term: StripeProduct
+    definition: 'Object declared by the contract with fields: name, description, unit_label, id, usage_type.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/StripeProduct
+  - term: RecurlyAddOnPercentageTier
+    definition: 'Object declared by the contract with fields: ending_amount, usage_percent.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/RecurlyAddOnPercentageTier
+  - term: ProviderReporting
+    definition: 'Object declared by the contract with fields: reporting_period.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/ProviderReporting
+  - term: StripeTier
+    definition: 'Object declared by the contract with fields: flat_amount_decimal, up_to, unit_amount_decimal, flat_amount, unit_amount.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/StripeTier
+  - term: BillingParams
+    definition: 'Object declared by the contract with fields: usage_rounding_mode, webhook_params, recurly_params, chargebee_params, stripe_params,
+      zuora_params, usage_multiplier.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/BillingParams
+  - term: ChargebeeBillingParams
+    definition: 'Object declared by the contract with fields: item_plan, item_price, item_prices, reporting.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/ChargebeeBillingParams
+  - term: StripeBillingParams
+    definition: 'Object declared by the contract with fields: product, price, prices, reporting.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/StripeBillingParams
+  - term: CustomReportPlan
+    definition: 'Object declared by the contract with fields: plan_id.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/CustomReportPlan
+  - term: BillingMetricBucket
+    definition: 'Object declared by the contract with fields: start, metric, amounts, ending_balance.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/BillingMetricBucket
+  - term: BillingReportUsage
+    definition: 'Object declared by the contract with fields: invoice, aggregator.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/BillingReportUsage
+  - term: BillingReportUsageInvoice
+    definition: 'Object declared by the contract with fields: period_start, period_end, id.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/BillingReportUsageInvoice
+  - term: ChannelRequest
+    definition: 'Object declared by the contract with fields: channel_id, channel_name, provider_requests.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/ChannelRequest
+  - term: CreditBalance
+    definition: 'Object declared by the contract with fields: sequence_id, current_balance, pending_activity, available_balance.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/CreditBalance
+  - term: BillingMetricResponse
+    definition: 'Object declared by the contract with fields: buckets.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/BillingMetricResponse
+  - term: BalanceChange
+    definition: 'Object declared by the contract with fields: amount.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/BalanceChange
+  - term: CreditBalanceMetric
+    definition: 'Object declared by the contract with fields: current_balance, pending_activity, available_balance.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/CreditBalanceMetric
+  - term: ProviderRequest
+    definition: 'Object declared by the contract with fields: success, status_code, job_id, error_message, error_code, request_time.'
+    tags:
+    - Object
+    source: openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/ProviderRequest
+  - term: BillingReport
+    definition: 'Object declared by the contract with fields: ending_balance, company_id, success, provider, report_version, usage_end_time, usage,
+      _id, meter_usage, last_success_time, beginning_balance, billing_meter_id. (17 more)'
+    tags:
+    - Object
+    source: openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/BillingReport
+  - term: CohortDocument
+    definition: 'Object declared by the contract with fields: channels, priority, url_query, criteria, _id, sample_rate, notification_rule, cohort_name,
+      to, week_starts_on, locked_by, modified_at. (6 more)'
+    tags:
+    - Object
+    source: openapi/moesif-cohorts-api-openapi.yml#/components/schemas/CohortDocument
+  - term: CohortUpdateItem
+    definition: 'Object declared by the contract with fields: channels, priority, url_query, criteria, sample_rate, notification_rule, cohort_name,
+      to, week_starts_on, locked_by, from, cohort_type. (1 more)'
+    tags:
+    - Object
+    source: openapi/moesif-cohorts-api-openapi.yml#/components/schemas/CohortUpdateItem
+  - term: NotificationRule
+    definition: 'Object declared by the contract with fields: send_on_addition, send_on_removal, period, fields.'
+    tags:
+    - Object
+    source: openapi/moesif-cohorts-api-openapi.yml#/components/schemas/NotificationRule
+  - term: CohortCreateItem
+    definition: 'Object declared by the contract with fields: channels, priority, url_query, criteria, notification_rule, cohort_name, to, week_starts_on,
+      locked_by, from, cohort_type, time_zone.'
+    tags:
+    - Object
+    source: openapi/moesif-cohorts-api-openapi.yml#/components/schemas/CohortCreateItem
+  - term: CompanyUpdateDTO
+    definition: 'Object declared by the contract with fields: company_id, modified_time, session_token, company_domain, metadata.'
+    tags:
+    - Object
+    source: openapi/moesif-companies-api-openapi.yml#/components/schemas/CompanyUpdateDTO
+  - term: companyResponseDTO
+    definition: Referenced by this document but never defined in it. API Evangelist added this empty placeholder so the document resolves; the
+      shape is unknown and is NOT a claim about the API.
+    tags:
+    - Object
+    source: openapi/moesif-companies-api-openapi.yml#/components/schemas/companyResponseDTO
+  - term: object
+    definition: Referenced by this document but never defined in it. API Evangelist added this empty placeholder so the document resolves; the
+      shape is unknown and is NOT a claim about the API.
+    tags:
+    - Object
+    source: openapi/moesif-companies-api-openapi.yml#/components/schemas/object
+  - term: PolicyItem
+    definition: 'Object declared by the contract with fields: acl, resource, api_scopes, original_encoded_resource.'
+    tags:
+    - Object
+    source: openapi/moesif-dashboards-api-openapi.yml#/components/schemas/PolicyItem
+  - term: DashboardUpdateItem
+    definition: 'Object declared by the contract with fields: parent, name, dashboard_id, workspace_ids, sort_order, dashboard_ids, policy.'
+    tags:
+    - Object
+    source: openapi/moesif-dashboards-api-openapi.yml#/components/schemas/DashboardUpdateItem
+  - term: DashboardDocument
+    definition: 'Object declared by the contract with fields: parent, name, _id, auth_user_id, profile_view_promotion, app_id, workspace_ids,
+      sort_order, dashboard_ids, policy, org_id, migration. (1 more)'
+    tags:
+    - Object
+    source: openapi/moesif-dashboards-api-openapi.yml#/components/schemas/DashboardDocument
+  - term: ACLItem
+    definition: 'Object declared by the contract with fields: grantee, permission.'
+    tags:
+    - Object
+    source: openapi/moesif-dashboards-api-openapi.yml#/components/schemas/ACLItem
+  - term: TemplateConfig
+    definition: 'Object declared by the contract with fields: subject, editor, design, thumbnail_url.'
+    tags:
+    - Object
+    source: openapi/moesif-email-templates-api-openapi.yml#/components/schemas/TemplateConfig
+  - term: EmailAddresses
+    definition: 'Object declared by the contract with fields: from, cc, bcc.'
+    tags:
+    - Object
+    source: openapi/moesif-email-templates-api-openapi.yml#/components/schemas/EmailAddresses
+  - term: CohortConfig
+    definition: 'Object declared by the contract with fields: url_query, criteria, cohort_name, to, from, cohort_type, time_zone.'
+    tags:
+    - Object
+    source: openapi/moesif-email-templates-api-openapi.yml#/components/schemas/CohortConfig
+  - term: EmailTemplateUpdateItem
+    definition: 'Object declared by the contract with fields: name, state, cohorts, dynamic_fields, content, template, period, addresses.'
+    tags:
+    - Object
+    source: openapi/moesif-email-templates-api-openapi.yml#/components/schemas/EmailTemplateUpdateItem
+  - term: DynamicField
+    definition: 'Object declared by the contract with fields: token, field, aggregator.'
+    tags:
+    - Object
+    source: openapi/moesif-email-templates-api-openapi.yml#/components/schemas/DynamicField
+  - term: EmailTemplateCreateItem
+    definition: 'Object declared by the contract with fields: name, state, cohorts, dynamic_fields, content, template, period, addresses.'
+    tags:
+    - Object
+    source: openapi/moesif-email-templates-api-openapi.yml#/components/schemas/EmailTemplateCreateItem
+  - term: TemplateContent
+    definition: 'Object declared by the contract with fields: html, chunks.'
+    tags:
+    - Object
+    source: openapi/moesif-email-templates-api-openapi.yml#/components/schemas/TemplateContent
+  - term: Cohort
+    definition: 'Object declared by the contract with fields: id, type, config.'
+    tags:
+    - Object
+    source: openapi/moesif-email-templates-api-openapi.yml#/components/schemas/Cohort
+  - term: com.moesif.docdb.emailtemplates.EmailTemplateDocument
+    definition: Referenced by this document but never defined in it. API Evangelist added this empty placeholder so the document resolves; the
+      shape is unknown and is NOT a claim about the API.
+    tags:
+    - Object
+    source: openapi/moesif-email-templates-api-openapi.yml#/components/schemas/com.moesif.docdb.emailtemplates.EmailTemplateDocument
+  - term: Plan
+    definition: 'Object declared by the contract with fields: provider, plan_id, price_ids.'
+    tags:
+    - Object
+    source: openapi/moesif-governance-rules-api-openapi.yml#/components/schemas/Plan
+  - term: GovernanceRulesVariables
+    definition: 'Object declared by the contract with fields: name, path.'
+    tags:
+    - Object
+    source: openapi/moesif-governance-rules-api-openapi.yml#/components/schemas/GovernanceRulesVariables
+  - term: RegexRule
+    definition: 'Object declared by the contract with fields: conditions, sample_rate.'
+    tags:
+    - Object
+    source: openapi/moesif-governance-rules-api-openapi.yml#/components/schemas/RegexRule
+  - term: RegexCondition
+    definition: 'Object declared by the contract with fields: path, value.'
+    tags:
+    - Object
+    source: openapi/moesif-governance-rules-api-openapi.yml#/components/schemas/RegexCondition
+  - term: GovernanceRuleUpdateItem
+    definition: 'Object declared by the contract with fields: name, priority, model, state, cohorts, variables, applied_to, block, response, applied_to_unidentified,
+      regex_config, plans. (1 more)'
+    tags:
+    - Object
+    source: openapi/moesif-governance-rules-api-openapi.yml#/components/schemas/GovernanceRuleUpdateItem
+  - term: GovernanceRulesDocument
+    definition: 'Object declared by the contract with fields: name, priority, model, state, cohorts, _id, variables, applied_to, block, response,
+      applied_to_unidentified, regex_config. (5 more)'
+    tags:
+    - Object
+    source: openapi/moesif-governance-rules-api-openapi.yml#/components/schemas/GovernanceRulesDocument
+  - term: GovernanceRuleCreateItem
+    definition: 'Object declared by the contract with fields: name, priority, model, state, cohorts, variables, applied_to, block, response, applied_to_unidentified,
+      regex_config, plans. (1 more)'
+    tags:
+    - Object
+    source: openapi/moesif-governance-rules-api-openapi.yml#/components/schemas/GovernanceRuleCreateItem
+  - term: RulesResponseItem
+    definition: 'Object declared by the contract with fields: status, headers, body, original_encoded_body.'
+    tags:
+    - Object
+    source: openapi/moesif-governance-rules-api-openapi.yml#/components/schemas/RulesResponseItem
+  - term: searchEventsResponseDTO
+    definition: 'Object declared by the contract with fields: took, timed_out, hits.'
+    tags:
+    - Object
+    source: openapi/moesif-metrics-api-openapi.yml#/components/schemas/searchEventsResponseDTO
+  - term: eventResponseDTO
+    definition: 'Object declared by the contract with fields: _id, _source, sort.'
+    tags:
+    - Object
+    source: openapi/moesif-metrics-api-openapi.yml#/components/schemas/eventResponseDTO
+  - term: MoesifPriceTier
+    definition: 'Object declared by the contract with fields: up_to, unit_price_in_decimal, flat_price_in_decimal.'
+    tags:
+    - Object
+    source: openapi/moesif-product-catalog-api-openapi.yml#/components/schemas/MoesifPriceTier
+  - term: MoesifPrice
+    definition: 'Object declared by the contract with fields: name, transform_quantity, provider, price_in_decimal, tiers, period_units, plan_id,
+      id, status, pricing_model, tax_behavior, currency. (5 more)'
+    tags:
+    - Object
+    source: openapi/moesif-product-catalog-api-openapi.yml#/components/schemas/MoesifPrice
+  - term: MoesifTransformQuantity
+    definition: 'Object declared by the contract with fields: divide_by, round.'
+    tags:
+    - Object
+    source: openapi/moesif-product-catalog-api-openapi.yml#/components/schemas/MoesifTransformQuantity
+  - term: MoesifPlan
+    definition: 'Object declared by the contract with fields: name, prices, provider, description, id, status, product_id, metadata, created_at,
+      unit, updated_at.'
+    tags:
+    - Object
+    source: openapi/moesif-product-catalog-api-openapi.yml#/components/schemas/MoesifPlan
+  - term: SubscriptionItem
+    definition: 'Object declared by the contract with fields: item_price_id, price_id, is_metered, plan_id, unit_of_measure, status, subscription_item_id.'
+    tags:
+    - Object
+    source: openapi/moesif-subscriptions-api-openapi.yml#/components/schemas/SubscriptionItem
+  - term: SubscriptionDTO
+    definition: 'Object declared by the contract with fields: trial_start, company_id, start_date, collection_method, provider, items, current_period_start,
+      company_external_id, payment_status, modified_time, cancel_time, status. (10 more)'
+    tags:
+    - Object
+    source: openapi/moesif-subscriptions-api-openapi.yml#/components/schemas/SubscriptionDTO
+  - term: AddSubscriptionDTO
+    definition: 'Object declared by the contract with fields: trial_start, company_id, start_date, collection_method, provider, items, current_period_start,
+      company_external_id, payment_status, cancel_time, status, trial_end. (6 more)'
+    tags:
+    - Object
+    source: openapi/moesif-subscriptions-api-openapi.yml#/components/schemas/AddSubscriptionDTO
+  - term: UserUpdateDTO
+    definition: 'Object declared by the contract with fields: company_id, first_name, name, email, photo_url, user_id, modified_time, last_name,
+      metadata, user_name, phone.'
+    tags:
+    - Object
+    source: openapi/moesif-users-api-openapi.yml#/components/schemas/UserUpdateDTO
+  - term: userResponseDTO
+    definition: 'Object declared by the contract with fields: _id, _source, sort.'
+    tags:
+    - Object
+    source: openapi/moesif-users-api-openapi.yml#/components/schemas/userResponseDTO
+  - term: SubmitData
+    definition: 'Object declared by the contract with fields: body, url, params, verb, headers.'
+    tags:
+    - Object
+    source: openapi/moesif-workspaces-api-openapi.yml#/components/schemas/SubmitData
+  - term: CommentItem
+    definition: 'Object declared by the contract with fields: message, mentions.'
+    tags:
+    - Object
+    source: openapi/moesif-workspaces-api-openapi.yml#/components/schemas/CommentItem

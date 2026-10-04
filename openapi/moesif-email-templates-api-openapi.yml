@@ -176,36 +176,38 @@ paths:
           description: success
 components:
   schemas:
-    TemplateConfig:
+    TemplateContent:
       properties:
-        subject:
+        html:
           type: string
-        editor:
-          type: string
-        design:
+        chunks:
           type: object
-        thumbnail_url:
-          type: string
       required:
-      - subject
-      - editor
-      - design
-    EmailAddresses:
+      - html
+      - chunks
+    EmailTemplateUpdateItem:
       properties:
-        from:
+        name:
           type: string
-        cc:
+        state:
+          type: integer
+          format: int32
+        cohorts:
           type: array
           items:
-            type: string
-        bcc:
+            $ref: '#/components/schemas/Cohort'
+        dynamic_fields:
           type: array
           items:
-            type: string
-      required:
-      - from
-      - cc
-      - bcc
+            $ref: '#/components/schemas/DynamicField'
+        content:
+          $ref: '#/components/schemas/TemplateContent'
+        template:
+          $ref: '#/components/schemas/TemplateConfig'
+        period:
+          type: string
+        addresses:
+          $ref: '#/components/schemas/EmailAddresses'
     CohortConfig:
       properties:
         url_query:
@@ -230,47 +232,6 @@ components:
       - from
       - to
       - time_zone
-    EmailTemplateUpdateItem:
-      properties:
-        name:
-          type: string
-        state:
-          type: integer
-          format: int32
-        cohorts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cohort'
-        dynamic_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/DynamicField'
-        content:
-          $ref: '#/components/schemas/TemplateContent'
-        template:
-          $ref: '#/components/schemas/TemplateConfig'
-        period:
-          type: string
-        addresses:
-          $ref: '#/components/schemas/EmailAddresses'
-    DynamicField:
-      properties:
-        token:
-          type: string
-        field:
-          type: string
-        aggregator:
-          type: string
-          enum:
-          - avg
-          - min
-          - max
-          - terms
-          - sum
-      required:
-      - token
-      - field
-      - aggregator
     EmailTemplateCreateItem:
       properties:
         name:
@@ -301,15 +262,40 @@ components:
       - cohorts
       - template
       - content
-    TemplateContent:
+    DynamicField:
       properties:
-        html:
+        token:
           type: string
-        chunks:
-          type: object
+        field:
+          type: string
+        aggregator:
+          type: string
+          enum:
+          - avg
+          - min
+          - max
+          - terms
+          - sum
       required:
-      - html
-      - chunks
+      - token
+      - field
+      - aggregator
+    EmailAddresses:
+      properties:
+        from:
+          type: string
+        cc:
+          type: array
+          items:
+            type: string
+        bcc:
+          type: array
+          items:
+            type: string
+      required:
+      - from
+      - cc
+      - bcc
     Cohort:
       properties:
         id:
@@ -321,6 +307,20 @@ components:
       required:
       - id
       - type
+    TemplateConfig:
+      properties:
+        subject:
+          type: string
+        editor:
+          type: string
+        design:
+          type: object
+        thumbnail_url:
+          type: string
+      required:
+      - subject
+      - editor
+      - design
   securitySchemes:
     managementAPIToken:
       type: oauth2

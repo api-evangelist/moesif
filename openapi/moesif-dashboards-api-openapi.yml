@@ -352,29 +352,6 @@ components:
       required:
       - acl
       - resource
-    DashboardUpdateItem:
-      properties:
-        parent:
-          type: string
-        name:
-          type: string
-        dashboard_id:
-          type: string
-        workspace_ids:
-          type: array
-          items:
-            type: array
-            items:
-              type: string
-        sort_order:
-          type: number
-          format: double
-        dashboard_ids:
-          type: array
-          items:
-            type: string
-        policy:
-          $ref: '#/components/schemas/PolicyItem'
     DashboardDocument:
       properties:
         parent:
@@ -428,6 +405,29 @@ components:
       required:
       - grantee
       - permission
+    DashboardUpdateItem:
+      properties:
+        parent:
+          type: string
+        name:
+          type: string
+        dashboard_id:
+          type: string
+        workspace_ids:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+        sort_order:
+          type: number
+          format: double
+        dashboard_ids:
+          type: array
+          items:
+            type: string
+        policy:
+          $ref: '#/components/schemas/PolicyItem'
   securitySchemes:
     managementAPIToken:
       type: oauth2

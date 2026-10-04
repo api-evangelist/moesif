@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-governance-rule-create-item-schema.json",
+  "title": "GovernanceRuleCreateItem",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-governance-rules-api-openapi.yml#/components/schemas/GovernanceRuleCreateItem",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "model": {
+      "type": "string"
+    },
+    "state": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "cohorts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "variables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/GovernanceRulesVariables"
+      }
+    },
+    "applied_to": {
+      "type": "string"
+    },
+    "block": {
+      "type": "boolean"
+    },
+    "response": {
+      "$ref": "#/$defs/RulesResponseItem"
+    },
+    "applied_to_unidentified": {
+      "type": "boolean"
+    },
+    "regex_config": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RegexRule"
+      }
+    },
+    "plans": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Plan"
+      }
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "state",
+    "name",
+    "block"
+  ],
+  "$defs": {
+    "GovernanceRulesVariables": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "path"
+      ]
+    },
+    "Plan": {
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "plan_id": {
+          "type": "string"
+        },
+        "price_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "provider",
+        "plan_id",
+        "price_ids"
+      ]
+    },
+    "RegexCondition": {
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "value"
+      ]
+    },
+    "RegexRule": {
+      "properties": {
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RegexCondition"
+          }
+        },
+        "sample_rate": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "conditions"
+      ]
+    },
+    "RulesResponseItem": {
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "headers": {
+          "type": "collection.immutable.map[string,string]"
+        },
+        "body": {
+          "type": "object"
+        },
+        "original_encoded_body": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

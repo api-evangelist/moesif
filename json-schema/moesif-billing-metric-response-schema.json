@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-billing-metric-response-schema.json",
+  "title": "BillingMetricResponse",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/BillingMetricResponse",
+  "properties": {
+    "buckets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/BillingMetricBucket"
+      }
+    }
+  },
+  "required": [
+    "buckets"
+  ],
+  "$defs": {
+    "BillingMetricBucket": {
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "metric": {
+          "type": "number",
+          "format": "double"
+        },
+        "amounts": {
+          "type": "collection.immutable.map[string,scala.double]"
+        },
+        "ending_balance": {
+          "$ref": "#/$defs/CreditBalanceMetric"
+        }
+      },
+      "required": [
+        "start"
+      ]
+    },
+    "CreditBalanceMetric": {
+      "properties": {
+        "current_balance": {
+          "type": "number",
+          "format": "double"
+        },
+        "pending_activity": {
+          "type": "number",
+          "format": "double"
+        },
+        "available_balance": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "current_balance",
+        "pending_activity",
+        "available_balance"
+      ]
+    }
+  }
+}

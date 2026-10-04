@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-user-response-dto-schema.json",
+  "title": "userResponseDTO",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-users-api-openapi.yml#/components/schemas/userResponseDTO",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "default": ""
+    },
+    "_source": {
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "type": "string",
+          "default": ""
+        },
+        "body": {
+          "type": "object"
+        },
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "email": {
+          "type": "string",
+          "default": ""
+        },
+        "first_seen_time": {
+          "type": "string",
+          "default": ""
+        },
+        "user_agent": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "default": ""
+            },
+            "os_major": {
+              "type": "string",
+              "default": ""
+            },
+            "os": {
+              "type": "string",
+              "default": ""
+            },
+            "os_name": {
+              "type": "string",
+              "default": ""
+            },
+            "os_minor": {
+              "type": "string",
+              "default": ""
+            },
+            "major": {
+              "type": "string",
+              "default": ""
+            },
+            "device": {
+              "type": "string",
+              "default": ""
+            },
+            "minor": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "geo_ip": {
+          "type": "object",
+          "properties": {
+            "ip": {
+              "type": "string",
+              "default": ""
+            },
+            "region_name": {
+              "type": "string",
+              "default": ""
+            },
+            "continent_code": {
+              "type": "string",
+              "default": ""
+            },
+            "location": {
+              "type": "object",
+              "properties": {
+                "lon": {
+                  "type": "double",
+                  "default": 0
+                },
+                "lat": {
+                  "type": "double",
+                  "default": 0
+                }
+              }
+            },
+            "latitude": {
+              "type": "double",
+              "default": 0
+            },
+            "timezone": {
+              "type": "string",
+              "default": ""
+            },
+            "longitude": {
+              "type": "double",
+              "default": 0
+            },
+            "dma_code": {
+              "type": "integer",
+              "default": 0
+            },
+            "postal_code": {
+              "type": "string",
+              "default": ""
+            },
+            "region_code": {
+              "type": "string",
+              "default": ""
+            },
+            "city_name": {
+              "type": "string",
+              "default": ""
+            },
+            "country_code2": {
+              "type": "string",
+              "default": ""
+            },
+            "country_code3": {
+              "type": "string",
+              "default": ""
+            },
+            "country_name": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "modified_time": {
+          "type": "string",
+          "default": ""
+        },
+        "last_name": {
+          "type": "string",
+          "default": ""
+        },
+        "ip_address": {
+          "type": "string",
+          "default": ""
+        },
+        "session_token": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "last_seen_time": {
+          "type": "string",
+          "default": ""
+        },
+        "app_id": {
+          "type": "string",
+          "default": ""
+        },
+        "org_id": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "sort": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "default": 0
+      }
+    }
+  }
+}

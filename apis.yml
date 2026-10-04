@@ -1,12 +1,10 @@
 aid: moesif
 name: Moesif
-description: >-
-  Moesif is an API analytics, monitoring, monetization, and governance platform for API and AI product teams. The
-  platform unifies API observability (analytics, logs, metrics, traces via OpenTelemetry), usage-based monetization
-  (billing meters, product catalog, prepaid credits, Stripe integration), quotas and governance (rate limiting, contract
-  enforcement), and customer-experience tooling (behavioral cohorts, emails, embedded metrics, developer portal). Moesif
-  has expanded into AI agent and LLM analytics with usage-based billing for AI apps, GenAI-powered "Ask AI" analytics
-  queries, and content monetization for LLM training.
+description: Moesif is an API analytics, monitoring, monetization, and governance platform for API and AI product teams. The platform unifies
+  API observability (analytics, logs, metrics, traces via OpenTelemetry), usage-based monetization (billing meters, product catalog, prepaid credits,
+  Stripe integration), quotas and governance (rate limiting, contract enforcement), and customer-experience tooling (behavioral cohorts, emails,
+  embedded metrics, developer portal). Moesif has expanded into AI agent and LLM analytics with usage-based billing for AI apps, GenAI-powered
+  "Ask AI" analytics queries, and content monetization for LLM training.
 type: Index
 deliveryModel:
   model: saas
@@ -36,31 +34,169 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/moesif.png
 url: https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/apis.yml
 tags:
-  - Analytics
-  - Monitoring
-  - Monetization
-  - Governance
-  - Observability
-  - Billing
-  - AI Agents
-  - LLM Analytics
-  - OpenTelemetry
-  - Developer Portal
-  - Platform
-  - Insights
-  - Developer Tools
+- Analytics
+- Monitoring
+- Monetization
+- Governance
+- Observability
+- Billing
+- AI Agents
+- LLM Analytics
+- OpenTelemetry
+- Developer Portal
+- Platform
+- Insights
+- Developer Tools
 access: 3rd-Party
 position: Consuming
 created: '2025-01-08'
 modified: '2026-05-22'
 specificationVersion: '0.23'
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+common:
+- type: Spectral
+  url: rules/moesif-rules.yml
+- type: JSONLD
+  url: json-ld/moesif-context.jsonld
+- type: Vocabulary
+  url: vocabulary/moesif-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/moesif-data-model.yml
+- type: Conformance
+  url: conformance/moesif-conformance.yml
+- type: LLMsTxt
+  url: llms/moesif-llms.txt
+- type: MCPServer
+  url: mcp/moesif-mcp.yml
+- type: WellKnown
+  url: well-known/moesif-well-known.yml
+- type: Hosts
+  url: hosts/moesif-hosts.yml
+- type: Packages
+  url: packages/moesif-packages.yml
+- type: Support
+  url: https://www.moesif.com/extensions/support
+- type: Security
+  url: https://www.moesif.com/security
+- type: Newsroom
+  url: https://www.moesif.com/press
+- type: DeveloperPortal
+  url: https://api.moesif.net
+- type: AgenticAccess
+  url: agentic-access/moesif-agentic-access.yml
+- type: DomainSecurity
+  url: security/moesif-domain-security.yml
+- type: Authentication
+  url: authentication/moesif-authentication.yml
+- type: OAuthScopes
+  url: scopes/moesif-scopes.yml
+- type: GitHubOrganization
+  url: https://github.com/moesif
+- type: LinkedIn
+  url: https://www.linkedin.com/company/moesif
+- type: Twitter
+  url: https://twitter.com/moesif
+- type: Website
+  url: https://www.moesif.com/
+- type: Documentation
+  url: https://www.moesif.com/docs/
+- type: APIReference
+  url: https://www.moesif.com/docs/api
+- type: Pricing
+  url: https://www.moesif.com/price
+- type: Signup
+  url: https://www.moesif.com/wrap
+- type: GettingStarted
+  url: https://www.moesif.com/docs/getting-started/overview/
+- type: StatusPage
+  url: https://status.moesif.com/
+- type: TermsOfService
+  url: https://www.moesif.com/terms
+- type: PrivacyPolicy
+  url: https://www.moesif.com/privacy
+- type: Blog
+  url: https://www.moesif.com/blog
+- type: SDKs
+  url: https://www.moesif.com/docs/server-integration/
+- type: SDKs
+  name: Node.js Middleware
+  url: https://github.com/Moesif/moesif-nodejs
+- type: SDKs
+  name: Python Django Middleware
+  url: https://github.com/Moesif/moesifdjango
+- type: SDKs
+  name: Python WSGI Middleware
+  url: https://github.com/Moesif/moesifwsgi
+- type: SDKs
+  name: Python Tornado Middleware
+  url: https://github.com/Moesif/moesiftornado
+- type: SDKs
+  name: Python Requests Middleware
+  url: https://github.com/Moesif/moesifpythonrequest
+- type: SDKs
+  name: Java Servlet SDK
+  url: https://github.com/Moesif/moesif-servlet
+- type: SDKs
+  name: .NET Middleware
+  url: https://github.com/Moesif/moesif-dotnet
+- type: SDKs
+  name: Go Middleware
+  url: https://github.com/Moesif/moesifmiddleware-go
+- type: SDKs
+  name: PHP Laravel Middleware
+  url: https://github.com/Moesif/moesif-laravel
+- type: SDKs
+  name: PHP Slim Middleware
+  url: https://github.com/Moesif/moesif-slim
+- type: SDKs
+  name: Ruby Rack Middleware
+  url: https://github.com/Moesif/moesif-rack
+- type: SDKs
+  name: Scala Play Filter
+  url: https://github.com/Moesif/moesif-play-filter
+- type: SDKs
+  name: Android SDK
+  url: https://github.com/Moesif/moesif-android
+- type: SDKs
+  name: Browser JavaScript Library
+  url: https://github.com/Moesif/moesif-browser-js
+- type: SDKs
+  name: AWS Lambda Node.js
+  url: https://github.com/Moesif/moesif-aws-lambda-nodejs
+- type: SDKs
+  name: AWS Lambda Python
+  url: https://github.com/Moesif/moesif-aws-lambda-python
+- type: SDKs
+  name: AWS Lambda Go
+  url: https://github.com/Moesif/moesif-aws-lambda-go
+- type: Plugin
+  name: Cloudflare Workers
+  url: https://github.com/Moesif/moesif-cloudflare
+- type: Plugin
+  name: Kong Gateway
+  url: https://github.com/Moesif/kong-plugin-moesif
+- type: Plugin
+  name: NGINX / OpenResty
+  url: https://github.com/Moesif/lua-resty-moesif
+- type: Plugin
+  name: Express Gateway
+  url: https://github.com/Moesif/express-gateway-plugin-moesif
+- type: Tools
+  name: Auth0 Logs to Moesif
+  url: https://github.com/Moesif/auth0-logs-to-moesif
+- type: Sample
+  name: Developer Portal Reference Implementation
+  url: https://github.com/Moesif/moesif-developer-portal
 apis:
 - aid: moesif:collector
   name: Moesif Collector API
-  description: >-
-    The Moesif Collector API is the high-volume ingestion endpoint that receives API event data from server,
-    client, and gateway SDKs. It accepts HTTP API call records, user/company entity updates, and custom
-    action events that feed Moesif's analytics, monetization, and governance pipelines.
+  description: The Moesif Collector API is the high-volume ingestion endpoint that receives API event data from server, client, and gateway SDKs.
+    It accepts HTTP API call records, user/company entity updates, and custom action events that feed Moesif's analytics, monetization, and governance
+    pipelines.
   humanURL: https://www.moesif.com/docs/
   baseURL: https://api.moesif.net
   tags:
@@ -100,6 +236,12 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-app-response-dto-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-app-create-dto-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-app-update-dto-schema.json
 - aid: moesif:moesif-balance-transactions-api
   name: Moesif Balance Transactions API
   description: The Balance Transactions API from Moesif — 1 operation(s) for balance transactions.
@@ -120,6 +262,8 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-billing-report-balance-trans-create-schema.json
 - aid: moesif:moesif-billing-meters-api
   name: Moesif Billing Meters API
   description: The Billing Meters API from Moesif — 2 operation(s) for billing meters.
@@ -140,6 +284,8 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-billing-meter-document-schema.json
 - aid: moesif:moesif-billing-reports-api
   name: Moesif Billing Reports API
   description: The Billing Reports API from Moesif — 2 operation(s) for billing reports.
@@ -160,6 +306,10 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-billing-report-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-billing-metric-response-schema.json
 - aid: moesif:moesif-cohorts-api
   name: Moesif Cohorts API
   description: The Cohorts API from Moesif — 3 operation(s) for cohorts.
@@ -180,6 +330,12 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-cohort-document-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-cohort-update-item-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-cohort-create-item-schema.json
 - aid: moesif:moesif-companies-api
   name: Moesif Companies API
   description: The Companies API from Moesif — 5 operation(s) for companies.
@@ -200,6 +356,8 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-company-update-dto-schema.json
 - aid: moesif:moesif-dashboards-api
   name: Moesif Dashboards API
   description: The Dashboards API from Moesif — 7 operation(s) for dashboards.
@@ -220,6 +378,10 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-dashboard-document-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-dashboard-update-item-schema.json
 - aid: moesif:moesif-email-templates-api
   name: Moesif Email Templates API
   description: The Email Templates API from Moesif — 2 operation(s) for email templates.
@@ -240,6 +402,10 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-email-template-create-item-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-email-template-update-item-schema.json
 - aid: moesif:moesif-governance-rules-api
   name: Moesif Governance Rules API
   description: The Governance Rules API from Moesif — 2 operation(s) for governance rules.
@@ -260,6 +426,12 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-governance-rules-document-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-governance-rule-create-item-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-governance-rule-update-item-schema.json
 - aid: moesif:moesif-metrics-api
   name: Moesif Metrics API
   description: The Metrics API from Moesif — 4 operation(s) for metrics.
@@ -280,6 +452,10 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-event-response-dto-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-search-events-response-dto-schema.json
 - aid: moesif:moesif-product-catalog-api
   name: Moesif Product Catalog API
   description: The Product Catalog API from Moesif — 4 operation(s) for product catalog.
@@ -300,6 +476,10 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-moesif-price-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-moesif-plan-schema.json
 - aid: moesif:moesif-properties-api
   name: Moesif Properties API
   description: The Properties API from Moesif — 7 operation(s) for properties.
@@ -320,6 +500,8 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-object-schema.json
 - aid: moesif:moesif-subscriptions-api
   name: Moesif Subscriptions API
   description: The Subscriptions API from Moesif — 4 operation(s) for subscriptions.
@@ -342,6 +524,10 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-subscription-dto-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-add-subscription-dto-schema.json
 - aid: moesif:moesif-users-api
   name: Moesif Users API
   description: The Users API from Moesif — 5 operation(s) for users.
@@ -364,6 +550,10 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
+  - type: JSONSchema
+    url: json-schema/moesif-user-response-dto-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-user-update-dto-schema.json
 - aid: moesif:moesif-workspaces-api
   name: Moesif Workspaces API
   description: The Workspaces API from Moesif — 8 operation(s) for workspaces.
@@ -386,117 +576,22 @@ apis:
     url: rate-limits/moesif-rate-limits.yml
   - type: FinOps
     url: finops/moesif-finops.yml
-common:
-  - type: AgenticAccess
-    url: agentic-access/moesif-agentic-access.yml
-  - type: DomainSecurity
-    url: security/moesif-domain-security.yml
-  - type: Authentication
-    url: authentication/moesif-authentication.yml
-  - type: OAuthScopes
-    url: scopes/moesif-scopes.yml
-  - type: GitHubOrganization
-    url: https://github.com/moesif
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/moesif
-  - type: Twitter
-    url: https://twitter.com/moesif
-  - type: Website
-    url: https://www.moesif.com/
-  - type: Documentation
-    url: https://www.moesif.com/docs/
-  - type: APIReference
-    url: https://www.moesif.com/docs/api
-  - type: Pricing
-    url: https://www.moesif.com/price
-  - type: Signup
-    url: https://www.moesif.com/wrap
-  - type: GettingStarted
-    url: https://www.moesif.com/docs/getting-started/overview/
-  - type: StatusPage
-    url: https://status.moesif.com/
-  - type: TermsOfService
-    url: https://www.moesif.com/terms
-  - type: PrivacyPolicy
-    url: https://www.moesif.com/privacy
-  - type: Blog
-    url: https://www.moesif.com/blog
-  - type: SDKs
-    url: https://www.moesif.com/docs/server-integration/
-  - type: Integrations
-    url: https://www.moesif.com/integrations
-  - type: SDKs
-    name: Node.js Middleware
-    url: https://github.com/Moesif/moesif-nodejs
-  - type: SDKs
-    name: Python Django Middleware
-    url: https://github.com/Moesif/moesifdjango
-  - type: SDKs
-    name: Python WSGI Middleware
-    url: https://github.com/Moesif/moesifwsgi
-  - type: SDKs
-    name: Python Tornado Middleware
-    url: https://github.com/Moesif/moesiftornado
-  - type: SDKs
-    name: Python Requests Middleware
-    url: https://github.com/Moesif/moesifpythonrequest
-  - type: SDKs
-    name: Java Servlet SDK
-    url: https://github.com/Moesif/moesif-servlet
-  - type: SDKs
-    name: .NET Middleware
-    url: https://github.com/Moesif/moesif-dotnet
-  - type: SDKs
-    name: Go Middleware
-    url: https://github.com/Moesif/moesifmiddleware-go
-  - type: SDKs
-    name: PHP Laravel Middleware
-    url: https://github.com/Moesif/moesif-laravel
-  - type: SDKs
-    name: PHP Slim Middleware
-    url: https://github.com/Moesif/moesif-slim
-  - type: SDKs
-    name: Ruby Rack Middleware
-    url: https://github.com/Moesif/moesif-rack
-  - type: SDKs
-    name: Scala Play Filter
-    url: https://github.com/Moesif/moesif-play-filter
-  - type: SDKs
-    name: Android SDK
-    url: https://github.com/Moesif/moesif-android
-  - type: SDKs
-    name: Browser JavaScript Library
-    url: https://github.com/Moesif/moesif-browser-js
-  - type: SDKs
-    name: AWS Lambda Node.js
-    url: https://github.com/Moesif/moesif-aws-lambda-nodejs
-  - type: SDKs
-    name: AWS Lambda Python
-    url: https://github.com/Moesif/moesif-aws-lambda-python
-  - type: SDKs
-    name: AWS Lambda Go
-    url: https://github.com/Moesif/moesif-aws-lambda-go
-  - type: Plugin
-    name: Cloudflare Workers
-    url: https://github.com/Moesif/moesif-cloudflare
-  - type: Plugin
-    name: Kong Gateway
-    url: https://github.com/Moesif/kong-plugin-moesif
-  - type: Plugin
-    name: NGINX / OpenResty
-    url: https://github.com/Moesif/lua-resty-moesif
-  - type: Plugin
-    name: Express Gateway
-    url: https://github.com/Moesif/express-gateway-plugin-moesif
-  - type: Tools
-    name: Auth0 Logs to Moesif
-    url: https://github.com/Moesif/auth0-logs-to-moesif
-  - type: Sample
-    name: Developer Portal Reference Implementation
-    url: https://github.com/Moesif/moesif-developer-portal
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+  - type: JSONSchema
+    url: json-schema/moesif-workspace-document-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-workspace-create-item-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-workspace-update-item-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-signed-token-dto-schema.json
+  - type: JSONSchema
+    url: json-schema/moesif-comment-item-schema.json
 x-parent: wso2
 x-relationship: acquisition
 x-acquired: 2025
+x-enrichment:
+  date: '2026-10-04'
+  status: enriched
+  artifacts_added: 46
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

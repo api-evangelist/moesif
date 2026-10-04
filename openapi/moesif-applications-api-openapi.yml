@@ -145,17 +145,6 @@ paths:
           description: success
 components:
   schemas:
-    AppUpdateDTO:
-      properties:
-        name:
-          type: string
-        time_zone:
-          type: string
-        week_starts_on:
-          type: integer
-          format: int32
-        custom_app_id:
-          type: string
     AppResponseDTO:
       properties:
         name:
@@ -190,6 +179,17 @@ components:
           type: string
       required:
       - name
+    AppUpdateDTO:
+      properties:
+        name:
+          type: string
+        time_zone:
+          type: string
+        week_starts_on:
+          type: integer
+          format: int32
+        custom_app_id:
+          type: string
   securitySchemes:
     managementAPIToken:
       type: oauth2

@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-email-template-update-item-schema.json",
+  "title": "EmailTemplateUpdateItem",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-email-templates-api-openapi.yml#/components/schemas/EmailTemplateUpdateItem",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "state": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "cohorts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Cohort"
+      }
+    },
+    "dynamic_fields": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DynamicField"
+      }
+    },
+    "content": {
+      "$ref": "#/$defs/TemplateContent"
+    },
+    "template": {
+      "$ref": "#/$defs/TemplateConfig"
+    },
+    "period": {
+      "type": "string"
+    },
+    "addresses": {
+      "$ref": "#/$defs/EmailAddresses"
+    }
+  },
+  "$defs": {
+    "Cohort": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "config": {
+          "$ref": "#/$defs/CohortConfig"
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ]
+    },
+    "CohortConfig": {
+      "properties": {
+        "url_query": {
+          "type": "string"
+        },
+        "criteria": {
+          "type": "string"
+        },
+        "cohort_name": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "cohort_type": {
+          "type": "string"
+        },
+        "time_zone": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "criteria",
+        "url_query",
+        "cohort_name",
+        "cohort_type",
+        "from",
+        "to",
+        "time_zone"
+      ]
+    },
+    "DynamicField": {
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "field": {
+          "type": "string"
+        },
+        "aggregator": {
+          "type": "string",
+          "enum": [
+            "avg",
+            "min",
+            "max",
+            "terms",
+            "sum"
+          ]
+        }
+      },
+      "required": [
+        "token",
+        "field",
+        "aggregator"
+      ]
+    },
+    "EmailAddresses": {
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "cc": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "bcc": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "from",
+        "cc",
+        "bcc"
+      ]
+    },
+    "TemplateConfig": {
+      "properties": {
+        "subject": {
+          "type": "string"
+        },
+        "editor": {
+          "type": "string"
+        },
+        "design": {
+          "type": "object"
+        },
+        "thumbnail_url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "subject",
+        "editor",
+        "design"
+      ]
+    },
+    "TemplateContent": {
+      "properties": {
+        "html": {
+          "type": "string"
+        },
+        "chunks": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "html",
+        "chunks"
+      ]
+    }
+  }
+}

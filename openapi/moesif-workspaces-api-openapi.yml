@@ -493,94 +493,6 @@ paths:
           description: success
 components:
   schemas:
-    SubmitData:
-      properties:
-        body:
-          type: object
-        url:
-          type: string
-        params:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyValuePair'
-        verb:
-          type: string
-        headers:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyValuePair'
-      required:
-      - url
-      - verb
-    CommentItem:
-      properties:
-        message:
-          type: string
-        mentions:
-          type: array
-          items:
-            type: string
-    WorkspaceUpdateItem:
-      properties:
-        name:
-          type: string
-        colors:
-          type: object
-        drawings:
-          type: array
-          items:
-            $ref: '#/components/schemas/DrawingItem'
-        chart:
-          $ref: '#/components/schemas/ChartItem'
-        template:
-          $ref: '#/components/schemas/TemplateItem'
-        width:
-          type: number
-          format: double
-        sort_order:
-          type: number
-          format: double
-        policy:
-          $ref: '#/components/schemas/PolicyItem'
-    ChartItem:
-      properties:
-        original_encoded_view_elements:
-          type: string
-        funnel_query:
-          type: object
-        url_query:
-          type: string
-        to:
-          type: string
-        view_elements:
-          type: object
-        from:
-          type: string
-        original_encoded_funnel_query:
-          type: string
-        es_query:
-          type: object
-        args:
-          type: string
-        original_encoded_query:
-          type: string
-        time_zone:
-          type: string
-        view:
-          type: string
-      required:
-      - view
-      - url_query
-    TemplateItem:
-      properties:
-        dynamic_fields:
-          type: array
-          items:
-            type: string
-        dynamic_time:
-          type: boolean
-      required:
-      - dynamic_fields
     KeyValuePair:
       properties:
         key:
@@ -607,15 +519,41 @@ components:
       required:
       - acl
       - resource
-    Summary:
+    WorkspaceCreateItem:
       properties:
-        count:
+        name:
+          type: string
+        is_default:
+          type: boolean
+        view_count:
           type: integer
           format: int32
-        latest_comment:
-          $ref: '#/components/schemas/CreateCommentItem'
+        dashboard:
+          type: object
+        colors:
+          type: object
+        drawings:
+          type: array
+          items:
+            $ref: '#/components/schemas/DrawingItem'
+        chart:
+          $ref: '#/components/schemas/ChartItem'
+        template:
+          $ref: '#/components/schemas/TemplateItem'
+        type:
+          type: string
+        width:
+          type: number
+          format: double
+        sort_order:
+          type: number
+          format: double
+        policy:
+          $ref: '#/components/schemas/PolicyItem'
       required:
-      - count
+      - name
+      - policy
+      - chart
     WorkspaceDocument:
       properties:
         name:
@@ -674,58 +612,35 @@ components:
       - app_id
       - created
       - view_count
-    WorkspaceCreateItem:
+    ChartItem:
       properties:
-        name:
+        original_encoded_view_elements:
           type: string
-        is_default:
-          type: boolean
-        view_count:
-          type: integer
-          format: int32
-        dashboard:
+        funnel_query:
           type: object
-        colors:
+        url_query:
+          type: string
+        to:
+          type: string
+        view_elements:
           type: object
-        drawings:
-          type: array
-          items:
-            $ref: '#/components/schemas/DrawingItem'
-        chart:
-          $ref: '#/components/schemas/ChartItem'
-        template:
-          $ref: '#/components/schemas/TemplateItem'
-        type:
+        from:
           type: string
-        width:
-          type: number
-          format: double
-        sort_order:
-          type: number
-          format: double
-        policy:
-          $ref: '#/components/schemas/PolicyItem'
-      required:
-      - name
-      - policy
-      - chart
-    SignedTokenDTO:
-      properties:
-        _id:
+        original_encoded_funnel_query:
           type: string
-        token:
+        es_query:
+          type: object
+        args:
           type: string
-        url:
+        original_encoded_query:
+          type: string
+        time_zone:
+          type: string
+        view:
           type: string
       required:
-      - _id
-      - token
-    Comments:
-      properties:
-        summary:
-          $ref: '#/components/schemas/Summary'
-      required:
-      - summary
+      - view
+      - url_query
     DrawingItem:
       properties:
         name:
@@ -745,6 +660,44 @@ components:
       - type
       - value
       - direction
+    TemplateItem:
+      properties:
+        dynamic_fields:
+          type: array
+          items:
+            type: string
+        dynamic_time:
+          type: boolean
+      required:
+      - dynamic_fields
+    ACLItem:
+      properties:
+        grantee:
+          type: string
+        permission:
+          type: string
+      required:
+      - grantee
+      - permission
+    CommentItem:
+      properties:
+        message:
+          type: string
+        mentions:
+          type: array
+          items:
+            type: string
+    SignedTokenDTO:
+      properties:
+        _id:
+          type: string
+        token:
+          type: string
+        url:
+          type: string
+      required:
+      - _id
+      - token
     CreateCommentItem:
       properties:
         auth_user_id:
@@ -765,15 +718,34 @@ components:
         updated_at:
           type: string
           format: date-time
-    ACLItem:
+    SubmitData:
       properties:
-        grantee:
+        body:
+          type: object
+        url:
           type: string
-        permission:
+        params:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
+        verb:
           type: string
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePair'
       required:
-      - grantee
-      - permission
+      - url
+      - verb
+    Summary:
+      properties:
+        count:
+          type: integer
+          format: int32
+        latest_comment:
+          $ref: '#/components/schemas/CreateCommentItem'
+      required:
+      - count
     SequenceItem:
       properties:
         delay:
@@ -784,6 +756,34 @@ components:
       required:
       - delay
       - submit_data
+    Comments:
+      properties:
+        summary:
+          $ref: '#/components/schemas/Summary'
+      required:
+      - summary
+    WorkspaceUpdateItem:
+      properties:
+        name:
+          type: string
+        colors:
+          type: object
+        drawings:
+          type: array
+          items:
+            $ref: '#/components/schemas/DrawingItem'
+        chart:
+          $ref: '#/components/schemas/ChartItem'
+        template:
+          $ref: '#/components/schemas/TemplateItem'
+        width:
+          type: number
+          format: double
+        sort_order:
+          type: number
+          format: double
+        policy:
+          $ref: '#/components/schemas/PolicyItem'
   securitySchemes:
     managementAPIToken:
       type: oauth2

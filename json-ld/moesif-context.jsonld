@@ -1,0 +1,1183 @@
+{
+  "@context": {
+    "@vocab": "https://moesif.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "moesif": "https://moesif.com/schema#",
+    "AppUpdateDTO": "moesif:AppUpdateDTO",
+    "name": {
+      "@id": "moesif:name",
+      "@type": "xsd:string"
+    },
+    "time_zone": {
+      "@id": "moesif:time_zone",
+      "@type": "xsd:string"
+    },
+    "week_starts_on": {
+      "@id": "moesif:week_starts_on",
+      "@type": "xsd:integer"
+    },
+    "custom_app_id": {
+      "@id": "moesif:custom_app_id",
+      "@type": "xsd:string"
+    },
+    "AppResponseDTO": "moesif:AppResponseDTO",
+    "search_api_base_url": {
+      "@id": "moesif:search_api_base_url",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "moesif:id",
+      "@type": "xsd:string"
+    },
+    "portal_api_base_url": {
+      "@id": "moesif:portal_api_base_url",
+      "@type": "xsd:string"
+    },
+    "secure_proxy": {
+      "@id": "moesif:secure_proxy",
+      "@type": "xsd:boolean"
+    },
+    "AppCreateDTO": "moesif:AppCreateDTO",
+    "BillingReportBalanceTransCreate": "moesif:BillingReportBalanceTransCreate",
+    "company_id": {
+      "@id": "moesif:company_id",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "moesif:description",
+      "@type": "xsd:string"
+    },
+    "expire_at": {
+      "@id": "moesif:expire_at",
+      "@type": "xsd:dateTime"
+    },
+    "active_at": {
+      "@id": "moesif:active_at",
+      "@type": "xsd:dateTime"
+    },
+    "amount": {
+      "@id": "moesif:amount",
+      "@type": "xsd:decimal"
+    },
+    "transaction_id": {
+      "@id": "moesif:transaction_id",
+      "@type": "xsd:string"
+    },
+    "subscription_id": {
+      "@id": "moesif:subscription_id",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "moesif:type",
+      "@type": "xsd:string"
+    },
+    "CustomReporting": "moesif:CustomReporting",
+    "report_when": {
+      "@id": "moesif:report_when",
+      "@container": "@list"
+    },
+    "ChargebeeItemPrice": "moesif:ChargebeeItemPrice",
+    "item_id": {
+      "@id": "moesif:item_id",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "moesif:price",
+      "@type": "xsd:integer"
+    },
+    "price_in_decimal": {
+      "@id": "moesif:price_in_decimal",
+      "@type": "xsd:string"
+    },
+    "external_name": {
+      "@id": "moesif:external_name",
+      "@type": "xsd:string"
+    },
+    "tiers": {
+      "@id": "moesif:tiers",
+      "@container": "@list"
+    },
+    "trial_end_action": {
+      "@id": "moesif:trial_end_action",
+      "@type": "xsd:string"
+    },
+    "trial_period": {
+      "@id": "moesif:trial_period",
+      "@type": "xsd:integer"
+    },
+    "status": {
+      "@id": "moesif:status",
+      "@type": "xsd:string"
+    },
+    "pricing_model": {
+      "@id": "moesif:pricing_model",
+      "@type": "xsd:string"
+    },
+    "created_at": {
+      "@id": "moesif:created_at",
+      "@type": "xsd:integer"
+    },
+    "period_unit": {
+      "@id": "moesif:period_unit",
+      "@type": "xsd:string"
+    },
+    "updated_at": {
+      "@id": "moesif:updated_at",
+      "@type": "xsd:integer"
+    },
+    "trial_period_unit": {
+      "@id": "moesif:trial_period_unit",
+      "@type": "xsd:string"
+    },
+    "item_type": {
+      "@id": "moesif:item_type",
+      "@type": "xsd:string"
+    },
+    "currency_code": {
+      "@id": "moesif:currency_code",
+      "@type": "xsd:string"
+    },
+    "archived_at": {
+      "@id": "moesif:archived_at",
+      "@type": "xsd:integer"
+    },
+    "free_quantity": {
+      "@id": "moesif:free_quantity",
+      "@type": "xsd:integer"
+    },
+    "period": {
+      "@id": "moesif:period",
+      "@type": "xsd:integer"
+    },
+    "RecurlyPlanAddOn": "moesif:RecurlyPlanAddOn",
+    "currencies": {
+      "@id": "moesif:currencies",
+      "@container": "@list"
+    },
+    "usage_percentage": {
+      "@id": "moesif:usage_percentage"
+    },
+    "add_on_type": {
+      "@id": "moesif:add_on_type",
+      "@type": "xsd:string"
+    },
+    "external_sku": {
+      "@id": "moesif:external_sku",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "moesif:state",
+      "@type": "xsd:string"
+    },
+    "tier_type": {
+      "@id": "moesif:tier_type",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "moesif:code",
+      "@type": "xsd:string"
+    },
+    "plan_id": {
+      "@id": "moesif:plan_id",
+      "@type": "xsd:string"
+    },
+    "percentage_tiers": {
+      "@id": "moesif:percentage_tiers",
+      "@container": "@list"
+    },
+    "usage_type": {
+      "@id": "moesif:usage_type",
+      "@type": "xsd:string"
+    },
+    "usage_calculation_type": {
+      "@id": "moesif:usage_calculation_type",
+      "@type": "xsd:string"
+    },
+    "deleted_at": {
+      "@id": "moesif:deleted_at",
+      "@type": "xsd:string"
+    },
+    "RecurlyBillingParams": "moesif:RecurlyBillingParams",
+    "plan": {
+      "@id": "moesif:plan",
+      "@type": "@id"
+    },
+    "add_on": {
+      "@id": "moesif:add_on",
+      "@type": "@id"
+    },
+    "add_ons": {
+      "@id": "moesif:add_ons",
+      "@container": "@list"
+    },
+    "RecurlyAddOnPercentageTiers": "moesif:RecurlyAddOnPercentageTiers",
+    "currency": {
+      "@id": "moesif:currency",
+      "@type": "xsd:string"
+    },
+    "ChargebeeItemPriceTier": "moesif:ChargebeeItemPriceTier",
+    "starting_unit": {
+      "@id": "moesif:starting_unit",
+      "@type": "xsd:integer"
+    },
+    "ending_unit": {
+      "@id": "moesif:ending_unit",
+      "@type": "xsd:integer"
+    },
+    "StripeTransformQuantity": "moesif:StripeTransformQuantity",
+    "divide_by": {
+      "@id": "moesif:divide_by",
+      "@type": "xsd:integer"
+    },
+    "round": {
+      "@id": "moesif:round",
+      "@type": "xsd:string"
+    },
+    "BillingWebhookParams": "moesif:BillingWebhookParams",
+    "reporting": {
+      "@id": "moesif:reporting",
+      "@type": "@id"
+    },
+    "channel_ids": {
+      "@id": "moesif:channel_ids",
+      "@container": "@list"
+    },
+    "custom_plan": {
+      "@id": "moesif:custom_plan",
+      "@type": "@id"
+    },
+    "BillingMeterDocument": "moesif:BillingMeterDocument",
+    "billing_plan": {
+      "@id": "moesif:billing_plan",
+      "@type": "@id"
+    },
+    "url_query": {
+      "@id": "moesif:url_query",
+      "@type": "xsd:string"
+    },
+    "_id": {
+      "@id": "moesif:_id",
+      "@type": "xsd:string"
+    },
+    "slug": {
+      "@id": "moesif:slug",
+      "@type": "xsd:string"
+    },
+    "modified_at": {
+      "@id": "moesif:modified_at",
+      "@type": "xsd:dateTime"
+    },
+    "es_query": {
+      "@id": "moesif:es_query",
+      "@type": "xsd:string"
+    },
+    "app_id": {
+      "@id": "moesif:app_id",
+      "@type": "xsd:string"
+    },
+    "org_id": {
+      "@id": "moesif:org_id",
+      "@type": "xsd:string"
+    },
+    "RecurlyPlan": "moesif:RecurlyPlan",
+    "ZuoraBillingParams": "moesif:ZuoraBillingParams",
+    "price_id": {
+      "@id": "moesif:price_id",
+      "@type": "xsd:string"
+    },
+    "price_ids": {
+      "@id": "moesif:price_ids",
+      "@container": "@list"
+    },
+    "StripePrice": "moesif:StripePrice",
+    "tiers_mode": {
+      "@id": "moesif:tiers_mode",
+      "@type": "xsd:string"
+    },
+    "transform_quantity": {
+      "@id": "moesif:transform_quantity",
+      "@type": "@id"
+    },
+    "recurring": {
+      "@id": "moesif:recurring",
+      "@type": "@id"
+    },
+    "unit_amount_decimal": {
+      "@id": "moesif:unit_amount_decimal",
+      "@type": "xsd:string"
+    },
+    "price_nickname": {
+      "@id": "moesif:price_nickname",
+      "@type": "xsd:string"
+    },
+    "billing_scheme": {
+      "@id": "moesif:billing_scheme",
+      "@type": "xsd:string"
+    },
+    "unit_amount": {
+      "@id": "moesif:unit_amount",
+      "@type": "xsd:integer"
+    },
+    "created": {
+      "@id": "moesif:created",
+      "@type": "xsd:integer"
+    },
+    "active": {
+      "@id": "moesif:active",
+      "@type": "xsd:boolean"
+    },
+    "RecurlyAddOnTier": "moesif:RecurlyAddOnTier",
+    "ending_quantity": {
+      "@id": "moesif:ending_quantity",
+      "@type": "xsd:integer"
+    },
+    "StripeRecurring": "moesif:StripeRecurring",
+    "trial_period_days": {
+      "@id": "moesif:trial_period_days",
+      "@type": "xsd:integer"
+    },
+    "interval": {
+      "@id": "moesif:interval",
+      "@type": "xsd:string"
+    },
+    "interval_count": {
+      "@id": "moesif:interval_count",
+      "@type": "xsd:integer"
+    },
+    "aggregate_usage": {
+      "@id": "moesif:aggregate_usage",
+      "@type": "xsd:string"
+    },
+    "BillingPlan": "moesif:BillingPlan",
+    "provider_slug": {
+      "@id": "moesif:provider_slug",
+      "@type": "xsd:string"
+    },
+    "friendly_name": {
+      "@id": "moesif:friendly_name",
+      "@type": "xsd:string"
+    },
+    "params": {
+      "@id": "moesif:params",
+      "@type": "@id"
+    },
+    "RecurlyCurrencyAmount": "moesif:RecurlyCurrencyAmount",
+    "ChargebeeItemPlan": "moesif:ChargebeeItemPlan",
+    "item_family_id": {
+      "@id": "moesif:item_family_id",
+      "@type": "xsd:string"
+    },
+    "usage_calculation": {
+      "@id": "moesif:usage_calculation",
+      "@type": "xsd:string"
+    },
+    "metered": {
+      "@id": "moesif:metered",
+      "@type": "xsd:boolean"
+    },
+    "unit": {
+      "@id": "moesif:unit",
+      "@type": "xsd:string"
+    },
+    "StripeProduct": "moesif:StripeProduct",
+    "unit_label": {
+      "@id": "moesif:unit_label",
+      "@type": "xsd:string"
+    },
+    "RecurlyAddOnPercentageTier": "moesif:RecurlyAddOnPercentageTier",
+    "ending_amount": {
+      "@id": "moesif:ending_amount"
+    },
+    "usage_percent": {
+      "@id": "moesif:usage_percent",
+      "@type": "xsd:string"
+    },
+    "ProviderReporting": "moesif:ProviderReporting",
+    "reporting_period": {
+      "@id": "moesif:reporting_period",
+      "@type": "xsd:string"
+    },
+    "StripeTier": "moesif:StripeTier",
+    "flat_amount_decimal": {
+      "@id": "moesif:flat_amount_decimal",
+      "@type": "xsd:string"
+    },
+    "up_to": {
+      "@id": "moesif:up_to",
+      "@type": "xsd:integer"
+    },
+    "flat_amount": {
+      "@id": "moesif:flat_amount",
+      "@type": "xsd:integer"
+    },
+    "BillingParams": "moesif:BillingParams",
+    "usage_rounding_mode": {
+      "@id": "moesif:usage_rounding_mode",
+      "@type": "xsd:string"
+    },
+    "webhook_params": {
+      "@id": "moesif:webhook_params",
+      "@type": "@id"
+    },
+    "recurly_params": {
+      "@id": "moesif:recurly_params",
+      "@type": "@id"
+    },
+    "chargebee_params": {
+      "@id": "moesif:chargebee_params",
+      "@type": "@id"
+    },
+    "stripe_params": {
+      "@id": "moesif:stripe_params",
+      "@type": "@id"
+    },
+    "zuora_params": {
+      "@id": "moesif:zuora_params",
+      "@type": "@id"
+    },
+    "usage_multiplier": {
+      "@id": "moesif:usage_multiplier"
+    },
+    "ChargebeeBillingParams": "moesif:ChargebeeBillingParams",
+    "item_plan": {
+      "@id": "moesif:item_plan",
+      "@type": "@id"
+    },
+    "item_price": {
+      "@id": "moesif:item_price",
+      "@type": "@id"
+    },
+    "item_prices": {
+      "@id": "moesif:item_prices",
+      "@container": "@list"
+    },
+    "StripeBillingParams": "moesif:StripeBillingParams",
+    "product": {
+      "@id": "moesif:product",
+      "@type": "@id"
+    },
+    "prices": {
+      "@id": "moesif:prices",
+      "@container": "@list"
+    },
+    "CustomReportPlan": "moesif:CustomReportPlan",
+    "BillingMetricBucket": "moesif:BillingMetricBucket",
+    "start": {
+      "@id": "moesif:start",
+      "@type": "xsd:dateTime"
+    },
+    "metric": {
+      "@id": "moesif:metric",
+      "@type": "xsd:decimal"
+    },
+    "amounts": {
+      "@id": "moesif:amounts"
+    },
+    "ending_balance": {
+      "@id": "moesif:ending_balance",
+      "@type": "@id"
+    },
+    "BillingReportUsage": "moesif:BillingReportUsage",
+    "invoice": {
+      "@id": "moesif:invoice",
+      "@type": "@id"
+    },
+    "aggregator": {
+      "@id": "moesif:aggregator",
+      "@type": "xsd:string"
+    },
+    "BillingReportUsageInvoice": "moesif:BillingReportUsageInvoice",
+    "period_start": {
+      "@id": "moesif:period_start",
+      "@type": "xsd:dateTime"
+    },
+    "period_end": {
+      "@id": "moesif:period_end",
+      "@type": "xsd:dateTime"
+    },
+    "ChannelRequest": "moesif:ChannelRequest",
+    "channel_id": {
+      "@id": "moesif:channel_id",
+      "@type": "xsd:string"
+    },
+    "channel_name": {
+      "@id": "moesif:channel_name",
+      "@type": "xsd:string"
+    },
+    "provider_requests": {
+      "@id": "moesif:provider_requests",
+      "@container": "@list"
+    },
+    "CreditBalance": "moesif:CreditBalance",
+    "sequence_id": {
+      "@id": "moesif:sequence_id",
+      "@type": "xsd:integer"
+    },
+    "current_balance": {
+      "@id": "moesif:current_balance",
+      "@type": "xsd:decimal"
+    },
+    "pending_activity": {
+      "@id": "moesif:pending_activity",
+      "@type": "xsd:decimal"
+    },
+    "available_balance": {
+      "@id": "moesif:available_balance",
+      "@type": "xsd:decimal"
+    },
+    "BillingMetricResponse": "moesif:BillingMetricResponse",
+    "buckets": {
+      "@id": "moesif:buckets",
+      "@container": "@list"
+    },
+    "BalanceChange": "moesif:BalanceChange",
+    "CreditBalanceMetric": "moesif:CreditBalanceMetric",
+    "ProviderRequest": "moesif:ProviderRequest",
+    "success": {
+      "@id": "moesif:success",
+      "@type": "xsd:boolean"
+    },
+    "status_code": {
+      "@id": "moesif:status_code",
+      "@type": "xsd:integer"
+    },
+    "job_id": {
+      "@id": "moesif:job_id",
+      "@type": "xsd:string"
+    },
+    "error_message": {
+      "@id": "moesif:error_message",
+      "@type": "xsd:string"
+    },
+    "error_code": {
+      "@id": "moesif:error_code",
+      "@type": "xsd:string"
+    },
+    "request_time": {
+      "@id": "moesif:request_time",
+      "@type": "xsd:dateTime"
+    },
+    "BillingReport": "moesif:BillingReport",
+    "provider": {
+      "@id": "moesif:provider",
+      "@type": "xsd:string"
+    },
+    "report_version": {
+      "@id": "moesif:report_version",
+      "@type": "xsd:integer"
+    },
+    "usage_end_time": {
+      "@id": "moesif:usage_end_time",
+      "@type": "xsd:dateTime"
+    },
+    "usage": {
+      "@id": "moesif:usage",
+      "@type": "@id"
+    },
+    "meter_usage": {
+      "@id": "moesif:meter_usage",
+      "@type": "xsd:integer"
+    },
+    "last_success_time": {
+      "@id": "moesif:last_success_time",
+      "@type": "xsd:dateTime"
+    },
+    "beginning_balance": {
+      "@id": "moesif:beginning_balance",
+      "@type": "@id"
+    },
+    "billing_meter_id": {
+      "@id": "moesif:billing_meter_id",
+      "@type": "xsd:string"
+    },
+    "usage_start_time": {
+      "@id": "moesif:usage_start_time",
+      "@type": "xsd:dateTime"
+    },
+    "report_total_usage": {
+      "@id": "moesif:report_total_usage",
+      "@type": "xsd:integer"
+    },
+    "channel_requests": {
+      "@id": "moesif:channel_requests",
+      "@container": "@list"
+    },
+    "subscription_period_start": {
+      "@id": "moesif:subscription_period_start",
+      "@type": "xsd:dateTime"
+    },
+    "balance_changes": {
+      "@id": "moesif:balance_changes",
+      "@container": "@list"
+    },
+    "subscription_period_end": {
+      "@id": "moesif:subscription_period_end",
+      "@type": "xsd:dateTime"
+    },
+    "meter_metric": {
+      "@id": "moesif:meter_metric",
+      "@type": "xsd:integer"
+    },
+    "CohortDocument": "moesif:CohortDocument",
+    "channels": {
+      "@id": "moesif:channels"
+    },
+    "priority": {
+      "@id": "moesif:priority",
+      "@type": "xsd:integer"
+    },
+    "criteria": {
+      "@id": "moesif:criteria",
+      "@type": "xsd:string"
+    },
+    "sample_rate": {
+      "@id": "moesif:sample_rate",
+      "@type": "xsd:integer"
+    },
+    "notification_rule": {
+      "@id": "moesif:notification_rule",
+      "@type": "@id"
+    },
+    "cohort_name": {
+      "@id": "moesif:cohort_name",
+      "@type": "xsd:string"
+    },
+    "to": {
+      "@id": "moesif:to",
+      "@type": "xsd:string"
+    },
+    "locked_by": {
+      "@id": "moesif:locked_by",
+      "@type": "xsd:string"
+    },
+    "from": {
+      "@id": "moesif:from",
+      "@type": "xsd:string"
+    },
+    "cohort_type": {
+      "@id": "moesif:cohort_type",
+      "@type": "xsd:string"
+    },
+    "CohortUpdateItem": "moesif:CohortUpdateItem",
+    "NotificationRule": "moesif:NotificationRule",
+    "send_on_addition": {
+      "@id": "moesif:send_on_addition",
+      "@type": "xsd:boolean"
+    },
+    "send_on_removal": {
+      "@id": "moesif:send_on_removal",
+      "@type": "xsd:boolean"
+    },
+    "fields": {
+      "@id": "moesif:fields",
+      "@container": "@list"
+    },
+    "CohortCreateItem": "moesif:CohortCreateItem",
+    "CompanyUpdateDTO": "moesif:CompanyUpdateDTO",
+    "modified_time": {
+      "@id": "moesif:modified_time",
+      "@type": "xsd:dateTime"
+    },
+    "session_token": {
+      "@id": "moesif:session_token",
+      "@type": "xsd:string"
+    },
+    "company_domain": {
+      "@id": "moesif:company_domain",
+      "@type": "xsd:string"
+    },
+    "metadata": {
+      "@id": "moesif:metadata"
+    },
+    "PolicyItem": "moesif:PolicyItem",
+    "acl": {
+      "@id": "moesif:acl",
+      "@container": "@list"
+    },
+    "resource": {
+      "@id": "moesif:resource"
+    },
+    "api_scopes": {
+      "@id": "moesif:api_scopes",
+      "@container": "@list"
+    },
+    "original_encoded_resource": {
+      "@id": "moesif:original_encoded_resource",
+      "@type": "xsd:string"
+    },
+    "DashboardUpdateItem": "moesif:DashboardUpdateItem",
+    "parent": {
+      "@id": "moesif:parent",
+      "@type": "xsd:string"
+    },
+    "dashboard_id": {
+      "@id": "moesif:dashboard_id",
+      "@type": "xsd:string"
+    },
+    "workspace_ids": {
+      "@id": "moesif:workspace_ids",
+      "@container": "@list"
+    },
+    "sort_order": {
+      "@id": "moesif:sort_order",
+      "@type": "xsd:decimal"
+    },
+    "dashboard_ids": {
+      "@id": "moesif:dashboard_ids",
+      "@container": "@list"
+    },
+    "policy": {
+      "@id": "moesif:policy",
+      "@type": "@id"
+    },
+    "DashboardDocument": "moesif:DashboardDocument",
+    "auth_user_id": {
+      "@id": "moesif:auth_user_id",
+      "@type": "xsd:string"
+    },
+    "profile_view_promotion": {
+      "@id": "moesif:profile_view_promotion",
+      "@type": "xsd:string"
+    },
+    "migration": {
+      "@id": "moesif:migration"
+    },
+    "ACLItem": "moesif:ACLItem",
+    "grantee": {
+      "@id": "moesif:grantee",
+      "@type": "xsd:string"
+    },
+    "permission": {
+      "@id": "moesif:permission",
+      "@type": "xsd:string"
+    },
+    "TemplateConfig": "moesif:TemplateConfig",
+    "subject": {
+      "@id": "moesif:subject",
+      "@type": "xsd:string"
+    },
+    "editor": {
+      "@id": "moesif:editor",
+      "@type": "xsd:string"
+    },
+    "design": {
+      "@id": "moesif:design"
+    },
+    "thumbnail_url": {
+      "@id": "moesif:thumbnail_url",
+      "@type": "xsd:string"
+    },
+    "EmailAddresses": "moesif:EmailAddresses",
+    "cc": {
+      "@id": "moesif:cc",
+      "@container": "@list"
+    },
+    "bcc": {
+      "@id": "moesif:bcc",
+      "@container": "@list"
+    },
+    "CohortConfig": "moesif:CohortConfig",
+    "EmailTemplateUpdateItem": "moesif:EmailTemplateUpdateItem",
+    "cohorts": {
+      "@id": "moesif:cohorts",
+      "@container": "@list"
+    },
+    "dynamic_fields": {
+      "@id": "moesif:dynamic_fields",
+      "@container": "@list"
+    },
+    "content": {
+      "@id": "moesif:content",
+      "@type": "@id"
+    },
+    "template": {
+      "@id": "moesif:template",
+      "@type": "@id"
+    },
+    "addresses": {
+      "@id": "moesif:addresses",
+      "@type": "@id"
+    },
+    "DynamicField": "moesif:DynamicField",
+    "token": {
+      "@id": "moesif:token",
+      "@type": "xsd:string"
+    },
+    "field": {
+      "@id": "moesif:field",
+      "@type": "xsd:string"
+    },
+    "EmailTemplateCreateItem": "moesif:EmailTemplateCreateItem",
+    "TemplateContent": "moesif:TemplateContent",
+    "html": {
+      "@id": "moesif:html",
+      "@type": "xsd:string"
+    },
+    "chunks": {
+      "@id": "moesif:chunks"
+    },
+    "Cohort": "moesif:Cohort",
+    "config": {
+      "@id": "moesif:config",
+      "@type": "@id"
+    },
+    "Plan": "moesif:Plan",
+    "GovernanceRulesVariables": "moesif:GovernanceRulesVariables",
+    "path": {
+      "@id": "moesif:path",
+      "@type": "xsd:string"
+    },
+    "RegexRule": "moesif:RegexRule",
+    "conditions": {
+      "@id": "moesif:conditions",
+      "@container": "@list"
+    },
+    "RegexCondition": "moesif:RegexCondition",
+    "value": {
+      "@id": "moesif:value",
+      "@type": "xsd:string"
+    },
+    "GovernanceRuleUpdateItem": "moesif:GovernanceRuleUpdateItem",
+    "model": {
+      "@id": "moesif:model",
+      "@type": "xsd:string"
+    },
+    "variables": {
+      "@id": "moesif:variables",
+      "@container": "@list"
+    },
+    "applied_to": {
+      "@id": "moesif:applied_to",
+      "@type": "xsd:string"
+    },
+    "block": {
+      "@id": "moesif:block",
+      "@type": "xsd:boolean"
+    },
+    "response": {
+      "@id": "moesif:response",
+      "@type": "@id"
+    },
+    "applied_to_unidentified": {
+      "@id": "moesif:applied_to_unidentified",
+      "@type": "xsd:boolean"
+    },
+    "regex_config": {
+      "@id": "moesif:regex_config",
+      "@container": "@list"
+    },
+    "plans": {
+      "@id": "moesif:plans",
+      "@container": "@list"
+    },
+    "GovernanceRulesDocument": "moesif:GovernanceRulesDocument",
+    "GovernanceRuleCreateItem": "moesif:GovernanceRuleCreateItem",
+    "RulesResponseItem": "moesif:RulesResponseItem",
+    "headers": {
+      "@id": "moesif:headers"
+    },
+    "body": {
+      "@id": "moesif:body"
+    },
+    "original_encoded_body": {
+      "@id": "moesif:original_encoded_body",
+      "@type": "xsd:string"
+    },
+    "searchEventsResponseDTO": "moesif:searchEventsResponseDTO",
+    "took": {
+      "@id": "moesif:took",
+      "@type": "xsd:integer"
+    },
+    "timed_out": {
+      "@id": "moesif:timed_out",
+      "@type": "xsd:boolean"
+    },
+    "hits": {
+      "@id": "moesif:hits"
+    },
+    "eventResponseDTO": "moesif:eventResponseDTO",
+    "_source": {
+      "@id": "moesif:_source"
+    },
+    "sort": {
+      "@id": "moesif:sort",
+      "@container": "@list"
+    },
+    "MoesifPriceTier": "moesif:MoesifPriceTier",
+    "unit_price_in_decimal": {
+      "@id": "moesif:unit_price_in_decimal",
+      "@type": "xsd:string"
+    },
+    "flat_price_in_decimal": {
+      "@id": "moesif:flat_price_in_decimal",
+      "@type": "xsd:string"
+    },
+    "MoesifPrice": "moesif:MoesifPrice",
+    "period_units": {
+      "@id": "moesif:period_units",
+      "@type": "xsd:string"
+    },
+    "tax_behavior": {
+      "@id": "moesif:tax_behavior",
+      "@type": "xsd:string"
+    },
+    "usage_aggregator": {
+      "@id": "moesif:usage_aggregator",
+      "@type": "xsd:string"
+    },
+    "MoesifTransformQuantity": "moesif:MoesifTransformQuantity",
+    "MoesifPlan": "moesif:MoesifPlan",
+    "product_id": {
+      "@id": "moesif:product_id",
+      "@type": "xsd:string"
+    },
+    "SubscriptionItem": "moesif:SubscriptionItem",
+    "item_price_id": {
+      "@id": "moesif:item_price_id",
+      "@type": "xsd:string"
+    },
+    "is_metered": {
+      "@id": "moesif:is_metered",
+      "@type": "xsd:boolean"
+    },
+    "unit_of_measure": {
+      "@id": "moesif:unit_of_measure",
+      "@type": "xsd:string"
+    },
+    "subscription_item_id": {
+      "@id": "moesif:subscription_item_id",
+      "@type": "xsd:string"
+    },
+    "SubscriptionDTO": "moesif:SubscriptionDTO",
+    "trial_start": {
+      "@id": "moesif:trial_start",
+      "@type": "xsd:dateTime"
+    },
+    "start_date": {
+      "@id": "moesif:start_date",
+      "@type": "xsd:dateTime"
+    },
+    "collection_method": {
+      "@id": "moesif:collection_method",
+      "@type": "xsd:string"
+    },
+    "items": {
+      "@id": "moesif:items",
+      "@container": "@list"
+    },
+    "current_period_start": {
+      "@id": "moesif:current_period_start",
+      "@type": "xsd:dateTime"
+    },
+    "company_external_id": {
+      "@id": "moesif:company_external_id",
+      "@type": "xsd:string"
+    },
+    "payment_status": {
+      "@id": "moesif:payment_status",
+      "@type": "xsd:string"
+    },
+    "cancel_time": {
+      "@id": "moesif:cancel_time",
+      "@type": "xsd:dateTime"
+    },
+    "trial_end": {
+      "@id": "moesif:trial_end",
+      "@type": "xsd:dateTime"
+    },
+    "external_id": {
+      "@id": "moesif:external_id",
+      "@type": "xsd:string"
+    },
+    "version_id": {
+      "@id": "moesif:version_id",
+      "@type": "xsd:string"
+    },
+    "current_period_end": {
+      "@id": "moesif:current_period_end",
+      "@type": "xsd:dateTime"
+    },
+    "AddSubscriptionDTO": "moesif:AddSubscriptionDTO",
+    "UserUpdateDTO": "moesif:UserUpdateDTO",
+    "first_name": {
+      "@id": "moesif:first_name",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "moesif:email",
+      "@type": "xsd:string"
+    },
+    "photo_url": {
+      "@id": "moesif:photo_url",
+      "@type": "xsd:string"
+    },
+    "user_id": {
+      "@id": "moesif:user_id",
+      "@type": "xsd:string"
+    },
+    "last_name": {
+      "@id": "moesif:last_name",
+      "@type": "xsd:string"
+    },
+    "user_name": {
+      "@id": "moesif:user_name",
+      "@type": "xsd:string"
+    },
+    "phone": {
+      "@id": "moesif:phone",
+      "@type": "xsd:string"
+    },
+    "userResponseDTO": "moesif:userResponseDTO",
+    "SubmitData": "moesif:SubmitData",
+    "url": {
+      "@id": "moesif:url",
+      "@type": "xsd:string"
+    },
+    "verb": {
+      "@id": "moesif:verb",
+      "@type": "xsd:string"
+    },
+    "CommentItem": "moesif:CommentItem",
+    "message": {
+      "@id": "moesif:message",
+      "@type": "xsd:string"
+    },
+    "mentions": {
+      "@id": "moesif:mentions",
+      "@container": "@list"
+    },
+    "WorkspaceUpdateItem": "moesif:WorkspaceUpdateItem",
+    "colors": {
+      "@id": "moesif:colors"
+    },
+    "drawings": {
+      "@id": "moesif:drawings",
+      "@container": "@list"
+    },
+    "chart": {
+      "@id": "moesif:chart",
+      "@type": "@id"
+    },
+    "width": {
+      "@id": "moesif:width",
+      "@type": "xsd:decimal"
+    },
+    "ChartItem": "moesif:ChartItem",
+    "original_encoded_view_elements": {
+      "@id": "moesif:original_encoded_view_elements",
+      "@type": "xsd:string"
+    },
+    "funnel_query": {
+      "@id": "moesif:funnel_query"
+    },
+    "view_elements": {
+      "@id": "moesif:view_elements"
+    },
+    "original_encoded_funnel_query": {
+      "@id": "moesif:original_encoded_funnel_query",
+      "@type": "xsd:string"
+    },
+    "args": {
+      "@id": "moesif:args",
+      "@type": "xsd:string"
+    },
+    "original_encoded_query": {
+      "@id": "moesif:original_encoded_query",
+      "@type": "xsd:string"
+    },
+    "view": {
+      "@id": "moesif:view",
+      "@type": "xsd:string"
+    },
+    "TemplateItem": "moesif:TemplateItem",
+    "dynamic_time": {
+      "@id": "moesif:dynamic_time",
+      "@type": "xsd:boolean"
+    },
+    "KeyValuePair": "moesif:KeyValuePair",
+    "key": {
+      "@id": "moesif:key",
+      "@type": "xsd:string"
+    },
+    "val": {
+      "@id": "moesif:val",
+      "@type": "xsd:string"
+    },
+    "Summary": "moesif:Summary",
+    "count": {
+      "@id": "moesif:count",
+      "@type": "xsd:integer"
+    },
+    "latest_comment": {
+      "@id": "moesif:latest_comment",
+      "@type": "@id"
+    },
+    "WorkspaceDocument": "moesif:WorkspaceDocument",
+    "is_default": {
+      "@id": "moesif:is_default",
+      "@type": "xsd:boolean"
+    },
+    "view_count": {
+      "@id": "moesif:view_count",
+      "@type": "xsd:integer"
+    },
+    "is_template": {
+      "@id": "moesif:is_template",
+      "@type": "xsd:boolean"
+    },
+    "dashboard": {
+      "@id": "moesif:dashboard"
+    },
+    "sequence": {
+      "@id": "moesif:sequence",
+      "@container": "@list"
+    },
+    "comments": {
+      "@id": "moesif:comments",
+      "@type": "@id"
+    },
+    "WorkspaceCreateItem": "moesif:WorkspaceCreateItem",
+    "SignedTokenDTO": "moesif:SignedTokenDTO",
+    "Comments": "moesif:Comments",
+    "summary": {
+      "@id": "moesif:summary",
+      "@type": "@id"
+    },
+    "DrawingItem": "moesif:DrawingItem",
+    "direction": {
+      "@id": "moesif:direction",
+      "@type": "xsd:string"
+    },
+    "CreateCommentItem": "moesif:CreateCommentItem",
+    "comment_id": {
+      "@id": "moesif:comment_id",
+      "@type": "xsd:string"
+    },
+    "partner_user_id": {
+      "@id": "moesif:partner_user_id",
+      "@type": "xsd:string"
+    },
+    "SequenceItem": "moesif:SequenceItem",
+    "delay": {
+      "@id": "moesif:delay",
+      "@type": "xsd:integer"
+    },
+    "submit_data": {
+      "@id": "moesif:submit_data",
+      "@type": "@id"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Moesif API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Moesif's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-04) from openapi/moesif-applications-api-openapi.yml, openapi/moesif-balance-transactions-api-openapi.yml, openapi/moesif-billing-meters-api-openapi.yml.",
+  "dcterms:created": "2026-10-04",
+  "dcterms:source": [
+    "openapi/moesif-applications-api-openapi.yml",
+    "openapi/moesif-balance-transactions-api-openapi.yml",
+    "openapi/moesif-billing-meters-api-openapi.yml",
+    "openapi/moesif-billing-reports-api-openapi.yml",
+    "openapi/moesif-cohorts-api-openapi.yml"
+  ]
+}

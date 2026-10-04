@@ -177,6 +177,57 @@ components:
           type: string
       required:
       - plan_id
+    AddSubscriptionDTO:
+      properties:
+        trial_start:
+          type: string
+          format: date-time
+        company_id:
+          type: string
+        start_date:
+          type: string
+          format: date-time
+        collection_method:
+          type: string
+        provider:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionItem'
+        current_period_start:
+          type: string
+          format: date-time
+        company_external_id:
+          type: string
+        payment_status:
+          type: string
+        cancel_time:
+          type: string
+          format: date-time
+        status:
+          type: string
+        trial_end:
+          type: string
+          format: date-time
+        external_id:
+          type: string
+        metadata:
+          type: object
+        subscription_id:
+          type: string
+        version_id:
+          type: string
+        current_period_end:
+          type: string
+          format: date-time
+        created:
+          type: string
+          format: date-time
+      required:
+      - subscription_id
+      - company_id
+      - status
     SubscriptionDTO:
       properties:
         trial_start:
@@ -237,57 +288,6 @@ components:
       - org_id
       - app_id
       - type
-      - subscription_id
-      - company_id
-      - status
-    AddSubscriptionDTO:
-      properties:
-        trial_start:
-          type: string
-          format: date-time
-        company_id:
-          type: string
-        start_date:
-          type: string
-          format: date-time
-        collection_method:
-          type: string
-        provider:
-          type: string
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubscriptionItem'
-        current_period_start:
-          type: string
-          format: date-time
-        company_external_id:
-          type: string
-        payment_status:
-          type: string
-        cancel_time:
-          type: string
-          format: date-time
-        status:
-          type: string
-        trial_end:
-          type: string
-          format: date-time
-        external_id:
-          type: string
-        metadata:
-          type: object
-        subscription_id:
-          type: string
-        version_id:
-          type: string
-        current_period_end:
-          type: string
-          format: date-time
-        created:
-          type: string
-          format: date-time
-      required:
       - subscription_id
       - company_id
       - status

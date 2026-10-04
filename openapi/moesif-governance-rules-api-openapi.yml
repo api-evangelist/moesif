@@ -183,87 +183,6 @@ paths:
           description: success
 components:
   schemas:
-    Plan:
-      properties:
-        provider:
-          type: string
-        plan_id:
-          type: string
-        price_ids:
-          type: array
-          items:
-            type: string
-      required:
-      - provider
-      - plan_id
-      - price_ids
-    GovernanceRulesVariables:
-      properties:
-        name:
-          type: string
-        path:
-          type: string
-      required:
-      - name
-      - path
-    RegexRule:
-      properties:
-        conditions:
-          type: array
-          items:
-            $ref: '#/components/schemas/RegexCondition'
-        sample_rate:
-          type: integer
-          format: int32
-      required:
-      - conditions
-    RegexCondition:
-      properties:
-        path:
-          type: string
-        value:
-          type: string
-      required:
-      - path
-      - value
-    GovernanceRuleUpdateItem:
-      properties:
-        name:
-          type: string
-        priority:
-          type: integer
-          format: int32
-        model:
-          type: string
-        state:
-          type: integer
-          format: int32
-        cohorts:
-          type: array
-          items:
-            type: object
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/GovernanceRulesVariables'
-        applied_to:
-          type: string
-        block:
-          type: boolean
-        response:
-          $ref: '#/components/schemas/RulesResponseItem'
-        applied_to_unidentified:
-          type: boolean
-        regex_config:
-          type: array
-          items:
-            $ref: '#/components/schemas/RegexRule'
-        plans:
-          type: array
-          items:
-            $ref: '#/components/schemas/Plan'
-        type:
-          type: string
     GovernanceRulesDocument:
       properties:
         name:
@@ -319,6 +238,51 @@ components:
       - app_id
       - name
       - block
+    RegexCondition:
+      properties:
+        path:
+          type: string
+        value:
+          type: string
+      required:
+      - path
+      - value
+    Plan:
+      properties:
+        provider:
+          type: string
+        plan_id:
+          type: string
+        price_ids:
+          type: array
+          items:
+            type: string
+      required:
+      - provider
+      - plan_id
+      - price_ids
+    RegexRule:
+      properties:
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegexCondition'
+        sample_rate:
+          type: integer
+          format: int32
+      required:
+      - conditions
+    RulesResponseItem:
+      properties:
+        status:
+          type: integer
+          format: int32
+        headers:
+          type: collection.immutable.map[string,string]
+        body:
+          type: object
+        original_encoded_body:
+          type: string
     GovernanceRuleCreateItem:
       properties:
         name:
@@ -362,17 +326,53 @@ components:
       - state
       - name
       - block
-    RulesResponseItem:
+    GovernanceRuleUpdateItem:
       properties:
-        status:
+        name:
+          type: string
+        priority:
           type: integer
           format: int32
-        headers:
-          type: collection.immutable.map[string,string]
-        body:
-          type: object
-        original_encoded_body:
+        model:
           type: string
+        state:
+          type: integer
+          format: int32
+        cohorts:
+          type: array
+          items:
+            type: object
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/GovernanceRulesVariables'
+        applied_to:
+          type: string
+        block:
+          type: boolean
+        response:
+          $ref: '#/components/schemas/RulesResponseItem'
+        applied_to_unidentified:
+          type: boolean
+        regex_config:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegexRule'
+        plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plan'
+        type:
+          type: string
+    GovernanceRulesVariables:
+      properties:
+        name:
+          type: string
+        path:
+          type: string
+      required:
+      - name
+      - path
   securitySchemes:
     managementAPIToken:
       type: oauth2

@@ -1,0 +1,30 @@
+generated: '2026-10-04'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://www.moesif.com/docs/platform/gdpr/
+sources:
+- https://www.moesif.com/docs/platform/gdpr/
+- https://www.moesif.com/docs/platform/gdpr/
+- https://www.moesif.com/docs/platform/privacy-rules/
+standards:
+- id: gdpr
+  conforms: true
+  evidence: Moesif was designed from the ground up with security and privacy in mind and is aligned with the policies and practices of General
+    Data Protection Regulation (GDPR) and California Consumer Privacy Act (CCPA).
+- id: ccpa
+  conforms: true
+  evidence: Moesif was designed from the ground up with security and privacy in mind and is aligned with the policies and practices of General
+    Data Protection Regulation (GDPR) and California Consumer Privacy Act (CCPA).
+- id: openapi-3.2
+  conforms: true
+  evidence: the document declares 3.2.0
+- id: oauth2
+  conforms: true
+  evidence: 'securitySchemes: managementAPIToken (oauth2)'
+- id: rfc9457
+  conforms: false
+  evidence: no response declares application/problem+json
+- id: idempotency
+  conforms: false
+  evidence: no idempotency key parameter on mutating operations
+docs: https://www.moesif.com/docs/platform/gdpr/

@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-moesif-plan-schema.json",
+  "title": "MoesifPlan",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-product-catalog-api-openapi.yml#/components/schemas/MoesifPlan",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "prices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MoesifPrice"
+      }
+    },
+    "provider": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "product_id": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "collection.immutable.map[string,string]"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "MoesifPrice": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "transform_quantity": {
+          "$ref": "#/$defs/MoesifTransformQuantity"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "price_in_decimal": {
+          "type": "string"
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MoesifPriceTier"
+          }
+        },
+        "period_units": {
+          "type": "string"
+        },
+        "plan_id": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "pricing_model": {
+          "type": "string"
+        },
+        "tax_behavior": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "collection.immutable.map[string,string]"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "usage_aggregator": {
+          "type": "string"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "MoesifPriceTier": {
+      "properties": {
+        "up_to": {
+          "type": "util.either[scala.long,string]"
+        },
+        "unit_price_in_decimal": {
+          "type": "string"
+        },
+        "flat_price_in_decimal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "up_to"
+      ]
+    },
+    "MoesifTransformQuantity": {
+      "properties": {
+        "divide_by": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "round": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "divide_by",
+        "round"
+      ]
+    }
+  }
+}

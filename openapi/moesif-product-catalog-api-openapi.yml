@@ -407,16 +407,44 @@ paths:
                 $ref: '#/components/schemas/MoesifPrice'
 components:
   schemas:
-    MoesifPriceTier:
+    MoesifPlan:
       properties:
-        up_to:
-          type: util.either[scala.long,string]
-        unit_price_in_decimal:
+        name:
           type: string
-        flat_price_in_decimal:
+        prices:
+          type: array
+          items:
+            $ref: '#/components/schemas/MoesifPrice'
+        provider:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        status:
+          type: string
+        product_id:
+          type: string
+        metadata:
+          type: collection.immutable.map[string,string]
+        created_at:
+          type: string
+          format: date-time
+        unit:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+    MoesifTransformQuantity:
+      properties:
+        divide_by:
+          type: integer
+          format: int64
+        round:
           type: string
       required:
-      - up_to
+      - divide_by
+      - round
     MoesifPrice:
       properties:
         name:
@@ -457,44 +485,16 @@ components:
         period:
           type: integer
           format: int64
-    MoesifTransformQuantity:
+    MoesifPriceTier:
       properties:
-        divide_by:
-          type: integer
-          format: int64
-        round:
+        up_to:
+          type: util.either[scala.long,string]
+        unit_price_in_decimal:
+          type: string
+        flat_price_in_decimal:
           type: string
       required:
-      - divide_by
-      - round
-    MoesifPlan:
-      properties:
-        name:
-          type: string
-        prices:
-          type: array
-          items:
-            $ref: '#/components/schemas/MoesifPrice'
-        provider:
-          type: string
-        description:
-          type: string
-        id:
-          type: string
-        status:
-          type: string
-        product_id:
-          type: string
-        metadata:
-          type: collection.immutable.map[string,string]
-        created_at:
-          type: string
-          format: date-time
-        unit:
-          type: string
-        updated_at:
-          type: string
-          format: date-time
+      - up_to
   securitySchemes:
     managementAPIToken:
       type: oauth2

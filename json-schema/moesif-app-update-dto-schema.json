@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-app-update-dto-schema.json",
+  "title": "AppUpdateDTO",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-applications-api-openapi.yml#/components/schemas/AppUpdateDTO",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "time_zone": {
+      "type": "string"
+    },
+    "week_starts_on": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "custom_app_id": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+generated: '2026-10-04'
+method: searched
+source: https://docs.moesif.com
+packages:
+  - name: moesif-android
+    registry: github
+    url: https://github.com/Moesif/moesif-android
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried
+  - name: moesif-aws-lambda-go
+    registry: github
+    url: https://github.com/Moesif/moesif-aws-lambda-go
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried
+  - name: moesif-aws-lambda-nodejs
+    registry: github
+    url: https://github.com/Moesif/moesif-aws-lambda-nodejs
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried
+  - name: moesif-aws-lambda-python
+    registry: github
+    url: https://github.com/Moesif/moesif-aws-lambda-python
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried
+  - name: moesif-browser-js
+    registry: github
+    url: https://github.com/Moesif/moesif-browser-js
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried
+  - name: moesif-dotnet
+    registry: github
+    url: https://github.com/Moesif/moesif-dotnet
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried
+  - name: moesif-laravel
+    registry: github
+    url: https://github.com/Moesif/moesif-laravel
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried
+  - name: moesif-nodejs
+    registry: github
+    url: https://github.com/Moesif/moesif-nodejs
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried
+  - name: moesif-play-filter
+    registry: github
+    url: https://github.com/Moesif/moesif-play-filter
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried
+  - name: moesif-rack
+    registry: github
+    url: https://github.com/Moesif/moesif-rack
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried
+  - name: moesif-servlet
+    registry: github
+    url: https://github.com/Moesif/moesif-servlet
+    official: true
+    version: null
+    note: repository listed, no registry metadata queried

@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-workspace-update-item-schema.json",
+  "title": "WorkspaceUpdateItem",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-workspaces-api-openapi.yml#/components/schemas/WorkspaceUpdateItem",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "colors": {
+      "type": "object"
+    },
+    "drawings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DrawingItem"
+      }
+    },
+    "chart": {
+      "$ref": "#/$defs/ChartItem"
+    },
+    "template": {
+      "$ref": "#/$defs/TemplateItem"
+    },
+    "width": {
+      "type": "number",
+      "format": "double"
+    },
+    "sort_order": {
+      "type": "number",
+      "format": "double"
+    },
+    "policy": {
+      "$ref": "#/$defs/PolicyItem"
+    }
+  },
+  "$defs": {
+    "ACLItem": {
+      "properties": {
+        "grantee": {
+          "type": "string"
+        },
+        "permission": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "grantee",
+        "permission"
+      ]
+    },
+    "ChartItem": {
+      "properties": {
+        "original_encoded_view_elements": {
+          "type": "string"
+        },
+        "funnel_query": {
+          "type": "object"
+        },
+        "url_query": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "view_elements": {
+          "type": "object"
+        },
+        "from": {
+          "type": "string"
+        },
+        "original_encoded_funnel_query": {
+          "type": "string"
+        },
+        "es_query": {
+          "type": "object"
+        },
+        "args": {
+          "type": "string"
+        },
+        "original_encoded_query": {
+          "type": "string"
+        },
+        "time_zone": {
+          "type": "string"
+        },
+        "view": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "view",
+        "url_query"
+      ]
+    },
+    "DrawingItem": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "direction": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type",
+        "value",
+        "direction"
+      ]
+    },
+    "PolicyItem": {
+      "properties": {
+        "acl": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ACLItem"
+          }
+        },
+        "resource": {
+          "type": "object"
+        },
+        "api_scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "original_encoded_resource": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "acl",
+        "resource"
+      ]
+    },
+    "TemplateItem": {
+      "properties": {
+        "dynamic_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dynamic_time": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "dynamic_fields"
+      ]
+    }
+  }
+}

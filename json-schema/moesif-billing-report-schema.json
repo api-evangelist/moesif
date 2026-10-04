@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-billing-report-schema.json",
+  "title": "BillingReport",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-billing-reports-api-openapi.yml#/components/schemas/BillingReport",
+  "properties": {
+    "ending_balance": {
+      "$ref": "#/$defs/CreditBalance"
+    },
+    "company_id": {
+      "type": "string"
+    },
+    "success": {
+      "type": "boolean"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "report_version": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "usage_end_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "usage": {
+      "$ref": "#/$defs/BillingReportUsage"
+    },
+    "_id": {
+      "type": "string"
+    },
+    "meter_usage": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "last_success_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "beginning_balance": {
+      "$ref": "#/$defs/CreditBalance"
+    },
+    "billing_meter_id": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number",
+      "format": "double"
+    },
+    "usage_start_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string"
+    },
+    "provider_requests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ProviderRequest"
+      }
+    },
+    "currency": {
+      "type": "string"
+    },
+    "report_total_usage": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "channel_requests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ChannelRequest"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "app_id": {
+      "type": "string"
+    },
+    "subscription_id": {
+      "type": "string"
+    },
+    "subscription_period_start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "balance_changes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/BalanceChange"
+      }
+    },
+    "type": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "org_id": {
+      "type": "string"
+    },
+    "subscription_period_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "meter_metric": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "required": [
+    "org_id",
+    "app_id",
+    "usage_start_time",
+    "usage_end_time",
+    "subscription_id",
+    "billing_meter_id",
+    "provider",
+    "company_id",
+    "meter_metric",
+    "meter_usage",
+    "report_total_usage",
+    "success",
+    "provider_requests"
+  ],
+  "$defs": {
+    "BalanceChange": {
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "amount"
+      ]
+    },
+    "BillingReportUsage": {
+      "properties": {
+        "invoice": {
+          "$ref": "#/$defs/BillingReportUsageInvoice"
+        },
+        "aggregator": {
+          "type": "string"
+        }
+      }
+    },
+    "BillingReportUsageInvoice": {
+      "properties": {
+        "period_start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "period_end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ChannelRequest": {
+      "properties": {
+        "channel_id": {
+          "type": "string"
+        },
+        "channel_name": {
+          "type": "string"
+        },
+        "provider_requests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProviderRequest"
+          }
+        }
+      },
+      "required": [
+        "channel_id",
+        "channel_name",
+        "provider_requests"
+      ]
+    },
+    "CreditBalance": {
+      "properties": {
+        "sequence_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "current_balance": {
+          "type": "number",
+          "format": "double"
+        },
+        "pending_activity": {
+          "type": "number",
+          "format": "double"
+        },
+        "available_balance": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "sequence_id",
+        "current_balance",
+        "pending_activity",
+        "available_balance"
+      ]
+    },
+    "ProviderRequest": {
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "status_code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "job_id": {
+          "type": "string"
+        },
+        "error_message": {
+          "type": "string"
+        },
+        "error_code": {
+          "type": "string"
+        },
+        "request_time": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "job_id",
+        "request_time",
+        "success",
+        "status_code",
+        "error_code",
+        "error_message"
+      ]
+    }
+  }
+}

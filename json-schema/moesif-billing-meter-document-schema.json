@@ -1,0 +1,627 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-billing-meter-document-schema.json",
+  "title": "BillingMeterDocument",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-billing-meters-api-openapi.yml#/components/schemas/BillingMeterDocument",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "billing_plan": {
+      "$ref": "#/$defs/BillingPlan"
+    },
+    "url_query": {
+      "type": "string"
+    },
+    "_id": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "modified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "es_query": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "app_id": {
+      "type": "string"
+    },
+    "org_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "org_id",
+    "app_id",
+    "slug",
+    "name",
+    "es_query",
+    "url_query",
+    "status",
+    "billing_plan",
+    "created_at",
+    "modified_at"
+  ],
+  "$defs": {
+    "BillingParams": {
+      "properties": {
+        "usage_rounding_mode": {
+          "type": "string"
+        },
+        "webhook_params": {
+          "$ref": "#/$defs/BillingWebhookParams"
+        },
+        "recurly_params": {
+          "$ref": "#/$defs/RecurlyBillingParams"
+        },
+        "chargebee_params": {
+          "$ref": "#/$defs/ChargebeeBillingParams"
+        },
+        "stripe_params": {
+          "$ref": "#/$defs/StripeBillingParams"
+        },
+        "zuora_params": {
+          "$ref": "#/$defs/ZuoraBillingParams"
+        },
+        "usage_multiplier": {
+          "type": "double"
+        }
+      }
+    },
+    "BillingPlan": {
+      "properties": {
+        "provider_slug": {
+          "type": "string"
+        },
+        "friendly_name": {
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/$defs/BillingParams"
+        }
+      },
+      "required": [
+        "provider_slug"
+      ]
+    },
+    "BillingWebhookParams": {
+      "properties": {
+        "reporting": {
+          "$ref": "#/$defs/CustomReporting"
+        },
+        "channel_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "custom_plan": {
+          "$ref": "#/$defs/CustomReportPlan"
+        }
+      },
+      "required": [
+        "channel_ids",
+        "custom_plan"
+      ]
+    },
+    "ChargebeeBillingParams": {
+      "properties": {
+        "item_plan": {
+          "$ref": "#/$defs/ChargebeeItemPlan"
+        },
+        "item_price": {
+          "$ref": "#/$defs/ChargebeeItemPrice"
+        },
+        "item_prices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ChargebeeItemPrice"
+          }
+        },
+        "reporting": {
+          "$ref": "#/$defs/ProviderReporting"
+        }
+      }
+    },
+    "ChargebeeItemPlan": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "item_family_id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "usage_calculation": {
+          "type": "string"
+        },
+        "external_name": {
+          "type": "string"
+        },
+        "metered": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "archived_at": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ChargebeeItemPrice": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "price_in_decimal": {
+          "type": "string"
+        },
+        "external_name": {
+          "type": "string"
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ChargebeeItemPriceTier"
+          }
+        },
+        "trial_end_action": {
+          "type": "string"
+        },
+        "trial_period": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "pricing_model": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "period_unit": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "trial_period_unit": {
+          "type": "string"
+        },
+        "item_type": {
+          "type": "string"
+        },
+        "currency_code": {
+          "type": "string"
+        },
+        "archived_at": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "free_quantity": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ChargebeeItemPriceTier": {
+      "properties": {
+        "starting_unit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ending_unit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "starting_unit",
+        "price"
+      ]
+    },
+    "CustomReportPlan": {
+      "properties": {
+        "plan_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "plan_id"
+      ]
+    },
+    "CustomReporting": {
+      "properties": {
+        "report_when": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "report_when"
+      ]
+    },
+    "ProviderReporting": {
+      "properties": {
+        "reporting_period": {
+          "type": "string"
+        }
+      }
+    },
+    "RecurlyAddOnPercentageTier": {
+      "properties": {
+        "ending_amount": {
+          "type": "double"
+        },
+        "usage_percent": {
+          "type": "string"
+        }
+      }
+    },
+    "RecurlyAddOnPercentageTiers": {
+      "properties": {
+        "tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RecurlyAddOnPercentageTier"
+          }
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "RecurlyAddOnTier": {
+      "properties": {
+        "ending_quantity": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "currencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RecurlyCurrencyAmount"
+          }
+        }
+      },
+      "required": [
+        "currencies"
+      ]
+    },
+    "RecurlyBillingParams": {
+      "properties": {
+        "plan": {
+          "$ref": "#/$defs/RecurlyPlan"
+        },
+        "add_on": {
+          "$ref": "#/$defs/RecurlyPlanAddOn"
+        },
+        "add_ons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RecurlyPlanAddOn"
+          }
+        }
+      }
+    },
+    "RecurlyCurrencyAmount": {
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "unit_amount": {
+          "type": "double"
+        },
+        "unit_amount_decimal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "currency"
+      ]
+    },
+    "RecurlyPlan": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code"
+      ]
+    },
+    "RecurlyPlanAddOn": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "currencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RecurlyCurrencyAmount"
+          }
+        },
+        "usage_percentage": {
+          "type": "double"
+        },
+        "add_on_type": {
+          "type": "string"
+        },
+        "external_sku": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RecurlyAddOnTier"
+          }
+        },
+        "tier_type": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "plan_id": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "percentage_tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RecurlyAddOnPercentageTiers"
+          }
+        },
+        "usage_type": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "usage_calculation_type": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "deleted_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code"
+      ]
+    },
+    "StripeBillingParams": {
+      "properties": {
+        "product": {
+          "$ref": "#/$defs/StripeProduct"
+        },
+        "price": {
+          "$ref": "#/$defs/StripePrice"
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/StripePrice"
+          }
+        },
+        "reporting": {
+          "$ref": "#/$defs/ProviderReporting"
+        }
+      }
+    },
+    "StripePrice": {
+      "properties": {
+        "tiers_mode": {
+          "type": "string"
+        },
+        "transform_quantity": {
+          "$ref": "#/$defs/StripeTransformQuantity"
+        },
+        "price_id": {
+          "type": "string"
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/StripeTier"
+          }
+        },
+        "recurring": {
+          "$ref": "#/$defs/StripeRecurring"
+        },
+        "unit_amount_decimal": {
+          "type": "string"
+        },
+        "price_nickname": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "billing_scheme": {
+          "type": "string"
+        },
+        "unit_amount": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "created": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "price_id"
+      ]
+    },
+    "StripeProduct": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "unit_label": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "usage_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "id"
+      ]
+    },
+    "StripeRecurring": {
+      "properties": {
+        "trial_period_days": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "interval": {
+          "type": "string"
+        },
+        "usage_type": {
+          "type": "string"
+        },
+        "interval_count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "aggregate_usage": {
+          "type": "string"
+        }
+      }
+    },
+    "StripeTier": {
+      "properties": {
+        "flat_amount_decimal": {
+          "type": "string"
+        },
+        "up_to": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "unit_amount_decimal": {
+          "type": "string"
+        },
+        "flat_amount": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "unit_amount": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "StripeTransformQuantity": {
+      "properties": {
+        "divide_by": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "round": {
+          "type": "string"
+        }
+      }
+    },
+    "ZuoraBillingParams": {
+      "properties": {
+        "plan_id": {
+          "type": "string"
+        },
+        "price_id": {
+          "type": "string"
+        },
+        "price_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

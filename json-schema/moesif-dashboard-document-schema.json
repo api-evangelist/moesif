@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-dashboard-document-schema.json",
+  "title": "DashboardDocument",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-dashboards-api-openapi.yml#/components/schemas/DashboardDocument",
+  "properties": {
+    "parent": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "_id": {
+      "type": "string"
+    },
+    "auth_user_id": {
+      "type": "string"
+    },
+    "profile_view_promotion": {
+      "type": "string"
+    },
+    "app_id": {
+      "type": "string"
+    },
+    "workspace_ids": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "sort_order": {
+      "type": "number",
+      "format": "double"
+    },
+    "dashboard_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "policy": {
+      "$ref": "#/$defs/PolicyItem"
+    },
+    "org_id": {
+      "type": "string"
+    },
+    "migration": {
+      "type": "object"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "auth_user_id",
+    "org_id",
+    "app_id",
+    "created",
+    "name",
+    "dashboard_ids",
+    "workspace_ids"
+  ],
+  "$defs": {
+    "ACLItem": {
+      "properties": {
+        "grantee": {
+          "type": "string"
+        },
+        "permission": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "grantee",
+        "permission"
+      ]
+    },
+    "PolicyItem": {
+      "properties": {
+        "acl": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ACLItem"
+          }
+        },
+        "resource": {
+          "type": "object"
+        },
+        "api_scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "original_encoded_resource": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "acl",
+        "resource"
+      ]
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/moesif/main/json-schema/moesif-cohort-update-item-schema.json",
+  "title": "CohortUpdateItem",
+  "x-generated": "2026-10-04",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/moesif-cohorts-api-openapi.yml#/components/schemas/CohortUpdateItem",
+  "properties": {
+    "channels": {
+      "type": "array[string]"
+    },
+    "priority": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "url_query": {
+      "type": "string"
+    },
+    "criteria": {
+      "type": "object"
+    },
+    "sample_rate": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "notification_rule": {
+      "$ref": "#/$defs/NotificationRule"
+    },
+    "cohort_name": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "week_starts_on": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "locked_by": {
+      "type": "string"
+    },
+    "from": {
+      "type": "string"
+    },
+    "cohort_type": {
+      "type": "string"
+    },
+    "time_zone": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "cohort_type"
+  ],
+  "$defs": {
+    "NotificationRule": {
+      "properties": {
+        "send_on_addition": {
+          "type": "boolean"
+        },
+        "send_on_removal": {
+          "type": "boolean"
+        },
+        "period": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "send_on_addition",
+        "send_on_removal"
+      ]
+    }
+  }
+}
