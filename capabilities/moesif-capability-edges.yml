@@ -1,0 +1,68 @@
+slug: moesif
+provider: Moesif
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Billing Meters
+  spec_file: moesif-billing-meters-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.85
+  evidence: '''List Billing Meters'', ''Get Billing Meter by id''; schemas BillingMeterDocument, StripePrice,
+    BillingPlan'
+  reason: Billing meters aggregate API usage events for usage-based billing, with plan/price mappings
+    to Stripe, Chargebee, Recurly — squarely usage metering feeding rating in a SaaS subscription billing
+    model.
+- tag: Governance Rules
+  spec_file: moesif-governance-rules-api-openapi.yml
+  capability_id: BC-4270.50
+  capability_id_l1: BC-4270
+  capability_name: API Consumption Governance
+  confidence: 0.8
+  evidence: 'POST /~/governance/rules createGovernanceRule ''Create New Governance Rules''; schemas Plan,
+    GovernanceRulesDocument, RegexRule; vendor: ''quotas and governance (rate limiting, contract enforcement)'''
+  reason: Rules govern API consumption (rate limits, quotas, blocking) and are tied to commercial Plans,
+    matching API Consumption Governance. Some overlap with entitlement enforcement keeps it short of 0.95.
+- tag: Product Catalog
+  spec_file: moesif-product-catalog-api-openapi.yml
+  capability_id: BC-4240.10
+  capability_id_l1: BC-4240
+  capability_name: Plan & Entitlement Design
+  confidence: 0.72
+  evidence: POST /~/billing/catalog/plans createMoesifPlan 'Create a new Moesif Plan'; POST /~/billing/catalog/prices
+    'Create a new Moesif Price'; schemas MoesifPlan, MoesifPrice, MoesifPriceTier
+  reason: Defines the commercial plan and price catalogue for usage-based SaaS monetization — plan/entitlement
+    design. Partly also price-list management, so not higher than 0.72.
+- tag: Subscriptions
+  spec_file: moesif-subscriptions-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.72
+  evidence: POST /search/~/subscriptions createSubscription 'Create or Update a Subscription'; GET /search/~/companies/{id}/subscriptions
+    'Get the Subscriptions of a Company'; schemas SubscriptionItem, AddSubscriptionDTO
+  reason: Manages subscription records attached to customer companies within the SaaS monetization model.
+    The operations are generic create/update/read, so the specific sub-capability (provisioning vs modification)
+    is not determinable.
+- tag: Billing Reports
+  spec_file: moesif-billing-reports-api-openapi.yml
+  capability_id: BC-4250.70
+  capability_id_l1: BC-4250
+  capability_name: Subscription Revenue Analytics
+  confidence: 0.7
+  evidence: '''Get BillingReports'' values for a given meter and time range''; schemas BillingReportUsage,
+    BillingReportUsageInvoice, CreditBalance'
+  reason: Reporting and metrics over metered usage, credit balances and invoices for a subscription billing
+    model. Could also read as usage metering aggregation (BC-4250.10); analytics reading chosen but with
+    moderate confidence.
