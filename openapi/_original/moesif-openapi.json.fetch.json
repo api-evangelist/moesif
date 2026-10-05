@@ -1,0 +1,12 @@
+{
+ "url": "https://www.moesif.com/docs/api/openapi/management-api.json",
+ "requested_url": "https://www.moesif.com/docs/api/openapi/management-api.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 216491,
+ "sha256": "1eebe27b31631ded83ceb55057af6aba98285524bf4d9b5b048f22fbdb46afb4",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
