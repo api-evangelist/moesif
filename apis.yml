@@ -56,6 +56,12 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: Plans
+  url: plans/moesif-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/moesif-rate-limits.yml
+- type: FinOps
+  url: finops/moesif-finops.yml
 - type: Spectral
   url: rules/moesif-rules.yml
 - type: JSONLD
