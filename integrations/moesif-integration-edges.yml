@@ -29,7 +29,24 @@ edges:
       - moesif-api-analytics
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
+- partner_name: GitHub Marketplace (apps)
+  partner: github
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-apps
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/moesif-api-insights
+  listing_count: 1
+  apps:
+  - Moesif API Analytics and Monetization
+  publisher_name: Moesif
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 method: searched
 checked:
+- https://github.com/marketplace?type=apps
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
+marketplace_apps: []
