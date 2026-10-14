@@ -1,13 +1,28 @@
 generated: '2026-10-14'
 edges:
+- partner_name: GitHub Marketplace (apps)
+  partner: github
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-apps
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/moesif-api-insights
+  listing_count: 1
+  apps:
+  - Moesif API Analytics and Monetization
+  publisher_name: Moesif
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 - partner_name: Twilio Segment
   partner: segment
   partner_match: aggregator
-  marketplace: coverage
+  marketplace: segment-partner-destinations
   channel: partner-built
-  direction: partner-built
-  type: coverage
-  relationship: connector-coverage
+  direction: third-party
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
   coverage_role:
   - destination
@@ -29,24 +44,31 @@ edges:
       - moesif-api-analytics
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
-- partner_name: GitHub Marketplace (apps)
-  partner: github
-  partner_match: aggregator
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
   type: marketplace
-  marketplace: github-apps
-  channel: partner-built
   relationship: platform-app
   direction: third-party
-  evidence: https://github.com/marketplace/moesif-api-insights
-  listing_count: 1
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/moesif/
+  mirror_of: okta/integrations/okta-integration-edges.yml
   apps:
-  - Moesif API Analytics and Monetization
-  publisher_name: Moesif
-  detected_by: sweep-devtools.py
+  - Moesif API Analytics
+  listing_count: 1
   detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Single Sign-On
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - SAML
 method: searched
 checked:
 - https://github.com/marketplace?type=apps
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
+- okta/integrations/okta-integration-edges.yml
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
 marketplace_apps: []
