@@ -82,10 +82,28 @@ edges:
   detected: '2026-10-15'
   detected_by: mirror-platform-listings.py
   category: billing
+- partner_name: Kong (own)
+  partner: kong
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://developer.konghq.com/plugins/moesif/
+  mirror_of: kong/integrations/kong-integration-edges.yml
+  apps:
+  - Moesif API Monetization and Analytics
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Kong Plugin Hub
 method: searched
 checked:
 - https://github.com/marketplace?type=apps
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
+- kong/integrations/kong-integration-edges.yml
 - okta/integrations/okta-integration-edges.yml
 - stripe/integrations/stripe-integration-edges.yml
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
