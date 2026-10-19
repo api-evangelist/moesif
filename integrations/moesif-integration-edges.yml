@@ -99,9 +99,61 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Kong Plugin Hub
+- partner_name: Stripe Partner Ecosystem
+  partner: stripe
+  partner_match: register
+  type: register
+  direction: partner-built
+  channel: standard-directory
+  relationship: standard-participant
+  evidence: https://stripe.partners/directory/moesif
+  category: billing / subscription partner of Stripe
+  contract_reference:
+    register: Stripe Partner Ecosystem directory (stripe.partners, PartnerPage SSR __NUXT_DATA__)
+    standard: Stripe Partner Ecosystem
+    spec_file: null
+    role: stripe-partner
+    registered_name: Moesif API and AI Monetization
+    register_id: moesif
+    partner_tier: null
+    matched_domain: moesif.com
+    matched_by: domain
+    identity_source: the directory's own website field for the partner (no lookup)
+    signal_note: listing = participation; Stripe Certified Professional Developers certify PEOPLE at the firm (context,
+      never certified_products); partner_tier, callouts and products are never counted
+    context:
+      callouts:
+      - Data and analytics
+      - Invoicing and subscriptions
+      - Marketing and sales
+      - Revenue optimization
+      location: San Francisco, United States
+    detected_by: sweep-billing-subscriptions.py
+    detected: '2026-10-19'
+  detected_by: sweep-billing-subscriptions.py
+  first_seen: '2026-10-19'
+- partner_name: Chargebee (own)
+  partner: chargebee
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.chargebee.com/apps/['moesif-api-monetization']
+  mirror_of: chargebee/integrations/chargebee-integration-edges.yml
+  apps:
+  - Moesif API Monetization
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
+  category: Analytics
 method: searched
 checked:
 - https://github.com/marketplace?type=apps
+- https://marketplace.chargebee.com
+- https://stripe.partners/sitemap.xml
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
 - kong/integrations/kong-integration-edges.yml
 - okta/integrations/okta-integration-edges.yml
