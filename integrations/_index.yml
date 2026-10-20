@@ -15,57 +15,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: moesif-twilio-segment
-  label: Twilio Segment
-  partner: segment
-  partner_name: Twilio Segment
-  type: marketplace
-  marketplace: segment-partner-destinations
-  channel: partner-built
-  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: moesif-okta-own
-  label: Okta (own)
-  partner: okta
-  partner_name: Okta (own)
-  category: Single Sign-On
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://www.okta.com/integrations/moesif/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: moesif-stripe-own
-  label: Stripe (own)
-  partner: stripe
-  partner_name: Stripe (own)
-  category: billing
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.stripe.com/apps/moesif-usage-based-billing
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: moesif-kong-own
-  label: Kong (own)
-  partner: kong
-  partner_name: Kong (own)
-  category: Kong Plugin Hub
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://developer.konghq.com/plugins/moesif/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: moesif-stripe-partner-ecosystem
   label: Stripe Partner Ecosystem
   partner: stripe
@@ -100,6 +49,18 @@
     detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
+- slug: moesif-twilio-segment
+  label: Twilio Segment
+  partner: segment
+  partner_name: Twilio Segment
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: moesif-chargebee-own
   label: Chargebee (own)
   partner: chargebee
@@ -109,6 +70,58 @@
   marketplace: own
   channel: partner-built
   evidence: https://marketplace.chargebee.com/apps/['moesif-api-monetization']
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: moesif-kong-own
+  label: Kong (own)
+  partner: kong
+  partner_name: Kong (own)
+  category: Kong Plugin Hub
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://developer.konghq.com/plugins/moesif/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: moesif-okta-own
+  label: Okta (own)
+  partner: okta
+  partner_name: Okta (own)
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/moesif/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: moesif-stripe-own
+  label: Stripe (own)
+  partner: stripe
+  partner_name: Stripe (own)
+  category: billing
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.stripe.com/apps/moesif-usage-based-billing
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: moesif-zendesk-own
+  label: Zendesk (own)
+  partner: zendesk
+  partner_name: Zendesk (own)
+  category: IT and HR
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.zendesk.com/marketplace/apps/support/104332/moesif/
   source: edge
   relationship: platform-app
   status: not-a-workflow

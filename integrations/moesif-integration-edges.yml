@@ -15,6 +15,39 @@ edges:
   publisher_name: Moesif
   detected_by: sweep-devtools.py
   detected: '2026-10-14'
+- partner_name: Stripe Partner Ecosystem
+  partner: stripe
+  partner_match: register
+  type: register
+  direction: partner-built
+  channel: standard-directory
+  relationship: standard-participant
+  evidence: https://stripe.partners/directory/moesif
+  category: billing / subscription partner of Stripe
+  contract_reference:
+    register: Stripe Partner Ecosystem directory (stripe.partners, PartnerPage SSR __NUXT_DATA__)
+    standard: Stripe Partner Ecosystem
+    spec_file: null
+    role: stripe-partner
+    registered_name: Moesif API and AI Monetization
+    register_id: moesif
+    partner_tier: null
+    matched_domain: moesif.com
+    matched_by: domain
+    identity_source: the directory's own website field for the partner (no lookup)
+    signal_note: listing = participation; Stripe Certified Professional Developers certify PEOPLE at the firm (context,
+      never certified_products); partner_tier, callouts and products are never counted
+    context:
+      callouts:
+      - Data and analytics
+      - Invoicing and subscriptions
+      - Marketing and sales
+      - Revenue optimization
+      location: San Francisco, United States
+    detected_by: sweep-billing-subscriptions.py
+    detected: '2026-10-19'
+  detected_by: sweep-billing-subscriptions.py
+  first_seen: '2026-10-19'
 - partner_name: Twilio Segment
   partner: segment
   partner_match: aggregator
@@ -44,6 +77,40 @@ edges:
       - moesif-api-analytics
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
+- partner_name: Chargebee (own)
+  partner: chargebee
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.chargebee.com/apps/['moesif-api-monetization']
+  mirror_of: chargebee/integrations/chargebee-integration-edges.yml
+  apps:
+  - Moesif API Monetization
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
+  category: Analytics
+- partner_name: Kong (own)
+  partner: kong
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://developer.konghq.com/plugins/moesif/
+  mirror_of: kong/integrations/kong-integration-edges.yml
+  apps:
+  - Moesif API Monetization and Analytics
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Kong Plugin Hub
 - partner_name: Okta (own)
   partner: okta
   partner_match: mirror
@@ -82,8 +149,8 @@ edges:
   detected: '2026-10-15'
   detected_by: mirror-platform-listings.py
   category: billing
-- partner_name: Kong (own)
-  partner: kong
+- partner_name: Zendesk (own)
+  partner: zendesk
   partner_match: mirror
   mirror_match: domain
   type: marketplace
@@ -91,66 +158,17 @@ edges:
   direction: third-party
   channel: partner-built
   marketplace: own
-  evidence: https://developer.konghq.com/plugins/moesif/
-  mirror_of: kong/integrations/kong-integration-edges.yml
+  evidence: https://www.zendesk.com/marketplace/apps/support/104332/moesif/
+  mirror_of: zendesk/integrations/zendesk-integration-edges.yml
   apps:
-  - Moesif API Monetization and Analytics
+  - Moesif
   listing_count: 1
-  detected: '2026-10-18'
+  detected: '2026-10-20'
   detected_by: mirror-platform-listings.py
-  category: Kong Plugin Hub
-- partner_name: Stripe Partner Ecosystem
-  partner: stripe
-  partner_match: register
-  type: register
-  direction: partner-built
-  channel: standard-directory
-  relationship: standard-participant
-  evidence: https://stripe.partners/directory/moesif
-  category: billing / subscription partner of Stripe
-  contract_reference:
-    register: Stripe Partner Ecosystem directory (stripe.partners, PartnerPage SSR __NUXT_DATA__)
-    standard: Stripe Partner Ecosystem
-    spec_file: null
-    role: stripe-partner
-    registered_name: Moesif API and AI Monetization
-    register_id: moesif
-    partner_tier: null
-    matched_domain: moesif.com
-    matched_by: domain
-    identity_source: the directory's own website field for the partner (no lookup)
-    signal_note: listing = participation; Stripe Certified Professional Developers certify PEOPLE at the firm (context,
-      never certified_products); partner_tier, callouts and products are never counted
-    context:
-      callouts:
-      - Data and analytics
-      - Invoicing and subscriptions
-      - Marketing and sales
-      - Revenue optimization
-      location: San Francisco, United States
-    detected_by: sweep-billing-subscriptions.py
-    detected: '2026-10-19'
-  detected_by: sweep-billing-subscriptions.py
-  first_seen: '2026-10-19'
-- partner_name: Chargebee (own)
-  partner: chargebee
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.chargebee.com/apps/['moesif-api-monetization']
-  mirror_of: chargebee/integrations/chargebee-integration-edges.yml
-  apps:
-  - Moesif API Monetization
-  listing_count: 1
-  detected: '2026-10-19'
-  detected_by: mirror-platform-listings.py
-  category: Analytics
+  category: IT and HR
 method: searched
 checked:
+- chargebee/integrations/chargebee-integration-edges.yml
 - https://github.com/marketplace?type=apps
 - https://marketplace.chargebee.com
 - https://stripe.partners/sitemap.xml
@@ -158,5 +176,6 @@ checked:
 - kong/integrations/kong-integration-edges.yml
 - okta/integrations/okta-integration-edges.yml
 - stripe/integrations/stripe-integration-edges.yml
+- zendesk/integrations/zendesk-integration-edges.yml
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
 marketplace_apps: []
