@@ -166,6 +166,23 @@ edges:
   detected: '2026-10-20'
   detected_by: mirror-platform-listings.py
   category: IT and HR
+- partner_name: Atlassian (own)
+  partner: atlassian
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.atlassian.com/vendors/1214105/moesif-inc
+  mirror_of: atlassian/integrations/atlassian-integration-edges.yml
+  apps:
+  - Moesif API Analytics
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: Continuous integration
 method: searched
 checked:
 - chargebee/integrations/chargebee-integration-edges.yml
@@ -177,5 +194,6 @@ checked:
 - okta/integrations/okta-integration-edges.yml
 - stripe/integrations/stripe-integration-edges.yml
 - zendesk/integrations/zendesk-integration-edges.yml
+- atlassian/integrations/atlassian-integration-edges.yml
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
 marketplace_apps: []
