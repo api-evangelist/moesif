@@ -183,6 +183,35 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: Continuous integration
+- partner_name: GraphQL.org tools and libraries
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://graphql.org/community/tools-and-libraries/
+  category: GraphQL tooling listing
+  contract_reference:
+    register: GraphQL.org tools and libraries (graphql.org/community/tools-and-libraries; github.com/graphql/graphql.github.io
+      src/code)
+    standard: GraphQL
+    spec_file: null
+    role: graphql-org-listed-vendor
+    registered_name: Moesif API Analytics
+    register_id: src/code/services/moesif-api-analytics.md
+    matched_domain: moesif.com
+    matched_by: domain
+    listed_products:
+    - product_type: services
+      entries:
+      - Moesif API Analytics
+    signal_note: 'participation only: a reviewed listing on graphql.org, not a conformance certification; listed
+      products (one per section) are context, never counted'
+    detected_by: sweep-graphql-ecosystem.py
+    detected: '2026-10-21'
+  detected_by: sweep-graphql-ecosystem.py
+  first_seen: '2026-10-21'
 method: searched
 checked:
 - chargebee/integrations/chargebee-integration-edges.yml
@@ -195,5 +224,10 @@ checked:
 - stripe/integrations/stripe-integration-edges.yml
 - zendesk/integrations/zendesk-integration-edges.yml
 - atlassian/integrations/atlassian-integration-edges.yml
+- https://github.com/graphql-kit/graphql-apis
+- https://github.com/graphql/graphql.github.io/tree/source/src/code
+- https://graphql.landscape2.io/data/full.json
+- https://graphql.org/community/tools-and-libraries/
+- https://graphql.org/foundation/members/
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
 marketplace_apps: []
