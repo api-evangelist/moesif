@@ -573,3 +573,9 @@ components:
 externalDocs:
   description: Developer Docs
   url: https://moesif.com/docs
+x-provenance:
+  method: harvested
+  publisher: Moesif
+  source: https://www.moesif.com/docs/api/openapi/management-api.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
