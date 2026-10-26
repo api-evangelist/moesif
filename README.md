@@ -1,0 +1,188 @@
+# Moesif (moesif)
+
+<!-- API-EVANGELIST-PROVENANCE:BEGIN -->
+> ### About this repository
+>
+> **This is not our API.** This repository is an independent, third-party profile of a company's
+> **publicly available** API surface, maintained by [API Evangelist](https://apievangelist.com).
+> API Evangelist does not operate, host, resell, or support this company's APIs, and is not
+> affiliated with or endorsed by the company unless stated on the profile.
+>
+> **Where the information came from.** Everything here is assembled from material a member of the
+> public can reach with a browser and no credentials — the company's own website, developer portal
+> and documentation, the specifications it publishes for public use (OpenAPI, AsyncAPI, JSON Schema,
+> `apis.json`, `llms.txt` and similar), its public repositories, and its public status, pricing and
+> changelog pages. **Nothing here is obtained by breaching a system, defeating an access control, or
+> using credentials of any kind.**
+>
+> **The rating is an independent assessment.** The Kin Score and Agent Readiness rating are
+> independently calculated scores of a company's *public* API artifacts, produced by API Evangelist
+> against a published rubric. They are not certifications, endorsements, security assessments, or
+> audits, and they score published artifacts — not the quality, safety, or security of the software.
+>
+> **Corrections, re-scores, and removal are free.** No partnership, contract, or purchase is
+> required, and you do not need to justify the request.
+>
+> - **Something wrong?** Open an issue on this repository, or email
+>   [info@apievangelist.com](mailto:info@apievangelist.com).
+> - **Published something new?** Ask for a re-score and we will re-run the rating.
+> - **Want the listing taken down?** Say so and we will honor it. The profile is reduced to your
+>   company name, a factual description, and a link to your own site, and the company is recorded as
+>   **unrated** — never scored zero for having asked.
+>
+> **Response times.** Acknowledgement within **one business day**; removal or restriction within
+> **two business days**; corrections and re-scores within **five business days**.
+>
+> **Not from the company, and here with a question?** You are welcome here — we would rather be the
+> front line and point you the right way than have a good report go nowhere. What this repository
+> can answer is narrow, though, so it is worth knowing who you are actually looking for:
+>
+> - **A question about how the API works, an account, billing, or a bug in the service** — that is
+>   the company's own support, not us. We profile this API; we do not operate it and cannot see
+>   your account.
+> - **A bug in an open-source project we only catalog** — file it on that project's own repository.
+>   This has happened with a real and correct bug report that reached us instead of the people who
+>   could fix it, which helped nobody.
+> - **Anything about this listing itself** — the description, the tags, the rating, a missing or
+>   wrong artifact — is ours. Open an issue here.
+> - **Not sure, or something general about API Evangelist or APIs.io** — open an issue on the
+>   [APIs.io Inbox](https://github.com/api-search/inbox) and we will route it.
+>
+> **This repository contains no software, and we will never ask you to download anything.** There is
+> no build, release, installer, or binary here — only text and machine-readable API descriptions, so
+> there is nothing here that can be "corrupt" or need "repairing". Any issue, comment, or email
+> claiming otherwise and offering a download link is not from us and is hostile. Do not follow the
+> link; it is a lure. Report it to GitHub and, if you like, tell us at
+> [info@apievangelist.com](mailto:info@apievangelist.com) so we can take it down.
+>
+> **On a security or compliance team?** Email
+> [info@apievangelist.com](mailto:info@apievangelist.com) with *security* in the subject line and
+> you will get a person, not a form. We will tell you exactly which public URLs this profile was
+> built from so your team can see the same surface we did, and we will take the listing down on
+> request while you work through it.
+>
+> Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
+<!-- API-EVANGELIST-PROVENANCE:END -->
+
+Moesif is an API analytics, monitoring, monetization, and governance platform for API and AI product teams. The platform unifies API observability (analytics, logs, metrics, traces via OpenTelemetry), usage-based monetization (billing meters, product catalog, prepaid credits, Stripe integration), quotas and governance (rate limiting, contract enforcement), and customer-experience tooling (behavioral cohorts, emails, embedded metrics, developer portal). Moesif has expanded into AI agent and LLM analytics with usage-based billing for AI apps, GenAI-powered "Ask AI" analytics queries, and content monetization for LLM training.
+
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
+
+## Tags
+
+- Analytics
+- Monitoring
+- Monetization
+- Governance
+- Observability
+- Billing
+- AI Agents
+- LLM Analytics
+- OpenTelemetry
+- Developer Portal
+- Platform
+- Insights
+
+## Timestamps
+
+- **Created:** 2025-01-08
+- **Modified:** 2026-05-22
+
+## APIs
+
+### Moesif Management API
+
+The Moesif Management API exposes the platform's full control plane for analytics, monetization, and governance. Capabilities include querying events, users, and companies; managing applications, workspaces, and dashboards; defining billing meters, product catalog entries, subscriptions, and balance transactions; configuring governance rules and quotas; managing cohorts, email templates, and metrics; and chat-style "Ask Question" analytics queries powered by GenAI.
+
+- **Human URL:** [https://www.moesif.com/](https://www.moesif.com/)
+- **Base URL:** `https://api.moesif.com`
+
+#### Tags
+
+- Analytics
+- Monetization
+- Monitoring
+- Observability
+- Governance
+- Billing
+- AI Agents
+
+#### Properties
+
+- [Documentation](https://www.moesif.com/docs/api)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/openapi/moesif-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Spectral Rules](rules/moesif-rules.yml)
+- [Plans](plans/moesif-plans-pricing.yml)
+- [Rate Limits](rate-limits/moesif-rate-limits.yml)
+- [Fin Ops](finops/moesif-finops.yml)
+- [Postman Collection](collections/moesif.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moesif.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moesif Collector API
+
+The Moesif Collector API is the high-volume ingestion endpoint that receives API event data from server, client, and gateway SDKs. It accepts HTTP API call records, user/company entity updates, and custom action events that feed Moesif's analytics, monetization, and governance pipelines.
+
+- **Human URL:** [https://www.moesif.com/docs/](https://www.moesif.com/docs/)
+- **Base URL:** `https://api.moesif.net`
+
+#### Tags
+
+- Ingestion
+- Events
+- Telemetry
+- OpenTelemetry
+
+#### Properties
+
+- [Documentation](https://www.moesif.com/docs/api/)
+- [SDK](https://www.moesif.com/docs/server-integration/)
+- [Postman Collection](collections/moesif.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moesif.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+## Common Properties
+
+- [GitHub Organization](https://github.com/moesif)
+- [LinkedIn](https://www.linkedin.com/company/moesif)
+- [Twitter](https://twitter.com/moesif)
+- [Website](https://www.moesif.com/)
+- [Documentation](https://www.moesif.com/docs/)
+- [API Reference](https://www.moesif.com/docs/api)
+- [Pricing](https://www.moesif.com/pricing)
+- [Sign Up](https://www.moesif.com/wrap)
+- [Blog](https://www.moesif.com/blog)
+- [SDK](https://www.moesif.com/docs/server-integration/)
+- [Integrations](https://www.moesif.com/integrations)
+- [SDK](https://github.com/Moesif/moesif-nodejs)
+- [SDK](https://github.com/Moesif/moesifdjango)
+- [SDK](https://github.com/Moesif/moesifwsgi)
+- [SDK](https://github.com/Moesif/moesiftornado)
+- [SDK](https://github.com/Moesif/moesifpythonrequest)
+- [SDK](https://github.com/Moesif/moesif-servlet)
+- [SDK](https://github.com/Moesif/moesif-dotnet)
+- [SDK](https://github.com/Moesif/moesifmiddleware-go)
+- [SDK](https://github.com/Moesif/moesif-laravel)
+- [SDK](https://github.com/Moesif/moesif-slim)
+- [SDK](https://github.com/Moesif/moesif-rack)
+- [SDK](https://github.com/Moesif/moesif-play-filter)
+- [SDK](https://github.com/Moesif/moesif-android)
+- [SDK](https://github.com/Moesif/moesif-browser-js)
+- [SDK](https://github.com/Moesif/moesif-aws-lambda-nodejs)
+- [SDK](https://github.com/Moesif/moesif-aws-lambda-python)
+- [SDK](https://github.com/Moesif/moesif-aws-lambda-go)
+- [Plugin](https://github.com/Moesif/moesif-cloudflare)
+- [Plugin](https://github.com/Moesif/kong-plugin-moesif)
+- [Plugin](https://github.com/Moesif/lua-resty-moesif)
+- [Plugin](https://github.com/Moesif/express-gateway-plugin-moesif)
+- [Tool](https://github.com/Moesif/auth0-logs-to-moesif)
+- [Sample](https://github.com/Moesif/moesif-developer-portal)
+
+## Maintainers
+
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com
