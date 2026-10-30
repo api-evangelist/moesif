@@ -1,4 +1,4 @@
-# Moesif (moesif)
+# Moesif
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,123 +66,216 @@
 
 Moesif is an API analytics, monitoring, monetization, and governance platform for API and AI product teams. The platform unifies API observability (analytics, logs, metrics, traces via OpenTelemetry), usage-based monetization (billing meters, product catalog, prepaid credits, Stripe integration), quotas and governance (rate limiting, contract enforcement), and customer-experience tooling (behavioral cohorts, emails, embedded metrics, developer portal). Moesif has expanded into AI agent and LLM analytics with usage-based billing for AI apps, GenAI-powered "Ask AI" analytics queries, and content monetization for LLM training.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/apis.yml)
+**Areas:** Analytics · Monitoring · Monetization · Governance · Observability · Billing · AI Agents · LLM Analytics · OpenTelemetry · Developer Portal · Platform · Insights
 
-## Scope
+## Moesif on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Moesif is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/moesif/](https://apis.io/providers/moesif/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (16)
 
-- Analytics
-- Monitoring
-- Monetization
-- Governance
-- Observability
-- Billing
-- AI Agents
-- LLM Analytics
-- OpenTelemetry
-- Developer Portal
-- Platform
-- Insights
+- [Moesif Collector API](https://apis.io/apis/moesif/collector/) — The Moesif Collector API is the high-volume ingestion endpoint that receives API event data from server, client, and gateway SDKs. It accepts HTTP API call…
+- [Moesif Applications API](https://apis.io/apis/moesif/moesif-applications-api/) — The Applications API from Moesif — 2 operation(s) for applications.
+- [Moesif Balance Transactions API](https://apis.io/apis/moesif/moesif-balance-transactions-api/) — The Balance Transactions API from Moesif — 1 operation(s) for balance transactions.
+- [Moesif Billing Meters API](https://apis.io/apis/moesif/moesif-billing-meters-api/) — The Billing Meters API from Moesif — 2 operation(s) for billing meters.
+- [Moesif Billing Reports API](https://apis.io/apis/moesif/moesif-billing-reports-api/) — The Billing Reports API from Moesif — 2 operation(s) for billing reports.
+- [Moesif Cohorts API](https://apis.io/apis/moesif/moesif-cohorts-api/) — The Cohorts API from Moesif — 3 operation(s) for cohorts.
+- [Moesif Companies API](https://apis.io/apis/moesif/moesif-companies-api/) — The Companies API from Moesif — 5 operation(s) for companies.
+- [Moesif Dashboards API](https://apis.io/apis/moesif/moesif-dashboards-api/) — The Dashboards API from Moesif — 7 operation(s) for dashboards.
+- [Moesif Email Templates API](https://apis.io/apis/moesif/moesif-email-templates-api/) — The Email Templates API from Moesif — 2 operation(s) for email templates.
+- [Moesif Governance Rules API](https://apis.io/apis/moesif/moesif-governance-rules-api/) — The Governance Rules API from Moesif — 2 operation(s) for governance rules.
+- [Moesif Metrics API](https://apis.io/apis/moesif/moesif-metrics-api/) — The Metrics API from Moesif — 4 operation(s) for metrics.
+- [Moesif Product Catalog API](https://apis.io/apis/moesif/moesif-product-catalog-api/) — The Product Catalog API from Moesif — 4 operation(s) for product catalog.
+- [Moesif Properties API](https://apis.io/apis/moesif/moesif-properties-api/) — The Properties API from Moesif — 7 operation(s) for properties.
+- [Moesif Subscriptions API](https://apis.io/apis/moesif/moesif-subscriptions-api/) — The Subscriptions API from Moesif — 4 operation(s) for subscriptions.
+- [Moesif Users API](https://apis.io/apis/moesif/moesif-users-api/) — The Users API from Moesif — 5 operation(s) for users.
+- [Moesif Workspaces API](https://apis.io/apis/moesif/moesif-workspaces-api/) — The Workspaces API from Moesif — 8 operation(s) for workspaces.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-08
-- **Modified:** 2026-05-22
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Moesif Management API
+Model Context Protocol servers that expose the API to agents.
 
-The Moesif Management API exposes the platform's full control plane for analytics, monetization, and governance. Capabilities include querying events, users, and companies; managing applications, workspaces, and dashboards; defining billing meters, product catalog entries, subscriptions, and balance transactions; configuring governance rules and quotas; managing cohorts, email templates, and metrics; and chat-style "Ask Question" analytics queries powered by GenAI.
+- [moesif](https://apis.io/servers/moesif/moesif/)
 
-- **Human URL:** [https://www.moesif.com/](https://www.moesif.com/)
-- **Base URL:** `https://api.moesif.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Analytics
-- Monetization
-- Monitoring
-- Observability
-- Governance
-- Billing
-- AI Agents
+- [Moesif Agentic Access](https://apis.io/agentic-access/moesif/moesif-agentic-access/)
 
-#### Properties
+#### JSON Schema (32)
 
-- [Documentation](https://www.moesif.com/docs/api)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/moesif/refs/heads/main/openapi/moesif-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Spectral Rules](rules/moesif-rules.yml)
-- [Plans](plans/moesif-plans-pricing.yml)
-- [Rate Limits](rate-limits/moesif-rate-limits.yml)
-- [Fin Ops](finops/moesif-finops.yml)
-- [Postman Collection](collections/moesif.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moesif.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The data models the API reads and writes.
 
-### Moesif Collector API
+- [AddSubscriptionDTO](https://apis.io/schemas/moesif/moesif-add-subscription-dto/)
+- [AppCreateDTO](https://apis.io/schemas/moesif/moesif-app-create-dto/)
+- [AppResponseDTO](https://apis.io/schemas/moesif/moesif-app-response-dto/)
+- [AppUpdateDTO](https://apis.io/schemas/moesif/moesif-app-update-dto/)
+- [BillingMeterDocument](https://apis.io/schemas/moesif/moesif-billing-meter-document/)
+- [BillingMetricResponse](https://apis.io/schemas/moesif/moesif-billing-metric-response/)
+- [BillingReport](https://apis.io/schemas/moesif/moesif-billing-report/)
+- [BillingReportBalanceTransCreate](https://apis.io/schemas/moesif/moesif-billing-report-balance-trans-create/)
+- [CohortCreateItem](https://apis.io/schemas/moesif/moesif-cohort-create-item/)
+- [CohortDocument](https://apis.io/schemas/moesif/moesif-cohort-document/)
+- [CohortUpdateItem](https://apis.io/schemas/moesif/moesif-cohort-update-item/)
+- [CommentItem](https://apis.io/schemas/moesif/moesif-comment-item/)
+- [CompanyUpdateDTO](https://apis.io/schemas/moesif/moesif-company-update-dto/)
+- [DashboardDocument](https://apis.io/schemas/moesif/moesif-dashboard-document/)
+- [DashboardUpdateItem](https://apis.io/schemas/moesif/moesif-dashboard-update-item/)
+- [EmailTemplateCreateItem](https://apis.io/schemas/moesif/moesif-email-template-create-item/)
+- [EmailTemplateUpdateItem](https://apis.io/schemas/moesif/moesif-email-template-update-item/)
+- [eventResponseDTO](https://apis.io/schemas/moesif/moesif-event-response-dto/)
+- [GovernanceRuleCreateItem](https://apis.io/schemas/moesif/moesif-governance-rule-create-item/)
+- [GovernanceRuleUpdateItem](https://apis.io/schemas/moesif/moesif-governance-rule-update-item/)
+- [GovernanceRulesDocument](https://apis.io/schemas/moesif/moesif-governance-rules-document/)
+- [MoesifPlan](https://apis.io/schemas/moesif/moesif-moesif-plan/)
+- [MoesifPrice](https://apis.io/schemas/moesif/moesif-moesif-price/)
+- [object](https://apis.io/schemas/moesif/moesif-object/)
+- [searchEventsResponseDTO](https://apis.io/schemas/moesif/moesif-search-events-response-dto/)
+- …and 7 more published on APIs.io
 
-The Moesif Collector API is the high-volume ingestion endpoint that receives API event data from server, client, and gateway SDKs. It accepts HTTP API call records, user/company entity updates, and custom action events that feed Moesif's analytics, monetization, and governance pipelines.
+#### JSON-LD (1)
 
-- **Human URL:** [https://www.moesif.com/docs/](https://www.moesif.com/docs/)
-- **Base URL:** `https://api.moesif.net`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Moesif Context](https://apis.io/jsonld/moesif/moesif-context/)
 
-- Ingestion
-- Events
-- Telemetry
-- OpenTelemetry
+#### Collections (16)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://www.moesif.com/docs/api/)
-- [SDK](https://www.moesif.com/docs/server-integration/)
-- [Postman Collection](collections/moesif.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moesif.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Management API](https://apis.io/collections/moesif/open-moesif/)
+- [Management Applications API](https://apis.io/collections/moesif/open-moesif-applications-api/)
+- [Management Applications Balance Transactions API](https://apis.io/collections/moesif/open-moesif-balance-transactions-api/)
+- [Management Applications Billing Meters API](https://apis.io/collections/moesif/open-moesif-billing-meters-api/)
+- [Management Applications Billing Reports API](https://apis.io/collections/moesif/open-moesif-billing-reports-api/)
+- [Management Applications Cohorts API](https://apis.io/collections/moesif/open-moesif-cohorts-api/)
+- [Management Applications Companies API](https://apis.io/collections/moesif/open-moesif-companies-api/)
+- [Management Applications Dashboards API](https://apis.io/collections/moesif/open-moesif-dashboards-api/)
+- [Management Applications Email Templates API](https://apis.io/collections/moesif/open-moesif-email-templates-api/)
+- [Management Applications Governance Rules API](https://apis.io/collections/moesif/open-moesif-governance-rules-api/)
+- [Management Applications Metrics API](https://apis.io/collections/moesif/open-moesif-metrics-api/)
+- [Management Applications Product Catalog API](https://apis.io/collections/moesif/open-moesif-product-catalog-api/)
+- [Management Applications Properties API](https://apis.io/collections/moesif/open-moesif-properties-api/)
+- [Management Applications Subscriptions API](https://apis.io/collections/moesif/open-moesif-subscriptions-api/)
+- [Management Applications Users API](https://apis.io/collections/moesif/open-moesif-users-api/)
+- [Management Applications Workspaces API](https://apis.io/collections/moesif/open-moesif-workspaces-api/)
 
-## Common Properties
+#### Overlays (1)
 
-- [GitHub Organization](https://github.com/moesif)
-- [LinkedIn](https://www.linkedin.com/company/moesif)
-- [Twitter](https://twitter.com/moesif)
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Moesif Applications Api Overlay](https://apis.io/overlays/moesif/moesif-applications-api-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Moesif API Rules](https://apis.io/rules/moesif/moesif-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Moesif Authentication](https://apis.io/security/moesif/moesif-authentication/)
+- [Moesif Domain Security](https://apis.io/security/moesif/moesif-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Moesif Scopes](https://apis.io/scopes/moesif/moesif-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Moesif Plans Pricing](https://apis.io/plans/moesif/moesif-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Moesif Rate Limits](https://apis.io/rate-limits/moesif/moesif-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Moesif Finops](https://apis.io/finops/moesif/moesif-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.moesif.com/)
 - [Documentation](https://www.moesif.com/docs/)
-- [API Reference](https://www.moesif.com/docs/api)
-- [Pricing](https://www.moesif.com/pricing)
-- [Sign Up](https://www.moesif.com/wrap)
+- [Getting started](https://www.moesif.com/docs/getting-started/overview/)
+- [API reference](https://www.moesif.com/docs/api)
+- [Pricing](https://www.moesif.com/price)
+- [Support](https://www.moesif.com/extensions/support)
 - [Blog](https://www.moesif.com/blog)
-- [SDK](https://www.moesif.com/docs/server-integration/)
-- [Integrations](https://www.moesif.com/integrations)
-- [SDK](https://github.com/Moesif/moesif-nodejs)
-- [SDK](https://github.com/Moesif/moesifdjango)
-- [SDK](https://github.com/Moesif/moesifwsgi)
-- [SDK](https://github.com/Moesif/moesiftornado)
-- [SDK](https://github.com/Moesif/moesifpythonrequest)
-- [SDK](https://github.com/Moesif/moesif-servlet)
-- [SDK](https://github.com/Moesif/moesif-dotnet)
-- [SDK](https://github.com/Moesif/moesifmiddleware-go)
-- [SDK](https://github.com/Moesif/moesif-laravel)
-- [SDK](https://github.com/Moesif/moesif-slim)
-- [SDK](https://github.com/Moesif/moesif-rack)
-- [SDK](https://github.com/Moesif/moesif-play-filter)
-- [SDK](https://github.com/Moesif/moesif-android)
-- [SDK](https://github.com/Moesif/moesif-browser-js)
-- [SDK](https://github.com/Moesif/moesif-aws-lambda-nodejs)
-- [SDK](https://github.com/Moesif/moesif-aws-lambda-python)
-- [SDK](https://github.com/Moesif/moesif-aws-lambda-go)
-- [Plugin](https://github.com/Moesif/moesif-cloudflare)
-- [Plugin](https://github.com/Moesif/kong-plugin-moesif)
-- [Plugin](https://github.com/Moesif/lua-resty-moesif)
-- [Plugin](https://github.com/Moesif/express-gateway-plugin-moesif)
-- [Tool](https://github.com/Moesif/auth0-logs-to-moesif)
-- [Sample](https://github.com/Moesif/moesif-developer-portal)
+- [Security](https://www.moesif.com/security)
+- [Terms of service](https://www.moesif.com/terms)
+- [Privacy policy](https://www.moesif.com/privacy)
+- [GitHub](https://github.com/moesif)
+- [Status](https://status.moesif.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 61.9** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 76.7 |
+| Contract quality | 58.8 |
+| Contract governance | 33.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 75.6 |
+| Access clarity | 42.1 |
+
+**Agent readiness 42.3** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/moesif/](https://apis.io/providers/moesif/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Moesif: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/moesif/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
